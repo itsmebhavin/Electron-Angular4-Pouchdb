@@ -9,14 +9,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-//Services
+// Components
+
+// Services
 import { Config } from './app.config';
 import { ThemeService } from './_services/theme/theme.service';
 import { HeaderComponent } from './_components/header/header.component';
 import { FooterComponent } from './_components/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
-
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { SettingsComponent } from './settings/settings.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    SettingsComponent
+    SettingsComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,

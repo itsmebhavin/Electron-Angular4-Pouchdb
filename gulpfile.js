@@ -43,6 +43,13 @@ gulp.task('inject-versions', ['clean'], function(done) {
         .pipe(rename('/index.html'))
         .pipe(gulp.dest('src/')),
 
+        gulp.src('src/app/_services/useragent/useragent.service.local.ts')
+        .pipe(plumber())
+        .pipe(injectVersion())
+        .pipe(inject.replace('%%NODE_VERSION%%', process.versions.node))
+        .pipe(inject.replace('%%NODE_v8%%', process.versions.v8))
+        .pipe(rename('/useragent.service.ts'))
+        .pipe(gulp.dest('src/app/_services/useragent/')),
     ]);
 });
 

@@ -1,5 +1,5 @@
 {
-  "name": "electron-angular4-pouchdb",
+  "name": "playground",
   "version": "1.0.0",
   "license": "MIT",
   "main": "./electron/entry.js",

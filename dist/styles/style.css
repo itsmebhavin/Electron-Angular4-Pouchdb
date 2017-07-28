@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/roboto/Roboto-Regular.woff") format("opentype");
+}
+
+@font-face {
+  font-family: RobotoLight;
+  src: url("../fonts/roboto/Roboto-Light.woff") format("opentype");
+}
+
+@font-face {
+  font-family: RobotoThin;
+  src: url("../fonts/roboto/Roboto-Thin.woff") format("opentype");
+}
+
+@font-face {
+  font-family: Quicksand;
+  src: url("../fonts/quicksand/quicksand-regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: QuicksandLight;
+  src: url("../fonts/quicksand/quicksand-light.otf") format("opentype");
+}
+
+.Quicksand {
+  font-family: Quicksand;
+}
+
+.Roboto {
+  font-family: Roboto;
+}
+
+.RobotoLight {
+  font-family: RobotoLight;
+}
+
+.RobotoThin {
+  font-family: RobotoThin;
+}

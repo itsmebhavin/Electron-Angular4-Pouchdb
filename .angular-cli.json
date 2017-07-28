@@ -14,11 +14,6 @@
       "fonts",
       {
         "glob": "**/*",
-        "input": "../node_modules/xel",
-        "output": "./lib/xel/"
-      },
-      {
-        "glob": "**/*",
         "input": "../node_modules/bootstrap/dist",
         "output": "./lib/bootstrap/"
       },
