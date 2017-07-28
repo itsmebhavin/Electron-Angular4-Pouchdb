@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAgentService } from '../_services/useragent/useragent.service';
+import { UserAgent } from '../_services/useragent/useragent.model';
+
 
 @Component({
   selector: 'app-layout',
@@ -7,7 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  isElectronApp: boolean = false;
+  constructor(private _userAgentService: UserAgentService) {
+    _userAgentService.getCurrentUserAgentInformation().then((res: UserAgent) => {
+            this.isElectronApp = res.isElectronApp;
+        });
+  }
 
   ngOnInit() {
   }

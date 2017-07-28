@@ -40,3 +40,49 @@
 .RobotoThin {
   font-family: RobotoThin;
 }
+
+/*  TINY NAVBAR */
+
+/* CSS used here will be applied after bootstrap.css */
+
+/* Create a medium height at 40px */
+.navbar-xs.tiny-navbar {
+  min-height:32px;
+  height: 32px;
+  padding: 0px 15px 0px 15px; margin: 0px; line-height: 32px;
+}
+.navbar-xs.tiny-navbar .navbar-brand{ padding: 0px 12px;font-size: 16px;line-height: 32px; }
+.navbar-xs.tiny-navbar .navbar-nav > li > a {
+  padding-top: 0px; padding-bottom: 0px; line-height: 32px;
+}
+/* Validation styles */
+.validationMessage {
+    color: red;
+    font-size: 12px;
+}
+
+input.ng-invalid.ng-dirty {
+    border-color: red;
+}
+
+.tiny-navbar {
+  z-index: 1200;
+}
+
+@media only screen and (min-width : 2000px) {
+  .navbar-xs.tiny-navbar {
+    min-height: auto;
+    height: 2.0vw;
+    font-size: 1.2vw;
+    padding: 0px 15px 0px 15px; margin: 0px; line-height: 2.0vw;
+  }
+  .navbar-xs.tiny-navbar .navbar-brand{ padding: 0px 12px;font-size: 1.2vw;line-height: 2.0vw; }
+  .navbar-xs.tiny-navbar .navbar-nav > li > a {
+    padding-top: 0px; padding-bottom: 0px; line-height: 2.0vw;
+  }
+}
+
+/* END: TINY NAVBAR */
+
+
+

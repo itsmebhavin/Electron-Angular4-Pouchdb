@@ -21,7 +21,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".footer {\r\n  margin: 0px;\r\n  padding: 0px;\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  /* Set the fixed height of the footer here */\r\n  height: 30px;\r\n  line-height: 30px;\r\n  /* Vertically center the text there */\r\n  /*background-color: #f5f5f5;*/\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n      -ms-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-pack: center;\r\n      -ms-flex-pack: center;\r\n          justify-content: center;\r\n  -webkit-box-align: stretch;\r\n      -ms-flex-align: stretch;\r\n          align-items: stretch;\r\n  z-index: 20;\r\n}\r\n\r\n.footer>.container-fluid {\r\n  width: 100%;\r\n}\r\n", ""]);
+exports.push([module.i, ".footer {\r\n  margin: 0px;\r\n  padding: 0px;\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  /* Set the fixed height of the footer here */\r\n  height: 25px;\r\n  line-height: 25px;\r\n  /* Vertically center the text there */\r\n  /*background-color: #f5f5f5;*/\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n      -ms-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-pack: center;\r\n      -ms-flex-pack: center;\r\n          justify-content: center;\r\n  -webkit-box-align: stretch;\r\n      -ms-flex-align: stretch;\r\n          align-items: stretch;\r\n  z-index: 20;\r\n}\r\n\r\n.footer>.container-fluid {\r\n  width: 100%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/_components/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"footer fixed-bottom  navbar-light bg-primary tiny-navbar\">\n  footer works!\n</div>\n"
+module.exports = "<div class=\"footer fixed-bottom  navbar-light bg-primary\"\n    [ngClass]=\"{' navbar-xs tiny-navbar': isElectronApp}\">\n  footer works!\n</div>\n"
 
 /***/ }),
 
@@ -43,6 +43,7 @@ module.exports = "<div class=\"footer fixed-bottom  navbar-light bg-primary tiny
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_useragent_useragent_service__ = __webpack_require__("../../../../../src/app/_services/useragent/useragent.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FooterComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -54,8 +55,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var FooterComponent = (function () {
-    function FooterComponent() {
+    function FooterComponent(_userAgentService) {
+        var _this = this;
+        this._userAgentService = _userAgentService;
+        this.appVersion = '';
+        this.nodeVersion = '';
+        this.nodeV8 = '';
+        this.userAgent = '';
+        this.electron = '';
+        this.environment = '';
+        this.isElectronApp = false;
+        _userAgentService.getCurrentUserAgentInformation().then(function (res) {
+            _this.appVersion = res.appVersion;
+            _this.nodeVersion = res.nodeVersion;
+            _this.nodeV8 = res.nodeV8;
+            _this.environment = res.environment;
+            _this.userAgent = res.userAgent;
+            _this.isElectronApp = res.userAgent.indexOf(res.appVersion.substring(1, (res.appVersion).length)) > 0;
+            if (_this.isElectronApp) {
+                _this.environment = 'Electron Desktop App';
+            }
+            else {
+                _this.environment = 'Web App';
+            }
+        });
     }
     FooterComponent.prototype.ngOnInit = function () {
     };
@@ -65,11 +90,13 @@ FooterComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
         selector: 'app-footer',
         template: __webpack_require__("../../../../../src/app/_components/footer/footer.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/_components/footer/footer.component.css")]
+        styles: [__webpack_require__("../../../../../src/app/_components/footer/footer.component.css")],
+        providers: [__WEBPACK_IMPORTED_MODULE_1__services_useragent_useragent_service__["a" /* UserAgentService */]]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_useragent_useragent_service__["a" /* UserAgentService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_useragent_useragent_service__["a" /* UserAgentService */]) === "function" && _a || Object])
 ], FooterComponent);
 
+var _a;
 //# sourceMappingURL=footer.component.js.map
 
 /***/ }),
@@ -82,7 +109,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "\r\n/*  TINY NAVBAR */\r\n\r\n/* CSS used here will be applied after bootstrap.css */\r\n\r\n/* Create a medium height at 40px */\r\n.navbar-xs.tiny-navbar {\r\n  min-height:32px;\r\n  height: 32px;\r\n  padding: 0px 15px 0px 15px; margin: 0px; line-height: 32px;\r\n}\r\n.navbar-xs.tiny-navbar .navbar-brand{ padding: 0px 12px;font-size: 16px;line-height: 32px; }\r\n.navbar-xs.tiny-navbar .navbar-nav > li > a {\r\n  padding-top: 0px; padding-bottom: 0px; line-height: 32px;\r\n}\r\n/* Validation styles */\r\n.validationMessage {\r\n    color: red;\r\n    font-size: 12px;\r\n}\r\n\r\ninput.ng-invalid.ng-dirty {\r\n    border-color: red;\r\n}\r\n\r\n.tiny-navbar {\r\n  z-index: 1200;\r\n}\r\n\r\n@media only screen and (min-width : 2000px) {\r\n  .navbar-xs.tiny-navbar {\r\n    min-height: auto;\r\n    height: 2.0vw;\r\n    font-size: 1.2vw;\r\n    padding: 0px 15px 0px 15px; margin: 0px; line-height: 2.0vw;\r\n  }\r\n  .navbar-xs.tiny-navbar .navbar-brand{ padding: 0px 12px;font-size: 1.2vw;line-height: 2.0vw; }\r\n  .navbar-xs.tiny-navbar .navbar-nav > li > a {\r\n    padding-top: 0px; padding-bottom: 0px; line-height: 2.0vw;\r\n  }\r\n}\r\n\r\n/* END: TINY NAVBAR */\r\n\r\n\r\n\r\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -95,7 +122,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/_components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-inverse bg-inverse fixed-top navbar-fixed-top navbar-xs tiny-navbar\">\n  <a class=\"navbar-brand\" href=\"#\">{{title}}</a>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-inverse bg-inverse fixed-top navbar-fixed-top\"\n    [ngClass]=\"{' navbar-xs tiny-navbar': isElectronApp}\">\n  <a class=\"navbar-brand\" href=\"#\">{{title}}</a>\n</nav>"
 
 /***/ }),
 
@@ -105,6 +132,7 @@ module.exports = "<nav class=\"navbar navbar-inverse bg-inverse fixed-top navbar
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_config__ = __webpack_require__("../../../../../src/app/app.config.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_useragent_useragent_service__ = __webpack_require__("../../../../../src/app/_services/useragent/useragent.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeaderComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -117,14 +145,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var HeaderComponent = (function () {
-    function HeaderComponent(_config) {
+    function HeaderComponent(_config, _userAgentService) {
         var _this = this;
         this._config = _config;
-        this.title = "";
+        this._userAgentService = _userAgentService;
+        this.title = '';
+        this.appVersion = '';
+        this.nodeVersion = '';
+        this.nodeV8 = '';
+        this.userAgent = '';
+        this.electron = '';
+        this.environment = '';
+        this.isElectronApp = false;
         this._config.load().then(function (data) {
             document.title = document.title.replace(/Loading(\.\.\.)?/, data.ApplicationHeader);
             _this.title = data.ApplicationHeader;
+        });
+        _userAgentService.getCurrentUserAgentInformation().then(function (res) {
+            _this.appVersion = res.appVersion;
+            _this.nodeVersion = res.nodeVersion;
+            _this.nodeV8 = res.nodeV8;
+            _this.environment = res.environment;
+            _this.userAgent = res.userAgent;
+            _this.isElectronApp = res.userAgent.indexOf(res.appVersion.substring(1, (res.appVersion).length)) > 0;
+            if (_this.isElectronApp) {
+                _this.environment = 'Electron Desktop App';
+            }
+            else {
+                _this.environment = 'Web App';
+            }
         });
     }
     HeaderComponent.prototype.ngOnInit = function () {
@@ -136,12 +187,12 @@ HeaderComponent = __decorate([
         selector: 'app-header',
         template: __webpack_require__("../../../../../src/app/_components/header/header.component.html"),
         styles: [__webpack_require__("../../../../../src/app/_components/header/header.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_1__app_config__["a" /* Config */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_1__app_config__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_2__services_useragent_useragent_service__["a" /* UserAgentService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__app_config__["a" /* Config */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__app_config__["a" /* Config */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__app_config__["a" /* Config */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__app_config__["a" /* Config */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_useragent_useragent_service__["a" /* UserAgentService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_useragent_useragent_service__["a" /* UserAgentService */]) === "function" && _b || Object])
 ], HeaderComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=header.component.js.map
 
 /***/ }),
@@ -234,6 +285,82 @@ var ThemeService_1, _a, _b;
 
 /***/ }),
 
+/***/ "../../../../../src/app/_services/useragent/useragent.model.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserAgent; });
+var UserAgent = (function () {
+    function UserAgent() {
+    }
+    return UserAgent;
+}());
+
+//# sourceMappingURL=useragent.model.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/_services/useragent/useragent.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__useragent_model__ = __webpack_require__("../../../../../src/app/_services/useragent/useragent.model.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserAgentService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var UserAgentService = (function () {
+    function UserAgentService() {
+        this.appVersion = 'v1.0.0';
+        this.nodeVersion = '7.10.0';
+        this.nodeV8 = '5.5.372.43';
+        this._userAgent = new __WEBPACK_IMPORTED_MODULE_1__useragent_model__["a" /* UserAgent */]();
+    }
+    UserAgentService.prototype.getCurrentUserAgentInformation = function () {
+        var _this = this;
+        this._userAgent.appVersion = this.appVersion;
+        this._userAgent.nodeVersion = this.nodeVersion;
+        this._userAgent.nodeV8 = this.nodeV8;
+        this._userAgent.userAgent = window.navigator.userAgent;
+        this._userAgent.isElectronApp = this._userAgent.userAgent.indexOf(this.appVersion.substring(1, (this.appVersion).length)) > 0;
+        if (this._userAgent.isElectronApp) {
+            this._userAgent.environment = 'Electron Desktop App';
+        }
+        else {
+            this._userAgent.environment = 'Web App';
+        }
+        this._userAgent.electron = this._userAgent.userAgent.indexOf(this.appVersion.substring(1, (this.appVersion).length)) > 0
+            ? process.versions.electron : '';
+        return new Promise(function (resolve, reject) {
+            if (_this._userAgent) {
+                resolve(_this._userAgent);
+            }
+            else {
+                reject(null);
+            }
+        });
+    };
+    return UserAgentService;
+}());
+UserAgentService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __metadata("design:paramtypes", [])
+], UserAgentService);
+
+//# sourceMappingURL=useragent.service.js.map
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("../../../../process/browser.js")))
+
+/***/ }),
+
 /***/ "../../../../../src/app/app-routing.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -256,9 +383,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var routes = [
+    { path: '', redirectTo: '/layout/home', pathMatch: 'full' },
     {
-        path: 'layout', component: __WEBPACK_IMPORTED_MODULE_4__layout_layout_component__["a" /* LayoutComponent */],
+        path: 'layout',
+        component: __WEBPACK_IMPORTED_MODULE_4__layout_layout_component__["a" /* LayoutComponent */],
         children: [
+            { path: '', component: __WEBPACK_IMPORTED_MODULE_2__home_home_component__["a" /* HomeComponent */] },
             { path: 'home', component: __WEBPACK_IMPORTED_MODULE_2__home_home_component__["a" /* HomeComponent */] },
             { path: 'settings', component: __WEBPACK_IMPORTED_MODULE_3__settings_settings_component__["a" /* SettingsComponent */] }
         ]
@@ -383,11 +513,12 @@ var Config_1, _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_config__ = __webpack_require__("../../../../../src/app/app.config.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_theme_theme_service__ = __webpack_require__("../../../../../src/app/_services/theme/theme.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_header_header_component__ = __webpack_require__("../../../../../src/app/_components/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_footer_footer_component__ = __webpack_require__("../../../../../src/app/_components/footer/footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__settings_settings_component__ = __webpack_require__("../../../../../src/app/settings/settings.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__layout_layout_component__ = __webpack_require__("../../../../../src/app/layout/layout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_useragent_useragent_service__ = __webpack_require__("../../../../../src/app/_services/useragent/useragent.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_header_header_component__ = __webpack_require__("../../../../../src/app/_components/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_footer_footer_component__ = __webpack_require__("../../../../../src/app/_components/footer/footer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__settings_settings_component__ = __webpack_require__("../../../../../src/app/settings/settings.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__layout_layout_component__ = __webpack_require__("../../../../../src/app/layout/layout.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -408,6 +539,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+// App Components
+
 
 
 
@@ -421,11 +554,11 @@ AppModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* NgModule */])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_10__components_header_header_component__["a" /* HeaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__components_footer_footer_component__["a" /* FooterComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__home_home_component__["a" /* HomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__settings_settings_component__["a" /* SettingsComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__layout_layout_component__["a" /* LayoutComponent */]
+            __WEBPACK_IMPORTED_MODULE_11__components_header_header_component__["a" /* HeaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__components_footer_footer_component__["a" /* FooterComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__home_home_component__["a" /* HomeComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__settings_settings_component__["a" /* SettingsComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__layout_layout_component__["a" /* LayoutComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
@@ -439,7 +572,8 @@ AppModule = __decorate([
             { provide: __WEBPACK_IMPORTED_MODULE_0__angular_common__["a" /* APP_BASE_HREF */], useValue: '/' },
             { provide: __WEBPACK_IMPORTED_MODULE_0__angular_common__["b" /* LocationStrategy */], useClass: __WEBPACK_IMPORTED_MODULE_0__angular_common__["c" /* HashLocationStrategy */] },
             __WEBPACK_IMPORTED_MODULE_8__app_config__["a" /* Config */],
-            __WEBPACK_IMPORTED_MODULE_9__services_theme_theme_service__["a" /* ThemeService */]
+            __WEBPACK_IMPORTED_MODULE_9__services_theme_theme_service__["a" /* ThemeService */],
+            __WEBPACK_IMPORTED_MODULE_10__services_useragent_useragent_service__["a" /* UserAgentService */]
         ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */]]
     })
@@ -470,7 +604,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2> Welcome Home!! </h2>\n<a routerLink='settings'> settings </a>"
+module.exports = "<h2> Welcome Home!! </h2>\r\n<a [routerLink]=\"['/layout/settings']\"> settings </a>\r\n"
 
 /***/ }),
 
@@ -531,7 +665,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/layout/layout.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<div class=\"container-fluid\" style=\"min-height: 100%;\">\n  <router-outlet></router-outlet>\n</div>\n<app-footer></app-footer>"
+module.exports = "<app-header></app-header>\n<br>\n{{isElectronApp}}\n<div class=\"container-fluid\" style=\"min-height: 100%;\">\n  <router-outlet></router-outlet>\n</div>\n<app-footer></app-footer>"
 
 /***/ }),
 
@@ -540,6 +674,7 @@ module.exports = "<app-header></app-header>\n<div class=\"container-fluid\" styl
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_useragent_useragent_service__ = __webpack_require__("../../../../../src/app/_services/useragent/useragent.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LayoutComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -551,8 +686,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var LayoutComponent = (function () {
-    function LayoutComponent() {
+    function LayoutComponent(_userAgentService) {
+        var _this = this;
+        this._userAgentService = _userAgentService;
+        this.isElectronApp = false;
+        _userAgentService.getCurrentUserAgentInformation().then(function (res) {
+            _this.isElectronApp = res.isElectronApp;
+        });
     }
     LayoutComponent.prototype.ngOnInit = function () {
     };
@@ -564,9 +706,10 @@ LayoutComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/layout/layout.component.html"),
         styles: [__webpack_require__("../../../../../src/app/layout/layout.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_useragent_useragent_service__["a" /* UserAgentService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_useragent_useragent_service__["a" /* UserAgentService */]) === "function" && _a || Object])
 ], LayoutComponent);
 
+var _a;
 //# sourceMappingURL=layout.component.js.map
 
 /***/ }),

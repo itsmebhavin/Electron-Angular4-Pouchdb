@@ -14,6 +14,8 @@ import { AppComponent } from './app.component';
 // Services
 import { Config } from './app.config';
 import { ThemeService } from './_services/theme/theme.service';
+import { UserAgentService } from './_services/useragent/useragent.service';
+// App Components
 import { HeaderComponent } from './_components/header/header.component';
 import { FooterComponent } from './_components/footer/footer.component';
 import { HomeComponent } from './home/home.component';
@@ -41,7 +43,8 @@ import { LayoutComponent } from './layout/layout.component';
     { provide: APP_BASE_HREF, useValue: '/' },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     Config,
-    ThemeService
+    ThemeService,
+    UserAgentService
   ],
   bootstrap: [AppComponent]
 })
