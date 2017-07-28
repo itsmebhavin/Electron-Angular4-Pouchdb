@@ -1,0 +1,13 @@
+{
+    "ApplicationHeader": "eForms",
+    "SubHeader": "Powered by UFP",
+    "Copyright": "Center for Advanced Public Safety",
+    "CopyrightYear": "2016-2017",
+    "themes": {
+        "xel-galaxy": "lib/xel/stylesheets/galaxy.theme.css",
+        "xel-macos": "lib/xel/stylesheets/macos.theme.css",
+        "xel-vanilla": "lib/xel/stylesheets/vanilla.theme.css",
+        "xel-material": "lib/xel/stylesheets/material.theme.css"
+    },
+    "defaultTheme": "xel-galaxy"
+}
