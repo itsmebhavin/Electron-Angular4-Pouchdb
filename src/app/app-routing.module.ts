@@ -8,6 +8,7 @@ const routes: Routes = [
   {
     path: 'layout', component: LayoutComponent,
     children: [
+      { path: '/', component: HomeComponent},
       { path: 'home', component: HomeComponent },
       { path: 'settings', component: SettingsComponent}
     ]
