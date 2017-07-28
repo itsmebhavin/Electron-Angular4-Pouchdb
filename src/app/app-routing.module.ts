@@ -5,17 +5,19 @@ import { SettingsComponent } from './settings/settings.component';
 import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
-  {
-    path: 'layout', component: LayoutComponent,
-    children: [
-      { path: 'home', component: HomeComponent },
-      { path: 'settings', component: SettingsComponent}
-    ]
-  }
+	{ path: '', redirectTo: '/layout/home', pathMatch: 'full' },
+	{
+		path: 'layout', 
+		component: LayoutComponent,
+		children: [
+			{ path: 'home', component: HomeComponent },
+			{ path: 'settings', component: SettingsComponent }
+		]
+	}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule]
 })
 export class AppRoutingModule { }
