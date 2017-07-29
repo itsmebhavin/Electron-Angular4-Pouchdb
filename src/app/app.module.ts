@@ -15,12 +15,17 @@ import { AppComponent } from './app.component';
 import { Config } from './app.config';
 import { ThemeService } from './_services/theme/theme.service';
 import { UserAgentService } from './_services/useragent/useragent.service';
+import { NetworkNotifierService } from './_components/networknotifier/networknotifier.service';
+
 // App Components
 import { HeaderComponent } from './_components/header/header.component';
 import { FooterComponent } from './_components/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
 import { LayoutComponent } from './layout/layout.component';
+import { ClockComponent } from './_components/clock/clock.component';
+import { NpmBadgeComponent } from './_components/npmbadge/npmbadge.component';
+import { NetworknotifierComponent } from './_components/networknotifier/networknotifier.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +34,10 @@ import { LayoutComponent } from './layout/layout.component';
     FooterComponent,
     HomeComponent,
     SettingsComponent,
-    LayoutComponent
+    LayoutComponent,
+    ClockComponent,
+    NpmBadgeComponent,
+    NetworknotifierComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +52,8 @@ import { LayoutComponent } from './layout/layout.component';
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     Config,
     ThemeService,
-    UserAgentService
+    UserAgentService,
+    NetworkNotifierService
   ],
   bootstrap: [AppComponent]
 })

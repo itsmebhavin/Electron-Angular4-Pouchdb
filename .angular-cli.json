@@ -12,6 +12,7 @@
       "styles",
       "images",
       "fonts",
+      "lib",
       {
         "glob": "**/*",
         "input": "../node_modules/bootstrap/dist",

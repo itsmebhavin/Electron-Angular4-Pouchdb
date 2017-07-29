@@ -1,4 +1,45 @@
-<div class="footer fixed-bottom  navbar-light bg-primary"
-    [ngClass]="{' navbar-xs tiny-navbar': isElectronApp}">
-  footer works!
+<div class="footer fixed-bottom  navbar-light mdc-bg-grey-300" 
+[ngClass]="{' footer-web': !isElectronApp}">
+  <div class="row">
+
+    <div class="col-xs-1 mdc-bg-orange-200">
+      <!-- If electron app, show that icon , else web icon  -->
+    </div>
+    &nbsp;&nbsp;
+    <div class="col-xs-3 text-left">
+      <npm-badge  [badgelabel]="'Version'" 
+                  [badgevalue]="appVersion"
+                  [isElectronApp]="isElectronApp" 
+                  [badgeclass]="'primary'">
+      </npm-badge>
+    </div>
+    &nbsp;&nbsp;
+    <div class="col-xs-2 mdc-bg-orange-200">
+      <!-- Network Notifier goes here  -->
+    </div>
+    &nbsp;&nbsp;
+    <div *ngIf="isElectronApp; then truthyTemplate else falsyTemplate"></div>
+    <ng-template #truthyTemplate>
+      <p class="text-left"><clock format="'MM/dd/yyyy h:mm:ss'"></clock></p>
+    </ng-template>
+
+    <ng-template #falsyTemplate>
+      <div class="col-xs-9 text-center">
+        <p>Copyright 2017, Center for Advanced Public Safety</p>
+      </div>
+    </ng-template>
+
+    &nbsp;&nbsp;
+    <div *ngIf="isElectronApp; then shownetwork else noshownetwork"></div>
+    <ng-template #shownetwork>
+      <network-notifier></network-notifier>
+    </ng-template>
+
+    <ng-template #noshownetwork>
+      <!-- Nothing if web app  -->
+    </ng-template>
+
+  </div>
 </div>
+
+

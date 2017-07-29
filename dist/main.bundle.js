@@ -13,6 +13,56 @@ webpackEmptyContext.id = "../../../../../src async recursive";
 
 /***/ }),
 
+/***/ "../../../../../src/app/_components/clock/clock.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClockComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ClockComponent = (function () {
+    function ClockComponent() {
+        var _this = this;
+        console.log('=========');
+        console.log(this.format);
+        //    this.format = this.newformat;
+        this.date = new Date();
+        setInterval(function () {
+            _this.date = new Date();
+        }, 1000);
+    }
+    ClockComponent.prototype.ngOnInit = function () {
+        console.log('=========');
+        console.log(this.format);
+        this.localformat = this.format;
+    };
+    return ClockComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
+    __metadata("design:type", Object)
+], ClockComponent.prototype, "format", void 0);
+ClockComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+        selector: 'clock',
+        template: "\n      <p (updateTime)='updateMyTime()'>{{date | date: localformat}}</p>\n    "
+    }),
+    __metadata("design:paramtypes", [])
+], ClockComponent);
+
+//# sourceMappingURL=clock.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/_components/footer/footer.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21,7 +71,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".footer {\r\n  margin: 0px;\r\n  padding: 0px;\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  /* Set the fixed height of the footer here */\r\n  height: 25px;\r\n  line-height: 25px;\r\n  /* Vertically center the text there */\r\n  /*background-color: #f5f5f5;*/\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n      -ms-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-pack: center;\r\n      -ms-flex-pack: center;\r\n          justify-content: center;\r\n  -webkit-box-align: stretch;\r\n      -ms-flex-align: stretch;\r\n          align-items: stretch;\r\n  z-index: 20;\r\n}\r\n\r\n.footer>.container-fluid {\r\n  width: 100%;\r\n}\r\n", ""]);
+exports.push([module.i, ".footer {\r\n  margin: 0px;\r\n  padding: 0px;\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  /* Set the fixed height of the footer here */\r\n  height: 25px;\r\n  line-height: 25px;\r\n  padding-left: 5px;\r\n  padding-right: 5px;\r\n  /* Vertically center the text there */\r\n  /*background-color: #f5f5f5;*/\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n      -ms-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-pack: center;\r\n      -ms-flex-pack: center;\r\n          justify-content: center;\r\n  -webkit-box-align: stretch;\r\n      -ms-flex-align: stretch;\r\n          align-items: stretch;\r\n  z-index: 20;\r\n}\r\n\r\n.footer>.container-fluid {\r\n  width: 100%;\r\n}\r\n\r\n\r\n.footer-web {\r\n  /* Set the fixed height of the footer here */\r\n  min-height: 45px;\r\n  font-size: medium;\r\n}", ""]);
 
 // exports
 
@@ -34,7 +84,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/_components/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"footer fixed-bottom  navbar-light bg-primary\"\n    [ngClass]=\"{' navbar-xs tiny-navbar': isElectronApp}\">\n  footer works!\n</div>\n"
+module.exports = "<div class=\"footer fixed-bottom  navbar-light mdc-bg-grey-300\" \n[ngClass]=\"{' footer-web': !isElectronApp}\">\n  <div class=\"row\">\n\n    <div class=\"col-xs-1 mdc-bg-orange-200\">\n      <!-- If electron app, show that icon , else web icon  -->\n    </div>\n    &nbsp;&nbsp;\n    <div class=\"col-xs-3 text-left\">\n      <npm-badge  [badgelabel]=\"'Version'\" \n                  [badgevalue]=\"appVersion\"\n                  [isElectronApp]=\"isElectronApp\" \n                  [badgeclass]=\"'primary'\">\n      </npm-badge>\n    </div>\n    &nbsp;&nbsp;\n    <div class=\"col-xs-2 mdc-bg-orange-200\">\n      <!-- Network Notifier goes here  -->\n    </div>\n    &nbsp;&nbsp;\n    <div *ngIf=\"isElectronApp; then truthyTemplate else falsyTemplate\"></div>\n    <ng-template #truthyTemplate>\n      <p class=\"text-left\"><clock format=\"'MM/dd/yyyy h:mm:ss'\"></clock></p>\n    </ng-template>\n\n    <ng-template #falsyTemplate>\n      <div class=\"col-xs-9 text-center\">\n        <p>Copyright 2017, Center for Advanced Public Safety</p>\n      </div>\n    </ng-template>\n\n    &nbsp;&nbsp;\n    <div *ngIf=\"isElectronApp; then shownetwork else noshownetwork\"></div>\n    <ng-template #shownetwork>\n      <network-notifier></network-notifier>\n    </ng-template>\n\n    <ng-template #noshownetwork>\n      <!-- Nothing if web app  -->\n    </ng-template>\n\n  </div>\n</div>\n\n\n"
 
 /***/ }),
 
@@ -194,6 +244,212 @@ HeaderComponent = __decorate([
 
 var _a, _b;
 //# sourceMappingURL=header.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/_components/networknotifier/networknotifier.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")();
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/_components/networknotifier/networknotifier.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n   <npm-badge\n        [badgelabel]=\"'Network'\"\n        [badgevalue]=\"hasNetwork.internet ? 'Online' : 'Offline'\"\n        [badgeclass]=\"hasNetwork.internet ? 'success' : 'danger'\">\n    </npm-badge>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/_components/networknotifier/networknotifier.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__networknotifier_service__ = __webpack_require__("../../../../../src/app/_components/networknotifier/networknotifier.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NetworknotifierComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var NetworknotifierComponent = (function () {
+    function NetworknotifierComponent(service) {
+        var _this = this;
+        this.hasNetwork = {};
+        this.networkSub = service.networkAvailable$.subscribe(function (networkAvailable) {
+            _this.hasNetwork = networkAvailable;
+        });
+    }
+    NetworknotifierComponent.prototype.ngOnInit = function () {
+    };
+    return NetworknotifierComponent;
+}());
+NetworknotifierComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+        selector: 'network-notifier',
+        template: __webpack_require__("../../../../../src/app/_components/networknotifier/networknotifier.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/_components/networknotifier/networknotifier.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__networknotifier_service__["a" /* NetworkNotifierService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__networknotifier_service__["a" /* NetworkNotifierService */]) === "function" && _a || Object])
+], NetworknotifierComponent);
+
+var _a;
+//# sourceMappingURL=networknotifier.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/_components/networknotifier/networknotifier.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__ = __webpack_require__("../../../../rxjs/Subject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_ReplaySubject__ = __webpack_require__("../../../../rxjs/ReplaySubject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_ReplaySubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_ReplaySubject__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NetworkNotifierService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * NetworkNotifierService (Injectable) class -- Singleton (i.e. don't put this in your Component's list of providers!) service
+ * that periodically pings the API to determine whether or not the network is still connected.
+ * Subscribers are notified when the network status changes.
+ */
+var NetworkNotifierService = (function () {
+    function NetworkNotifierService() {
+        this.internetStatusSource = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__["Subject"]();
+        this.networkAvailable$ = this.networkStatusSource = new __WEBPACK_IMPORTED_MODULE_2_rxjs_ReplaySubject__["ReplaySubject"](1);
+    }
+    NetworkNotifierService.prototype.checkInternet = function () {
+        // this.http.get('https://www.google.com/')
+        //     .subscribe(() => {
+        //         this.internetStatusSource.next({ internet: true });
+        //     }, err => {
+        //         this.internetStatusSource.next({ internet: false });
+        //     });
+        this.internetStatusSource.next({ internet: navigator.onLine });
+    };
+    return NetworkNotifierService;
+}());
+NetworkNotifierService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __metadata("design:paramtypes", [])
+], NetworkNotifierService);
+
+//# sourceMappingURL=networknotifier.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/_components/npmbadge/npmbadge.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")();
+// imports
+
+
+// module
+exports.push([module.i, "\r\n/* designing npm-badge starts */\r\n.npm-badge{\r\n    border-radius: 25px;\r\n    font-size: small;\r\n    font-family: RobotoLight;\r\n}\r\n.npm-badge-web{\r\n    font-size: medium;\r\n}\r\n.npm-badge-tile{\r\n    padding-left:5px;\r\n    padding-right: 5px;\r\n}\r\n/* designing npm-badge ends */", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/_components/npmbadge/npmbadge.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"label npm-badge\" [ngClass]=\"{' npm-badge-web': !isElectronApp}\">\r\n            <span class=\"mdc-bg-grey-800 npm-badge-tile\">\r\n                {{badgelabel}}\r\n            </span>\r\n            <span class=\"npm-badge-tile\" [ngClass]=\"{'label-primary':badgeclass=='primary','label-warning':badgeclass=='warning','label-danger':badgeclass=='danger', 'label-info':badgeclass=='info', 'label-success':badgeclass=='success'}\">\r\n                {{badgevalue}}\r\n            </span>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/_components/npmbadge/npmbadge.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NpmBadgeComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+/**
+* NpmBadge component -- Shows a small NPM style badge with content based on the following Inputs:
+* @param badgelabel (badgelabel) The right-hand label of the badge.
+* @param badgevalue (badgevalue) The left-hand content of the badge.
+* @param badgeclass (badgeclass) Shorthand for one of the classes defined in the ngClass directive.
+*/
+var NpmBadgeComponent = (function () {
+    function NpmBadgeComponent() {
+        this.badgelabel = '';
+        this.badgevalue = '';
+        this.badgeclass = '';
+        this.isElectronApp = true;
+    }
+    return NpmBadgeComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
+    __metadata("design:type", Object)
+], NpmBadgeComponent.prototype, "badgelabel", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
+    __metadata("design:type", Object)
+], NpmBadgeComponent.prototype, "badgevalue", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
+    __metadata("design:type", Object)
+], NpmBadgeComponent.prototype, "badgeclass", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
+    __metadata("design:type", Object)
+], NpmBadgeComponent.prototype, "isElectronApp", void 0);
+NpmBadgeComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+        selector: 'npm-badge',
+        template: __webpack_require__("../../../../../src/app/_components/npmbadge/npmbadge.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/_components/npmbadge/npmbadge.component.css")],
+    }),
+    __metadata("design:paramtypes", [])
+], NpmBadgeComponent);
+
+//# sourceMappingURL=npmbadge.component.js.map
 
 /***/ }),
 
@@ -514,11 +770,15 @@ var Config_1, _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_config__ = __webpack_require__("../../../../../src/app/app.config.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_theme_theme_service__ = __webpack_require__("../../../../../src/app/_services/theme/theme.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_useragent_useragent_service__ = __webpack_require__("../../../../../src/app/_services/useragent/useragent.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_header_header_component__ = __webpack_require__("../../../../../src/app/_components/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_footer_footer_component__ = __webpack_require__("../../../../../src/app/_components/footer/footer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__settings_settings_component__ = __webpack_require__("../../../../../src/app/settings/settings.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__layout_layout_component__ = __webpack_require__("../../../../../src/app/layout/layout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_networknotifier_networknotifier_service__ = __webpack_require__("../../../../../src/app/_components/networknotifier/networknotifier.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_header_header_component__ = __webpack_require__("../../../../../src/app/_components/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_footer_footer_component__ = __webpack_require__("../../../../../src/app/_components/footer/footer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__settings_settings_component__ = __webpack_require__("../../../../../src/app/settings/settings.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__layout_layout_component__ = __webpack_require__("../../../../../src/app/layout/layout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_clock_clock_component__ = __webpack_require__("../../../../../src/app/_components/clock/clock.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_npmbadge_npmbadge_component__ = __webpack_require__("../../../../../src/app/_components/npmbadge/npmbadge.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_networknotifier_networknotifier_component__ = __webpack_require__("../../../../../src/app/_components/networknotifier/networknotifier.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -539,7 +799,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 // App Components
+
+
+
 
 
 
@@ -554,11 +818,14 @@ AppModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* NgModule */])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__components_header_header_component__["a" /* HeaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__components_footer_footer_component__["a" /* FooterComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__home_home_component__["a" /* HomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__settings_settings_component__["a" /* SettingsComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__layout_layout_component__["a" /* LayoutComponent */]
+            __WEBPACK_IMPORTED_MODULE_12__components_header_header_component__["a" /* HeaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__components_footer_footer_component__["a" /* FooterComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__home_home_component__["a" /* HomeComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__settings_settings_component__["a" /* SettingsComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__layout_layout_component__["a" /* LayoutComponent */],
+            __WEBPACK_IMPORTED_MODULE_17__components_clock_clock_component__["a" /* ClockComponent */],
+            __WEBPACK_IMPORTED_MODULE_18__components_npmbadge_npmbadge_component__["a" /* NpmBadgeComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__components_networknotifier_networknotifier_component__["a" /* NetworknotifierComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
@@ -573,7 +840,8 @@ AppModule = __decorate([
             { provide: __WEBPACK_IMPORTED_MODULE_0__angular_common__["b" /* LocationStrategy */], useClass: __WEBPACK_IMPORTED_MODULE_0__angular_common__["c" /* HashLocationStrategy */] },
             __WEBPACK_IMPORTED_MODULE_8__app_config__["a" /* Config */],
             __WEBPACK_IMPORTED_MODULE_9__services_theme_theme_service__["a" /* ThemeService */],
-            __WEBPACK_IMPORTED_MODULE_10__services_useragent_useragent_service__["a" /* UserAgentService */]
+            __WEBPACK_IMPORTED_MODULE_10__services_useragent_useragent_service__["a" /* UserAgentService */],
+            __WEBPACK_IMPORTED_MODULE_11__components_networknotifier_networknotifier_service__["a" /* NetworkNotifierService */]
         ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */]]
     })

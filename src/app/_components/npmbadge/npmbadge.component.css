@@ -1,0 +1,15 @@
+
+/* designing npm-badge starts */
+.npm-badge{
+    border-radius: 25px;
+    font-size: small;
+    font-family: RobotoLight;
+}
+.npm-badge-web{
+    font-size: medium;
+}
+.npm-badge-tile{
+    padding-left:5px;
+    padding-right: 5px;
+}
+/* designing npm-badge ends */

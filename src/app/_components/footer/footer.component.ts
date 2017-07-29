@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserAgent } from '../../_services/useragent/useragent.model';
 import { UserAgentService } from '../../_services/useragent/useragent.service';
+import { ClockComponent } from '../clock/clock.component';
 
 @Component({
   selector: 'app-footer',
