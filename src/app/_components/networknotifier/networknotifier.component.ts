@@ -4,21 +4,20 @@ import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'network-notifier',
-  templateUrl: './networknotifier.component.html',
-  styleUrls: ['./networknotifier.component.css']
+  templateUrl: './networknotifier.component.html'
 })
 export class NetworknotifierComponent implements OnInit {
 
-  hasNetwork: NetworkStatus = {};
-networkSub: Subscription;
-  constructor(service: NetworkNotifierService) {
-      this.networkSub = service.networkAvailable$.subscribe(
-          networkAvailable => {
-              this.hasNetwork = networkAvailable;
-          }
-      );
-  }
-  ngOnInit() {
-  }
+    hasNetwork: NetworkStatus = {};
+    networkSub: Subscription;
+    constructor(service: NetworkNotifierService) {
+        this.networkSub = service.networkAvailable$.subscribe(
+            networkAvailable => {
+                this.hasNetwork = networkAvailable;
+            }
+        );
+    }
+    ngOnInit() {
+    }
 
 }

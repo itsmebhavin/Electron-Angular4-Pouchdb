@@ -32,29 +32,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ClockComponent = (function () {
     function ClockComponent() {
         var _this = this;
-        console.log('=========');
-        console.log(this.format);
-        //    this.format = this.newformat;
         this.date = new Date();
         setInterval(function () {
             _this.date = new Date();
         }, 1000);
     }
     ClockComponent.prototype.ngOnInit = function () {
-        console.log('=========');
-        console.log(this.format);
         this.localformat = this.format;
+        this.date = new Date();
     };
     return ClockComponent;
 }());
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])('format'),
     __metadata("design:type", Object)
 ], ClockComponent.prototype, "format", void 0);
 ClockComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
         selector: 'clock',
-        template: "\n      <p (updateTime)='updateMyTime()'>{{date | date: localformat}}</p>\n    "
+        template: "\n      <p style=\"font-size:12px\" (updateTime)='updateMyTime()'>{{date | date: localformat}}</p>\n    "
     }),
     __metadata("design:paramtypes", [])
 ], ClockComponent);
@@ -71,7 +67,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".footer {\r\n  margin: 0px;\r\n  padding: 0px;\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  /* Set the fixed height of the footer here */\r\n  height: 25px;\r\n  line-height: 25px;\r\n  padding-left: 5px;\r\n  padding-right: 5px;\r\n  /* Vertically center the text there */\r\n  /*background-color: #f5f5f5;*/\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n      -ms-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-pack: center;\r\n      -ms-flex-pack: center;\r\n          justify-content: center;\r\n  -webkit-box-align: stretch;\r\n      -ms-flex-align: stretch;\r\n          align-items: stretch;\r\n  z-index: 20;\r\n}\r\n\r\n.footer>.container-fluid {\r\n  width: 100%;\r\n}\r\n\r\n\r\n.footer-web {\r\n  /* Set the fixed height of the footer here */\r\n  min-height: 45px;\r\n  font-size: medium;\r\n}", ""]);
+exports.push([module.i, ".footer {\r\n  margin: 0px;\r\n  padding: 0px;\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  /* Set the fixed height of the footer here */\r\n  height: 25px;\r\n  line-height: 25px;\r\n  padding-left: 5px;\r\n  padding-right: 5px;\r\n  /* Vertically center the text there */\r\n  /*background-color: #f5f5f5;*/\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n      -ms-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-pack: center;\r\n      -ms-flex-pack: center;\r\n          justify-content: center;\r\n  -webkit-box-align: stretch;\r\n      -ms-flex-align: stretch;\r\n          align-items: stretch;\r\n  z-index: 20;\r\n}\r\n\r\n.footer>.container-fluid {\r\n  width: 100%;\r\n}\r\n\r\n\r\n.footer-web {\r\n  /* Set the fixed height of the footer here */\r\n  min-height: 35px;\r\n  font-size: medium;\r\n}", ""]);
 
 // exports
 
@@ -84,7 +80,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/_components/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"footer fixed-bottom  navbar-light mdc-bg-grey-300\" \n[ngClass]=\"{' footer-web': !isElectronApp}\">\n  <div class=\"row\">\n\n    <div class=\"col-xs-1 mdc-bg-orange-200\">\n      <!-- If electron app, show that icon , else web icon  -->\n    </div>\n    &nbsp;&nbsp;\n    <div class=\"col-xs-3 text-left\">\n      <npm-badge  [badgelabel]=\"'Version'\" \n                  [badgevalue]=\"appVersion\"\n                  [isElectronApp]=\"isElectronApp\" \n                  [badgeclass]=\"'primary'\">\n      </npm-badge>\n    </div>\n    &nbsp;&nbsp;\n    <div class=\"col-xs-2 mdc-bg-orange-200\">\n      <!-- Network Notifier goes here  -->\n    </div>\n    &nbsp;&nbsp;\n    <div *ngIf=\"isElectronApp; then truthyTemplate else falsyTemplate\"></div>\n    <ng-template #truthyTemplate>\n      <p class=\"text-left\"><clock format=\"'MM/dd/yyyy h:mm:ss'\"></clock></p>\n    </ng-template>\n\n    <ng-template #falsyTemplate>\n      <div class=\"col-xs-9 text-center\">\n        <p>Copyright 2017, Center for Advanced Public Safety</p>\n      </div>\n    </ng-template>\n\n    &nbsp;&nbsp;\n    <div *ngIf=\"isElectronApp; then shownetwork else noshownetwork\"></div>\n    <ng-template #shownetwork>\n      <network-notifier></network-notifier>\n    </ng-template>\n\n    <ng-template #noshownetwork>\n      <!-- Nothing if web app  -->\n    </ng-template>\n\n  </div>\n</div>\n\n\n"
+module.exports = "<div class=\"footer fixed-bottom  navbar-light mdc-bg-grey-300\" [ngClass]=\"{' footer-web': !isElectronApp}\">\n  <div class=\"row\">\n\n    <div style=\"padding-left:15px;\" class=\"col-xs-1\">\n      <!-- If electron app, show that icon , else web icon  -->\n      \n      <div *ngIf=\"isElectronApp; then electronicon else webicon\"></div>\n      <ng-template #electronicon>\n        <img src=\"./images/electron.png\" style=\"height:25px;\" />  \n      </ng-template>\n\n      <ng-template #webicon>\n        <img src=\"./images/web.png\" style=\"height:25px;\" />  \n      </ng-template>\n\n    </div>\n    &nbsp;&nbsp;\n    <div class=\"col-xs-3 text-left\">\n      <npm-badge [badgelabel]=\"'Version'\" [badgevalue]=\"appVersion\" [isElectronApp]=\"isElectronApp\" [badgeclass]=\"'primary'\">\n      </npm-badge>\n    </div>\n    &nbsp;&nbsp;\n    <div class=\"col-xs-2 mdc-bg-orange-200\">\n      <!-- Network Notifier goes here  -->\n    </div>\n    &nbsp;&nbsp;\n    <div *ngIf=\"isElectronApp; then truthyTemplate else falsyTemplate\"></div>\n    <ng-template #truthyTemplate>\n      <p class=\"text-left mdc-text-grey-800\">\n        <clock [format]=\"'MM/dd/yyyy h:mm:ss'\" class=\"mdc-text-grey-800\"></clock>\n      </p>\n    </ng-template>\n\n    <ng-template #falsyTemplate>\n      <div class=\"col-xs-9 text-center mdc-text-grey-800\">\n        <p>Copyright 2017, Center for Advanced Public Safety</p>\n      </div>\n    </ng-template>\n\n    &nbsp;&nbsp;\n    <div *ngIf=\"isElectronApp; then shownetwork else noshownetwork\"></div>\n    <ng-template #shownetwork>\n      <network-notifier></network-notifier>\n    </ng-template>\n\n    <ng-template #noshownetwork>\n      <!-- Nothing if web app  -->\n    </ng-template>\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -172,7 +168,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/_components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-inverse bg-inverse fixed-top navbar-fixed-top\"\n    [ngClass]=\"{' navbar-xs tiny-navbar': isElectronApp}\">\n  <a class=\"navbar-brand\" href=\"#\">{{title}}</a>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-inverse bg-inverse fixed-top navbar-fixed-top\"\n    [ngClass]=\"isElectronApp === true ? 'navbar-xs tiny-navbar':'navbar-md' \">\n  <a class=\"navbar-brand\" href=\"#\">{{title}}</a>\n</nav>"
 
 /***/ }),
 
@@ -247,24 +243,6 @@ var _a, _b;
 
 /***/ }),
 
-/***/ "../../../../../src/app/_components/networknotifier/networknotifier.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")();
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
 /***/ "../../../../../src/app/_components/networknotifier/networknotifier.component.html":
 /***/ (function(module, exports) {
 
@@ -305,8 +283,7 @@ var NetworknotifierComponent = (function () {
 NetworknotifierComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
         selector: 'network-notifier',
-        template: __webpack_require__("../../../../../src/app/_components/networknotifier/networknotifier.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/_components/networknotifier/networknotifier.component.css")]
+        template: __webpack_require__("../../../../../src/app/_components/networknotifier/networknotifier.component.html")
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__networknotifier_service__["a" /* NetworkNotifierService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__networknotifier_service__["a" /* NetworkNotifierService */]) === "function" && _a || Object])
 ], NetworknotifierComponent);
@@ -349,12 +326,6 @@ var NetworkNotifierService = (function () {
         this.networkAvailable$ = this.networkStatusSource = new __WEBPACK_IMPORTED_MODULE_2_rxjs_ReplaySubject__["ReplaySubject"](1);
     }
     NetworkNotifierService.prototype.checkInternet = function () {
-        // this.http.get('https://www.google.com/')
-        //     .subscribe(() => {
-        //         this.internetStatusSource.next({ internet: true });
-        //     }, err => {
-        //         this.internetStatusSource.next({ internet: false });
-        //     });
         this.internetStatusSource.next({ internet: navigator.onLine });
     };
     return NetworkNotifierService;
@@ -473,12 +444,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-//import { Router } from '@angular/router';
 
 
-//import { PouchDB } from 'pouchdb';
 
-var STORAGE_CURRENT_THEME = "currentTheme";
+var STORAGE_CURRENT_THEME = 'currentTheme';
 /**
  * ThemeService (Injectable) class -- Handles switching of the various application themes.
  */
@@ -507,7 +476,6 @@ var ThemeService = ThemeService_1 = (function () {
             ThemeService_1.themeNameStream.next(ThemeService_1.themes);
             ThemeService_1.currentThemeStream.next(ThemeService_1.currentTheme);
             _this.setTheme(ThemeService_1.currentTheme);
-            //this.test();
         });
     }
     // private i = 0;
@@ -520,11 +488,11 @@ var ThemeService = ThemeService_1 = (function () {
     // }
     ThemeService.prototype.setTheme = function (name) {
         if (!ThemeService_1.themesData[name]) {
-            console.log("Tried to set invalid theme: ", name);
+            console.log('Tried to set invalid theme: ', name);
             return false;
         }
         ThemeService_1.currentTheme = name;
-        document.getElementById("theme-css")['href'] = ThemeService_1.themesData[name];
+        document.getElementById('theme-css')['href'] = ThemeService_1.themesData[name];
         localStorage.setItem(STORAGE_CURRENT_THEME, name);
         ThemeService_1.currentThemeStream.next(ThemeService_1.currentTheme);
         return true;
@@ -872,7 +840,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2> Welcome Home!! </h2>\r\n<a [routerLink]=\"['/layout/settings']\"> settings </a>\r\n"
+module.exports = "<h2> Welcome Home!! </h2>\r\n<a class=\"btn btn-primary btn-sm\" [routerLink]=\"['/layout/settings']\"> settings </a>\r\n"
 
 /***/ }),
 
@@ -933,7 +901,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/layout/layout.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<br>\n{{isElectronApp}}\n<div class=\"container-fluid\" style=\"min-height: 100%;\">\n  <router-outlet></router-outlet>\n</div>\n<app-footer></app-footer>"
+module.exports = "<app-header></app-header>\n<br>\n<div class=\"container-fluid\" style=\"min-height: 100%;\">\n  <router-outlet></router-outlet>\n</div>\n<app-footer></app-footer>"
 
 /***/ }),
 

@@ -1,12 +1,10 @@
 import { Injectable, Inject, EventEmitter } from '@angular/core';
-//import { Router } from '@angular/router';
-import { Http } from "@angular/http";
+import { Http } from '@angular/http';
 import { Config } from '../../app.config';
-//import { PouchDB } from 'pouchdb';
 import { Subject, ReplaySubject } from 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 
-const STORAGE_CURRENT_THEME = "currentTheme";
+const STORAGE_CURRENT_THEME = 'currentTheme';
 
 /**
  * ThemeService (Injectable) class -- Handles switching of the various application themes.
@@ -18,8 +16,6 @@ export class ThemeService {
     public static themes: string[];
     public static defaultTheme: string;
     public static currentTheme: string;
-
-    //public static onSetTheme: EventEmitter<any> = new EventEmitter();
 
     public static themeNameStream: ReplaySubject<string[]>;
     public static currentThemeStream: ReplaySubject<string>;
@@ -50,7 +46,7 @@ export class ThemeService {
             ThemeService.currentThemeStream.next( ThemeService.currentTheme );
 
             this.setTheme( ThemeService.currentTheme );
-            //this.test();
+
         });
     }
 
@@ -65,12 +61,12 @@ export class ThemeService {
 
     setTheme( name ) {
         if ( !ThemeService.themesData[name] ) {
-            console.log( "Tried to set invalid theme: ", name );
+            console.log( 'Tried to set invalid theme: ', name );
             return false;
         }
         ThemeService.currentTheme = name;
 
-        document.getElementById( "theme-css" )['href'] = ThemeService.themesData[name];
+        document.getElementById( 'theme-css' )['href'] = ThemeService.themesData[name];
         localStorage.setItem( STORAGE_CURRENT_THEME, name );
 
         ThemeService.currentThemeStream.next( ThemeService.currentTheme );
