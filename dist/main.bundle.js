@@ -417,19 +417,19 @@ var NpmBadgeComponent = (function () {
     return NpmBadgeComponent;
 }());
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])('badgelabel'),
     __metadata("design:type", Object)
 ], NpmBadgeComponent.prototype, "badgelabel", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])('badgevalue'),
     __metadata("design:type", Object)
 ], NpmBadgeComponent.prototype, "badgevalue", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])('badgeclass'),
     __metadata("design:type", Object)
 ], NpmBadgeComponent.prototype, "badgeclass", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */])('isElectronApp'),
     __metadata("design:type", Object)
 ], NpmBadgeComponent.prototype, "isElectronApp", void 0);
 NpmBadgeComponent = __decorate([
@@ -716,7 +716,7 @@ var Config = Config_1 = (function () {
     function Config(http) {
         this.http = http;
         if (!Config_1.configStream) {
-            Config_1.configStream = this.http.get("config/app.config.json")
+            Config_1.configStream = this.http.get('config/app.config.json')
                 .map(function (res) { return res.json(); })
                 .publishReplay(1)
                 .refCount();
@@ -738,7 +738,6 @@ Config = Config_1 = __decorate([
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], Config);
 
-;
 var Config_1, _a;
 //# sourceMappingURL=app.config.js.map
 

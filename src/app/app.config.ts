@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { Http } from "@angular/http";
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 
@@ -10,10 +10,9 @@ export class Config {
     public configStream: Observable<any>;
 
     constructor(private http: Http) {
-        if(!Config.configStream){
-            Config.configStream = this.http.get("config/app.config.json")
+        if (!Config.configStream) {
+            Config.configStream = this.http.get('config/app.config.json')
                 .map(res => res.json())
-                //.share();
                 .publishReplay(1)
                 .refCount();
         }
@@ -27,4 +26,4 @@ export class Config {
                 });
         });
     }
-};
+}
