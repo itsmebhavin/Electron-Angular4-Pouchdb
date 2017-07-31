@@ -1,51 +1,43 @@
 <div class="footer fixed-bottom  navbar-light mdc-bg-grey-300" [ngClass]="{' footer-web': !isElectronApp}">
-  <div class="row">
 
-    <div style="padding-left:15px;" class="col-xs-1">
-      <!-- If electron app, show that icon , else web icon  -->
-      
-      <div *ngIf="isElectronApp; then electronicon else webicon"></div>
-      <ng-template #electronicon>
-        <img src="./images/electron.png" style="height:25px;" />  
-      </ng-template>
-
-      <ng-template #webicon>
-        <img src="./images/web.png" style="height:25px;" />  
-      </ng-template>
-
-    </div>
-    &nbsp;&nbsp;
-    <div class="col-xs-3 text-left">
-      <npm-badge [badgelabel]="'Version'" [badgevalue]="appVersion" [isElectronApp]="isElectronApp" [badgeclass]="'primary'">
-      </npm-badge>
-    </div>
-    &nbsp;&nbsp;
-    <div class="col-xs-2 mdc-bg-orange-200">
-      <!-- Network Notifier goes here  -->
-    </div>
-    &nbsp;&nbsp;
-    <div *ngIf="isElectronApp; then truthyTemplate else falsyTemplate"></div>
-    <ng-template #truthyTemplate>
-      <p class="text-left mdc-text-grey-800">
-        <clock [format]="'MM/dd/yyyy h:mm:ss'" class="mdc-text-grey-800"></clock>
-      </p>
-    </ng-template>
-
-    <ng-template #falsyTemplate>
-      <div class="col-xs-9 text-center mdc-text-grey-800">
-        <p>Copyright 2017, Center for Advanced Public Safety</p>
+  <div *ngIf="isElectronApp; then electronfooter else webfooter"></div>
+  <ng-template #electronfooter>
+    <div class="row" style="padding-left:1%">
+      <div class="col-xs-1">
+        <img src="./images/electron.png" style="height:25px;" />
       </div>
-    </ng-template>
+      <div class="col-xs-3 pull-right">
+          <npm-badge  [badgelabel]="'Version'" 
+                      [badgevalue]="appVersion" 
+                      [isElectronApp]="isElectronApp" 
+                      [badgeclass]="'primary'">
+          </npm-badge>
+      </div>
+      <div class="col-xs-3">
+           <clock [format]="'MM/dd/yyyy h:mm:ss'" class="mdc-text-grey-800"></clock>
+      </div>
+      <div class="col-xs-3">
+        <network-notifier></network-notifier>
+      </div>
+    </div>
+  </ng-template>
 
-    &nbsp;&nbsp;
-    <div *ngIf="isElectronApp; then shownetwork else noshownetwork"></div>
-    <ng-template #shownetwork>
-      <network-notifier></network-notifier>
-    </ng-template>
+  <ng-template #webfooter>
+    <div class="row" style="padding-left:1%">
+      <div class="col-xs-1">
+        <img src="./images/web.png" style="height:25px;" />
+      </div>
+      <div class="col-xs-3 pull-right">
+          <npm-badge  [badgelabel]="'Version'" 
+                      [badgevalue]="appVersion" 
+                      [isElectronApp]="isElectronApp" 
+                      [badgeclass]="'primary'">
+          </npm-badge>
+      </div>
+      <div class="col-xs-9">
+         <p>Copyright <span class="fa fa-copyright"></span> {{copyrightyear}} {{copyright}}</p>
+      </div>
+    </div>
+  </ng-template>
 
-    <ng-template #noshownetwork>
-      <!-- Nothing if web app  -->
-    </ng-template>
-
-  </div>
 </div>

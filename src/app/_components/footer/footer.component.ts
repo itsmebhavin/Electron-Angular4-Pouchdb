@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { UserAgent } from '../../_services/useragent/useragent.model';
 import { UserAgentService } from '../../_services/useragent/useragent.service';
 import { ClockComponent } from '../clock/clock.component';
+import { Config } from '../../app.config';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
-  providers: [UserAgentService]
+  providers: [UserAgentService, Config]
 })
 export class FooterComponent implements OnInit {
 
@@ -18,8 +19,9 @@ export class FooterComponent implements OnInit {
   electron: String = '';
   environment: String = '';
   isElectronApp: Boolean = false;
-
-  constructor(private _userAgentService: UserAgentService) {
+  copyright: String = '';
+  copyrightyear: String = '';
+  constructor(private _config: Config, private _userAgentService: UserAgentService) {
     _userAgentService.getCurrentUserAgentInformation().then((res: UserAgent) => {
             this.appVersion = res.appVersion;
             this.nodeVersion = res.nodeVersion;
@@ -32,6 +34,11 @@ export class FooterComponent implements OnInit {
             } else {
                 this.environment = 'Web App';
             }
+        });
+
+        this._config.load().then((data: any) => {
+            this.copyright = data.Copyright;
+            this.copyrightyear = data.CopyrightYear;
         });
   }
 

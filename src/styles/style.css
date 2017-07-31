@@ -27,7 +27,6 @@
 
 html {
   font-size: 15px;  
-  font-size: 1.3vw; /* auto resize fonts based on viewport */
 }
 /* 
 @include media-breakpoint-up(sm) {
@@ -71,13 +70,19 @@ html {
 /* Create a medium height at 40px */
 
 .navbar-web{
+  min-height: 45px;
   height: 45px;
+  padding: 0px 15px 0px 15px; 
+  margin: 0px; 
+  line-height: 32px;
 }
 
 .navbar-xs.tiny-navbar {
   min-height:32px;
   height: 32px;
-  padding: 0px 15px 0px 15px; margin: 0px; line-height: 32px;
+  padding: 0px 15px 0px 15px; 
+  margin: 0px; 
+  line-height: 32px;
 }
 .navbar-xs.tiny-navbar .navbar-brand{ padding: 0px 12px;font-size: 16px;line-height: 32px; }
 .navbar-xs.tiny-navbar .navbar-nav > li > a {

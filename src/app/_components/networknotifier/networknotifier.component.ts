@@ -6,7 +6,7 @@ import {Subscription} from 'rxjs/Subscription';
   selector: 'network-notifier',
   templateUrl: './networknotifier.component.html'
 })
-export class NetworknotifierComponent implements OnInit {
+export class NetworknotifierComponent {
 
     hasNetwork: NetworkStatus = {};
     networkSub: Subscription;
@@ -17,7 +17,4 @@ export class NetworknotifierComponent implements OnInit {
             }
         );
     }
-    ngOnInit() {
-    }
-
 }

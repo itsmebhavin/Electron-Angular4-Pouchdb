@@ -3,7 +3,7 @@ import {Http, Response} from '@angular/http';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
-
+import { Config } from '../../app.config';
 
 export interface NetworkStatus {
   internet?: boolean;
@@ -19,8 +19,20 @@ export class NetworkNotifierService {
     public networkAvailable$: ReplaySubject<NetworkStatus>;
     private internetStatusSource = new Subject<NetworkStatus>();
     private networkStatusSource: Observable<NetworkStatus>;
-    constructor( ) {
+    apiUrl: string;
+    constructor(  private config: Config ) {
         this.networkAvailable$ = this.networkStatusSource = new ReplaySubject<NetworkStatus>(1);
+
+        Observable.combineLatest(this.internetStatusSource,
+            (s1, s2) => Object.assign({}, s2, s1)
+        ).subscribe(x => this.networkAvailable$.next(x));
+
+
+        this.config.load().then(( config: any ) => {
+            this.apiUrl = config.RemoteCouchDBUrl;
+            setInterval(this.checkInternet.bind( this ), 15000);
+            this.checkInternet();
+        });
     }
 
 

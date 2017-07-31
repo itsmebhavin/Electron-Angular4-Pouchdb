@@ -80,7 +80,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/_components/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"footer fixed-bottom  navbar-light mdc-bg-grey-300\" [ngClass]=\"{' footer-web': !isElectronApp}\">\n  <div class=\"row\">\n\n    <div style=\"padding-left:15px;\" class=\"col-xs-1\">\n      <!-- If electron app, show that icon , else web icon  -->\n      \n      <div *ngIf=\"isElectronApp; then electronicon else webicon\"></div>\n      <ng-template #electronicon>\n        <img src=\"./images/electron.png\" style=\"height:25px;\" />  \n      </ng-template>\n\n      <ng-template #webicon>\n        <img src=\"./images/web.png\" style=\"height:25px;\" />  \n      </ng-template>\n\n    </div>\n    &nbsp;&nbsp;\n    <div class=\"col-xs-3 text-left\">\n      <npm-badge [badgelabel]=\"'Version'\" [badgevalue]=\"appVersion\" [isElectronApp]=\"isElectronApp\" [badgeclass]=\"'primary'\">\n      </npm-badge>\n    </div>\n    &nbsp;&nbsp;\n    <div class=\"col-xs-2 mdc-bg-orange-200\">\n      <!-- Network Notifier goes here  -->\n    </div>\n    &nbsp;&nbsp;\n    <div *ngIf=\"isElectronApp; then truthyTemplate else falsyTemplate\"></div>\n    <ng-template #truthyTemplate>\n      <p class=\"text-left mdc-text-grey-800\">\n        <clock [format]=\"'MM/dd/yyyy h:mm:ss'\" class=\"mdc-text-grey-800\"></clock>\n      </p>\n    </ng-template>\n\n    <ng-template #falsyTemplate>\n      <div class=\"col-xs-9 text-center mdc-text-grey-800\">\n        <p>Copyright 2017, Center for Advanced Public Safety</p>\n      </div>\n    </ng-template>\n\n    &nbsp;&nbsp;\n    <div *ngIf=\"isElectronApp; then shownetwork else noshownetwork\"></div>\n    <ng-template #shownetwork>\n      <network-notifier></network-notifier>\n    </ng-template>\n\n    <ng-template #noshownetwork>\n      <!-- Nothing if web app  -->\n    </ng-template>\n\n  </div>\n</div>\n"
+module.exports = "<div class=\"footer fixed-bottom  navbar-light mdc-bg-grey-300\" [ngClass]=\"{' footer-web': !isElectronApp}\">\n\n  <div *ngIf=\"isElectronApp; then electronfooter else webfooter\"></div>\n  <ng-template #electronfooter>\n    <div class=\"row\" style=\"padding-left:1%\">\n      <div class=\"col-xs-1\">\n        <img src=\"./images/electron.png\" style=\"height:25px;\" />\n      </div>\n      <div class=\"col-xs-3 pull-right\">\n          <npm-badge  [badgelabel]=\"'Version'\" \n                      [badgevalue]=\"appVersion\" \n                      [isElectronApp]=\"isElectronApp\" \n                      [badgeclass]=\"'primary'\">\n          </npm-badge>\n      </div>\n      <div class=\"col-xs-3\">\n           <clock [format]=\"'MM/dd/yyyy h:mm:ss'\" class=\"mdc-text-grey-800\"></clock>\n      </div>\n      <div class=\"col-xs-3\">\n        <network-notifier></network-notifier>\n      </div>\n    </div>\n  </ng-template>\n\n  <ng-template #webfooter>\n    <div class=\"row\" style=\"padding-left:1%\">\n      <div class=\"col-xs-1\">\n        <img src=\"./images/web.png\" style=\"height:25px;\" />\n      </div>\n      <div class=\"col-xs-3 pull-right\">\n          <npm-badge  [badgelabel]=\"'Version'\" \n                      [badgevalue]=\"appVersion\" \n                      [isElectronApp]=\"isElectronApp\" \n                      [badgeclass]=\"'primary'\">\n          </npm-badge>\n      </div>\n      <div class=\"col-xs-9\">\n         <p>Copyright <span class=\"fa fa-copyright\"></span> {{copyrightyear}} {{copyright}}</p>\n      </div>\n    </div>\n  </ng-template>\n\n</div>\n"
 
 /***/ }),
 
@@ -90,6 +90,7 @@ module.exports = "<div class=\"footer fixed-bottom  navbar-light mdc-bg-grey-300
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_useragent_useragent_service__ = __webpack_require__("../../../../../src/app/_services/useragent/useragent.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_config__ = __webpack_require__("../../../../../src/app/app.config.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FooterComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -102,9 +103,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var FooterComponent = (function () {
-    function FooterComponent(_userAgentService) {
+    function FooterComponent(_config, _userAgentService) {
         var _this = this;
+        this._config = _config;
         this._userAgentService = _userAgentService;
         this.appVersion = '';
         this.nodeVersion = '';
@@ -113,6 +116,8 @@ var FooterComponent = (function () {
         this.electron = '';
         this.environment = '';
         this.isElectronApp = false;
+        this.copyright = '';
+        this.copyrightyear = '';
         _userAgentService.getCurrentUserAgentInformation().then(function (res) {
             _this.appVersion = res.appVersion;
             _this.nodeVersion = res.nodeVersion;
@@ -127,6 +132,10 @@ var FooterComponent = (function () {
                 _this.environment = 'Web App';
             }
         });
+        this._config.load().then(function (data) {
+            _this.copyright = data.Copyright;
+            _this.copyrightyear = data.CopyrightYear;
+        });
     }
     FooterComponent.prototype.ngOnInit = function () {
     };
@@ -137,12 +146,12 @@ FooterComponent = __decorate([
         selector: 'app-footer',
         template: __webpack_require__("../../../../../src/app/_components/footer/footer.component.html"),
         styles: [__webpack_require__("../../../../../src/app/_components/footer/footer.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_1__services_useragent_useragent_service__["a" /* UserAgentService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_1__services_useragent_useragent_service__["a" /* UserAgentService */], __WEBPACK_IMPORTED_MODULE_2__app_config__["a" /* Config */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_useragent_useragent_service__["a" /* UserAgentService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_useragent_useragent_service__["a" /* UserAgentService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__app_config__["a" /* Config */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__app_config__["a" /* Config */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__services_useragent_useragent_service__["a" /* UserAgentService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_useragent_useragent_service__["a" /* UserAgentService */]) === "function" && _b || Object])
 ], FooterComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=footer.component.js.map
 
 /***/ }),
@@ -168,7 +177,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/_components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-inverse bg-inverse fixed-top navbar-fixed-top\"\n    [ngClass]=\"isElectronApp === true ? 'navbar-xs tiny-navbar':'navbar-md' \">\n  <a class=\"navbar-brand\" href=\"#\">{{title}}</a>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-inverse bg-inverse fixed-top navbar-fixed-top\"\n    [ngClass]=\"isElectronApp === true ? 'navbar-xs tiny-navbar':'navbar-web' \">\n  <a class=\"navbar-brand\" href=\"#\">{{title}}</a>\n</nav>"
 
 /***/ }),
 
@@ -276,8 +285,6 @@ var NetworknotifierComponent = (function () {
             _this.hasNetwork = networkAvailable;
         });
     }
-    NetworknotifierComponent.prototype.ngOnInit = function () {
-    };
     return NetworknotifierComponent;
 }());
 NetworknotifierComponent = __decorate([
@@ -300,8 +307,11 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__ = __webpack_require__("../../../../rxjs/Subject.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_ReplaySubject__ = __webpack_require__("../../../../rxjs/ReplaySubject.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_ReplaySubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_ReplaySubject__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_ReplaySubject__ = __webpack_require__("../../../../rxjs/ReplaySubject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_ReplaySubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_ReplaySubject__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_config__ = __webpack_require__("../../../../../src/app/app.config.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NetworkNotifierService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -315,15 +325,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 /**
  * NetworkNotifierService (Injectable) class -- Singleton (i.e. don't put this in your Component's list of providers!) service
  * that periodically pings the API to determine whether or not the network is still connected.
  * Subscribers are notified when the network status changes.
  */
 var NetworkNotifierService = (function () {
-    function NetworkNotifierService() {
+    function NetworkNotifierService(config) {
+        var _this = this;
+        this.config = config;
         this.internetStatusSource = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__["Subject"]();
-        this.networkAvailable$ = this.networkStatusSource = new __WEBPACK_IMPORTED_MODULE_2_rxjs_ReplaySubject__["ReplaySubject"](1);
+        this.networkAvailable$ = this.networkStatusSource = new __WEBPACK_IMPORTED_MODULE_3_rxjs_ReplaySubject__["ReplaySubject"](1);
+        __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].combineLatest(this.internetStatusSource, function (s1, s2) { return Object.assign({}, s2, s1); }).subscribe(function (x) { return _this.networkAvailable$.next(x); });
+        this.config.load().then(function (config) {
+            _this.apiUrl = config.RemoteCouchDBUrl;
+            setInterval(_this.checkInternet.bind(_this), 15000);
+            _this.checkInternet();
+        });
     }
     NetworkNotifierService.prototype.checkInternet = function () {
         this.internetStatusSource.next({ internet: navigator.onLine });
@@ -332,9 +352,10 @@ var NetworkNotifierService = (function () {
 }());
 NetworkNotifierService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__app_config__["a" /* Config */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__app_config__["a" /* Config */]) === "function" && _a || Object])
 ], NetworkNotifierService);
 
+var _a;
 //# sourceMappingURL=networknotifier.service.js.map
 
 /***/ }),
@@ -827,7 +848,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".flex-container {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-wrap: wrap;\r\n        flex-wrap: wrap;\r\n}\r\n", ""]);
 
 // exports
 
@@ -840,7 +861,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2> Welcome Home!! </h2>\r\n<a class=\"btn btn-primary btn-sm\" [routerLink]=\"['/layout/settings']\"> settings </a>\r\n"
+module.exports = "<div class=\"flex-container\">\r\n  <h3> Welcome Home!! </h3>\r\n  <a class=\"btn btn-primary btn-sm\" [routerLink]=\"['/layout/settings']\"> settings </a>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -888,7 +909,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "\r\n.flex-container{\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n}\r\n.container-electron{\r\n    padding-top: 35px;\r\n}\r\n.container-web{\r\n    padding-top:45px;\r\n}", ""]);
 
 // exports
 
@@ -901,7 +922,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/layout/layout.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<br>\n<div class=\"container-fluid\" style=\"min-height: 100%;\">\n  <router-outlet></router-outlet>\n</div>\n<app-footer></app-footer>"
+module.exports = "<app-header></app-header>\n<br>\n<div class=\"container-fluid flex-container\"\n  [ngClass]=\"isElectronApp === true ? 'container-electron':'container-web' \">\n  <router-outlet></router-outlet>\n</div>\n<app-footer></app-footer>\n"
 
 /***/ }),
 

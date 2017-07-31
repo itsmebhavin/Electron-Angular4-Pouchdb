@@ -3,11 +3,13 @@
     "SubHeader": "Powered by UFP",
     "Copyright": "Center for Advanced Public Safety",
     "CopyrightYear": "2017",
-    "themes": {
+    "Themes": {
         "material": "lib/bs4-themes/material.css",
         "darkly": "lib/bs4-themes/darkly.css",
         "pulse": "lib/bs4-themes/pulse.css",
         "simplex": "lib/bs4-themes/simplex.css"
     },
-    "defaultTheme": "darkly"
+    "DefaultTheme": "darkly",
+    "RemoteCouchDBUrl": "https://publicuser:publicpassword@gacmvalpha.caps.ua.edu/couchdb",
+    "RemoteCouchDBName":"UFP"
 }
