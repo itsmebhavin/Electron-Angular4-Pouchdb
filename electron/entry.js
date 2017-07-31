@@ -16,6 +16,7 @@ const path = require('path');
 const fs = require("fs");
 const moment = require("moment");
 const winston = require('winston');
+var logDir = 'errorlog';
 
 //Main process constants
 let win;
@@ -25,12 +26,17 @@ let appIcon = null;
 runMainProcess();
 
 function runMainProcess() {
+    // Create the directory if it does not exist
+    if (!fs.existsSync(logDir)) {
+        fs.mkdirSync(logDir);
+    }
+
     //initiate logger
     let logger = new(winston.Logger)({
         transports: [
             new(winston.transports.Console)(),
             new(winston.transports.File)({
-                filename: 'error' + require("moment")(new Date()).format("MMDDYYYY") + '.log'
+                filename: path.join(logDir, '/error' + require("moment")(new Date()).format("MMDDYYYY") + '.log')
             })
         ]
     });
