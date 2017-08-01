@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electron": "npm run build && electron .",
-    "runboth":"npm run build  && ng serve && electron ."
+    "runboth": "npm run build  && ng serve && electron ."
   },
   "private": true,
   "dependencies": {
