@@ -38,11 +38,6 @@
             </div>
 
             <div class="form-group">
-                <label>Zip</label>
-                <input type="text" class="form-control" formControlName="zip" required>
-            </div>
-
-            <div class="form-group">
                 <label>Age</label>
                 <input type="text" class="form-control" formControlName="age" required>
             </div>
@@ -60,11 +55,6 @@
             <div class="form-group">
                 <label>Sex</label>
                 <input type="text" class="form-control" formControlName="sex" required>
-            </div>
-
-            <div class="form-group">
-                <label>Eyes</label>
-                <input type="text" class="form-control" formControlName="eyes" required>
             </div>
 
             <div class="form-group">
@@ -176,10 +166,10 @@
         <!--summonsLocation checkbox-->
         <div class="form-group">
             <label>Location</label>
-            <div *ngFor="let location of summonsLocations">
+            <div *ngFor="let locationEntry of summonsLocations">
                 <label>
-                    <input type="radio" name="location" formControlName="summonsLocation" [value]="location">
-                    {{location}}
+                    <input type="radio" formControlName="summonsLocation" [value]="locationEntry">
+                    {{locationEntry}}
                 </label>
             </div>
         </div>
