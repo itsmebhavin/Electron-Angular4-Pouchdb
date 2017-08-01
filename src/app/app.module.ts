@@ -26,6 +26,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { ClockComponent } from './_components/clock/clock.component';
 import { NpmBadgeComponent } from './_components/npmbadge/npmbadge.component';
 import { NetworknotifierComponent } from './_components/networknotifier/networknotifier.component';
+import { OverloadCitationComponent } from './overloadcitation/overload-citation.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { NetworknotifierComponent } from './_components/networknotifier/networkn
     LayoutComponent,
     ClockComponent,
     NpmBadgeComponent,
-    NetworknotifierComponent
+    NetworknotifierComponent,
+    OverloadCitationComponent
   ],
   imports: [
     BrowserModule,

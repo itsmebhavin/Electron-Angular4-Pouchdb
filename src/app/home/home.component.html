@@ -1,5 +1,6 @@
 <div class="container">
   <a class="btn btn-primary btn-xs" [routerLink]="['/layout/settings']"> settings </a>
+  <a class="btn btn-primary btn-xs" [routerLink]="['/layout/overloadcitation']">Overload Citation</a>
   <div>
     <form [formGroup]="myform">
 
@@ -28,15 +29,13 @@
 
       <div class="form-group">
         <label>Language</label>
-
         <select class="form-control" formControlName="language">
-  <option value="">Please select a language</option>
-  <option *ngFor="let lang of langs"
-          [value]="lang"> 
-          {{lang}} 
-  </option>
-</select>
-
+          <option value="">Please select a language</option>
+          <option *ngFor="let lang of langs"
+                  [value]="lang"> 
+                  {{lang}} 
+          </option>
+        </select>
       </div>
 
       <pre>{{myform.value | json}}</pre>
