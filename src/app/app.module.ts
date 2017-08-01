@@ -27,6 +27,7 @@ import { ClockComponent } from './_components/clock/clock.component';
 import { NpmBadgeComponent } from './_components/npmbadge/npmbadge.component';
 import { NetworknotifierComponent } from './_components/networknotifier/networknotifier.component';
 import { OverloadCitationComponent } from './overloadcitation/overload-citation.component';
+import { ViolationNoticeComponent } from './violationnotice/violation-notice.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { OverloadCitationComponent } from './overloadcitation/overload-citation.
     ClockComponent,
     NpmBadgeComponent,
     NetworknotifierComponent,
-    OverloadCitationComponent
+    OverloadCitationComponent,
+    ViolationNoticeComponent
   ],
   imports: [
     BrowserModule,
