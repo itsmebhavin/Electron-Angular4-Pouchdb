@@ -33,4 +33,4 @@ Run `npm run runboth` for both client electron app and webapp.
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Reactive forms [https://codecraft.tv/courses/angular/forms/model-driven/]
