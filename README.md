@@ -33,4 +33,19 @@ Run `npm run runboth` for both client electron app and webapp.
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Reactive forms [https://codecraft.tv/courses/angular/forms/model-driven/]
+- PDF Viewer [https://devarchy.com/angular/ng2-pdf-viewer]
+- SideBar [https://devarchy.com/angular/ng-sidebar]
+- ProgressBar [https://devarchy.com/angular/ng2-progressbar]
+- DatePicker [https://devarchy.com/angular/mydatepicker]
+- Ngx-bootstrap [Valor software - for many BS based components]
+- Textbox Mask [https://text-mask.github.io/text-mask/]
+- Flex Layout [https://devarchy.com/angular/angularflex-layout]
+- Bootstrap / Material Alternative [https://vmware.github.io/clarity/]
+- All useful piped [https://devarchy.com/angular/ngx-pipes]
+- Angular-Restangular [http://embed.plnkr.co/qozGPV2HowzmtKbC9a54/]
+- Angular Validation [https://devarchy.com/angular/ng2-validation]
+                     [https://devarchy.com/angular/ng-validators]
+- Best logger [Log4J: https://devarchy.com/angular/angular2-logger] 
+- Angular Documentation Component [https://devarchy.com/angular/compodoc]
+- Pretty Json [https://devarchy.com/angular/angular2-prettyjson]                   
