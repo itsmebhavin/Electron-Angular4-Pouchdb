@@ -27,201 +27,219 @@
                 <input type="text" class="form-control" formControlName="street" required>
             </div>
 
-            <div class="form-group">
-                <label>City</label>
-                <input type="text" class="form-control" formControlName="city" required>
+            <div class="container">
+                <div class="form-group row">
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" class="form-control" formControlName="city" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>State</label>
+                        <input type="text" class="form-control" formControlName="state" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Zip</label>
+                        <input type="text" class="form-control" formControlName="zip" required>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label>State</label>
-                <input type="text" class="form-control" formControlName="state" required>
-            </div>
+            <div class="container">
+                <div class="form-group row">
+                    <div class="">
+                        <label>Age</label>
+                        <input type="text" class="form-control" formControlName="age" required>
+                    </div>
 
-            <div class="form-group">
-                <label>Zip</label>
-                <input type="text" class="form-control" formControlName="zip" required>
-            </div>
+                    <div class="">
+                        <label>Birthdate</label>
+                        <input type="date" class="form-control" formControlName="birthDate" required>
+                    </div>
 
-            <div class="form-group">
-                <label>Age</label>
-                <input type="text" class="form-control" formControlName="age" required>
-            </div>
+                    <div class="">
+                        <label>Race</label>
+                        <input type="text" class="form-control" formControlName="race" required>
+                    </div>
 
-            <div class="form-group">
-                <label>Birthdate</label>
-                <input type="date" class="form-control" formControlName="birthDate" required>
-            </div>
+                    <div class="">
+                        <label>Sex</label>
+                        <input type="text" class="form-control" formControlName="sex" required>
+                    </div>
 
-            <div class="form-group">
-                <label>Race</label>
-                <input type="text" class="form-control" formControlName="race" required>
-            </div>
+                    <div class="">
+                        <label>Eyes</label>
+                        <input type="text" class="form-control" formControlName="eyes" required>
+                    </div>
 
-            <div class="form-group">
-                <label>Sex</label>
-                <input type="text" class="form-control" formControlName="sex" required>
-            </div>
+                    <div class="">
+                        <label>Height</label>
+                        <input type="text" class="form-control" formControlName="height" required>
+                    </div>
 
-            <div class="form-group">
-                <label>Eyes</label>
-                <input type="text" class="form-control" formControlName="eyes" required>
-            </div>
-
-            <div class="form-group">
-                <label>Height</label>
-                <input type="text" class="form-control" formControlName="height" required>
-            </div>
-
-            <div class="form-group">
-                <label>Weight</label>
-                <input type="text" class="form-control" formControlName="weight" required>
+                    <div class="">
+                        <label>Weight</label>
+                        <input type="text" class="form-control" formControlName="weight" required>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
                 <label>Driver's License Number</label>
                 <input type="text" class="form-control" formControlName="licenseNum" required>
             </div>
+
+            <div class="form-group">
+                <label>Origin</label>
+                <input type="text" class="form-control" formControlName="origin" required>
+            </div>
+
+            <div class="form-group">
+                <label>Address</label>
+                <input type="text" class="form-control" formControlName="address" required>
+            </div>
+
+            <div class="form-group">
+                <label>Destination</label>
+                <input type="text" class="form-control" formControlName="destination" required>
+            </div>
         </fieldset>
 
-        <div class="form-group">
-            <label>Owner</label>
-            <input type="text" class="form-control" formControlName="owner" required>
-        </div>
+        <fieldset formGroupName="vehicle">
+            <div class="form-group">
+                <label>Owner</label>
+                <input type="text" class="form-control" formControlName="owner" required>
+            </div>
 
-        <div class="form-group">
-            <label>Origin</label>
-            <input type="text" class="form-control" formControlName="origin" required>
-        </div>
+            <div class="form-group">
+                <label>Vehicle License Number</label>
+                <input type="text" class="form-control" formControlName="vehicleLicenseNum" required>
+            </div>
 
-        <div class="form-group">
-            <label>Address</label>
-            <input type="text" class="form-control" formControlName="address" required>
-        </div>
+            <div class="form-group">
+                <label>License State</label>
+                <input type="text" class="form-control" formControlName="vehicleLicenseState" required>
+            </div>
 
-        <div class="form-group">
-            <label>Destination</label>
-            <input type="text" class="form-control" formControlName="destination" required>
-        </div>
+            <div class="form-group">
+                <label>License Year</label>
+                <input type="text" class="form-control" formControlName="vehicleLicenseYear" required>
+            </div>
 
-        <div class="form-group">
-            <label>Vehicle License Number</label>
-            <input type="text" class="form-control" formControlName="vehicleLicenseNum" required>
-        </div>
+            <div class="form-group">
+                <label>Make</label>
+                <input type="text" class="form-control" formControlName="vehicleMake" required>
+            </div>
+        </fieldset>
 
-        <div class="form-group">
-            <label>License State</label>
-            <input type="text" class="form-control" formControlName="vehicleLicenseState" required>
-        </div>
+        <fieldset formGroupName="citation">
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" class="form-control" formControlName="location" required>
+            </div>
 
-        <div class="form-group">
-            <label>License Year</label>
-            <input type="text" class="form-control" formControlName="vehicleLicenseYear" required>
-        </div>
+            <div class="form-group">
+                <label>State Statute</label>
+                <input type="text" class="form-control" formControlName="stateStatute" required>
+            </div>
 
-        <div class="form-group">
-            <label>Make</label>
-            <input type="text" class="form-control" formControlName="vehicleMake" required>
-        </div>
+            <div class="form-group">
+                <label>Total Gross</label>
+                <input type="text" class="form-control" formControlName="totalGross" required>
+            </div>
 
-        <div class="form-group">
-            <label>Location</label>
-            <input type="text" class="form-control" formControlName="location" required>
-        </div>
+            <div class="form-group">
+                <input type="checkbox" class="form-control" formControlName="bridgeFormula" required>
+                <label>Bridge Formula</label>            
+            </div>
 
-        <div class="form-group">
-            <label>State Statute</label>
-            <input type="text" class="form-control" formControlName="stateStatute" required>
-        </div>
+            <div class="form-group">
+                <input type="checkbox" class="form-control" formControlName="otherViolations" required>
+                <label>Other Violoations</label>            
+            </div>
 
-        <div class="form-group">
-            <label>Total Gross</label>
-            <input type="text" class="form-control" formControlName="totalGross" required>
-        </div>
+            <div class="form-group">
+                <label>Legal</label>
+                <input type="text" class="form-control" formControlName="legal" required>
+            </div>
 
-        <div class="form-group">
-            <input type="checkbox" class="form-control" formControlName="bridgeFormula" required>
-            <label>Bridge Formula</label>            
-        </div>
+            <div class="form-group">
+                <label>Total Weight Violation</label>
+                <input type="text" class="form-control" formControlName="totalWeightViolation" required>
+            </div>
 
-        <div class="form-group">
-            <input type="checkbox" class="form-control" formControlName="otherViolations" required>
-            <label>Other Violoations</label>            
-        </div>
+            <div class="form-group">
+                <label>Commodity</label>
+                <input type="text" class="form-control" formControlName="commodity" required>
+            </div>
+        </fieldset>
 
-        <div class="form-group">
-            <label>Legal</label>
-            <input type="text" class="form-control" formControlName="legal" required>
-        </div>
+        <fieldset formGroupName="court">
+            <div class="form-group">
+                <label>Officers</label>
+                <input type="text" class="form-control" formControlName="officerOne" required>
+                <input type="text" class="form-control" formControlName="officerTwo" required>
+            </div>
 
-        <div class="form-group">
-            <label>Total Weight Violation</label>
-            <input type="text" class="form-control" formControlName="totalWeightViolation" required>
-        </div>
+            <div class="form-group">
+                <label>Unit/Station</label>
+                <input type="text" class="form-control" formControlName="unitOrStation" required>
+            </div>
 
-        <div class="form-group">
-            <label>Commodity</label>
-            <input type="text" class="form-control" formControlName="commodity" required>
-        </div>
+            <div class="form-group">
+                <label>Court</label>
+                <input type="text" class="form-control" formControlName="court" required>
+            </div>
 
-        <div class="form-group">
-            <label>Officers</label>
-            <input type="text" class="form-control" formControlName="officerOne" required>
-            <input type="text" class="form-control" formControlName="officerTwo" required>
-        </div>
+            <div class="form-group">
+                <label>Court City</label>
+                <input type="text" class="form-control" formControlName="courtCity" required>
+            </div>
 
-        <div class="form-group">
-            <label>Unit/Station</label>
-            <input type="text" class="form-control" formControlName="unitOrStation" required>
-        </div>
+            <div class="form-group">
+                <label>Court Date and Time</label>
+                <input type="datetime-local" class="form-control" formControlName="courtDateTime" required>
+            </div>
+        </fieldset>
 
-        <div class="form-group">
-            <label>Court</label>
-            <input type="text" class="form-control" formControlName="court" required>
-        </div>
+        <fieldset formGroupName="disposition">
+            <div class="form-group">
+                <label>Bond Received By</label>
+                <input type="text" class="form-control" formControlName="bondReceivedBy" required>
+            </div>
 
-        <div class="form-group">
-            <label>Court City</label>
-            <input type="text" class="form-control" formControlName="courtCity" required>
-        </div>
+            <div class="form-group">
+                <label>Amount</label>
+                <input type="text" class="form-control" formControlName="amount" required>
+            </div>
 
-        <div class="form-group">
-            <label>Court Date and Time</label>
-            <input type="datetime-local" class="form-control" formControlName="courtDateTime" required>
-        </div>
+            <div class="form-group">
+                <label>Penalty</label>
+                <input type="text" class="form-control" formControlName="penalty" required>
+            </div>
 
-        <div class="form-group">
-            <label>Bond Received By</label>
-            <input type="text" class="form-control" formControlName="bondReceivedBy" required>
-        </div>
+            <div class="form-group">
+                <label>Fine</label>
+                <input type="text" class="form-control" formControlName="fine" required>
+            </div>
 
-        <div class="form-group">
-            <label>Amount</label>
-            <input type="text" class="form-control" formControlName="amount" required>
-        </div>
+            <div class="form-group">
+                <label>Cost</label>
+                <input type="text" class="form-control" formControlName="cost" required>
+            </div>
 
-        <div class="form-group">
-            <label>Penalty</label>
-            <input type="text" class="form-control" formControlName="penalty" required>
-        </div>
+            <div class="form-group">
+                <label>Bill Penalty To</label>
+                <input type="text" class="form-control" formControlName="billPenaltyTo" required>
+            </div>
 
-        <div class="form-group">
-            <label>Fine</label>
-            <input type="text" class="form-control" formControlName="fine" required>
-        </div>
+            <div class="form-group">
+                <label>Bill Address</label>
+                <input type="text" class="form-control" formControlName="billAddress" required>
+            </div>
+        </fieldset>
 
-        <div class="form-group">
-            <label>Cost</label>
-            <input type="text" class="form-control" formControlName="cost" required>
-        </div>
-
-        <div class="form-group">
-            <label>Bill Penalty To</label>
-            <input type="text" class="form-control" formControlName="billPenaltyTo" required>
-        </div>
-
-        <div class="form-group">
-            <label>Bill Address</label>
-            <input type="text" class="form-control" formControlName="billAddress" required>
-        </div>
+        <pre>{{myform.value | json}}</pre>
     </form>
 </div>
