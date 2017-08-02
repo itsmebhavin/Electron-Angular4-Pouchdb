@@ -81,103 +81,107 @@
                 <label>Driver's License State</label>
                 <input type="text" class="form-control" formControlName="licenseState" required>
             </div>
+
+            <div class="form-group">
+                <label>Origin</label>
+                <input type="text" class="form-control" formControlName="origin" required>
+            </div>
+
+            <div class="form-group">
+                <label>Address</label>
+                <input type="text" class="form-control" formControlName="address" required>
+            </div>
+
+            <div class="form-group">
+                <label>Destination</label>
+                <input type="text" class="form-control" formControlName="destination" required>
+            </div>
         </fieldset>
 
-        <div class="form-group">
-            <label>Owner</label>
-            <input type="text" class="form-control" formControlName="owner" required>
-        </div>
-
-        <div class="form-group">
-            <label>Origin</label>
-            <input type="text" class="form-control" formControlName="origin" required>
-        </div>
-
-        <div class="form-group">
-            <label>Address</label>
-            <input type="text" class="form-control" formControlName="address" required>
-        </div>
-
-        <div class="form-group">
-            <label>Destination</label>
-            <input type="text" class="form-control" formControlName="destination" required>
-        </div>
-
-        <div class="form-group">
-            <label>Vehicle License Number</label>
-            <input type="text" class="form-control" formControlName="vehicleLicenseNum" required>
-        </div>
-
-        <div class="form-group">
-            <label>License State</label>
-            <input type="text" class="form-control" formControlName="vehicleLicenseState" required>
-        </div>
-
-        <div class="form-group">
-            <label>License Year</label>
-            <input type="text" class="form-control" formControlName="vehicleLicenseYear" required>
-        </div>
-
-        <div class="form-group">
-            <label>Make</label>
-            <input type="text" class="form-control" formControlName="vehicleMake" required>
-        </div>
-
-        <div class="form-group">
-            <label>Location</label>
-            <input type="text" class="form-control" formControlName="location" required>
-        </div>
-
-        <div class="form-group">
-            <label>State Statute</label>
-            <input type="text" class="form-control" formControlName="stateStatute" required>
-        </div>
-
-        <!--Violation Checkboxes-->
-        <div class="form-group">
-            <label>Violation</label>
-            <select multiple name="stateStatuteViolation" formControlName="stateStatuteViolation">
-              <option *ngFor="let violation of violations" [value]="violation">  
-                  {{violation}}
-              </option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Code Number</label>
-            <input type="text" class="form-control" formControlName="codeNum" required>
-        </div>
-
-        <div class="form-group">
-            <label>Violation</label>
-            <input type="text" class="form-control" formControlName="violation" required>
-        </div>
-
-        <div class="form-group">
-            <label>Officer</label>
-            <input type="text" class="form-control" formControlName="officer" required>
-        </div>
-
-        <div class="form-group">
-            <label>Officer Unit/Station</label>
-            <input type="text" class="form-control" formControlName="officerUnit" required>
-        </div>
-
-        <!--summonsLocation checkbox-->
-        <div class="form-group">
-            <label>Location</label>
-            <div *ngFor="let locationEntry of summonsLocations">
-                <label>
-                    <input type="radio" formControlName="summonsLocation" [value]="locationEntry">
-                    {{locationEntry}}
-                </label>
+        <fieldset formGroupName="vehicle">
+            <div class="form-group">
+                <label>Owner</label>
+                <input type="text" class="form-control" formControlName="owner" required>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label>Date</label>
-            <input type="datetime-local" class="form-control" formControlName="summonsDate" required>
-        </div>
+            <div class="form-group">
+                <label>Vehicle License Number</label>
+                <input type="text" class="form-control" formControlName="vehicleLicenseNum" required>
+            </div>
+
+            <div class="form-group">
+                <label>License State</label>
+                <input type="text" class="form-control" formControlName="vehicleLicenseState" required>
+            </div>
+
+            <div class="form-group">
+                <label>License Year</label>
+                <input type="text" class="form-control" formControlName="vehicleLicenseYear" required>
+            </div>
+
+            <div class="form-group">
+                <label>Make</label>
+                <input type="text" class="form-control" formControlName="vehicleMake" required>
+            </div>
+        </fieldset>
+
+        <fieldset formGroupName="violation">
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" class="form-control" formControlName="location" required>
+            </div>
+
+            <div class="form-group">
+                <label>State Statute</label>
+                <input type="text" class="form-control" formControlName="stateStatute" required>
+            </div>
+
+            <!--Violation Checkboxes-->
+            <div class="form-group">
+                <label>Violation</label>
+                <select multiple name="stateStatuteViolation" formControlName="stateStatuteViolation">
+                <option *ngFor="let violation of violations" [value]="violation">  
+                    {{violation}}
+                </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Code Number</label>
+                <input type="text" class="form-control" formControlName="codeNum" required>
+            </div>
+
+            <div class="form-group">
+                <label>Violation</label>
+                <input type="text" class="form-control" formControlName="violation" required>
+            </div>
+
+            <div class="form-group">
+                <label>Officer</label>
+                <input type="text" class="form-control" formControlName="officer" required>
+            </div>
+
+            <div class="form-group">
+                <label>Officer Unit/Station</label>
+                <input type="text" class="form-control" formControlName="officerUnit" required>
+            </div>
+
+            <!--summonsLocation checkbox-->
+            <div class="form-group">
+                <label>Location</label>
+                <div *ngFor="let locationEntry of summonsLocations">
+                    <label>
+                        <input type="radio" formControlName="summonsLocation" [value]="locationEntry">
+                        {{locationEntry}}
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Date</label>
+                <input type="datetime-local" class="form-control" formControlName="summonsDate" required>
+            </div>
+        </fieldset>
     </form>
 
     {{myform.value | json}}
