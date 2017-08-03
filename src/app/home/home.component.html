@@ -46,8 +46,9 @@
 
       <button type="submit" [disabled]="user.invalid" class="btn btn-primary btn-xs">Sign up</button>
 
-      <pre>Form Value: {{user.value |  | prettyjson:3}}</pre>
-      <pre>Form status: {{ user.status |  | prettyjson:3 }}</pre>
+      <pre [innerHtml]="user.value | prettyjson:3"></pre>
+      <pre>Form Value: {{user.value | json:3}}</pre>
+      <pre>Form status: {{ user.status | json:3 }}</pre>
     </form>
     <!-- <button type="submit">Sign up</button> -->
   </div>

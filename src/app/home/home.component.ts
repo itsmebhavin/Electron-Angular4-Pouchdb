@@ -27,11 +27,11 @@ export class HomeComponent implements OnInit {
     'German',
   ];
 
-  constructor(private _db: DataService) { }
+  constructor() { }
 
   onSubmit({ value, valid }: { value: User, valid: boolean }) {
     console.log(value, valid);
-    this._db.addDocument(value);
+    //this._db.addDocument(value);
   }
 
   ngOnInit() {
