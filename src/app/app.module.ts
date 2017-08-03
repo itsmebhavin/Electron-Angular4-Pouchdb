@@ -1,3 +1,4 @@
+
 import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -8,7 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import {PrettyJsonModule, SafeJsonPipe} from 'angular2-prettyjson';
+import {JsonPipe} from '@angular/common';
 // Components
 
 // Services
@@ -16,6 +18,7 @@ import { Config } from './app.config';
 import { ThemeService } from './_services/theme/theme.service';
 import { UserAgentService } from './_services/useragent/useragent.service';
 import { NetworkNotifierService } from './_components/networknotifier/networknotifier.service';
+import { DataService } from './_services/data/db';
 
 // App Components
 import { HeaderComponent } from './_components/header/header.component';
@@ -47,11 +50,13 @@ import { OverloadCitationComponent } from './overloadcitation/overload-citation.
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    PrettyJsonModule
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: JsonPipe, useClass: SafeJsonPipe },
     Config,
     ThemeService,
     UserAgentService,

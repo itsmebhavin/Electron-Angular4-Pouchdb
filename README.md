@@ -33,6 +33,7 @@ Run `npm run runboth` for both client electron app and webapp.
 
 ## Further help
 
+- Reactive forms [https://toddmotto.com/angular-2-forms-reactive]
 - Reactive forms [https://codecraft.tv/courses/angular/forms/model-driven/]
 - PDF Viewer [https://devarchy.com/angular/ng2-pdf-viewer]
 - SideBar [https://devarchy.com/angular/ng-sidebar]

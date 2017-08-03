@@ -1,13 +1,25 @@
+import { DataService } from './../_services/data/db';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+export interface User {
+  name: {
+    firstName: string;
+    lastName: string;
+  };
+  email: string;
+  password: string;
+  language: string;
+}
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
-  myform: FormGroup;
+  user: FormGroup;
 
   langs: string[] = [
     'English',
@@ -15,21 +27,16 @@ export class HomeComponent implements OnInit {
     'German',
   ];
 
-  constructor() { }
+  constructor(private _db: DataService) { }
+
+  onSubmit({ value, valid }: { value: User, valid: boolean }) {
+    console.log(value, valid);
+    this._db.addDocument(value);
+  }
 
   ngOnInit() {
-    // this.myform = new FormGroup({
-    //     name: new FormGroup({
-    //         firstName: new FormControl(),
-    //         lastName: new FormControl(),
-    //     }),
-    //     email: new FormControl(),
-    //     password: new FormControl(),
-    //     language: new FormControl()
-    // });
 
-    //WITH VALIDATIONS
-    this.myform = new FormGroup({
+    this.user = new FormGroup({
       name: new FormGroup({
         firstName: new FormControl('', Validators.required),
         lastName: new FormControl('', Validators.required),
@@ -45,5 +52,4 @@ export class HomeComponent implements OnInit {
       language: new FormControl()
     });
   }
-
 }
