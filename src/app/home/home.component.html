@@ -9,16 +9,20 @@
         <div class="form-group input-group-xs">
           <label>First Name</label>
           <input type="text" class="form-control" formControlName="firstName" required>
-
+          <span [hidden]="user.get('name').get('firstName').valid" class="text-danger">*</span>
+          <!-- <span class="text-danger" *ngIf="user.get('name').get('firstName').hasError('required') && user.get('name').get('firstName').touched">
+            FirstName is required
+          </span>
+          <pre [innerHtml]="user.controls.name.controls.firstName.errors  | prettyjson:3"></pre>
+           -->
+           <app-controlmessages [control]="user.controls.name.controls.firstName"></app-controlmessages> 
         </div>
-        <div class="error" *ngIf="user.get('name').get('firstName').hasError('required') && user.get('name').get('firstName').touched">
-          FirstName is required
-        </div>
-
 
         <div class="form-group input-group-sm">
           <label>Last Name</label>
           <input type="text" class="form-control" formControlName="lastName" required>
+          <span [hidden]="user.get('name').get('lastName').valid" class="text-danger">*</span>
+          <app-controlmessages [control]="user.controls.name.controls.lastName"></app-controlmessages> 
         </div>
       </fieldset>
 
@@ -46,9 +50,6 @@
 
       <button type="submit" [disabled]="user.invalid" class="btn btn-primary btn-xs">Sign up</button>
 
-      <pre [innerHtml]="user.value | prettyjson:3"></pre>
-      <pre>Form Value: {{user.value | json:3}}</pre>
-      <pre>Form status: {{ user.status | json:3 }}</pre>
     </form>
     <!-- <button type="submit">Sign up</button> -->
   </div>

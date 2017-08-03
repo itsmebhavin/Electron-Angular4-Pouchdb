@@ -19,6 +19,7 @@ import { ThemeService } from './_services/theme/theme.service';
 import { UserAgentService } from './_services/useragent/useragent.service';
 import { NetworkNotifierService } from './_components/networknotifier/networknotifier.service';
 import { DataService } from './_services/data/db';
+import { ValidationService } from './_services/validation/validation.service';
 
 // App Components
 import { HeaderComponent } from './_components/header/header.component';
@@ -30,6 +31,8 @@ import { ClockComponent } from './_components/clock/clock.component';
 import { NpmBadgeComponent } from './_components/npmbadge/npmbadge.component';
 import { NetworknotifierComponent } from './_components/networknotifier/networknotifier.component';
 import { OverloadCitationComponent } from './overloadcitation/overload-citation.component';
+import { ControlmessagesComponent } from './_components/validationmessages/controlmessages.component';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +45,8 @@ import { OverloadCitationComponent } from './overloadcitation/overload-citation.
     ClockComponent,
     NpmBadgeComponent,
     NetworknotifierComponent,
-    OverloadCitationComponent
+    OverloadCitationComponent,
+    ControlmessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +64,8 @@ import { OverloadCitationComponent } from './overloadcitation/overload-citation.
     Config,
     ThemeService,
     UserAgentService,
-    NetworkNotifierService
+    NetworkNotifierService,
+    ValidationService
   ],
   bootstrap: [AppComponent]
 })

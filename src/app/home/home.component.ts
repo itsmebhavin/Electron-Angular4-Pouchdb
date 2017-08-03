@@ -1,3 +1,4 @@
+import { ValidationService } from '../_services/validation/validation.service';
 import { DataService } from './../_services/data/db';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -43,7 +44,7 @@ export class HomeComponent implements OnInit {
       }),
       email: new FormControl('', [
         Validators.required,
-        Validators.pattern('[^ @]*@[^ @]*')
+        ValidationService.emailValidator
       ]),
       password: new FormControl('', [
         Validators.required,
