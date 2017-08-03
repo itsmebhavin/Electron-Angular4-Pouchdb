@@ -10,6 +10,6 @@
         "simplex": "lib/bs4-themes/simplex.css"
     },
     "DefaultTheme": "darkly",
-    "RemoteCouchDBUrl": "http://localhost:5984/",
+    "RemoteCouchDBUrl": "https://gacmvalpha.caps.ua.edu/couchdb",
     "RemoteCouchDBName":"ufptestdata"
 }
