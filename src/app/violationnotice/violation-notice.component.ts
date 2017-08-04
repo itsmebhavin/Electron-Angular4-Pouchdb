@@ -35,7 +35,6 @@ export class ViolationNoticeComponent implements OnInit {
 
     ngOnInit() {
         this.myform = new FormGroup({
-            dateTime: new FormControl('', Validators.required),
             driver: new FormGroup({
                 firstName: new FormControl('', Validators.required),
                 lastName: new FormControl('', Validators.required),
@@ -64,6 +63,7 @@ export class ViolationNoticeComponent implements OnInit {
                 vehicleMake: new FormControl('', Validators.required)
             }),    
             violation: new FormGroup({
+                dateTime: new FormControl('', Validators.required),
                 location: new FormControl('', Validators.required),
                 stateStatute: new FormControl('', Validators.required),
                 stateStatuteViolation: new FormControl('', Validators.required),

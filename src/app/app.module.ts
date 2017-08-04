@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {PrettyJsonModule, SafeJsonPipe} from 'angular2-prettyjson';
 import {JsonPipe} from '@angular/common';
+import { TabsModule } from 'ngx-bootstrap';
 // Components
 
 // Services
@@ -61,7 +62,8 @@ import { FormInputBoxComponent } from './_components/form-input-box/form-input-b
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    PrettyJsonModule
+    PrettyJsonModule,
+    TabsModule.forRoot()
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
