@@ -28,6 +28,7 @@
     "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
     "jquery-slim": "^3.0.0",
+    "ngx-bootstrap": "^1.8.1",
     "node-gyp": "^3.6.2",
     "rxjs": "^5.4.1",
     "zone.js": "^0.8.14"
