@@ -32,6 +32,7 @@ import { NpmBadgeComponent } from './_components/npmbadge/npmbadge.component';
 import { NetworknotifierComponent } from './_components/networknotifier/networknotifier.component';
 import { OverloadCitationComponent } from './overloadcitation/overload-citation.component';
 import { ControlmessagesComponent } from './_components/validationmessages/controlmessages.component';
+import { TextboxComponent } from './_components/forms/textbox/textbox.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { ControlmessagesComponent } from './_components/validationmessages/contr
     NpmBadgeComponent,
     NetworknotifierComponent,
     OverloadCitationComponent,
-    ControlmessagesComponent
+    ControlmessagesComponent,
+    TextboxComponent
   ],
   imports: [
     BrowserModule,
