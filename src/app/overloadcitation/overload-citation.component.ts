@@ -14,7 +14,6 @@ export class OverloadCitationComponent implements OnInit {
 
     ngOnInit() {
         this.myform = new FormGroup({
-            dateTime: new FormControl('', Validators.required),
             driver: new FormGroup({
                 firstName: new FormControl('', Validators.required),
                 lastName: new FormControl('', Validators.required),
@@ -43,6 +42,7 @@ export class OverloadCitationComponent implements OnInit {
                 vehicleMake: new FormControl('', Validators.required)
             }),
             citation: new FormGroup({
+                dateTime: new FormControl('', Validators.required),
                 location: new FormControl('', Validators.required),
                 stateStatute: new FormControl('', Validators.required),
                 totalGross: new FormControl('', Validators.required),
