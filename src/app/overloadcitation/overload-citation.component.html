@@ -6,20 +6,26 @@
             <input type="datetime-local" class="form-control" formControlName="dateTime" required>
         </div>
 
+        <!-- Driver section -->
+        <h2>Driver</h2>
         <fieldset formGroupName="driver">
-            <div class="form-group">
-                <label>Last Name</label>
-                <input type="text" class="form-control" formControlName="lastName" required>
-            </div>
+            <div class="container">
+                <div class="form-group row">
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" formControlName="lastName" required>
+                    </div>
 
-            <div class="form-group">
-                <label>First Name</label>
-                <input type="text" class="form-control" formControlName="firstName" required>
-            </div>
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" formControlName="firstName" required>
+                    </div>
 
-            <div class="form-group">
-                <label>Initial</label>
-                <input type="text" class="form-control" formControlName="initial" required>
+                    <div class="form-group">
+                        <label>Initial</label>
+                        <input type="text" class="form-control" formControlName="initial" required>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
@@ -48,37 +54,37 @@
 
             <div class="container">
                 <div class="form-group row">
-                    <div class="">
+                    <div class="form-group">
                         <label>Age</label>
                         <input type="text" class="form-control" formControlName="age" required>
                     </div>
 
-                    <div class="">
+                    <div class="form-group">
                         <label>Birthdate</label>
                         <input type="date" class="form-control" formControlName="birthDate" required>
                     </div>
 
-                    <div class="">
+                    <div class="form-group">
                         <label>Race</label>
                         <input type="text" class="form-control" formControlName="race" required>
                     </div>
 
-                    <div class="">
+                    <div class="form-group">
                         <label>Sex</label>
                         <input type="text" class="form-control" formControlName="sex" required>
                     </div>
 
-                    <div class="">
+                    <div class="form-group">
                         <label>Eyes</label>
                         <input type="text" class="form-control" formControlName="eyes" required>
                     </div>
 
-                    <div class="">
+                    <div class="form-group">
                         <label>Height</label>
                         <input type="text" class="form-control" formControlName="height" required>
                     </div>
 
-                    <div class="">
+                    <div class="form-group">
                         <label>Weight</label>
                         <input type="text" class="form-control" formControlName="weight" required>
                     </div>
@@ -106,6 +112,8 @@
             </div>
         </fieldset>
 
+        <!-- Vehicle section -->
+        <h2>Vehicle</h2>
         <fieldset formGroupName="vehicle">
             <div class="form-group">
                 <label>Owner</label>
@@ -133,6 +141,8 @@
             </div>
         </fieldset>
 
+        <!-- Citation section -->
+        <h2>Citation</h2>
         <fieldset formGroupName="citation">
             <div class="form-group">
                 <label>Location</label>
@@ -149,14 +159,18 @@
                 <input type="text" class="form-control" formControlName="totalGross" required>
             </div>
 
-            <div class="form-group">
-                <input type="checkbox" class="form-control" formControlName="bridgeFormula" required>
-                <label>Bridge Formula</label>            
-            </div>
+            <div class="container">
+                <div class="form-group row">
+                    <div class="form-group row">
+                        <label>Bridge Formula</label>            
+                        <input type="checkbox" class="form-control" formControlName="bridgeFormula" required>
+                    </div>
 
-            <div class="form-group">
-                <input type="checkbox" class="form-control" formControlName="otherViolations" required>
-                <label>Other Violoations</label>            
+                    <div class="form-group row">
+                        <label>Other Violoations</label>     
+                        <input type="checkbox" class="form-control" formControlName="otherViolations" required>       
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
@@ -175,6 +189,8 @@
             </div>
         </fieldset>
 
+        <!-- Court section -->
+        <h2>Court</h2>
         <fieldset formGroupName="court">
             <div class="form-group">
                 <label>Officers</label>
@@ -203,6 +219,8 @@
             </div>
         </fieldset>
 
+        <!-- Disposition section -->
+        <h2>Disposition</h2>
         <fieldset formGroupName="disposition">
             <div class="form-group">
                 <label>Bond Received By</label>
