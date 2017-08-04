@@ -1,20 +1,24 @@
 <div class="container">
     <h1>Violation Notice</h1>
     <form [formGroup]="myform">
-        <div class="form-group">
+        <button (click)="log(myform)"></button>
+        <!--<div class="form-group">
             <label>Violation Date/Time</label>
             <input type="datetime-local" class="form-control" formControlName="dateTime" required>
-        </div>
+        </div>-->
+        <app-form-input-box [group]="myform" type="datetime-local" label="Violation Date/Time" control="dateTime"></app-form-input-box>
 
         <fieldset formGroupName="driver">
-            <div class="form-group">
+            <!--<div class="form-group">
                 <label>Last Name</label>
                 <input type="text" class="form-control" formControlName="lastName" required>
-            </div>
+            </div>-->
+
+            <app-form-input-box [group]="myform.controls.driver" type="text" label="Last Name" control="lastName"></app-form-input-box>
 
             <div class="form-group">
                 <label>First Name</label>
-                <input type="text" class="form-control" formControlName="firstName" required>
+                <input type="text" class="form-control" formControlName="firstName">
             </div>
 
             <div class="form-group">

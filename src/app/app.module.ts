@@ -33,6 +33,8 @@ import { NetworknotifierComponent } from './_components/networknotifier/networkn
 import { OverloadCitationComponent } from './overloadcitation/overload-citation.component';
 import { ControlmessagesComponent } from './_components/validationmessages/controlmessages.component';
 import { TextboxComponent } from './_components/forms/textbox/textbox.component';
+import { ViolationNoticeComponent } from './violationnotice/violation-notice.component';
+import { FormInputBoxComponent } from './_components/form-input-box/form-input-box.component';
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import { TextboxComponent } from './_components/forms/textbox/textbox.component'
     NetworknotifierComponent,
     OverloadCitationComponent,
     ControlmessagesComponent,
-    TextboxComponent
+    TextboxComponent,
+    ViolationNoticeComponent,
+    FormInputBoxComponent
   ],
   imports: [
     BrowserModule,

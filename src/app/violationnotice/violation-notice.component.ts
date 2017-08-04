@@ -27,6 +27,10 @@ export class ViolationNoticeComponent implements OnInit {
       'Other'
     ];
 
+    log(myform) {
+        console.log(myform);
+    }
+
     constructor() {}
 
     ngOnInit() {
@@ -71,6 +75,10 @@ export class ViolationNoticeComponent implements OnInit {
                 summonsDate: new FormControl('', Validators.required)
             })
         })
+        console.log(this.myform);
+        this.myform.value.driver.firstName = "Shane";
+        this.myform.value.driver.lastName = "Parcus";
+        console.log(this.myform);
     }
 
     
