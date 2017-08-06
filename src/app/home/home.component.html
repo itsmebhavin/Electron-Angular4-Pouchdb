@@ -9,16 +9,12 @@
         <form-textbox type="text" formControlName="firstName" label="FirstName" [control]="user.controls.name.controls.firstName"  required></form-textbox>
         <form-textbox type="text" formControlName="lastName" label="LastName" [control]="user.controls.name.controls.lastName"  required></form-textbox>
       </fieldset>
-
-
       <div class="form-group">
         <form-textbox type="text" formControlName="email" label="EMail" [control]="user.controls.email"  required></form-textbox>
       </div>
-
       <div class="form-group">
         <form-textbox [type]="password" formControlName="password" label="Password" [control]="user.controls.password"  required></form-textbox>
       </div>
-
       <div class="form-group">
         <label>Language</label>
         <select class="form-control" formControlName="language">
@@ -33,6 +29,9 @@
       <button type="submit" [disabled]="user.invalid" class="btn btn-primary btn-xs">Sign up</button>
       <pre [innerHtml]="user.value | prettyjson:3"></pre>
     </form>
-    <!-- <button type="submit">Sign up</button> -->
+    <ul>
+      <li>Dynamic validation not working from textbox </li>
+      <li>Type of textbox is not working e.g. type=password or type=text</li>
+    </ul>
   </div>
 </div>

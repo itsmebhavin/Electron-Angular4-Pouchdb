@@ -4,4 +4,4 @@
           (change)="onChange($event)"
           (keyup)="onChange($event)">
 </div>
-<div class="has-danger"> <pre [innerHtml]="errorMessage | prettyjson:3"></pre></div>
+<div class="has-danger" *ngIf = "errorMessage != null"> <pre [innerHtml]="errorMessage | prettyjson:3"></pre></div>

@@ -1,5 +1,5 @@
 import { ValidationService } from './../../../_services/validation/validation.service';
-import { Component, Input, forwardRef } from '@angular/core';
+import { Component, ElementRef, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Validator } from '@angular/forms';
 
 
@@ -32,13 +32,7 @@ export class TextboxComponent implements ControlValueAccessor, Validator {
   // in this case we're checking if the json parsing has 
   // passed or failed from the onChange method
   public validate(c: FormControl) {
-    // console.log(JSON.stringify(c.errors) + '  ' + c.status);
     if (c.errors) {
-      // for (const propertyName in c.errors) {
-      //   if (c.errors.hasOwnProperty(propertyName) && c.touched) {
-      //     return ValidationService.getValidatorErrorMessage(propertyName, c.errors[propertyName]);
-      //   }
-      // }
       this.errorMessage = c.errors;
     }
     return null;
@@ -75,7 +69,7 @@ export class TextboxComponent implements ControlValueAccessor, Validator {
     // update the form
     // get value from text area
     const newValue = event.target.value;
-    // console.log(event.target.formControlName);
+    console.log(event.target.formControlName);
     try {
       // parse it to json
       this.data = newValue;
