@@ -2,41 +2,21 @@
   <a class="btn btn-primary btn-xs" [routerLink]="['/layout/settings']"> settings </a>
   <a class="btn btn-primary btn-xs" [routerLink]="['/layout/overloadcitation']">Overload Citation</a>
   <a class="btn btn-primary btn-xs" [routerLink]="['/layout/violationnotice']">Violation Notice</a>
-  <i class="material-icons fontwatermark">home</i>
+  <i class="material-icons fontwatermarkright">home</i>
   <div>
     <form [formGroup]="user" novalidate (ngSubmit)="onSubmit(user)">
       <fieldset formGroupName="name">
-        <div class="form-group input-group-xs">
-          <label>First Name</label>
-          <input type="text" class="form-control" formControlName="firstName" required>
-          <span [hidden]="user.get('name').get('firstName').valid" class="text-danger">*</span>
-          <!-- <span class="text-danger" *ngIf="user.get('name').get('firstName').hasError('required') && user.get('name').get('firstName').touched">
-            FirstName is required
-          </span>
-          <pre [innerHtml]="user.controls.name.controls.firstName.errors  | prettyjson:3"></pre>
-           -->
-           <app-controlmessages [control]="user.controls.name.controls.firstName"></app-controlmessages> 
-        </div>
-
-        <div class="form-group input-group-sm">
-          <label>Last Name</label>
-          <input type="text" class="form-control" formControlName="lastName" required>
-          <span [hidden]="user.get('name').get('lastName').valid" class="text-danger">*</span>
-          <app-controlmessages [control]="user.controls.name.controls.lastName"></app-controlmessages> 
-        </div>
+        <form-textbox type="text" formControlName="firstName" label="FirstName" [control]="user.controls.name.controls.firstName"  required></form-textbox>
+        <form-textbox type="text" formControlName="lastName" label="LastName" [control]="user.controls.name.controls.lastName"  required></form-textbox>
       </fieldset>
 
 
       <div class="form-group">
-        <label>Email</label>
-        <input type="email" class="form-control" formControlName="email" required>
-        <app-controlmessages [control]="user.controls.email"></app-controlmessages> 
+        <form-textbox type="text" formControlName="email" label="EMail" [control]="user.controls.email"  required></form-textbox>
       </div>
 
       <div class="form-group">
-        <label>Password</label>
-        <input type="password" class="form-control" formControlName="password" required>
-        <app-controlmessages [control]="user.controls.password"></app-controlmessages> 
+        <form-textbox [type]="password" formControlName="password" label="Password" [control]="user.controls.password"  required></form-textbox>
       </div>
 
       <div class="form-group">

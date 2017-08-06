@@ -11,7 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {PrettyJsonModule, SafeJsonPipe} from 'angular2-prettyjson';
 import {JsonPipe} from '@angular/common';
-// Components
 
 // Services
 import { Config } from './app.config';
@@ -31,10 +30,8 @@ import { ClockComponent } from './_components/clock/clock.component';
 import { NpmBadgeComponent } from './_components/npmbadge/npmbadge.component';
 import { NetworknotifierComponent } from './_components/networknotifier/networknotifier.component';
 import { OverloadCitationComponent } from './overloadcitation/overload-citation.component';
-import { ControlmessagesComponent } from './_components/validationmessages/controlmessages.component';
-import { TextboxComponent } from './_components/forms/textbox/textbox.component';
 import { ViolationNoticeComponent } from './violationnotice/violation-notice.component';
-import { FormInputBoxComponent } from './_components/form-input-box/form-input-box.component';
+import { UfpFormsModule } from './_components/forms/forms.module';
 
 
 @NgModule({
@@ -49,10 +46,7 @@ import { FormInputBoxComponent } from './_components/form-input-box/form-input-b
     NpmBadgeComponent,
     NetworknotifierComponent,
     OverloadCitationComponent,
-    ControlmessagesComponent,
-    TextboxComponent,
     ViolationNoticeComponent,
-    FormInputBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +55,8 @@ import { FormInputBoxComponent } from './_components/form-input-box/form-input-b
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    PrettyJsonModule
+    PrettyJsonModule,
+    UfpFormsModule
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
