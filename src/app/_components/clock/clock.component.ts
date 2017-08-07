@@ -4,7 +4,7 @@ import {Component, Input, Attribute, OnInit} from '@angular/core';
 @Component({
   selector: 'clock',
   template: `
-      <p style="font-size:12px" (updateTime)='updateMyTime()'>{{date | date: localformat}}</p>
+      <span style="font-size:12px" (updateTime)='updateMyTime()'>{{date | date: localformat}}</span>
     `
 })
 export class ClockComponent implements OnInit {

@@ -16,6 +16,7 @@ const path = require('path');
 const fs = require("fs");
 const moment = require("moment");
 const winston = require('winston');
+var logDir = 'errorlog';
 
 //Main process constants
 let win;
@@ -25,12 +26,17 @@ let appIcon = null;
 runMainProcess();
 
 function runMainProcess() {
+    // Create the directory if it does not exist
+    if (!fs.existsSync(logDir)) {
+        fs.mkdirSync(logDir);
+    }
+
     //initiate logger
     let logger = new(winston.Logger)({
         transports: [
             new(winston.transports.Console)(),
             new(winston.transports.File)({
-                filename: 'error' + require("moment")(new Date()).format("MMDDYYYY") + '.log'
+                filename: path.join(logDir, '/error' + require("moment")(new Date()).format("MMDDYYYY") + '.log')
             })
         ]
     });
@@ -86,6 +92,7 @@ function runMainProcess() {
             autoHideMenuBar: true,
             darkTheme: true,
             show: true,
+            alwaysOnTop: true,
             'minHeight': 720,
             'minWidth': 1020,
             titleBarStyle: 'hidden',
@@ -110,9 +117,9 @@ function runMainProcess() {
             }
         });
 
-        win.on('ready-to-show', () => {
-            win.show();
-        });
+        // win.once('ready-to-show', () => {
+        //     win.show();
+        // });
         // Let us register listeners on the window, so we can update the state
         // automatically (the listeners will be removed when the window is closed)
         // and restore the maximized or full screen state

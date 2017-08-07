@@ -1,0 +1,8 @@
+.container {
+    flex-direction: row;
+}
+
+.form-group {
+    flex-wrap: nowrap;
+    flex: 1 auto;
+}

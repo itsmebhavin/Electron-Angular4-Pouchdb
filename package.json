@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electron": "npm run build && electron .",
-    "runboth":"npm run build  && ng serve && electron ."
+    "runboth": "npm run build  && ng serve && electron ."
   },
   "private": true,
   "dependencies": {
@@ -24,11 +24,12 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "angular2-prettyjson": "^2.0.5",
     "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
     "jquery-slim": "^3.0.0",
+    "node-gyp": "^3.6.2",
     "rxjs": "^5.4.1",
-    "xel": "0.0.50",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

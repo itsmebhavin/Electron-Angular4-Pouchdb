@@ -12,13 +12,32 @@
   <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="./lib/bs4-themes/darkly.css" id="theme-css" />
   <link rel="stylesheet" href="./lib/mdc-palette/material-design-color-palette.min.css">
+  <link rel="stylesheet" href="./fonts/google-md-icon/material-icons.css">
   <link rel="stylesheet" href="./styles/style.css">
 </head>
 
 <body>
-  <ufp-app></ufp-app>
+  <ufp-app>
+    <h2 class="text-center">eForms</h2>
+    <h5 class="text-center mdc-text-grey-300 font-italic">Powered by UFP</h5>
+    <div class="row">
+      <div id="loader">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="lading"></div>
+      </div>
+    </div>
+  </ufp-app>
   <script src="./lib/jquery/jquery.min.js"></script>
   <script src="./lib/tether/tether.min.js"></script>
   <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="./lib/pouchdb/pouchdb-6.3.4.min.js"></script>
 </body>
+
 </html>

@@ -12,8 +12,8 @@ declare var process;
 export class UserAgentService {
 
     appVersion = 'v1.0.0';
-    nodeVersion = '7.10.0';
-    nodeV8 = '5.5.372.43';
+    nodeVersion = '8.2.1';
+    nodeV8 = '5.8.283.41';
     _userAgent: UserAgent = new UserAgent();
 
     constructor() {
