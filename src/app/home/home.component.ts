@@ -1,7 +1,7 @@
 import { ValidationService } from '../_services/validation/validation.service';
 import { DataService } from './../_services/data/db';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 export interface User {
   name: {
@@ -29,29 +29,32 @@ export class HomeComponent implements OnInit {
     'German',
   ];
 
-  constructor() { }
+  constructor(private _fb: FormBuilder) {}
 
   onSubmit({ value, valid }: { value: User, valid: boolean }) {
+    if (valid) {
     console.log(value, valid);
-    //this._db.addDocument(value);
+    }
   }
 
   ngOnInit() {
 
-    this.user = new FormGroup({
-      name: new FormGroup({
-        firstName: new FormControl('', Validators.required),
-        lastName: new FormControl('', Validators.required),
+    this.user = this._fb.group({
+      name: this._fb.group({
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
       }),
-      email: new FormControl('', [
+      email: ['', [
         Validators.required,
         ValidationService.emailValidator
-      ]),
-      password: new FormControl('', [
+      ]],
+      password: ['', [
         Validators.required,
         Validators.minLength(8)
-      ]),
-      language: new FormControl()
+      ]],
+      language: []
     });
+
+    console.log(this.user.get('name.lastName').setValue('Doe'));
   }
 }

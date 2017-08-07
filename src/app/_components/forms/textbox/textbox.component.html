@@ -1,5 +1,7 @@
-<div class="form-group input-group-sm">
-  <label>{{clabel}}</label>
-  <input type="text" class="form-control">
-  
+<div class="form-group input-group-xs">
+  <label>{{label}}</label>
+  <input [type]="type" [value]="jsonString"
+          (change)="onChange($event)"
+          (keyup)="onChange($event)">
 </div>
+<div class="has-danger" *ngIf = "errorMessage != null"> <pre [innerHtml]="errorMessage | prettyjson:3"></pre></div>

@@ -12,13 +12,13 @@ import {Component, Input} from '@angular/core';
     styleUrls: ['./npmbadge.component.css'],
 })
 export class NpmBadgeComponent {
-    @Input()
+    @Input('badgelabel')
     badgelabel: String = '';
-    @Input()
+    @Input('badgevalue')
     badgevalue: String = '';
-    @Input()
+    @Input('badgeclass')
     badgeclass: String = '';
-    @Input()
+    @Input('isElectronApp')
     isElectronApp: Boolean = true;
 
     constructor() {

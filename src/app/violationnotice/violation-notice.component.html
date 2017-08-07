@@ -1,189 +1,191 @@
 <div class="container">
     <h1>Violation Notice</h1>
     <form [formGroup]="myform">
-        <tabset>
-            <tab heading='Driver'>
-                <fieldset formGroupName="driver">
-                    <app-form-input-box [group]="myform.controls.driver" type="text" label="Last Name" control="lastName"></app-form-input-box>
+        <button (click)="log(myform)"></button>
+        <div class="form-group">
+            <label>Violation Date/Time</label>
+            <input type="datetime-local" class="form-control" formControlName="dateTime" required>
+        </div>
+        <!-- <app-form-input-box [group]="myform" type="datetime-local" label="Violation Date/Time" control="dateTime"></app-form-input-box> -->
 
-                    <div class="form-group">
-                        <label>First Name</label>
-                        <input type="text" class="form-control" formControlName="firstName">
-                    </div>
+        <fieldset formGroupName="driver">
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control" formControlName="lastName" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Initial</label>
-                        <input type="text" class="form-control" formControlName="initial" required>
-                    </div>
+            <!-- <app-form-input-box [group]="myform.controls.driver" type="text" label="Last Name" control="lastName"></app-form-input-box> -->
 
-                    <div class="form-group">
-                        <label>Street</label>
-                        <input type="text" class="form-control" formControlName="street" required>
-                    </div>
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" class="form-control" formControlName="firstName">
+            </div>
 
-                    <div class="form-group">
-                        <label>City</label>
-                        <input type="text" class="form-control" formControlName="city" required>
-                    </div>
+            <div class="form-group">
+                <label>Initial</label>
+                <input type="text" class="form-control" formControlName="initial" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>State</label>
-                        <input type="text" class="form-control" formControlName="state" required>
-                    </div>
+            <div class="form-group">
+                <label>Street</label>
+                <input type="text" class="form-control" formControlName="street" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Age</label>
-                        <input type="text" class="form-control" formControlName="age" required>
-                    </div>
+            <div class="form-group">
+                <label>City</label>
+                <input type="text" class="form-control" formControlName="city" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Birthdate</label>
-                        <input type="date" class="form-control" formControlName="birthDate" required>
-                    </div>
+            <div class="form-group">
+                <label>State</label>
+                <input type="text" class="form-control" formControlName="state" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Race</label>
-                        <input type="text" class="form-control" formControlName="race" required>
-                    </div>
+            <div class="form-group">
+                <label>Age</label>
+                <input type="text" class="form-control" formControlName="age" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Sex</label>
-                        <input type="text" class="form-control" formControlName="sex" required>
-                    </div>
+            <div class="form-group">
+                <label>Birthdate</label>
+                <input type="date" class="form-control" formControlName="birthDate" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Height</label>
-                        <input type="text" class="form-control" formControlName="height" required>
-                    </div>
+            <div class="form-group">
+                <label>Race</label>
+                <input type="text" class="form-control" formControlName="race" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Weight</label>
-                        <input type="text" class="form-control" formControlName="weight" required>
-                    </div>
+            <div class="form-group">
+                <label>Sex</label>
+                <input type="text" class="form-control" formControlName="sex" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Driver's License Number</label>
-                        <input type="text" class="form-control" formControlName="licenseNum" required>
-                    </div>
+            <div class="form-group">
+                <label>Height</label>
+                <input type="text" class="form-control" formControlName="height" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Driver's License Class</label>
-                        <input type="text" class="form-control" formControlName="licenseClass" required>
-                    </div>
+            <div class="form-group">
+                <label>Weight</label>
+                <input type="text" class="form-control" formControlName="weight" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Driver's License State</label>
-                        <input type="text" class="form-control" formControlName="licenseState" required>
-                    </div>
+            <div class="form-group">
+                <label>Driver's License Number</label>
+                <input type="text" class="form-control" formControlName="licenseNum" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Origin</label>
-                        <input type="text" class="form-control" formControlName="origin" required>
-                    </div>
+            <div class="form-group">
+                <label>Driver's License Class</label>
+                <input type="text" class="form-control" formControlName="licenseClass" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Address</label>
-                        <input type="text" class="form-control" formControlName="address" required>
-                    </div>
+            <div class="form-group">
+                <label>Driver's License State</label>
+                <input type="text" class="form-control" formControlName="licenseState" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Destination</label>
-                        <input type="text" class="form-control" formControlName="destination" required>
-                    </div>
-                </fieldset>
-            </tab>
+            <div class="form-group">
+                <label>Origin</label>
+                <input type="text" class="form-control" formControlName="origin" required>
+            </div>
 
-            <tab heading='Vehicle'>
-                <fieldset formGroupName="vehicle">
-                    <div class="form-group">
-                        <label>Owner</label>
-                        <input type="text" class="form-control" formControlName="owner" required>
-                    </div>
+            <div class="form-group">
+                <label>Address</label>
+                <input type="text" class="form-control" formControlName="address" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Vehicle License Number</label>
-                        <input type="text" class="form-control" formControlName="vehicleLicenseNum" required>
-                    </div>
+            <div class="form-group">
+                <label>Destination</label>
+                <input type="text" class="form-control" formControlName="destination" required>
+            </div>
+        </fieldset>
 
-                    <div class="form-group">
-                        <label>License State</label>
-                        <input type="text" class="form-control" formControlName="vehicleLicenseState" required>
-                    </div>
+        <fieldset formGroupName="vehicle">
+            <div class="form-group">
+                <label>Owner</label>
+                <input type="text" class="form-control" formControlName="owner" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>License Year</label>
-                        <input type="text" class="form-control" formControlName="vehicleLicenseYear" required>
-                    </div>
+            <div class="form-group">
+                <label>Vehicle License Number</label>
+                <input type="text" class="form-control" formControlName="vehicleLicenseNum" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Make</label>
-                        <input type="text" class="form-control" formControlName="vehicleMake" required>
-                    </div>
-                </fieldset>
-            </tab>
+            <div class="form-group">
+                <label>License State</label>
+                <input type="text" class="form-control" formControlName="vehicleLicenseState" required>
+            </div>
 
-            <tab heading='Violation'>
-                <fieldset formGroupName="violation">
-                    <app-form-input-box [group]="myform.controls.violation" type="datetime-local" label="Violation Date/Time" control="dateTime"></app-form-input-box>
-                    
-                    <div class="form-group">
-                        <label>Location</label>
-                        <input type="text" class="form-control" formControlName="location" required>
-                    </div>
+            <div class="form-group">
+                <label>License Year</label>
+                <input type="text" class="form-control" formControlName="vehicleLicenseYear" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>State Statute</label>
-                        <input type="text" class="form-control" formControlName="stateStatute" required>
-                    </div>
+            <div class="form-group">
+                <label>Make</label>
+                <input type="text" class="form-control" formControlName="vehicleMake" required>
+            </div>
+        </fieldset>
 
-                    <!--Violation Checkboxes-->
-                    <div class="form-group">
-                        <label>Violation</label>
-                        <select multiple name="stateStatuteViolation" formControlName="stateStatuteViolation">
-                        <option *ngFor="let violation of violations" [value]="violation">  
-                            {{violation}}
-                        </option>
-                        </select>
-                    </div>
+        <fieldset formGroupName="violation">
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" class="form-control" formControlName="location" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Code Number</label>
-                        <input type="text" class="form-control" formControlName="codeNum" required>
-                    </div>
+            <div class="form-group">
+                <label>State Statute</label>
+                <input type="text" class="form-control" formControlName="stateStatute" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Violation</label>
-                        <input type="text" class="form-control" formControlName="violation" required>
-                    </div>
+            <!--Violation Checkboxes-->
+            <div class="form-group">
+                <label>Violation</label>
+                <select multiple name="stateStatuteViolation" formControlName="stateStatuteViolation">
+                <option *ngFor="let violation of violations" [value]="violation">  
+                    {{violation}}
+                </option>
+                </select>
+            </div>
 
-                    <div class="form-group">
-                        <label>Officer</label>
-                        <input type="text" class="form-control" formControlName="officer" required>
-                    </div>
+            <div class="form-group">
+                <label>Code Number</label>
+                <input type="text" class="form-control" formControlName="codeNum" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Officer Unit/Station</label>
-                        <input type="text" class="form-control" formControlName="officerUnit" required>
-                    </div>
+            <div class="form-group">
+                <label>Violation</label>
+                <input type="text" class="form-control" formControlName="violation" required>
+            </div>
 
-                    <!--summonsLocation checkbox-->
-                    <div class="form-group">
-                        <label>Location</label>
-                        <div *ngFor="let locationEntry of summonsLocations">
-                            <label>
-                                <input type="radio" formControlName="summonsLocation" [value]="locationEntry">
-                                {{locationEntry}}
-                            </label>
-                        </div>
-                    </div>
+            <div class="form-group">
+                <label>Officer</label>
+                <input type="text" class="form-control" formControlName="officer" required>
+            </div>
 
-                    <div class="form-group">
-                        <label>Date</label>
-                        <input type="datetime-local" class="form-control" formControlName="summonsDate" required>
-                    </div>
-                </fieldset>
-            </tab>
-        </tabset>
+            <div class="form-group">
+                <label>Officer Unit/Station</label>
+                <input type="text" class="form-control" formControlName="officerUnit" required>
+            </div>
+
+            <!--summonsLocation checkbox-->
+            <div class="form-group">
+                <label>Location</label>
+                <div *ngFor="let locationEntry of summonsLocations">
+                    <label>
+                        <input type="radio" formControlName="summonsLocation" [value]="locationEntry">
+                        {{locationEntry}}
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Date</label>
+                <input type="datetime-local" class="form-control" formControlName="summonsDate" required>
+            </div>
+        </fieldset>
     </form>
 
     {{myform.value | json}}
