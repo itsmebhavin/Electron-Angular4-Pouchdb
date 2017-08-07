@@ -1,7 +1,7 @@
 import { ValidationService } from '../_services/validation/validation.service';
-import { DataService } from './../_services/data/db';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { PouchdbService } from '../_services/pouchdb-service/pouchdb.service';
 
 export interface User {
   name: {
@@ -17,11 +17,16 @@ export interface User {
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  providers: [ PouchdbService ]
 })
 
 export class HomeComponent implements OnInit {
   user: FormGroup;
+  remoteCouchDBAddress: string;
+  dataString: string;
+  syncStatus: boolean;
+  couchDbUp: boolean;
 
   langs: string[] = [
     'English',
@@ -29,11 +34,22 @@ export class HomeComponent implements OnInit {
     'German',
   ];
 
-  constructor(private _fb: FormBuilder) {}
+  constructor(private _fb: FormBuilder, private pouchdbservice: PouchdbService) {
+     this.pouchdbservice.syncStatus.subscribe(result => {
+      this.syncStatus = result;
+    });
+    this.pouchdbservice.couchdbUp.subscribe(result => {
+      this.couchDbUp = result;
+    });
+    this.remoteCouchDBAddress = this.pouchdbservice.remoteCouchDBAddress;
+  }
 
   onSubmit({ value, valid }: { value: User, valid: boolean }) {
     if (valid) {
-    console.log(value, valid);
+      console.log(value, valid);
+      this.pouchdbservice.post(value).then((response) => {
+        console.log(JSON.stringify(response));
+      });
     }
   }
 
@@ -55,6 +71,6 @@ export class HomeComponent implements OnInit {
       language: []
     });
 
-    console.log(this.user.get('name.lastName').setValue('Doe'));
+    this.user.get('name.lastName').setValue('Doe');
   }
 }

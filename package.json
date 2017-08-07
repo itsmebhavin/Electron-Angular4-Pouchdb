@@ -24,11 +24,13 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "@types/pouchdb": "^6.3.0",
     "angular2-prettyjson": "^2.0.5",
     "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
     "jquery-slim": "^3.0.0",
     "node-gyp": "^3.6.2",
+    "pouchdb": "^6.3.4",
     "rxjs": "^5.4.1",
     "zone.js": "^0.8.14"
   },

@@ -14,11 +14,7 @@ import {JsonPipe} from '@angular/common';
 
 // Services
 import { Config } from './app.config';
-import { ThemeService } from './_services/theme/theme.service';
-import { UserAgentService } from './_services/useragent/useragent.service';
 import { NetworkNotifierService } from './_components/networknotifier/networknotifier.service';
-import { DataService } from './_services/data/db';
-import { ValidationService } from './_services/validation/validation.service';
 
 // App Components
 import { HeaderComponent } from './_components/header/header.component';
@@ -32,7 +28,7 @@ import { NetworknotifierComponent } from './_components/networknotifier/networkn
 import { OverloadCitationComponent } from './overloadcitation/overload-citation.component';
 import { ViolationNoticeComponent } from './violationnotice/violation-notice.component';
 import { UfpFormsModule } from './_components/forms/forms.module';
-
+import { UfpServicesModule } from './_services/services.module';
 
 @NgModule({
   declarations: [
@@ -46,7 +42,7 @@ import { UfpFormsModule } from './_components/forms/forms.module';
     NpmBadgeComponent,
     NetworknotifierComponent,
     OverloadCitationComponent,
-    ViolationNoticeComponent,
+    ViolationNoticeComponent
   ],
   imports: [
     BrowserModule,
@@ -56,17 +52,15 @@ import { UfpFormsModule } from './_components/forms/forms.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     PrettyJsonModule,
-    UfpFormsModule
+    UfpFormsModule,
+    UfpServicesModule.forRoot()
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: JsonPipe, useClass: SafeJsonPipe },
     Config,
-    ThemeService,
-    UserAgentService,
-    NetworkNotifierService,
-    ValidationService
+    NetworkNotifierService
   ],
   bootstrap: [AppComponent]
 })

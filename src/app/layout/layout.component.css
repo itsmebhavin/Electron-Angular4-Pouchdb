@@ -1,10 +1,13 @@
+.flex-container {
+    display: flex;
+}
 
-.flex-container{
-  display: flex;
-}
-.container-electron{
+.container-electron {
     padding-top: 35px;
+    padding-bottom: 25px;
 }
-.container-web{
-    padding-top:45px;
+
+.container-web {
+    padding-top: 45px;
+    padding-bottom: 25px;
 }

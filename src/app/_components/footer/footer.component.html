@@ -1,58 +1,53 @@
-<div class="footer fixed-bottom  navbar-light mdc-bg-grey-300" [ngClass]="{' footer-web': !isElectronApp}">
+<div class="footer fixed-bottom  navbar-light mdc-bg-grey-800" [ngClass]="{' footer-web': !isElectronApp}">
 
-  <div *ngIf="isElectronApp; then electronfooter else webfooter"></div>
-  <ng-template #electronfooter>
-    <!-- <div style="padding-left:1%">
-        <img src="./images/electron.png" style="height:25px;" class="pull-left" />
-        <npm-badge  [badgelabel]="'Version'" 
-                    [badgevalue]="appVersion" 
-                    [isElectronApp]="isElectronApp" 
-                    [badgeclass]="'primary'"
-                    class="pull-left">
-        </npm-badge>
-        <network-notifier class="pull-left"></network-notifier>
-        <clock [format]="'MM/dd/yyyy h:mm:ss'" class="mdc-text-grey-800 pull-right"></clock>
-       </div> -->
-    <div class="row">
-      <div class="col-6">
-        <div class="row justify-content-start">
-          <div class="col-3">
-            <npm-badge [badgelabel]="'Version'" [badgevalue]="appVersion" [isElectronApp]="isElectronApp" [badgeclass]="'primary'">
-            </npm-badge>
-          </div>
-          <div class="col-3">
-            <network-notifier></network-notifier>
-          </div>
+    <!--  -->
+    <div *ngIf="isElectronApp; then electronfooter else webfooter"></div>
+    <ng-template #electronfooter>
+        <div class="row">
+            <div class="col-4">
+                <div class="row justify-content-start">
+                    <div class="col-2">
+                        <npm-badge [badgelabel]="'Version'" [badgevalue]="appVersion" [isElectronApp]="isElectronApp" [badgeclass]="'primary'">
+                        </npm-badge>
+                    </div>
+                    <div class="col-2">
+                        <network-notifier></network-notifier>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="row  justify-content-end text-right">
+                    <div class="col-4">
+                        <clock [format]="'MM/dd/yyyy h:mm:ss'" class="mdc-text-grey-800"></clock>
+                    </div>
+                    <div class="col-1">
+                        <img src="./images/electron.png" style="height:25px;" class="pull-left" />
+                    </div>
+                    <div class="col-3">
+                        <db-sync-indicator [syncStatus]="syncStatus" [serverUp]="couchDbUp"></db-sync-indicator>
+                    </div>
+                </div>
+            </div>
+
         </div>
-      </div>
-      <div class="col-6">
-        <div class="row  justify-content-end text-right">
-          <div class="col-5">
-            <clock [format]="'MM/dd/yyyy h:mm:ss'" class="mdc-text-grey-800"></clock>
-          </div>
-          <div class="col-1">
-          <img src="./images/electron.png" style="height:25px;" class="pull-left" />
-          </div>
+
+
+    </ng-template>
+
+    <ng-template #webfooter>
+        <div class="row">
+            <div class="col align-self-start">
+                <npm-badge [badgelabel]="'Version'" [badgevalue]="appVersion" [isElectronApp]="isElectronApp" [badgeclass]="'primary'">
+                </npm-badge>
+            </div>
+
+            <div class="col align-self-center pull-2">
+                <p>Copyright <i class="material-icons md-18">copyright</i> {{copyrightyear}} {{copyright}}</p>
+            </div>
+            <div class="col-2 align-self-end">
+                <db-sync-indicator [syncStatus]="syncStatus" [serverUp]="couchDbUp"></db-sync-indicator>
+            </div>
         </div>
-      </div>
-      
-    </div>
-
-
-  </ng-template>
-
-  <ng-template #webfooter>
-    <div class="row">
-      <div class="col align-self-start">
-        <img src="./images/web.png" style="height:25px;" />
-        <npm-badge [badgelabel]="'Version'" [badgevalue]="appVersion" [isElectronApp]="isElectronApp" [badgeclass]="'primary'">
-        </npm-badge>
-      </div>
-
-      <div class="col align-self-center pull-2">
-        <p>Copyright <i class="material-icons md-18">copyright</i> {{copyrightyear}} {{copyright}}</p>
-      </div>
-    </div>
-  </ng-template>
+    </ng-template>
 
 </div>

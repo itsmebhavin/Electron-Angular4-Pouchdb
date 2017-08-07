@@ -1,37 +1,39 @@
 <div class="container">
-  <a class="btn btn-primary btn-xs" [routerLink]="['/layout/settings']"> settings </a>
-  <a class="btn btn-primary btn-xs" [routerLink]="['/layout/overloadcitation']">Overload Citation</a>
-  <a class="btn btn-primary btn-xs" [routerLink]="['/layout/violationnotice']">Violation Notice</a>
-  <i class="material-icons fontwatermarkright">home</i>
-  <div>
-    <form [formGroup]="user" novalidate (ngSubmit)="onSubmit(user)">
-      <fieldset formGroupName="name">
-        <form-textbox type="text" formControlName="firstName" label="FirstName" [control]="user.controls.name.controls.firstName"  required></form-textbox>
-        <form-textbox type="text" formControlName="lastName" label="LastName" [control]="user.controls.name.controls.lastName"  required></form-textbox>
-      </fieldset>
-      <div class="form-group">
-        <form-textbox type="text" formControlName="email" label="EMail" [control]="user.controls.email"  required></form-textbox>
-      </div>
-      <div class="form-group">
-        <form-textbox [type]="password" formControlName="password" label="Password" [control]="user.controls.password"  required></form-textbox>
-      </div>
-      <div class="form-group">
-        <label>Language</label>
-        <select class="form-control" formControlName="language">
+    <a class="btn btn-primary btn-xs" [routerLink]="['/layout/settings']"> settings </a>
+    <a class="btn btn-primary btn-xs" [routerLink]="['/layout/overloadcitation']">Overload Citation</a>
+    <a class="btn btn-primary btn-xs" [routerLink]="['/layout/violationnotice']">Violation Notice</a>
+    <i class="material-icons fontwatermarkright">home</i>
+    <div class="card">
+        <div class="card-block">
+            <form [formGroup]="user" novalidate (ngSubmit)="onSubmit(user)">
+                <fieldset formGroupName="name">
+                    <form-textbox type="text" formControlName="firstName" label="FirstName" [control]="user.controls.name.controls.firstName" required></form-textbox>
+                    <form-textbox type="text" formControlName="lastName" label="LastName" [control]="user.controls.name.controls.lastName" required></form-textbox>
+                </fieldset>
+                <div class="form-group">
+                    <form-textbox type="text" formControlName="email" label="EMail" [control]="user.controls.email" required></form-textbox>
+                </div>
+                <div class="form-group">
+                    <form-textbox [type]="password" formControlName="password" label="Password" [control]="user.controls.password" required></form-textbox>
+                </div>
+                <div class="form-group">
+                    <label>Language</label>
+                    <select class="form-control" formControlName="language">
           <option value="">Please select a language</option>
           <option *ngFor="let lang of langs"
                   [value]="lang"> 
                   {{lang}} 
           </option>
         </select>
-      </div>
+                </div>
 
-      <button type="submit" [disabled]="user.invalid" class="btn btn-primary btn-xs">Sign up</button>
-      <pre [innerHtml]="user.value | prettyjson:3"></pre>
-    </form>
-    <ul>
-      <li>Dynamic validation not working from textbox </li>
-      <li>Type of textbox is not working e.g. type=password or type=text</li>
-    </ul>
-  </div>
+                <button type="submit" [disabled]="user.invalid" class="btn btn-primary btn-xs">Sign up</button>
+                <pre [innerHtml]="user.value | prettyjson:3"></pre>
+            </form>
+            <ul>
+                <li>Dynamic validation not working from textbox </li>
+                <li>Type of textbox is not working e.g. type=password or type=text</li>
+            </ul>
+        </div>
+    </div>
 </div>

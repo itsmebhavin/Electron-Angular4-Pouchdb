@@ -9,7 +9,7 @@
         "pulse": "lib/bs4-themes/pulse.css",
         "simplex": "lib/bs4-themes/simplex.css"
     },
-    "DefaultTheme": "darkly",
-    "RemoteCouchDBUrl": "https://gacmvalpha.caps.ua.edu/couchdb",
-    "RemoteCouchDBName":"ufptestdata"
+    "DefaultTheme": "pulse",
+    "RemoteCouchDBUrl": "http://localhost:5984/ufp",
+    "RemoteCouchDBName": "ufptestdata"
 }
