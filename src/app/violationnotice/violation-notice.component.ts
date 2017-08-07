@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: 'violation-notice',
@@ -31,48 +31,48 @@ export class ViolationNoticeComponent implements OnInit {
         console.log(myform);
     }
 
-    constructor() {}
+    constructor(private _fb: FormBuilder) {}
 
-    ngOnInit() {
-        this.myform = new FormGroup({
-            dateTime: new FormControl('', Validators.required),
-            driver: new FormGroup({
-                firstName: new FormControl('', Validators.required),
-                lastName: new FormControl('', Validators.required),
-                initial: new FormControl('', Validators.required),
-                street: new FormControl('', Validators.required),
-                city: new FormControl('', Validators.required),
-                state: new FormControl('', Validators.required),
-                age: new FormControl('', Validators.required),
-                birthDate: new FormControl('', Validators.required),
-                race: new FormControl('', Validators.required),
-                sex: new FormControl('', Validators.required),
-                height: new FormControl('', Validators.required),
-                weight: new FormControl('', Validators.required),
-                licenseNum: new FormControl('', Validators.required),
-                licenseClass: new FormControl('', Validators.required),
-                licenseState: new FormControl('', Validators.required),
-                origin: new FormControl('', Validators.required),
-                address: new FormControl('', Validators.required),
-                destination: new FormControl('', Validators.required)
+    ngOnInit() {    
+        this.myform = this._fb.group({
+            driver: this._fb.group({
+                firstName: ['', Validators.required],
+                lastName: ['', Validators.required],
+                initial: ['', Validators.required],
+                street: ['', Validators.required],
+                city: ['', Validators.required],
+                state: ['', Validators.required],
+                age: ['', Validators.required],
+                birthDate: ['', Validators.required],
+                race: ['', Validators.required],
+                sex: ['', Validators.required],
+                height: ['', Validators.required],
+                weight: ['', Validators.required],
+                licenseNum: ['', Validators.required],
+                licenseClass: ['', Validators.required],
+                licenseState: ['', Validators.required],
+                origin: ['', Validators.required],
+                address: ['', Validators.required],
+                destination: ['', Validators.required]
             }),
-            vehicle: new FormGroup({
-                owner: new FormControl('', Validators.required),            
-                vehicleLicenseNum: new FormControl('', Validators.required),
-                vehicleLicenseState: new FormControl('', Validators.required),
-                vehicleLicenseYear: new FormControl('', Validators.required),
-                vehicleMake: new FormControl('', Validators.required)
+            vehicle: this._fb.group({
+                owner: ['', Validators.required],            
+                vehicleLicenseNum: ['', Validators.required],
+                vehicleLicenseState: ['', Validators.required],
+                vehicleLicenseYear: ['', Validators.required],
+                vehicleMake: ['', Validators.required]
             }),    
-            violation: new FormGroup({
-                location: new FormControl('', Validators.required),
-                stateStatute: new FormControl('', Validators.required),
-                stateStatuteViolation: new FormControl('', Validators.required),
-                codeNum: new FormControl('', Validators.required),
-                violation: new FormControl('', Validators.required),
-                officer: new FormControl('', Validators.required),
-                officerUnit: new FormControl('', Validators.required),
-                summonsLocation: new FormControl('', Validators.required),
-                summonsDate: new FormControl('', Validators.required)
+            violation: this._fb.group({
+                dateTime: ['', Validators.required],
+                location: ['', Validators.required],
+                stateStatute: ['', Validators.required],
+                stateStatuteViolation: ['', Validators.required],
+                codeNum: ['', Validators.required],
+                violation: ['', Validators.required],
+                officer: ['', Validators.required],
+                officerUnit: ['', Validators.required],
+                summonsLocation: ['', Validators.required],
+                summonsDate: ['', Validators.required]
             })
         })
         console.log(this.myform);
