@@ -2,145 +2,63 @@
     <h1>Violation Notice</h1>
     <form [formGroup]="myform">
         <button (click)="log(myform)"></button>
-        <div class="form-group">
-            <label>Violation Date/Time</label>
-            <input type="datetime-local" class="form-control" formControlName="dateTime" required>
-        </div>
-        <!-- <app-form-input-box [group]="myform" type="datetime-local" label="Violation Date/Time" control="dateTime"></app-form-input-box> -->
-
         <fieldset formGroupName="driver">
-            <div class="form-group">
-                <label>Last Name</label>
-                <input type="text" class="form-control" formControlName="lastName" required>
-            </div>
+            <form-textbox type="text" formControlName="lastName" label="Last Name" [control]="myform.controls.driver.controls.lastName"></form-textbox>
 
-            <!-- <app-form-input-box [group]="myform.controls.driver" type="text" label="Last Name" control="lastName"></app-form-input-box> -->
+            <form-textbox type="text" formControlName="firstName" label="First Name" [control]="myform.controls.driver.controls.firstName"></form-textbox>
 
-            <div class="form-group">
-                <label>First Name</label>
-                <input type="text" class="form-control" formControlName="firstName">
-            </div>
+            <form-textbox type="text" formControlName="initial" label="Middle Initial" [control]="myform.controls.driver.controls.initial"></form-textbox>
 
-            <div class="form-group">
-                <label>Initial</label>
-                <input type="text" class="form-control" formControlName="initial" required>
-            </div>
+            <form-textbox type="text" formControlName="street" label="Street" [control]="myform.controls.driver.controls.street"></form-textbox>
 
-            <div class="form-group">
-                <label>Street</label>
-                <input type="text" class="form-control" formControlName="street" required>
-            </div>
+            <form-textbox type="text" formControlName="city" label="City" [control]="myform.controls.driver.controls.city"></form-textbox>
 
-            <div class="form-group">
-                <label>City</label>
-                <input type="text" class="form-control" formControlName="city" required>
-            </div>
+            <form-textbox type="text" formControlName="state" label="State" [control]="myform.controls.driver.controls.state"></form-textbox>
 
-            <div class="form-group">
-                <label>State</label>
-                <input type="text" class="form-control" formControlName="state" required>
-            </div>
+            <form-textbox type="text" formControlName="age" label="Age" [control]="myform.controls.driver.controls.age"></form-textbox>
 
-            <div class="form-group">
-                <label>Age</label>
-                <input type="text" class="form-control" formControlName="age" required>
-            </div>
+            <form-textbox type="date" formControlName="birthDate" label="Birthdate" [control]="myform.controls.driver.controls.birthDate"></form-textbox>
 
-            <div class="form-group">
-                <label>Birthdate</label>
-                <input type="date" class="form-control" formControlName="birthDate" required>
-            </div>
+            <form-textbox type="text" formControlName="race" label="Race" [control]="myform.controls.driver.controls.race"></form-textbox>
 
-            <div class="form-group">
-                <label>Race</label>
-                <input type="text" class="form-control" formControlName="race" required>
-            </div>
+            <form-textbox type="text" formControlName="sex" label="Sex" [control]="myform.controls.driver.controls.sex"></form-textbox>
 
-            <div class="form-group">
-                <label>Sex</label>
-                <input type="text" class="form-control" formControlName="sex" required>
-            </div>
+            <form-textbox type="text" formControlName="height" label="Height" [control]="myform.controls.driver.controls.height"></form-textbox>
 
-            <div class="form-group">
-                <label>Height</label>
-                <input type="text" class="form-control" formControlName="height" required>
-            </div>
+            <form-textbox type="text" formControlName="weight" label="Weight" [control]="myform.controls.driver.controls.weight"></form-textbox>
 
-            <div class="form-group">
-                <label>Weight</label>
-                <input type="text" class="form-control" formControlName="weight" required>
-            </div>
+            <form-textbox type="text" formControlName="licenseNum" label="License Number" [control]="myform.controls.driver.controls.licenseNum"></form-textbox>
 
-            <div class="form-group">
-                <label>Driver's License Number</label>
-                <input type="text" class="form-control" formControlName="licenseNum" required>
-            </div>
+            <form-textbox type="text" formControlName="licenseClass" label="License Class" [control]="myform.controls.driver.controls.licenseClass"></form-textbox>
 
-            <div class="form-group">
-                <label>Driver's License Class</label>
-                <input type="text" class="form-control" formControlName="licenseClass" required>
-            </div>
+            <form-textbox type="text" formControlName="licenseState" label="License State" [control]="myform.controls.driver.controls.licenseState"></form-textbox>
 
-            <div class="form-group">
-                <label>Driver's License State</label>
-                <input type="text" class="form-control" formControlName="licenseState" required>
-            </div>
+            <form-textbox type="text" formControlName="origin" label="Origin" [control]="myform.controls.driver.controls.origin"></form-textbox>
 
-            <div class="form-group">
-                <label>Origin</label>
-                <input type="text" class="form-control" formControlName="origin" required>
-            </div>
+            <form-textbox type="text" formControlName="address" label="Address" [control]="myform.controls.driver.controls.address"></form-textbox>
 
-            <div class="form-group">
-                <label>Address</label>
-                <input type="text" class="form-control" formControlName="address" required>
-            </div>
-
-            <div class="form-group">
-                <label>Destination</label>
-                <input type="text" class="form-control" formControlName="destination" required>
-            </div>
+            <form-textbox type="text" formControlName="destination" label="Destination" [control]="myform.controls.driver.controls.destination"></form-textbox>
         </fieldset>
 
         <fieldset formGroupName="vehicle">
-            <div class="form-group">
-                <label>Owner</label>
-                <input type="text" class="form-control" formControlName="owner" required>
-            </div>
+            <form-textbox type="text" formControlName="owner" label="Owner" [control]="myform.controls.vehicle.controls.owner"></form-textbox>
 
-            <div class="form-group">
-                <label>Vehicle License Number</label>
-                <input type="text" class="form-control" formControlName="vehicleLicenseNum" required>
-            </div>
+            <form-textbox type="text" formControlName="vehicleLicenseNum" label="License Number" [control]="myform.controls.vehicle.controls.vehicleLicenseNum"></form-textbox>
 
-            <div class="form-group">
-                <label>License State</label>
-                <input type="text" class="form-control" formControlName="vehicleLicenseState" required>
-            </div>
+            <form-textbox type="text" formControlName="vehicleLicenseState" label="License State" [control]="myform.controls.vehicle.controls.vehicleLicenseState"></form-textbox>
 
-            <div class="form-group">
-                <label>License Year</label>
-                <input type="text" class="form-control" formControlName="vehicleLicenseYear" required>
-            </div>
+            <form-textbox type="text" formControlName="vehicleLicenseYear" label="License Year" [control]="myform.controls.vehicle.controls.vehicleLicenseYear"></form-textbox>
 
-            <div class="form-group">
-                <label>Make</label>
-                <input type="text" class="form-control" formControlName="vehicleMake" required>
-            </div>
+            <form-textbox type="text" formControlName="vehicleMake" label="Make" [control]="myform.controls.vehicle.controls.vehicleMake"></form-textbox>
         </fieldset>
 
         <fieldset formGroupName="violation">
-            <div class="form-group">
-                <label>Location</label>
-                <input type="text" class="form-control" formControlName="location" required>
-            </div>
+            <form-textbox type="datetime-local" formControlName="dateTime" label="Date/Time" [control]="myform.controls.violation.controls.dateTime"></form-textbox>
+            
+            <form-textbox type="text" formControlName="location" label="Location" [control]="myform.controls.violation.controls.location"></form-textbox>
 
-            <div class="form-group">
-                <label>State Statute</label>
-                <input type="text" class="form-control" formControlName="stateStatute" required>
-            </div>
+            <form-textbox type="text" formControlName="stateStatute" label="State Statute" [control]="myform.controls.violation.controls.stateStatute"></form-textbox>
 
-            <!--Violation Checkboxes-->
             <div class="form-group">
                 <label>Violation</label>
                 <select multiple name="stateStatuteViolation" formControlName="stateStatuteViolation">
@@ -150,27 +68,14 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <label>Code Number</label>
-                <input type="text" class="form-control" formControlName="codeNum" required>
-            </div>
+            <form-textbox type="text" formControlName="codeNum" label="Code Number" [control]="myform.controls.violation.controls.codeNum"></form-textbox>
 
-            <div class="form-group">
-                <label>Violation</label>
-                <input type="text" class="form-control" formControlName="violation" required>
-            </div>
+            <form-textbox type="text" formControlName="violation" label="Violation" [control]="myform.controls.violation.controls.violation"></form-textbox>
 
-            <div class="form-group">
-                <label>Officer</label>
-                <input type="text" class="form-control" formControlName="officer" required>
-            </div>
+            <form-textbox type="text" formControlName="officer" label="Officer" [control]="myform.controls.violation.controls.officer"></form-textbox>
 
-            <div class="form-group">
-                <label>Officer Unit/Station</label>
-                <input type="text" class="form-control" formControlName="officerUnit" required>
-            </div>
+            <form-textbox type="text" formControlName="officerUnit" label="Officer Unit/Station" [control]="myform.controls.violation.controls.officerUnit"></form-textbox>
 
-            <!--summonsLocation checkbox-->
             <div class="form-group">
                 <label>Location</label>
                 <div *ngFor="let locationEntry of summonsLocations">
@@ -181,10 +86,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label>Date</label>
-                <input type="datetime-local" class="form-control" formControlName="summonsDate" required>
-            </div>
+            <form-textbox type="datetime-local" formControlName="summonsDate" label="Date" [control]="myform.controls.violation.controls.summonsDate"></form-textbox>
         </fieldset>
     </form>
 
