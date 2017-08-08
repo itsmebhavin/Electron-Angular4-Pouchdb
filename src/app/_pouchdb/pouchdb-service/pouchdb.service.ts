@@ -24,13 +24,6 @@ export class PouchdbService implements OnInit {
   // initiate adapter class and hook up the observables
   constructor(private config: ConfigService) {
 
-    console.log('Debug Mode = ', this.pouchDbDebugMode);
-
-    this.remoteCouchDBAddress = config.get('RemoteCouchDBUrl').toLowerCase();
-    this.remoteCouchCitationDBName = config.get('RemoteCouchCitationDBName').toLowerCase();
-    this.remoteCouchReferenceDBName = config.get('RemoteCouchReferenceDBName').toLowerCase();
-    this.pouchDbDebugMode = config.get('PouchDBDebugMode');
-
     // Reference Data Setup
     // this._pouchDbAdapterRef = new PouchDbAdapter(this.remoteCouchDBAddress + '/' + this.remoteCouchReferenceDBName );
     // this.syncStatus = this._pouchDbAdapterRef.syncStatus.asObservable();
@@ -43,6 +36,11 @@ export class PouchdbService implements OnInit {
   }
 
   ngOnInit() {
+    console.log('Debug Mode = ', this.pouchDbDebugMode);
+    this.remoteCouchDBAddress = this.config.get('RemoteCouchDBUrl').toLowerCase();
+    this.remoteCouchCitationDBName = this.config.get('RemoteCouchCitationDBName').toLowerCase();
+    this.remoteCouchReferenceDBName = this.config.get('RemoteCouchReferenceDBName').toLowerCase();
+    this.pouchDbDebugMode = this.config.get('PouchDBDebugMode');
   }
 
   getReferenceDocs(howmany: number): Promise<any> {
