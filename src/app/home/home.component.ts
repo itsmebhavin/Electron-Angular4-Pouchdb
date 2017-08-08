@@ -1,7 +1,7 @@
 import { ValidationService } from '../_services/validation/validation.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { PouchdbService } from '../_services/pouchdb-service/pouchdb.service';
+import { PouchdbService } from '../_pouchdb/pouchdb-service/pouchdb.service';
 
 export interface User {
   name: {
@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
   dataString: string;
   syncStatus: boolean;
   couchDbUp: boolean;
+  citationData: any;
 
   langs: string[] = [
     'English',
@@ -42,6 +43,7 @@ export class HomeComponent implements OnInit {
       this.couchDbUp = result;
     });
     this.remoteCouchDBAddress = this.pouchdbservice.remoteCouchDBAddress;
+    this.refreshData();
   }
 
   onSubmit({ value, valid }: { value: User, valid: boolean }) {
@@ -49,10 +51,16 @@ export class HomeComponent implements OnInit {
       console.log(value, valid);
       this.pouchdbservice.post(value).then((response) => {
         console.log(JSON.stringify(response));
+        this.refreshData();
       });
     }
   }
 
+  refreshData() {
+    this.pouchdbservice.getCitationDocs(100).then((response) => {
+      this.citationData = (response);
+    });
+  }
   ngOnInit() {
 
     this.user = this._fb.group({

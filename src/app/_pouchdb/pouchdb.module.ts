@@ -3,9 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders  } from '@angular/core';
 import {PrettyJsonModule, SafeJsonPipe} from 'angular2-prettyjson';
 import {JsonPipe} from '@angular/common';
-import { ThemeService } from './theme/theme.service';
-import { UserAgentService } from './useragent/useragent.service';
-import { ValidationService } from './validation/validation.service';
+import { PouchdbService } from './pouchdb-service/pouchdb.service';
+import { DbSyncIndicatorComponent } from './db-sync-indicator/db-sync-indicator.component';
 
 @NgModule({
     imports: [
@@ -13,16 +12,16 @@ import { ValidationService } from './validation/validation.service';
         PrettyJsonModule,
     ],
     exports: [
+        DbSyncIndicatorComponent
     ],
     declarations: [
+        DbSyncIndicatorComponent
     ],
     providers: [
         { provide: JsonPipe, useClass: SafeJsonPipe },
-        ThemeService,
-        UserAgentService,
-        ValidationService
+        PouchdbService
     ],
 })
-export class UfpServicesModule {
+export class UfpPouchDBModule {
 }
 

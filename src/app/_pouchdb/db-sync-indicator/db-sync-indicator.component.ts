@@ -25,11 +25,11 @@ export class DbSyncIndicatorComponent {
       this.syncStyle.color = 'red';
       this.syncText = (this.dbName + ' ' || '') + 'Offline';
     } else if (!this.syncStatus) {
-      this.syncStyle.color = 'blue';
-      this.syncText = (this.dbName + ' ' || '') + 'Synchronising';
+      this.syncStyle.color = 'orange';
+      this.syncText = (this.dbName + ' ' || '') + 'Synchronizing';
     } else {
       this.syncStyle.color = 'green';
-      this.syncText = (this.dbName + ' ' || '') + 'Synchronised';
+      this.syncText = (this.dbName + ' ' || '') + 'Synchronized';
     }
   }
 

@@ -10,6 +10,7 @@
         "simplex": "lib/bs4-themes/simplex.css"
     },
     "DefaultTheme": "pulse",
-    "RemoteCouchDBUrl": "http://localhost:5984/ufp",
-    "RemoteCouchDBName": "ufptestdata"
+    "RemoteCouchDBUrl": "http://localhost:5984",
+    "RemoteCouchCitationDBName": "ufp_citationdata",
+    "RemoteCouchReferenceDBName": "ufp_referencedata"
 }

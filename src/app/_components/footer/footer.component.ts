@@ -3,7 +3,7 @@ import { UserAgent } from '../../_services/useragent/useragent.model';
 import { UserAgentService } from '../../_services/useragent/useragent.service';
 import { ClockComponent } from '../clock/clock.component';
 import { Config } from '../../app.config';
-import { PouchdbService } from '../../_services/pouchdb-service/pouchdb.service';
+import { PouchdbService } from '../../_pouchdb/pouchdb-service/pouchdb.service';
 
 @Component({
     selector: 'app-footer',

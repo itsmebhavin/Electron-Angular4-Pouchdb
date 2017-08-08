@@ -30,6 +30,7 @@ import { OverloadCitationComponent } from './overloadcitation/overload-citation.
 import { ViolationNoticeComponent } from './violationnotice/violation-notice.component';
 import { UfpFormsModule } from './_components/forms/forms.module';
 import { UfpServicesModule } from './_services/services.module';
+import { UfpPouchDBModule } from './_pouchdb/pouchdb.module';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { UfpServicesModule } from './_services/services.module';
     BrowserAnimationsModule,
     PrettyJsonModule,
     UfpFormsModule.forRoot(),
-    UfpServicesModule.forRoot(),
+    UfpServicesModule,
+    UfpPouchDBModule,
     TabsModule.forRoot()
   ],
   providers: [

@@ -39,11 +39,11 @@ export class PouchDbAdapter {
 
     // pretty basic and crude function
     // return a Promise with the first 20 docs from allDocs as is
-    get20Docs(): Promise<any> {
+    getDocs(howmany: number): Promise<any> {
         return new Promise(resolve => {
             this._pouchDB.allDocs({
                 include_docs: true,
-                limit: 20
+                limit: howmany
             })
                 .then((result) => {
                     resolve(result);
