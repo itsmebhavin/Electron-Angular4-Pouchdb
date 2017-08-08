@@ -1,39 +1,39 @@
-
-import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { HttpModule } from '@angular/http';
-import { Routes, RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AppRoutingModule } from './app-routing.module';
+import { APP_BASE_HREF, HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { PrettyJsonModule, SafeJsonPipe } from 'angular2-prettyjson';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { ClockComponent } from './_components/clock/clock.component';
+import { Config } from './app.config';
+import { ConfigService } from './config.service';
+import { environment } from '../environments/environment';
+import { FooterComponent } from './_components/footer/footer.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from './_components/header/header.component';
+import { HomeComponent } from './home/home.component';
+import { HttpModule } from '@angular/http';
 import { JsonPipe } from '@angular/common';
+import { LayoutComponent } from './layout/layout.component';
+import { LongDatePipe, ShortDateTimePipe, SortByStringPipe } from './_pipes/custom.pipes';
+import { NetworknotifierComponent } from './_components/networknotifier/networknotifier.component';
+import { NetworkNotifierService } from './_components/networknotifier/networknotifier.service';
+import { NpmBadgeComponent } from './_components/npmbadge/npmbadge.component';
+import { OverloadCitationComponent } from './overloadcitation/overload-citation.component';
+import { PrettyJsonModule, SafeJsonPipe } from 'angular2-prettyjson';
+import { RouterModule, Routes } from '@angular/router';
+import { SettingsComponent } from './settings/settings.component';
 import { TabsModule } from 'ngx-bootstrap';
+import { UfpFormsModule } from './_components/forms/forms.module';
+import { UfpPouchDBModule } from './_pouchdb/pouchdb.module';
+import { UfpServicesModule } from './_services/services.module';
+import { ViolationNoticeComponent } from './violationnotice/violation-notice.component';
+
+
 
 // Services
-import { Config } from './app.config';
-import { NetworkNotifierService } from './_components/networknotifier/networknotifier.service';
 
 // App Components
-import { HeaderComponent } from './_components/header/header.component';
-import { FooterComponent } from './_components/footer/footer.component';
-import { HomeComponent } from './home/home.component';
-import { SettingsComponent } from './settings/settings.component';
-import { LayoutComponent } from './layout/layout.component';
-import { ClockComponent } from './_components/clock/clock.component';
-import { NpmBadgeComponent } from './_components/npmbadge/npmbadge.component';
-import { NetworknotifierComponent } from './_components/networknotifier/networknotifier.component';
-import { OverloadCitationComponent } from './overloadcitation/overload-citation.component';
-import { ViolationNoticeComponent } from './violationnotice/violation-notice.component';
-import { UfpFormsModule } from './_components/forms/forms.module';
-import { UfpServicesModule } from './_services/services.module';
-import { UfpPouchDBModule } from './_pouchdb/pouchdb.module';
-import { ShortDateTimePipe, LongDatePipe, SortByStringPipe } from './_pipes/custom.pipes';
-import { environment } from '../environments/environment';
-import { ConfigService } from './config.service';
 
 @NgModule({
   declarations: [
@@ -83,8 +83,5 @@ import { ConfigService } from './config.service';
 })
 export class AppModule { }
 export function ConfigLoader(configService: ConfigService) {
-  return () => {
-    const data = configService.load(environment.configFile);
-    console.log(data);
-  };
+  return () => configService.load(environment.configFile);
 }

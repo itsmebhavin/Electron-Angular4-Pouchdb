@@ -1,8 +1,8 @@
 import { Injectable, Inject, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
-import { Config } from '../../app.config';
 import { Subject, ReplaySubject } from 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
+import { ConfigService } from '../../config.service';
 
 const STORAGE_CURRENT_THEME = 'currentTheme';
 
@@ -22,32 +22,30 @@ export class ThemeService {
 
     constructor(
         private http: Http,
-        private config: Config ) {
+        private config: ConfigService) {
 
         try {
-            ThemeService.currentTheme = localStorage.getItem( STORAGE_CURRENT_THEME );
-        } catch ( e ) { }
+            ThemeService.currentTheme = localStorage.getItem(STORAGE_CURRENT_THEME);
+        } catch (e) { }
 
-        if ( !ThemeService.themeNameStream ) {
-            ThemeService.themeNameStream = new ReplaySubject<string[]>( 1 );
+        if (!ThemeService.themeNameStream) {
+            ThemeService.themeNameStream = new ReplaySubject<string[]>(1);
         }
-        if ( !ThemeService.currentThemeStream ) {
-            ThemeService.currentThemeStream = new ReplaySubject<string>( 1 );
+        if (!ThemeService.currentThemeStream) {
+            ThemeService.currentThemeStream = new ReplaySubject<string>(1);
         }
 
-        this.config.load().then(( config: any ) => {
-            ThemeService.themesData = config.themes;
-            ThemeService.themes = Object.keys( config.themes );
-            ThemeService.defaultTheme = config.defaultTheme;
-            if ( !ThemeService.currentTheme ) {
-                ThemeService.currentTheme = ThemeService.defaultTheme;
-            }
-            ThemeService.themeNameStream.next( ThemeService.themes );
-            ThemeService.currentThemeStream.next( ThemeService.currentTheme );
+        ThemeService.themesData = this.config.get('Themes');
+        ThemeService.themes = Object.keys(this.config.get('Themes'));
+        ThemeService.defaultTheme = this.config.get('DefaultTheme');
+        if (!ThemeService.currentTheme) {
+            ThemeService.currentTheme = ThemeService.defaultTheme;
+        }
+        ThemeService.themeNameStream.next(ThemeService.themes);
+        ThemeService.currentThemeStream.next(ThemeService.currentTheme);
 
-            this.setTheme( ThemeService.currentTheme );
+        this.setTheme(ThemeService.currentTheme);
 
-        });
     }
 
     // private i = 0;
@@ -59,17 +57,17 @@ export class ThemeService {
     //     setTimeout(() => this.test(), 1000 );
     // }
 
-    setTheme( name ) {
-        if ( !ThemeService.themesData[name] ) {
-            console.log( 'Tried to set invalid theme: ', name );
+    setTheme(name) {
+        if (!ThemeService.themesData[name]) {
+            console.log('Tried to set invalid theme: ', name);
             return false;
         }
         ThemeService.currentTheme = name;
 
-        document.getElementById( 'theme-css' )['href'] = ThemeService.themesData[name];
-        localStorage.setItem( STORAGE_CURRENT_THEME, name );
+        document.getElementById('theme-css')['href'] = ThemeService.themesData[name];
+        localStorage.setItem(STORAGE_CURRENT_THEME, name);
 
-        ThemeService.currentThemeStream.next( ThemeService.currentTheme );
+        ThemeService.currentThemeStream.next(ThemeService.currentTheme);
         return true;
     }
 

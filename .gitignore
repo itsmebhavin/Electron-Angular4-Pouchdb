@@ -7,3 +7,5 @@ build
 ./releases
 releases
 errorlog/
+out
+.vscode/chrome

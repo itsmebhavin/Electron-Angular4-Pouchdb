@@ -1,32 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import {Config} from '../../app.config';
 import { UserAgent } from '../../_services/useragent/useragent.model';
 import { UserAgentService } from '../../_services/useragent/useragent.service';
-
+import { ConfigService } from '../../config.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
-  providers: [Config, UserAgentService]
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.css'],
+    providers: [ConfigService, UserAgentService]
 })
 export class HeaderComponent implements OnInit {
 
-  title: String = '';
-  appVersion: String = '';
-  nodeVersion: String = '';
-  nodeV8: String = '';
-  userAgent: String = '';
-  electron: String = '';
-  environment: String = '';
-  isElectronApp: Boolean = false;
+    title: String = '';
+    appVersion: String = '';
+    nodeVersion: String = '';
+    nodeV8: String = '';
+    userAgent: String = '';
+    electron: String = '';
+    environment: String = '';
+    isElectronApp: Boolean = false;
 
-  constructor(private _config: Config,
-              private _userAgentService: UserAgentService) {
-        this._config.load().then(( data: any ) => {
-            document.title = document.title.replace(/Loading(\.\.\.)?/, data.ApplicationHeader);
-            this.title =  data.ApplicationHeader;
-        });
+    constructor(private _config: ConfigService,
+        private _userAgentService: UserAgentService) {
+        document.title = document.title.replace(/Loading(\.\.\.)?/, this._config.get('ApplicationHeader'));
+        this.title = this._config.get('ApplicationHeader');
 
         _userAgentService.getCurrentUserAgentInformation().then((res: UserAgent) => {
             this.appVersion = res.appVersion;
@@ -43,7 +40,7 @@ export class HeaderComponent implements OnInit {
         });
     }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }

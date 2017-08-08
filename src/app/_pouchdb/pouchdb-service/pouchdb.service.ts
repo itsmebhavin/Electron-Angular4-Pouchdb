@@ -2,7 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 // the pouchdb-adapter file/class in the same folder
 import { PouchDbAdapter } from './pouchdb-adapter';
-import { Config } from '../../app.config';
+import { ConfigService } from '../../config.service';
 
 const REMOTE_COUCH_DB_ADDRESS = 'http://localhost:5984/';
 
@@ -22,37 +22,27 @@ export class PouchdbService implements OnInit {
   remoteCouchReferenceDBName = 'ufp_referencedata';
   pouchDbDebugMode: boolean;
   // initiate adapter class and hook up the observables
-  constructor(private _config: Config) {
+  constructor(private config: ConfigService) {
 
-    this._config.load().then((config: any) => {
-      this.remoteCouchDBAddress = config.RemoteCouchDBUrl.toLowerCase();
-      this.remoteCouchCitationDBName = config.RemoteCouchCitationDBName.toLowerCase();
-      this.remoteCouchReferenceDBName = config.RemoteCouchReferenceDBName.toLowerCase();
-      this.pouchDbDebugMode = config.PouchDBDebugMode;
-    });
+    console.log('Debug Mode = ', this.pouchDbDebugMode);
+
+    this.remoteCouchDBAddress = config.get('RemoteCouchDBUrl').toLowerCase();
+    this.remoteCouchCitationDBName = config.get('RemoteCouchCitationDBName').toLowerCase();
+    this.remoteCouchReferenceDBName = config.get('RemoteCouchReferenceDBName').toLowerCase();
+    this.pouchDbDebugMode = config.get('PouchDBDebugMode');
 
     // Reference Data Setup
     // this._pouchDbAdapterRef = new PouchDbAdapter(this.remoteCouchDBAddress + '/' + this.remoteCouchReferenceDBName );
     // this.syncStatus = this._pouchDbAdapterRef.syncStatus.asObservable();
     // this.couchdbUp = this._pouchDbAdapterRef.couchDbUp.asObservable();
 
-    console.log('Debug Mode = ', this.pouchDbDebugMode);
     // Citation Data Setup
-    this._pouchDbAdapterCit = new PouchDbAdapter(this.remoteCouchDBAddress +  this.remoteCouchCitationDBName, this.pouchDbDebugMode);
+    this._pouchDbAdapterCit = new PouchDbAdapter(this.remoteCouchDBAddress + this.remoteCouchCitationDBName, this.pouchDbDebugMode);
     this.syncStatus = this._pouchDbAdapterCit.syncStatus.asObservable();
     this.couchdbUp = this._pouchDbAdapterCit.couchDbUp.asObservable();
   }
 
   ngOnInit() {
-    // this._config.load().then((config: any) => {
-    //   this.remoteCouchDBAddress = config.RemoteCouchDBUrl.toLowerCase();
-    //   this.remoteCouchCitationDBName = config.RemoteCouchCitationDBName.toLowerCase();
-    //   this.remoteCouchReferenceDBName = config.RemoteCouchReferenceDBName.toLowerCase();
-    //   this.pouchDbDebugMode = config.PouchDBDebugMode;
-    // });
-    // console.log(this.remoteCouchDBAddress);
-    // console.log(this.remoteCouchCitationDBName);
-    // console.log(this.remoteCouchReferenceDBName);
   }
 
   getReferenceDocs(howmany: number): Promise<any> {

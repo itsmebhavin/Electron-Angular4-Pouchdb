@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserAgent } from '../../_services/useragent/useragent.model';
 import { UserAgentService } from '../../_services/useragent/useragent.service';
 import { ClockComponent } from '../clock/clock.component';
-// import { Config } from '../../app.config';
 import { PouchdbService } from '../../_pouchdb/pouchdb-service/pouchdb.service';
 import { ConfigService } from '../../config.service';
 
@@ -52,12 +51,11 @@ export class FooterComponent implements OnInit {
         this.remoteCouchDBAddress = this.pouchdbservice.remoteCouchDBAddress;
 
         // console.log(this._config.getConfiguration());
-        // this.copyright = this._config.getConfiguration().Copyright;
-        // this.copyrightyear = this._config.getConfiguration().CopyrightYear;
+        this.copyright = this._config.get('Copyright');
+        this.copyrightyear = this._config.get('CopyrightYear');
     }
 
     ngOnInit() {
-        console.log(this._config.get('Copyright'));
     }
 
 }

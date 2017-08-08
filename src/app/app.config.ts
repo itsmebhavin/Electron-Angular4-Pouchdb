@@ -11,7 +11,7 @@ export class Config {
 
     constructor(private http: Http) {
         if (!Config.configStream) {
-            Config.configStream = this.http.get('config/app.config.json')
+            Config.configStream = this.http.get('config/config.dev.json')
                 .map(res => res.json())
                 .publishReplay(1)
                 .refCount();

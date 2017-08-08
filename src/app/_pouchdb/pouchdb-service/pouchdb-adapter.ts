@@ -1,8 +1,6 @@
 import PouchDB from 'pouchdb';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-// import 'rxjs/add/observable/combineLatest';
-// import * as PouchDB from 'pouchdb';
-import { Config } from '../../app.config';
+import { ConfigService } from '../../config.service';
 
 export class PouchDbAdapter {
 

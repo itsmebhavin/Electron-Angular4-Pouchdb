@@ -20,25 +20,27 @@ export class Configuration {
 @Injectable()
 export class ConfigService {
 
-    private _config: Configuration;
+    private static _config: Configuration;
+
     constructor(private http: Http) {
     }
-    load(url) {
+
+    load(url): Promise<any> {
         // json files will be loaded here
-        return new Promise((resolve, reject) => {
-            this.http.get(url)
-                .map(res => res.json())
-                .catch((error: any) => {
-                    console.error(error);
-                    return Observable.throw(error.json().error || 'Server error');
-                })
-                .subscribe((data) => {
-                    this._config = data;
-                    resolve(true);
-                });
-        });
+        return this.http.get(url)
+            .map(res => res.json())
+            .toPromise()
+            .then(data => {
+                ConfigService._config = data;
+                return data;
+            })
+            .catch((error: any) => {
+                console.error(error);
+                return Observable.throw(error.json().error || 'Server error');
+            });
     }
+
     get(key: any) {
-        return this._config[key];
+        return ConfigService._config[key];
     }
 }
