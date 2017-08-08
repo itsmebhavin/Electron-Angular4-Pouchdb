@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { UserAgent } from '../../_services/useragent/useragent.model';
 import { UserAgentService } from '../../_services/useragent/useragent.service';
 import { ClockComponent } from '../clock/clock.component';
-import { Config } from '../../app.config';
+// import { Config } from '../../app.config';
 import { PouchdbService } from '../../_pouchdb/pouchdb-service/pouchdb.service';
+import { ConfigService } from '../../config.service';
 
 @Component({
     selector: 'app-footer',
     templateUrl: './footer.component.html',
     styleUrls: ['./footer.component.css'],
-    providers: [UserAgentService, Config]
+    providers: [UserAgentService, ConfigService]
 })
 export class FooterComponent implements OnInit {
 
@@ -26,7 +27,8 @@ export class FooterComponent implements OnInit {
     isElectronApp: Boolean = false;
     copyright: String = '';
     copyrightyear: String = '';
-    constructor(private _config: Config, private _userAgentService: UserAgentService, private pouchdbservice: PouchdbService) {
+
+    constructor(private _config: ConfigService, private _userAgentService: UserAgentService, private pouchdbservice: PouchdbService) {
         _userAgentService.getCurrentUserAgentInformation().then((res: UserAgent) => {
             this.appVersion = res.appVersion;
             this.nodeVersion = res.nodeVersion;
@@ -49,13 +51,13 @@ export class FooterComponent implements OnInit {
         });
         this.remoteCouchDBAddress = this.pouchdbservice.remoteCouchDBAddress;
 
-        this._config.load().then((data: any) => {
-            this.copyright = data.Copyright;
-            this.copyrightyear = data.CopyrightYear;
-        });
+        // console.log(this._config.getConfiguration());
+        // this.copyright = this._config.getConfiguration().Copyright;
+        // this.copyrightyear = this._config.getConfiguration().CopyrightYear;
     }
 
     ngOnInit() {
+        console.log(this._config.get('Copyright'));
     }
 
 }

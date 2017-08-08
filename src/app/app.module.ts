@@ -1,7 +1,7 @@
 
 import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,8 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {PrettyJsonModule, SafeJsonPipe} from 'angular2-prettyjson';
-import {JsonPipe} from '@angular/common';
+import { PrettyJsonModule, SafeJsonPipe } from 'angular2-prettyjson';
+import { JsonPipe } from '@angular/common';
 import { TabsModule } from 'ngx-bootstrap';
 
 // Services
@@ -31,6 +31,9 @@ import { ViolationNoticeComponent } from './violationnotice/violation-notice.com
 import { UfpFormsModule } from './_components/forms/forms.module';
 import { UfpServicesModule } from './_services/services.module';
 import { UfpPouchDBModule } from './_pouchdb/pouchdb.module';
+import { ShortDateTimePipe, LongDatePipe, SortByStringPipe } from './_pipes/custom.pipes';
+import { environment } from '../environments/environment';
+import { ConfigService } from './config.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { UfpPouchDBModule } from './_pouchdb/pouchdb.module';
     NpmBadgeComponent,
     NetworknotifierComponent,
     OverloadCitationComponent,
-    ViolationNoticeComponent
+    ViolationNoticeComponent,
+    ShortDateTimePipe,
+    LongDatePipe,
+    SortByStringPipe
   ],
   imports: [
     BrowserModule,
@@ -63,9 +69,22 @@ import { UfpPouchDBModule } from './_pouchdb/pouchdb.module';
     { provide: APP_BASE_HREF, useValue: '/' },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: JsonPipe, useClass: SafeJsonPipe },
+    NetworkNotifierService,
     Config,
-    NetworkNotifierService
+    ConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: ConfigLoader,
+      deps: [ConfigService],
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export function ConfigLoader(configService: ConfigService) {
+  return () => {
+    const data = configService.load(environment.configFile);
+    console.log(data);
+  };
+}

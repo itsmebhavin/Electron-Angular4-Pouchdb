@@ -2,6 +2,7 @@ import PouchDB from 'pouchdb';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 // import 'rxjs/add/observable/combineLatest';
 // import * as PouchDB from 'pouchdb';
+import { Config } from '../../app.config';
 
 export class PouchDbAdapter {
 
@@ -14,14 +15,14 @@ export class PouchDbAdapter {
     syncStatus = new BehaviorSubject<boolean>(false);
     couchDbUp = new BehaviorSubject<boolean>(false);
 
-    constructor(remoteCouchDBAddress: string) {
+    constructor(remoteCouchDBAddress: string, debugMode: boolean) {
         this._remoteCouchDBAddress = remoteCouchDBAddress;
         // string function to extract the database name from the URL
         this._pouchDbName = remoteCouchDBAddress
             .substr(remoteCouchDBAddress.lastIndexOf('/') + 1);
         // init local PouchDB
         this._pouchDB = new PouchDB(this._pouchDbName);
-        // this._pouchDB.setMaxListners(100);
+        if (debugMode) { PouchDB.debug.enable('*'); }
         console.log('Connecting local db:', this._pouchDB);
         // init PouchDB adapter for remote CouchDB
         this._couchDB = new PouchDB(remoteCouchDBAddress);
