@@ -74,7 +74,7 @@ import { ConfigService } from './config.service';
     ConfigService,
     {
       provide: APP_INITIALIZER,
-      useFactory: ConfigLoader,
+      useFactory: (configService: ConfigService) => function() { return configService.load(environment.configFile) },
       deps: [ConfigService],
       multi: true
     }
@@ -82,9 +82,3 @@ import { ConfigService } from './config.service';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-export function ConfigLoader(configService: ConfigService) {
-  return () => {
-    const data = configService.load(environment.configFile);
-    console.log(data);
-  };
-}
