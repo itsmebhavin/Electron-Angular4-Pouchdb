@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserAgentService } from '../_services/useragent/useragent.service';
 import { UserAgent } from '../_services/useragent/useragent.model';
-import { Config } from '../app.config';
 
 @Component({
   selector: 'app-layout',

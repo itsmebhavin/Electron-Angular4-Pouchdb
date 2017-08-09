@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { ClockComponent } from './_components/clock/clock.component';
-import { Config } from './app.config';
 import { ConfigService } from './config.service';
 import { environment } from '../environments/environment';
 import { FooterComponent } from './_components/footer/footer.component';
@@ -72,7 +71,6 @@ import { DbSyncIndicatorComponent } from './_pouchdb/db-sync-indicator/db-sync-i
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: JsonPipe, useClass: SafeJsonPipe },
     NetworkNotifierService,
-    Config,
     ConfigService,
     {
       provide: APP_INITIALIZER,

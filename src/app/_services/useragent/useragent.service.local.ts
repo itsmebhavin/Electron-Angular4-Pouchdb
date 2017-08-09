@@ -1,6 +1,5 @@
 import { Injectable, Inject, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
-import { Config } from '../../app.config';
 import { Subject, ReplaySubject } from 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 import { UserAgent } from './useragent.model';
