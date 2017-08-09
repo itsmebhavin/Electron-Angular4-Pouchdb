@@ -1,76 +1,105 @@
 /* You can add global styles to this file, and also import other style files */
 
 @font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(../fonts/google-md-icon/MaterialIcons-Regular.eot);
-  /* For IE6-8 */
-  src: local('Material Icons'), local('MaterialIcons-Regular'), url(../fonts/google-md-icon/MaterialIcons-Regular.woff2) format('woff2'), url(../fonts/google-md-icon/MaterialIcons-Regular.woff) format('woff'), url(../fonts/google-md-icon/MaterialIcons-Regular.ttf) format('truetype');
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../fonts/google-md-icon/MaterialIcons-Regular.eot);
+    /* For IE6-8 */
+    src: local('Material Icons'), local('MaterialIcons-Regular'), url(../fonts/google-md-icon/MaterialIcons-Regular.woff2) format('woff2'), url(../fonts/google-md-icon/MaterialIcons-Regular.woff) format('woff'), url(../fonts/google-md-icon/MaterialIcons-Regular.ttf) format('truetype');
 }
+
+
 /* Rules for sizing the icon. */
-.material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; }
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }
+
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
 
 /* Rules for using icons as black on a light background. */
-.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
-.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+.material-icons.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+    color: rgba(0, 0, 0, 0.26);
+}
+
 
 /* Rules for using icons as white on a dark background. */
-.material-icons.md-light { color: rgba(255, 255, 255, 1); }
-.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+.material-icons.md-light {
+    color: rgba(255, 255, 255, 1);
+}
+
+.material-icons.md-light.md-inactive {
+    color: rgba(255, 255, 255, 0.3);
+}
+
 .material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-  /* Support for IE. */
-  font-feature-settings: 'liga';
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
 }
 
 @font-face {
-  font-family: Roboto;
-  src: url("../fonts/roboto/Roboto-Regular.woff") format("opentype");
+    font-family: Roboto;
+    src: url("../fonts/roboto/Roboto-Regular.woff") format("opentype");
 }
 
 @font-face {
-  font-family: RobotoLight;
-  src: url("../fonts/roboto/Roboto-Light.woff") format("opentype");
+    font-family: RobotoLight;
+    src: url("../fonts/roboto/Roboto-Light.woff") format("opentype");
 }
 
 @font-face {
-  font-family: RobotoThin;
-  src: url("../fonts/roboto/Roboto-Thin.woff") format("opentype");
+    font-family: RobotoThin;
+    src: url("../fonts/roboto/Roboto-Thin.woff") format("opentype");
 }
 
 @font-face {
-  font-family: Quicksand;
-  src: url("../fonts/quicksand/quicksand-regular.otf") format("opentype");
+    font-family: Quicksand;
+    src: url("../fonts/quicksand/quicksand-regular.otf") format("opentype");
 }
 
 @font-face {
-  font-family: QuicksandLight;
-  src: url("../fonts/quicksand/quicksand-light.otf") format("opentype");
+    font-family: QuicksandLight;
+    src: url("../fonts/quicksand/quicksand-light.otf") format("opentype");
 }
 
 html {
-  font-size: 15px;
+    font-size: 15px;
 }
 
 
@@ -94,19 +123,19 @@ html {
 } */
 
 .Quicksand {
-  font-family: Quicksand;
+    font-family: Quicksand;
 }
 
 .Roboto {
-  font-family: Roboto;
+    font-family: Roboto;
 }
 
 .RobotoLight {
-  font-family: RobotoLight;
+    font-family: RobotoLight;
 }
 
 .RobotoThin {
-  font-family: RobotoThin;
+    font-family: RobotoThin;
 }
 
 
@@ -119,68 +148,68 @@ html {
 /* Create a medium height at 40px */
 
 .navbar-web {
-  min-height: 45px;
-  height: 45px;
-  padding: 0px 15px 0px 15px;
-  margin: 0px;
-  line-height: 32px;
+    min-height: 45px;
+    height: 45px;
+    padding: 0px 15px 0px 15px;
+    margin: 0px;
+    line-height: 32px;
 }
 
 .navbar-xs.tiny-navbar {
-  min-height: 32px;
-  height: 32px;
-  padding: 0px 15px 0px 15px;
-  margin: 0px;
-  line-height: 32px;
+    min-height: 32px;
+    height: 32px;
+    padding: 0px 15px 0px 15px;
+    margin: 0px;
+    line-height: 32px;
 }
 
 .navbar-xs.tiny-navbar .navbar-brand {
-  padding: 0px 12px;
-  font-size: 16px;
-  line-height: 32px;
+    padding: 0px 12px;
+    font-size: 16px;
+    line-height: 32px;
 }
 
 .navbar-xs.tiny-navbar .navbar-nav>li>a {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  line-height: 32px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: 32px;
 }
 
 
 /* Validation styles */
 
 .validationMessage {
-  color: red;
-  font-size: 12px;
+    color: red;
+    font-size: 12px;
 }
 
 input.ng-invalid.ng-dirty {
-  border-color: red;
+    border-color: red;
 }
 
 .tiny-navbar {
-  z-index: 1200;
+    z-index: 1200;
 }
 
 @media only screen and (min-width: 2000px) {
-  .navbar-xs.tiny-navbar {
-    min-height: auto;
-    height: 2.0vw;
-    font-size: 1.2vw;
-    padding: 0px 15px 0px 15px;
-    margin: 0px;
-    line-height: 2.0vw;
-  }
-  .navbar-xs.tiny-navbar .navbar-brand {
-    padding: 0px 12px;
-    font-size: 1.2vw;
-    line-height: 2.0vw;
-  }
-  .navbar-xs.tiny-navbar .navbar-nav>li>a {
-    padding-top: 0px;
-    padding-bottom: 0px;
-    line-height: 2.0vw;
-  }
+    .navbar-xs.tiny-navbar {
+        min-height: auto;
+        height: 2.0vw;
+        font-size: 1.2vw;
+        padding: 0px 15px 0px 15px;
+        margin: 0px;
+        line-height: 2.0vw;
+    }
+    .navbar-xs.tiny-navbar .navbar-brand {
+        padding: 0px 12px;
+        font-size: 1.2vw;
+        line-height: 2.0vw;
+    }
+    .navbar-xs.tiny-navbar .navbar-nav>li>a {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        line-height: 2.0vw;
+    }
 }
 
 
@@ -190,86 +219,86 @@ input.ng-invalid.ng-dirty {
 /* Bootstrap 3 Label */
 
 .label {
-  display: inline;
-  padding: .2em .6em .3em;
-  font-size: 75%;
-  font-weight: bold;
-  line-height: 1;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: .25em;
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
 }
 
 a.label:hover,
 a.label:focus {
-  color: #fff;
-  text-decoration: none;
-  cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .label:empty {
-  display: none;
+    display: none;
 }
 
 .btn .label {
-  position: relative;
-  top: -1px;
+    position: relative;
+    top: -1px;
 }
 
 .label-default {
-  background-color: #777;
+    background-color: #777;
 }
 
 .label-default[href]:hover,
 .label-default[href]:focus {
-  background-color: #5e5e5e;
+    background-color: #5e5e5e;
 }
 
 .label-primary {
-  background-color: #337ab7;
+    background-color: #337ab7;
 }
 
 .label-primary[href]:hover,
 .label-primary[href]:focus {
-  background-color: #286090;
+    background-color: #286090;
 }
 
 .label-success {
-  background-color: #5cb85c;
+    background-color: #5cb85c;
 }
 
 .label-success[href]:hover,
 .label-success[href]:focus {
-  background-color: #449d44;
+    background-color: #449d44;
 }
 
 .label-info {
-  background-color: #5bc0de;
+    background-color: #5bc0de;
 }
 
 .label-info[href]:hover,
 .label-info[href]:focus {
-  background-color: #31b0d5;
+    background-color: #31b0d5;
 }
 
 .label-warning {
-  background-color: #f0ad4e;
+    background-color: #f0ad4e;
 }
 
 .label-warning[href]:hover,
 .label-warning[href]:focus {
-  background-color: #ec971f;
+    background-color: #ec971f;
 }
 
 .label-danger {
-  background-color: #d9534f;
+    background-color: #d9534f;
 }
 
 .label-danger[href]:hover,
 .label-danger[href]:focus {
-  background-color: #c9302c;
+    background-color: #c9302c;
 }
 
 
@@ -279,146 +308,146 @@ a.label:focus {
 /* BS Loader */
 
 #loader {
-  bottom: 0;
-  height: 175px;
-  left: 0;
-  margin: auto;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 175px;
+    bottom: 0;
+    height: 175px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 175px;
 }
 
 #loader {
-  bottom: 0;
-  height: 175px;
-  left: 0;
-  margin: auto;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 175px;
+    bottom: 0;
+    height: 175px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 175px;
 }
 
 #loader .dot {
-  bottom: 0;
-  height: 100%;
-  left: 0;
-  margin: auto;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 87.5px;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 87.5px;
 }
 
 #loader .dot::before {
-  border-radius: 100%;
-  content: "";
-  height: 87.5px;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  transform: scale(0);
-  width: 87.5px;
+    border-radius: 100%;
+    content: "";
+    height: 87.5px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: scale(0);
+    width: 87.5px;
 }
 
 #loader .dot:nth-child(7n+1) {
-  transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
 #loader .dot:nth-child(7n+1)::before {
-  animation: 0.8s linear 0.1s normal none infinite running load;
-  background: #00ff80 none repeat scroll 0 0;
+    animation: 0.8s linear 0.1s normal none infinite running load;
+    background: #00ff80 none repeat scroll 0 0;
 }
 
 #loader .dot:nth-child(7n+2) {
-  transform: rotate(90deg);
+    transform: rotate(90deg);
 }
 
 #loader .dot:nth-child(7n+2)::before {
-  animation: 0.8s linear 0.2s normal none infinite running load;
-  background: #00ffea none repeat scroll 0 0;
+    animation: 0.8s linear 0.2s normal none infinite running load;
+    background: #00ffea none repeat scroll 0 0;
 }
 
 #loader .dot:nth-child(7n+3) {
-  transform: rotate(135deg);
+    transform: rotate(135deg);
 }
 
 #loader .dot:nth-child(7n+3)::before {
-  animation: 0.8s linear 0.3s normal none infinite running load;
-  background: #00aaff none repeat scroll 0 0;
+    animation: 0.8s linear 0.3s normal none infinite running load;
+    background: #00aaff none repeat scroll 0 0;
 }
 
 #loader .dot:nth-child(7n+4) {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 #loader .dot:nth-child(7n+4)::before {
-  animation: 0.8s linear 0.4s normal none infinite running load;
-  background: #0040ff none repeat scroll 0 0;
+    animation: 0.8s linear 0.4s normal none infinite running load;
+    background: #0040ff none repeat scroll 0 0;
 }
 
 #loader .dot:nth-child(7n+5) {
-  transform: rotate(225deg);
+    transform: rotate(225deg);
 }
 
 #loader .dot:nth-child(7n+5)::before {
-  animation: 0.8s linear 0.5s normal none infinite running load;
-  background: #2a00ff none repeat scroll 0 0;
+    animation: 0.8s linear 0.5s normal none infinite running load;
+    background: #2a00ff none repeat scroll 0 0;
 }
 
 #loader .dot:nth-child(7n+6) {
-  transform: rotate(270deg);
+    transform: rotate(270deg);
 }
 
 #loader .dot:nth-child(7n+6)::before {
-  animation: 0.8s linear 0.6s normal none infinite running load;
-  background: #9500ff none repeat scroll 0 0;
+    animation: 0.8s linear 0.6s normal none infinite running load;
+    background: #9500ff none repeat scroll 0 0;
 }
 
 #loader .dot:nth-child(7n+7) {
-  transform: rotate(315deg);
+    transform: rotate(315deg);
 }
 
 #loader .dot:nth-child(7n+7)::before {
-  animation: 0.8s linear 0.7s normal none infinite running load;
-  background: magenta none repeat scroll 0 0;
+    animation: 0.8s linear 0.7s normal none infinite running load;
+    background: magenta none repeat scroll 0 0;
 }
 
 #loader .dot:nth-child(7n+8) {
-  transform: rotate(360deg);
+    transform: rotate(360deg);
 }
 
 #loader .dot:nth-child(7n+8)::before {
-  animation: 0.8s linear 0.8s normal none infinite running load;
-  background: #ff0095 none repeat scroll 0 0;
+    animation: 0.8s linear 0.8s normal none infinite running load;
+    background: #ff0095 none repeat scroll 0 0;
 }
 
 #loader .lading {
-  background-image: url("../images/loading.gif");
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  bottom: -40px;
-  height: 20px;
-  left: 0;
-  position: absolute;
-  right: 0;
-  width: 180px;
+    background-image: url("../images/loading.gif");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    bottom: -40px;
+    height: 20px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    width: 180px;
 }
 
 @keyframes load {
-  100% {
-    opacity: 0;
-    transform: scale(1);
-  }
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
 }
 
 @keyframes load {
-  100% {
-    opacity: 0;
-    transform: scale(1);
-  }
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
 }
 
 
@@ -430,12 +459,11 @@ a.label:focus {
 .input-group-xs>.form-control,
 .input-group-xs>.input-group-addon,
 .input-group-xs>.input-group-btn>.btn {
-  height: 22px;
-  padding: 1px 5px;
-  font-size: 12px;
-  line-height: 1.5;
+    height: 22px;
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
 }
-
 
 .btn-sm,
 .btn-group-sm>.btn {
@@ -452,33 +480,55 @@ a.label:focus {
     line-height: 1.5;
     border-radius: 3px;
 }
+
+
 /* END: Boostrap input-group-xs */
+
 
 /* Font Watermark */
 
-.fontwatermark{
-    font-size:200px;
-    left:-80px;
+.fontwatermark {
+    font-size: 200px;
+    left: -80px;
     bottom: 10%;
     position: fixed;
     opacity: 0.25;
     /*color:transparent;*/
 }
-.fontwatermarkright{
+
+.fontwatermarkright {
     float: right;
-    font-size:250px;
-    right:-40px;
+    font-size: 250px;
+    right: -40px;
     bottom: 10%;
     position: fixed;
     opacity: 0.25;
     /*color:transparent;*/
 }
+
 
 /* END: Font Watermark */
 
-pre span {white-space: normal;}
-   .string { color: green; }
-   .number { color: darkorange; }
-   .boolean { color: blue; }
-   .null { color: magenta; }
-   .key { color: red; }
+pre span {
+    white-space: normal;
+}
+
+.string {
+    color: green;
+}
+
+.number {
+    color: darkorange;
+}
+
+.boolean {
+    color: blue;
+}
+
+.null {
+    color: magenta;
+}
+
+.key {
+    color: red;
+}

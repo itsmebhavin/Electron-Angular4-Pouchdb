@@ -4,7 +4,6 @@ import { NgModule, ModuleWithProviders  } from '@angular/core';
 import {PrettyJsonModule, SafeJsonPipe} from 'angular2-prettyjson';
 import {JsonPipe} from '@angular/common';
 import { PouchdbService } from './pouchdb-service/pouchdb.service';
-import { DbSyncIndicatorComponent } from './db-sync-indicator/db-sync-indicator.component';
 
 @NgModule({
     imports: [
@@ -12,10 +11,8 @@ import { DbSyncIndicatorComponent } from './db-sync-indicator/db-sync-indicator.
         PrettyJsonModule,
     ],
     exports: [
-        DbSyncIndicatorComponent
     ],
     declarations: [
-        DbSyncIndicatorComponent
     ],
     providers: [
         { provide: JsonPipe, useClass: SafeJsonPipe },

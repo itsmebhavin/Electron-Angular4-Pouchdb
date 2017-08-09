@@ -2,12 +2,23 @@ import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'db-sync-indicator',
-  templateUrl: './db-sync-indicator.component.html'
+  templateUrl: './db-sync-indicator.component.html',
+  styles: [`
+    .red{
+      background-color:red;
+    }
+    .orange{
+      background-color:orange;
+    }
+    .green{
+      background-color:lime-green;
+    }
+  `]
 })
-export class DbSyncIndicatorComponent {
+export class DbSyncIndicatorComponent implements OnChanges {
 
   syncText: string;
-  syncStyle = { 'color': 'red' };
+  syncStyle: string;
 
   @Input()
   dbName = '';
@@ -22,14 +33,14 @@ export class DbSyncIndicatorComponent {
 
   ngOnChanges() {
     if (!this.serverUp) {
-      this.syncStyle.color = 'red';
-      this.syncText = (this.dbName + ' ' || '') + 'Offline';
+      this.syncStyle = 'red';
+      this.syncText =  'Offline';
     } else if (!this.syncStatus) {
-      this.syncStyle.color = 'orange';
-      this.syncText = (this.dbName + ' ' || '') + 'Synchronizing';
+      this.syncStyle = 'orange';
+      this.syncText = 'Synchronizing';
     } else {
-      this.syncStyle.color = 'green';
-      this.syncText = (this.dbName + ' ' || '') + 'Synchronized';
+      this.syncStyle = 'green';
+      this.syncText =  'Synchronized';
     }
   }
 

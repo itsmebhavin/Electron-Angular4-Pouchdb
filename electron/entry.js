@@ -16,7 +16,8 @@ const path = require('path');
 const fs = require("fs");
 const moment = require("moment");
 const winston = require('winston');
-var logDir = 'errorlog';
+let logDir = 'errorlog';
+
 
 //Main process constants
 let win;
@@ -83,6 +84,7 @@ function runMainProcess() {
         });
         // Create the browser window.
         win = new BrowserWindow({
+            titleBarStyle: 'hidden',
             x: mainWindowState.x,
             y: mainWindowState.y,
             width: mainWindowState.width,
@@ -95,9 +97,9 @@ function runMainProcess() {
             alwaysOnTop: true,
             'minHeight': 720,
             'minWidth': 1020,
-            titleBarStyle: 'hidden',
-            webPreferences : {
-                devTools:true
+            //titleBarStyle: 'hidden',
+            webPreferences: {
+                devTools: true
             }
         });
 
@@ -117,9 +119,6 @@ function runMainProcess() {
             }
         });
 
-        // win.once('ready-to-show', () => {
-        //     win.show();
-        // });
         // Let us register listeners on the window, so we can update the state
         // automatically (the listeners will be removed when the window is closed)
         // and restore the maximized or full screen state
@@ -153,25 +152,25 @@ function runMainProcess() {
                 click: restoreMainWindow
             }, {
                 label: 'Toggle Developer Tools',
-                accelerator: (function () {
+                accelerator: (function() {
                     if (process.platform == 'darwin')
                         return 'Alt+Command+I';
                     else
                         return 'Ctrl+Shift+I';
                 })(),
-                click: function () {
+                click: function() {
                     if (win)
                         win.toggleDevTools();
                 }
             }, {
                 label: 'Toggle Menubar',
-                accelerator: (function () {
+                accelerator: (function() {
                     if (process.platform == 'darwin')
                         return 'Alt+Command+M';
                     else
                         return 'Ctrl+Shift+M';
                 })(),
-                click: function () {
+                click: function() {
                     if (win.isMenuBarVisible())
                         win.setMenuBarVisibility(false);
                     else
@@ -179,18 +178,18 @@ function runMainProcess() {
                 }
             }, {
                 label: 'Reload (same as toolbar reload)',
-                accelerator: (function () {
+                accelerator: (function() {
                     if (process.platform == 'darwin')
                         return 'Alt+R';
                     else
                         return 'Ctrl+R';
                 })(),
-                click: function () {
+                click: function() {
                     win.reload();
                 }
             }, {
                 label: 'Check Versions',
-                click: function () {
+                click: function() {
                     var dialogOptions = {
                         type: "info",
                         title: app.getName(),

@@ -28,6 +28,7 @@ import { UfpFormsModule } from './_components/forms/forms.module';
 import { UfpPouchDBModule } from './_pouchdb/pouchdb.module';
 import { UfpServicesModule } from './_services/services.module';
 import { ViolationNoticeComponent } from './violationnotice/violation-notice.component';
+import { DbSyncIndicatorComponent } from './_pouchdb/db-sync-indicator/db-sync-indicator.component';
 
 
 
@@ -50,7 +51,8 @@ import { ViolationNoticeComponent } from './violationnotice/violation-notice.com
     ViolationNoticeComponent,
     ShortDateTimePipe,
     LongDatePipe,
-    SortByStringPipe
+    SortByStringPipe,
+    DbSyncIndicatorComponent
   ],
   imports: [
     BrowserModule,
