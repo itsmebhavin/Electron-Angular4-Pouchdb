@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 // the pouchdb-adapter file/class in the same folder
-import { PouchDbAdapter } from './pouchdb-adapter';
+import { PouchDbAdapterCitation, PouchDbAdapterReference } from './pouchdb-adapter';
 import { ConfigService } from '../../config.service';
 
 const REMOTE_COUCH_DB_ADDRESS = 'http://localhost:5984/';
@@ -10,11 +10,14 @@ const REMOTE_COUCH_DB_ADDRESS = 'http://localhost:5984/';
 export class PouchdbService implements OnInit {
 
   // handler for the adapter class
-  private _pouchDbAdapterRef: PouchDbAdapter;
-  private _pouchDbAdapterCit: PouchDbAdapter;
+  private _pouchDbAdapterRef: PouchDbAdapterReference;
+  private _pouchDbAdapterCit: PouchDbAdapterCitation;
   // rxjs observables to broadcast sync status
-  syncStatus: Observable<boolean>;
-  couchdbUp: Observable<boolean>;
+  syncStatusRef: Observable<boolean>;
+  couchdbUpRef: Observable<boolean>;
+
+  syncStatusCit: Observable<boolean>;
+  couchdbUpCit: Observable<boolean>;
 
   // URL of CouchDB (hardwired above)
   remoteCouchDBAddress = REMOTE_COUCH_DB_ADDRESS;
@@ -25,14 +28,14 @@ export class PouchdbService implements OnInit {
   constructor(private config: ConfigService) {
 
     // Reference Data Setup
-    // this._pouchDbAdapterRef = new PouchDbAdapter(this.remoteCouchDBAddress + '/' + this.remoteCouchReferenceDBName );
-    // this.syncStatus = this._pouchDbAdapterRef.syncStatus.asObservable();
-    // this.couchdbUp = this._pouchDbAdapterRef.couchDbUp.asObservable();
+    this._pouchDbAdapterRef = new PouchDbAdapterReference(this.remoteCouchDBAddress + this.remoteCouchReferenceDBName, false );
+    this.syncStatusRef = this._pouchDbAdapterRef.syncStatusRef.asObservable();
+    this.couchdbUpRef = this._pouchDbAdapterRef.couchDbUpRef.asObservable();
 
     // Citation Data Setup
-    this._pouchDbAdapterCit = new PouchDbAdapter(this.remoteCouchDBAddress + this.remoteCouchCitationDBName, this.pouchDbDebugMode);
-    this.syncStatus = this._pouchDbAdapterCit.syncStatus.asObservable();
-    this.couchdbUp = this._pouchDbAdapterCit.couchDbUp.asObservable();
+    this._pouchDbAdapterCit = new PouchDbAdapterCitation(this.remoteCouchDBAddress + this.remoteCouchCitationDBName, this.pouchDbDebugMode);
+    this.syncStatusCit = this._pouchDbAdapterCit.syncStatusCit.asObservable();
+    this.couchdbUpCit = this._pouchDbAdapterCit.couchDbUpCit.asObservable();
   }
 
   ngOnInit() {
@@ -52,7 +55,7 @@ export class PouchdbService implements OnInit {
     return Promise.resolve(this._pouchDbAdapterCit.getDocs(howmany));
   }
 
-  post(doc): Promise<any> {
+  postCitationDoc(doc): Promise<any> {
     return Promise.resolve(this._pouchDbAdapterCit.post(doc));
   }
 

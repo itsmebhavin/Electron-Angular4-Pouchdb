@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
   syncStatus: boolean;
   couchDbUp: boolean;
   citationData: any;
+  referenceData: any;
 
   langs: string[] = [
     'English',
@@ -36,27 +37,33 @@ export class HomeComponent implements OnInit {
   ];
 
   constructor(private _fb: FormBuilder, private pouchdbservice: PouchdbService) {
-     this.pouchdbservice.syncStatus.subscribe(result => {
+     this.pouchdbservice.syncStatusCit.subscribe(result => {
       this.syncStatus = result;
     });
-    this.pouchdbservice.couchdbUp.subscribe(result => {
+    this.pouchdbservice.couchdbUpCit.subscribe(result => {
       this.couchDbUp = result;
     });
     this.remoteCouchDBAddress = this.pouchdbservice.remoteCouchDBAddress;
-    this.refreshData();
+    this.refreshCitData();
+    this.refreshRefData();
   }
 
   onSubmit({ value, valid }: { value: User, valid: boolean }) {
     if (valid) {
       console.log(value, valid);
-      this.pouchdbservice.post(value).then((response) => {
+      this.pouchdbservice.postCitationDoc(value).then((response) => {
         console.log(JSON.stringify(response));
-        this.refreshData();
+        this.refreshCitData();
       });
     }
   }
 
-  refreshData() {
+  refreshRefData() {
+    this.pouchdbservice.getReferenceDocs(5).then((response) => {
+      this.referenceData = response;
+    });
+  }
+  refreshCitData() {
     this.pouchdbservice.getCitationDocs(100).then((response) => {
       this.citationData = (response);
     });

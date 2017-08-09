@@ -21,12 +21,12 @@
                         <div class="form-group">
                             <label>Language</label>
                             <select class="form-control" formControlName="language">
-          <option value="">Please select a language</option>
-          <option *ngFor="let lang of langs"
-                  [value]="lang"> 
-                  {{lang}} 
-          </option>
-        </select>
+                                <option value="">Please select a language</option>
+                                <option *ngFor="let lang of langs"
+                                        [value]="lang"> 
+                                        {{lang}} 
+                                </option>
+                            </select>
                         </div>
 
                         <button type="submit" [disabled]="user.invalid" class="btn btn-primary btn-xs">Sign up</button>
@@ -47,5 +47,13 @@
             </div>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-block">
+                    <pre [innerHtml]="referenceData | prettyjson:3"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

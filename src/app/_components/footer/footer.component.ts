@@ -15,8 +15,8 @@ export class FooterComponent implements OnInit {
 
     remoteCouchDBAddress: string;
     dataString: string;
-    syncStatus: boolean;
-    couchDbUp: boolean;
+    syncStatusCit: boolean;
+    couchDbUpCit: boolean;
     appVersion: String = '';
     nodeVersion: String = '';
     nodeV8: String = '';
@@ -42,11 +42,11 @@ export class FooterComponent implements OnInit {
             }
         });
 
-        this.pouchdbservice.syncStatus.subscribe(result => {
-            this.syncStatus = result;
+        this.pouchdbservice.syncStatusCit.subscribe(result => {
+            this.syncStatusCit = result;
         });
-        this.pouchdbservice.couchdbUp.subscribe(result => {
-            this.couchDbUp = result;
+        this.pouchdbservice.couchdbUpCit.subscribe(result => {
+            this.couchDbUpCit = result;
         });
         this.remoteCouchDBAddress = this.pouchdbservice.remoteCouchDBAddress;
 
