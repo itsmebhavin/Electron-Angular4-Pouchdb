@@ -3,92 +3,134 @@
     <form [formGroup]="myform">
         <button (click)="log(myform)"></button>
         <fieldset formGroupName="driver">
-            <form-textbox type="text" formControlName="lastName" label="Last Name" [control]="myform.controls.driver.controls.lastName"></form-textbox>
+            <div class="container">
+                <div class="form-group row">
+                    <form-textbox type="text" formControlName="lastName" label="Last Name" [control]="myform.controls.driver.controls.lastName"></form-textbox>
 
-            <form-textbox type="text" formControlName="firstName" label="First Name" [control]="myform.controls.driver.controls.firstName"></form-textbox>
+                    <form-textbox type="text" formControlName="firstName" label="First Name" [control]="myform.controls.driver.controls.firstName"></form-textbox>
 
-            <form-textbox type="text" formControlName="initial" label="Middle Initial" [control]="myform.controls.driver.controls.initial"></form-textbox>
+                    <form-textbox type="text" formControlName="initial" label="Middle Initial" [control]="myform.controls.driver.controls.initial"></form-textbox>
+                </div>
+            </div>
+            <div class="container">
+                <div class="form-group row">
+                    <form-textbox type="text" formControlName="street" label="Street" [control]="myform.controls.driver.controls.street"></form-textbox>
 
-            <form-textbox type="text" formControlName="street" label="Street" [control]="myform.controls.driver.controls.street"></form-textbox>
+                    <form-textbox type="text" formControlName="city" label="City" [control]="myform.controls.driver.controls.city"></form-textbox>
 
-            <form-textbox type="text" formControlName="city" label="City" [control]="myform.controls.driver.controls.city"></form-textbox>
+                    <form-textbox type="text" formControlName="state" label="State" [control]="myform.controls.driver.controls.state"></form-textbox>
+                </div>
+            </div>
+            <div class="container">
+                <div class="form-group row">
+                    <form-textbox type="text" formControlName="age" label="Age" [control]="myform.controls.driver.controls.age"></form-textbox>
 
-            <form-textbox type="text" formControlName="state" label="State" [control]="myform.controls.driver.controls.state"></form-textbox>
+                    <form-textbox type="date" formControlName="birthDate" label="Birthdate" [control]="myform.controls.driver.controls.birthDate"></form-textbox>
 
-            <form-textbox type="text" formControlName="age" label="Age" [control]="myform.controls.driver.controls.age"></form-textbox>
+                    <form-textbox type="text" formControlName="race" label="Race" [control]="myform.controls.driver.controls.race"></form-textbox>
+                </div>
+            </div>
+            <div class="container">
+                <div class="form-group row">
+                    <form-textbox type="text" formControlName="sex" label="Sex" [control]="myform.controls.driver.controls.sex"></form-textbox>
 
-            <form-textbox type="date" formControlName="birthDate" label="Birthdate" [control]="myform.controls.driver.controls.birthDate"></form-textbox>
+                    <form-textbox type="text" formControlName="height" label="Height" [control]="myform.controls.driver.controls.height"></form-textbox>
 
-            <form-textbox type="text" formControlName="race" label="Race" [control]="myform.controls.driver.controls.race"></form-textbox>
+                    <form-textbox type="text" formControlName="weight" label="Weight" [control]="myform.controls.driver.controls.weight"></form-textbox>
+                </div>
+            </div>
+            <div class="container">
+                <div class="form-group row">
+                    <form-textbox type="text" formControlName="licenseNum" label="License Number" [control]="myform.controls.driver.controls.licenseNum"></form-textbox>
 
-            <form-textbox type="text" formControlName="sex" label="Sex" [control]="myform.controls.driver.controls.sex"></form-textbox>
+                    <form-textbox type="text" formControlName="licenseClass" label="License Class" [control]="myform.controls.driver.controls.licenseClass"></form-textbox>
 
-            <form-textbox type="text" formControlName="height" label="Height" [control]="myform.controls.driver.controls.height"></form-textbox>
+                    <form-textbox type="text" formControlName="licenseState" label="License State" [control]="myform.controls.driver.controls.licenseState"></form-textbox>
+                </div>
+            </div>
+            <div class="container">
+                <div class="form-group row">
+                    <form-textbox type="text" formControlName="origin" label="Origin" [control]="myform.controls.driver.controls.origin"></form-textbox>
 
-            <form-textbox type="text" formControlName="weight" label="Weight" [control]="myform.controls.driver.controls.weight"></form-textbox>
+                    <form-textbox type="text" formControlName="address" label="Address" [control]="myform.controls.driver.controls.address"></form-textbox>
 
-            <form-textbox type="text" formControlName="licenseNum" label="License Number" [control]="myform.controls.driver.controls.licenseNum"></form-textbox>
-
-            <form-textbox type="text" formControlName="licenseClass" label="License Class" [control]="myform.controls.driver.controls.licenseClass"></form-textbox>
-
-            <form-textbox type="text" formControlName="licenseState" label="License State" [control]="myform.controls.driver.controls.licenseState"></form-textbox>
-
-            <form-textbox type="text" formControlName="origin" label="Origin" [control]="myform.controls.driver.controls.origin"></form-textbox>
-
-            <form-textbox type="text" formControlName="address" label="Address" [control]="myform.controls.driver.controls.address"></form-textbox>
-
-            <form-textbox type="text" formControlName="destination" label="Destination" [control]="myform.controls.driver.controls.destination"></form-textbox>
+                    <form-textbox type="text" formControlName="destination" label="Destination" [control]="myform.controls.driver.controls.destination"></form-textbox>
+                </div>
+            </div>
         </fieldset>
 
         <fieldset formGroupName="vehicle">
-            <form-textbox type="text" formControlName="owner" label="Owner" [control]="myform.controls.vehicle.controls.owner"></form-textbox>
+            <div class="container">
+                <div class="form-group row">
+                    <form-textbox type="text" formControlName="owner" label="Owner" [control]="myform.controls.vehicle.controls.owner"></form-textbox>
 
-            <form-textbox type="text" formControlName="vehicleLicenseNum" label="License Number" [control]="myform.controls.vehicle.controls.vehicleLicenseNum"></form-textbox>
+                    <form-textbox type="text" formControlName="vehicleLicenseNum" label="License Number" [control]="myform.controls.vehicle.controls.vehicleLicenseNum"></form-textbox>
 
-            <form-textbox type="text" formControlName="vehicleLicenseState" label="License State" [control]="myform.controls.vehicle.controls.vehicleLicenseState"></form-textbox>
+                    <form-textbox type="text" formControlName="vehicleLicenseState" label="License State" [control]="myform.controls.vehicle.controls.vehicleLicenseState"></form-textbox>
+                </div>
+            </div>
+            <div class="container">
+                <div class="form-group row">
+                    <form-textbox type="text" formControlName="vehicleLicenseYear" label="License Year" [control]="myform.controls.vehicle.controls.vehicleLicenseYear"></form-textbox>
 
-            <form-textbox type="text" formControlName="vehicleLicenseYear" label="License Year" [control]="myform.controls.vehicle.controls.vehicleLicenseYear"></form-textbox>
-
-            <form-textbox type="text" formControlName="vehicleMake" label="Make" [control]="myform.controls.vehicle.controls.vehicleMake"></form-textbox>
+                    <form-textbox type="text" formControlName="vehicleMake" label="Make" [control]="myform.controls.vehicle.controls.vehicleMake"></form-textbox>
+                </div>
+            </div>
         </fieldset>
 
         <fieldset formGroupName="violation">
-            <form-textbox type="datetime-local" formControlName="dateTime" label="Date/Time" [control]="myform.controls.violation.controls.dateTime"></form-textbox>
-            
-            <form-textbox type="text" formControlName="location" label="Location" [control]="myform.controls.violation.controls.location"></form-textbox>
-
-            <form-textbox type="text" formControlName="stateStatute" label="State Statute" [control]="myform.controls.violation.controls.stateStatute"></form-textbox>
-
-            <div class="form-group">
-                <label>Violation</label>
-                <select multiple name="stateStatuteViolation" formControlName="stateStatuteViolation">
-                <option *ngFor="let violation of violations" [value]="violation">  
-                    {{violation}}
-                </option>
-                </select>
-            </div>
-
-            <form-textbox type="text" formControlName="codeNum" label="Code Number" [control]="myform.controls.violation.controls.codeNum"></form-textbox>
-
-            <form-textbox type="text" formControlName="violation" label="Violation" [control]="myform.controls.violation.controls.violation"></form-textbox>
-
-            <form-textbox type="text" formControlName="officer" label="Officer" [control]="myform.controls.violation.controls.officer"></form-textbox>
-
-            <form-textbox type="text" formControlName="officerUnit" label="Officer Unit/Station" [control]="myform.controls.violation.controls.officerUnit"></form-textbox>
-
-            <div class="form-group">
-                <label>Location</label>
-                <div *ngFor="let locationEntry of summonsLocations">
-                    <label>
-                        <input type="radio" formControlName="summonsLocation" [value]="locationEntry">
-                        {{locationEntry}}
-                    </label>
+            <div class="container">
+                <div class="form-group row">
+                    <form-textbox type="datetime-local" formControlName="dateTime" label="Date/Time" [control]="myform.controls.violation.controls.dateTime"></form-textbox>
+                    
+                    <form-textbox type="text" formControlName="location" label="Location" [control]="myform.controls.violation.controls.location"></form-textbox>
                 </div>
             </div>
+            <div class="container">
+                <div class="form-group row">
+                    <form-textbox type="text" formControlName="stateStatute" label="State Statute" [control]="myform.controls.violation.controls.stateStatute"></form-textbox>
 
-            <form-textbox type="datetime-local" formControlName="summonsDate" label="Date" [control]="myform.controls.violation.controls.summonsDate"></form-textbox>
+                    <div>
+                        <label>Violation</label>
+                        <select multiple name="stateStatuteViolation" formControlName="stateStatuteViolation">
+                        <option *ngFor="let violation of violations" [value]="violation">  
+                            {{violation}}
+                        </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="form-group row">
+                    <form-textbox type="text" formControlName="codeNum" label="Code Number" [control]="myform.controls.violation.controls.codeNum"></form-textbox>
+
+                    <form-textbox type="text" formControlName="violation" label="Violation" [control]="myform.controls.violation.controls.violation"></form-textbox>
+                </div>
+            </div>
+            <div class="container">
+                <div class="form-group row">
+                    <form-textbox type="text" formControlName="officer" label="Officer" [control]="myform.controls.violation.controls.officer"></form-textbox>
+
+                    <form-textbox type="text" formControlName="officerUnit" label="Officer Unit/Station" [control]="myform.controls.violation.controls.officerUnit"></form-textbox>
+                </div>
+            </div>
+            <div class="container">
+                <div class="form-group row">
+                    <div>
+                        <label>Location</label>
+                        <div *ngFor="let locationEntry of summonsLocations">
+                            <label>
+                                <input type="radio" formControlName="summonsLocation" [value]="locationEntry">
+                                {{locationEntry}}
+                            </label>
+                        </div>
+                    </div>
+
+                    <form-textbox type="datetime-local" formControlName="summonsDate" label="Date" [control]="myform.controls.violation.controls.summonsDate"></form-textbox>
+                </div>
+            </div>
         </fieldset>
     </form>
 
-    {{myform.value | json}}
+    <pre>{{myform.value | json}}</pre>
 </div>
