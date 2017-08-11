@@ -509,6 +509,9 @@ a.label:focus {
 
 /* END: Font Watermark */
 
+
+/* PretyJson Start */
+
 pre span {
     white-space: normal;
 }
@@ -532,3 +535,6 @@ pre span {
 .key {
     color: red;
 }
+
+
+/* End: Pretty Json */

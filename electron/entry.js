@@ -97,7 +97,6 @@ function runMainProcess() {
             alwaysOnTop: true,
             'minHeight': 720,
             'minWidth': 1020,
-            //titleBarStyle: 'hidden',
             webPreferences: {
                 devTools: true
             }

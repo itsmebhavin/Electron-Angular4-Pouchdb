@@ -1,4 +1,6 @@
+declare function require(name: string);
 import PouchDB from 'pouchdb';
+PouchDB.plugin(require('pouchdb-upsert'));
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ConfigService } from '../../config.service';
 
@@ -8,7 +10,7 @@ export class PouchDbAdapterCitation {
     private _couchDBCit: any;
     private _remoteCouchDBAddress: string;
     private _pouchDbNameCit: string;
-
+    FAKE_USERNAME = 'bpatel';
     // rxjs behaviour subjects to expose stats flags
     syncStatusCit = new BehaviorSubject<boolean>(false);
     couchDbUpCit = new BehaviorSubject<boolean>(false);
@@ -19,25 +21,49 @@ export class PouchDbAdapterCitation {
         this._pouchDbNameCit = remoteCouchDBAddress
             .substr(remoteCouchDBAddress.lastIndexOf('/') + 1);
         // init local PouchDB
+        // new PouchDB(this._pouchDbNameCit).destroy(this._couchDBCit);
         this._pouchDBCit = new PouchDB(this._pouchDbNameCit);
-        if (debugMode) { PouchDB.debug.enable('*'); }
+        // if (debugMode) { PouchDB.debug.enable('*'); }
         console.log('Connecting local citation db:', this._pouchDBCit);
         // init PouchDB adapter for remote CouchDB
         this._couchDBCit = new PouchDB(remoteCouchDBAddress);
         console.log('Connecting remote citation db:', this._couchDBCit);
         // sync the PouchDB and CouchDB
+
+
         this._pouchDBCit.sync(this._couchDBCit, {
             live: true,
             retry: true,
             continuous: true
         })
-            // attach sync status update functions to PouchDB events
             .on('paused', err => { this.syncStatusCitUpdate(); })
-            .on('change', info => { this.syncStatusCitUpdate(); });
+            .on('change', info => {
+                console.log('Pouch Sync FROM Couch CHANGE: ', info);
+                this.syncStatusCitUpdate();
+            })
+            .on('error', err => {
+                // TODO: Write error handling and display message to user
+                console.error('We are not able to replicate FROM couch db: ', err);
+            })
+            .on('active', info => {
+                // TODO: Write code when sync is resume after pause/error
+                console.log('FROM: We are able to resume syncing now with Couchdb: ', info);
+            });
+        // this._pouchDBCit.replicate.to(this._couchDBCit);
     }
 
     // pretty basic and crude function
     // return a Promise with the first 20 docs from allDocs as is
+    destroy() {
+        return new Promise((resolve, reject) => {
+            try {
+                this._pouchDBCit.destroy();
+                resolve('DB successfully distroyed');
+            } catch (e) {
+                reject(e);
+            }
+        });
+    }
     getDocs(howmany: number): Promise<any> {
         return new Promise(resolve => {
             this._pouchDBCit.allDocs({
@@ -103,7 +129,7 @@ export class PouchDbAdapterCitation {
                             .split('-')[0]));
                 })
                 // on error just resolve as false
-                .catch((error) =>  {return false;} );
+                .catch((error) => { return false; });
         } else {
             // if one of the PouchDB or CouchDB objects doesn't exist yet
             // return resolve false
@@ -153,10 +179,10 @@ export class PouchDbAdapterReference {
         // init local PouchDB
         this._pouchDBRef = new PouchDB(this._pouchDbNameRef);
         if (debugMode) { PouchDB.debug.enable('*'); }
-        console.log('Connecting local db:', this._pouchDBRef);
+        console.log('Connecting local reference db:', this._pouchDBRef);
         // init PouchDB adapter for remote CouchDB
         this._couchDBRef = new PouchDB(remoteCouchDBAddress);
-        console.log('Connecting remote db:', this._couchDBRef);
+        console.log('Connecting remote reference db:', this._couchDBRef);
         // sync the PouchDB and CouchDB
         this._pouchDBRef.sync(this._couchDBRef, {
             live: true,
@@ -235,7 +261,7 @@ export class PouchDbAdapterReference {
                             .split('-')[0]));
                 })
                 // on error just resolve as false
-                .catch((error) =>  { return false; } );
+                .catch((error) => { return false; });
         } else {
             // if one of the PouchDB or CouchDB objects doesn't exist yet
             // return resolve false
@@ -265,6 +291,3 @@ export class PouchDbAdapterReference {
         });
     }
 }
-
-
-

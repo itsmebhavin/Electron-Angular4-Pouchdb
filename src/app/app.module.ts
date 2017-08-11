@@ -27,9 +27,7 @@ import { UfpFormsModule } from './_components/forms/forms.module';
 import { UfpPouchDBModule } from './_pouchdb/pouchdb.module';
 import { UfpServicesModule } from './_services/services.module';
 import { ViolationNoticeComponent } from './violationnotice/violation-notice.component';
-import { DbSyncIndicatorComponent } from './_pouchdb/db-sync-indicator/db-sync-indicator.component';
-
-
+import { PouchdbService } from './_pouchdb/pouchdb-service/pouchdb.service';
 
 // Services
 
@@ -50,8 +48,7 @@ import { DbSyncIndicatorComponent } from './_pouchdb/db-sync-indicator/db-sync-i
     ViolationNoticeComponent,
     ShortDateTimePipe,
     LongDatePipe,
-    SortByStringPipe,
-    DbSyncIndicatorComponent
+    SortByStringPipe
   ],
   imports: [
     BrowserModule,
@@ -75,13 +72,18 @@ import { DbSyncIndicatorComponent } from './_pouchdb/db-sync-indicator/db-sync-i
     {
       provide: APP_INITIALIZER,
       useFactory: ConfigLoader,
-      deps: [ConfigService],
+      deps: [ConfigService, PouchdbService],
       multi: true
     }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-export function ConfigLoader(configService: ConfigService) {
-  return () => configService.load(environment.configFile);
+export function ConfigLoader(configService: ConfigService, pouchsvc: PouchdbService) {
+  const config = configService.load(environment.configFile);
+  config.then(data => {
+    pouchsvc.initializeConfig(data);
+  });
+  
+  return () => config;
 }

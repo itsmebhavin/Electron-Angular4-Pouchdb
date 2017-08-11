@@ -1,6 +1,6 @@
 import { ValidationService } from '../_services/validation/validation.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators, Validator } from '@angular/forms';
 import { PouchdbService } from '../_pouchdb/pouchdb-service/pouchdb.service';
 
 export interface User {
@@ -8,7 +8,7 @@ export interface User {
     firstName: string;
     lastName: string;
   };
-
+  userName: string;
   email: string;
   password: string;
   language: string;
@@ -37,6 +37,7 @@ export class HomeComponent implements OnInit {
   ];
 
   constructor(private _fb: FormBuilder, private pouchdbservice: PouchdbService) {
+
      this.pouchdbservice.syncStatusCit.subscribe(result => {
       this.syncStatus = result;
     });
@@ -58,19 +59,27 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  destroy_citDb() {
+    this.pouchdbservice.destroy_citdb().then((result) => {
+      console.log ('Database distroyed? ', result);
+    });
+  }
   refreshRefData() {
     this.pouchdbservice.getReferenceDocs(5).then((response) => {
+      console.log('Reference data refreshed!');
       this.referenceData = response;
     });
   }
   refreshCitData() {
     this.pouchdbservice.getCitationDocs(100).then((response) => {
+      console.log('Citation data refreshed!');
       this.citationData = (response);
     });
   }
   ngOnInit() {
 
     this.user = this._fb.group({
+      userName: ['', Validators.required],
       name: this._fb.group({
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],

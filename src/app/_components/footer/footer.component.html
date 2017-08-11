@@ -1,4 +1,4 @@
-<div class="footer fixed-bottom  navbar-light mdc-bg-grey-800" [ngClass]="{' footer-web': !isElectronApp}">
+<div class="footer mdc-bg-grey-700  mdc-text-grey-200" [ngClass]="{'footer-web':!isElectronApp, 'footer-electron': isElectronApp }">`
 
     <!--  -->
     <div *ngIf="isElectronApp; then electronfooter else webfooter"></div>
@@ -18,33 +18,33 @@
             <div class="col-6">
                 <div class="row  justify-content-end text-right">
                     <div class="col-2">
-                        <clock [format]="'MM/dd/yyyy h:mm:ss'" class="mdc-text-grey-800"></clock>
+                        <clock [format]="'MM/dd/yyyy h:mm:ss'" class="mdc-text-grey-200"></clock>
                     </div>
                     <div class="col-4">
-                        <db-sync-indicator [syncStatus]="syncStatusCit" [serverUp]="couchDbUpCit"></db-sync-indicator>
+                        <!-- <npm-badge [badgelabel]="'DB'" [badgevalue]="syncText" [badgeclass]="(syncText === 'Offline')?'danger': (syncText === 'Synchronized')? 'success':'warning'">
+                        </npm-badge>
+                     -->
+                        <b><p>{{ syncText }}</p></b>
                     </div>
                 </div>
             </div>
 
         </div>
-
-
     </ng-template>
 
     <ng-template #webfooter>
         <div class="row">
-            <div class="col align-self-start">
+            <div class="col-4 align-self-start">
                 <npm-badge [badgelabel]="'Version'" [badgevalue]="appVersion" [isElectronApp]="isElectronApp" [badgeclass]="'primary'">
                 </npm-badge>
             </div>
 
-            <div class="col align-self-center pull-2">
+            <div class="col-4 align-self-center pull-3">
                 <p>Copyright <i class="material-icons md-18">copyright</i> {{copyrightyear}} {{copyright}}</p>
             </div>
-            <div class="col-2 align-self-end">
-                <db-sync-indicator [syncStatus]="syncStatus" [serverUp]="couchDbUp"></db-sync-indicator>
+            <div class="col align-self-end">
+                <db-sync-indicator [dbName]="'Citation'" [serverUp]="couchDbUpCit" [syncStatus]="syncStatusCit"></db-sync-indicator>
             </div>
         </div>
     </ng-template>
-
 </div>

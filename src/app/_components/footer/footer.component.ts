@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { UserAgent } from '../../_services/useragent/useragent.model';
 import { UserAgentService } from '../../_services/useragent/useragent.service';
 import { ClockComponent } from '../clock/clock.component';
@@ -11,12 +11,13 @@ import { ConfigService } from '../../config.service';
     styleUrls: ['./footer.component.css'],
     providers: [UserAgentService, ConfigService]
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
 
     remoteCouchDBAddress: string;
     dataString: string;
     syncStatusCit: boolean;
     couchDbUpCit: boolean;
+    syncTextCit: any;
     appVersion: String = '';
     nodeVersion: String = '';
     nodeV8: String = '';
@@ -43,9 +44,13 @@ export class FooterComponent implements OnInit {
         });
 
         this.pouchdbservice.syncStatusCit.subscribe(result => {
+            // console.log('footer-sync');
+            // console.log(result);
             this.syncStatusCit = result;
         });
         this.pouchdbservice.couchdbUpCit.subscribe(result => {
+            // console.log('footer-couchup');
+            // console.log(result);
             this.couchDbUpCit = result;
         });
         this.remoteCouchDBAddress = this.pouchdbservice.remoteCouchDBAddress;
@@ -54,8 +59,4 @@ export class FooterComponent implements OnInit {
         this.copyright = this._config.get('Copyright');
         this.copyrightyear = this._config.get('CopyrightYear');
     }
-
-    ngOnInit() {
-    }
-
 }
