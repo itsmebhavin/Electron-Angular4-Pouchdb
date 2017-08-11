@@ -3,6 +3,7 @@ import PouchDB from 'pouchdb';
 PouchDB.plugin(require('pouchdb-upsert'));
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ConfigService } from '../../config.service';
+import { PouchdbService } from './pouchdb.service';
 
 export class PouchDbAdapterCitation {
 
@@ -19,10 +20,10 @@ export class PouchDbAdapterCitation {
         this._remoteCouchDBAddress = remoteCouchDBAddress;
         // string function to extract the database name from the URL
         this._pouchDbNameCit = remoteCouchDBAddress
-            .substr(remoteCouchDBAddress.lastIndexOf('/') + 1);
+            .substr(remoteCouchDBAddress.lastIndexOf('/') + 1) + '_' + PouchdbService.fakeUserNameForDB;
         // init local PouchDB
-        // new PouchDB(this._pouchDbNameCit).destroy(this._couchDBCit);
-        this._pouchDBCit = new PouchDB(this._pouchDbNameCit);
+        // new PouchDB(this._pouchDbNameCit).destroy();
+        this._pouchDBCit = new PouchDB(this._pouchDbNameCit, { auto_compaction: true });
         // if (debugMode) { PouchDB.debug.enable('*'); }
         console.log('Connecting local citation db:', this._pouchDBCit);
         // init PouchDB adapter for remote CouchDB
@@ -30,26 +31,52 @@ export class PouchDbAdapterCitation {
         console.log('Connecting remote citation db:', this._couchDBCit);
         // sync the PouchDB and CouchDB
 
+        this._pouchDBCit.replicate.from(this._couchDBCit, {
+             live: true,
+            retry: true,
+            continuous: true,
+            filter: 'app/by_username',
+            query_params: { 'username': PouchdbService.fakeUserNameForDB }
+        })
+            .on('paused', err => { this.syncStatusCitUpdate(); })
+            .on('change', change => {
+                console.log('C2P Change: ', change);
+                if (change.deleted) {
+                    console.log('Document was deleted...');
+                } else {
+                    console.log('Document was added/modified...');
+                }
+                this.syncStatusCitUpdate();
+            })
+            .on('error', err => {
+                // TODO: Write error handling and display message to user
+                console.error('C2P Error: ', err);
+            })
+            .on('active', info => {
+                // TODO: Write code when sync is resume after pause/error
+                console.log('C2P Active/Resume: ', info);
+            });
 
-        this._pouchDBCit.sync(this._couchDBCit, {
+
+
+        this._pouchDBCit.replicate.to(this._couchDBCit, {
             live: true,
             retry: true,
             continuous: true
         })
             .on('paused', err => { this.syncStatusCitUpdate(); })
             .on('change', info => {
-                console.log('Pouch Sync FROM Couch CHANGE: ', info);
+                console.log('P2C Change: ', info);
                 this.syncStatusCitUpdate();
             })
             .on('error', err => {
                 // TODO: Write error handling and display message to user
-                console.error('We are not able to replicate FROM couch db: ', err);
+                console.error('P2C Error: ', err);
             })
             .on('active', info => {
                 // TODO: Write code when sync is resume after pause/error
-                console.log('FROM: We are able to resume syncing now with Couchdb: ', info);
+                console.log('P2C Active/Resume: ', info);
             });
-        // this._pouchDBCit.replicate.to(this._couchDBCit);
     }
 
     // pretty basic and crude function

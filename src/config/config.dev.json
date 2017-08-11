@@ -11,8 +11,8 @@
     },
     "DefaultTheme": "pulse",
     "PouchDBDebugMode": false,
-    "RemoteCouchDBUrl": "http://localhost:5984",
-    "RemoteCouchCitationDBName": "ufp_cit",
+    "RemoteCouchDBUrl": "http://admin:password@localhost:5984/",
+    "RemoteCouchCitationDBName": "ufp_citationdata",
     "RemoteCouchReferenceDBName": "ufp_referencedata",
     "FakeUserName": "bpatel"
 }
