@@ -43,12 +43,13 @@ export class FooterComponent {
             }
         });
 
-        this.pouchdbservice.syncStatusCit.subscribe(result => {
+        PouchdbService.syncStatusCit.subscribe(result => {
             // console.log('footer-sync');
             // console.log(result);
             this.syncStatusCit = result;
-        });
-        this.pouchdbservice.couchdbUpCit.subscribe(result => {
+		});
+		
+        PouchdbService.couchdbUpCit.subscribe(result => {
             // console.log('footer-couchup');
             // console.log(result);
             this.couchDbUpCit = result;

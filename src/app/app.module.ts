@@ -34,55 +34,54 @@ import { PouchdbService } from './_pouchdb/pouchdb-service/pouchdb.service';
 // App Components
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    HomeComponent,
-    SettingsComponent,
-    LayoutComponent,
-    ClockComponent,
-    NpmBadgeComponent,
-    NetworknotifierComponent,
-    OverloadCitationComponent,
-    ViolationNoticeComponent,
-    ShortDateTimePipe,
-    LongDatePipe,
-    SortByStringPipe
-  ],
-  imports: [
-    BrowserModule,
-    HttpModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    PrettyJsonModule,
-    UfpFormsModule.forRoot(),
-    UfpServicesModule,
-    UfpPouchDBModule,
-    TabsModule.forRoot()
-  ],
-  providers: [
-    { provide: APP_BASE_HREF, useValue: '/' },
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
-    { provide: JsonPipe, useClass: SafeJsonPipe },
-    NetworkNotifierService,
-    ConfigService,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: ConfigLoader,
-      deps: [ConfigService, PouchdbService],
-      multi: true
-    }
-  ],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		HeaderComponent,
+		FooterComponent,
+		HomeComponent,
+		SettingsComponent,
+		LayoutComponent,
+		ClockComponent,
+		NpmBadgeComponent,
+		NetworknotifierComponent,
+		OverloadCitationComponent,
+		ViolationNoticeComponent,
+		ShortDateTimePipe,
+		LongDatePipe,
+		SortByStringPipe
+	],
+	imports: [
+		BrowserModule,
+		HttpModule,
+		FormsModule,
+		ReactiveFormsModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		PrettyJsonModule,
+		UfpFormsModule.forRoot(),
+		UfpServicesModule,
+		UfpPouchDBModule,
+		TabsModule.forRoot()
+	],
+	providers: [
+		{ provide: APP_BASE_HREF, useValue: '/' },
+		{ provide: LocationStrategy, useClass: HashLocationStrategy },
+		{ provide: JsonPipe, useClass: SafeJsonPipe },
+		NetworkNotifierService,
+		ConfigService,
+		{
+			provide: APP_INITIALIZER,
+			useFactory: ConfigLoader,
+			deps: [ConfigService, PouchdbService],
+			multi: true
+		}
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
 export function ConfigLoader(configService: ConfigService, pouchsvc: PouchdbService) {
-  const config = configService.load(environment.configFile);
-  config.then(data => {
-    pouchsvc.initializeConfig(data);
-  });
-  return () => config;
+	const config = configService.load(environment.configFile);
+	return () => config.then(data => {
+		pouchsvc.initializeConfig(data);
+	});
 }
