@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
     this.pouchdbservice.couchdbUpCit.subscribe(result => {
       this.couchDbUp = result;
     });
-    this.remoteCouchDBAddress = this.pouchdbservice.remoteCouchDBAddress;
+    this.remoteCouchDBAddress = PouchdbService.remoteCouchDBAddress;
     this.refreshCitData();
     this.refreshRefData();
   }

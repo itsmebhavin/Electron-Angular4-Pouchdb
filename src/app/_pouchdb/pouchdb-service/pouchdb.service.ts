@@ -7,6 +7,13 @@ import { ConfigService, Configuration } from '../../config.service';
 @Injectable()
 export class PouchdbService {
 
+  // URL of CouchDB (hardwired above)
+  static remoteCouchDBAddress: string;
+  static remoteCouchCitationDBName: string;
+  static remoteCouchReferenceDBName: string;
+  static pouchDbDebugMode: boolean;
+  static fakeUserNameForDB: string;
+
   // handler for the adapter class
   _pouchDbAdapterRef: PouchDbAdapterReference;
   _pouchDbAdapterCit: PouchDbAdapterCitation;
@@ -17,24 +24,21 @@ export class PouchdbService {
   syncStatusCit: Observable<boolean>;
   couchdbUpCit: Observable<boolean>;
 
-  // URL of CouchDB (hardwired above)
-  public remoteCouchDBAddress = '';
-  public remoteCouchCitationDBName = '';
-  public remoteCouchReferenceDBName = '';
-  public pouchDbDebugMode: boolean;
-  public fakeUserNameForDB: string;
   // initiate adapter class and hook up the observables
   constructor(private config: ConfigService) {
 
+    console.log( PouchdbService.remoteCouchDBAddress, PouchdbService.remoteCouchCitationDBName );
     // Reference Data Setup
     this._pouchDbAdapterRef = new PouchDbAdapterReference
-      (this.remoteCouchDBAddress + this.remoteCouchReferenceDBName, this.pouchDbDebugMode);
+      (PouchdbService.remoteCouchDBAddress + PouchdbService.remoteCouchReferenceDBName, PouchdbService.pouchDbDebugMode);
     this.syncStatusRef = this._pouchDbAdapterRef.syncStatusRef.asObservable();
     this.couchdbUpRef = this._pouchDbAdapterRef.couchDbUpRef.asObservable();
 
     // Citation Data Setup
     this._pouchDbAdapterCit = new PouchDbAdapterCitation
-      (this.remoteCouchDBAddress + this.remoteCouchCitationDBName + '_' + this.fakeUserNameForDB, this.pouchDbDebugMode);
+      (PouchdbService.remoteCouchDBAddress + 
+        PouchdbService.remoteCouchCitationDBName + '_' +
+         PouchdbService.fakeUserNameForDB, PouchdbService.pouchDbDebugMode);
     this.syncStatusCit = this._pouchDbAdapterCit.syncStatusCit.asObservable();
     this.couchdbUpCit = this._pouchDbAdapterCit.couchDbUpCit.asObservable();
 
@@ -42,12 +46,12 @@ export class PouchdbService {
 
   initializeConfig(config) {
     console.log(config);
-   this.remoteCouchDBAddress = config.RemoteCouchDBUrl.toLowerCase();
-      this.remoteCouchCitationDBName = config.RemoteCouchCitationDBName.toLowerCase();
-      this.remoteCouchReferenceDBName = config.RemoteCouchReferenceDBName.toLowerCase();
-      this.pouchDbDebugMode = config.PouchDBDebugMode;
-      this.fakeUserNameForDB = config.FakeUserName.toLowerCase();
-      console.log('FakeUserName = ', this.fakeUserNameForDB);
+    PouchdbService.remoteCouchDBAddress = config.RemoteCouchDBUrl.toLowerCase();
+    PouchdbService.remoteCouchCitationDBName = config.RemoteCouchCitationDBName.toLowerCase();
+    PouchdbService.remoteCouchReferenceDBName = config.RemoteCouchReferenceDBName.toLowerCase();
+    PouchdbService.pouchDbDebugMode = config.PouchDBDebugMode;
+    PouchdbService.fakeUserNameForDB = config.FakeUserName.toLowerCase();
+    console.log('FakeUserName = ', PouchdbService.fakeUserNameForDB);
   }
 
   destroy_citdb() {

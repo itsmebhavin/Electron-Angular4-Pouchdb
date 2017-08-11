@@ -53,7 +53,7 @@ export class FooterComponent {
             // console.log(result);
             this.couchDbUpCit = result;
         });
-        this.remoteCouchDBAddress = this.pouchdbservice.remoteCouchDBAddress;
+        this.remoteCouchDBAddress = PouchdbService.remoteCouchDBAddress;
 
         // console.log(this._config.getConfiguration());
         this.copyright = this._config.get('Copyright');

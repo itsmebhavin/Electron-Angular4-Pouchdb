@@ -84,6 +84,5 @@ export function ConfigLoader(configService: ConfigService, pouchsvc: PouchdbServ
   config.then(data => {
     pouchsvc.initializeConfig(data);
   });
-  
   return () => config;
 }
