@@ -32,9 +32,7 @@ export class TextboxComponent implements ControlValueAccessor, Validator {
   // in this case we're checking if the json parsing has 
   // passed or failed from the onChange method
   public validate(c: FormControl) {
-    if (c.errors) {
-      this.errorMessage = c.errors;
-    }
+    this.errorMessage = c.errors;
     return null;
   }
 
