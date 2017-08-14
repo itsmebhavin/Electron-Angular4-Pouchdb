@@ -84,7 +84,6 @@ function runMainProcess() {
         });
         // Create the browser window.
         win = new BrowserWindow({
-            titleBarStyle: 'hidden',
             x: mainWindowState.x,
             y: mainWindowState.y,
             width: mainWindowState.width,
@@ -92,9 +91,9 @@ function runMainProcess() {
             icon: path.join(__dirname, '/../dist/images/favicon.ico'),
             frame: true, //Boolean - Specify false to create a Frameless Window
             autoHideMenuBar: true,
-            darkTheme: true,
+            alwaysOnTop: false,
+            titleBarStyle: 'hiddenInset',
             show: true,
-            alwaysOnTop: true,
             'minHeight': 720,
             'minWidth': 1020,
             webPreferences: {
@@ -109,7 +108,9 @@ function runMainProcess() {
         win.on('closed', () => {
             win = null;
         });
-
+        win.once('ready-to-show', () => {
+            win.show()
+        })
         win.on('minimize', () => {
             console.log('Window minimized');
             if (process.platform !== 'darwin') {

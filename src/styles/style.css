@@ -100,6 +100,8 @@
 
 html {
     font-size: 15px;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 
@@ -481,6 +483,25 @@ a.label:focus {
     border-radius: 3px;
 }
 
+.btn-yellow {
+    background: rgb(250, 255, 140);
+    color: #574500;
+    border: none;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    /* !important tags aren't necessarily always bad */
+}
+
+.btn-yellow:hover,
+.btn-yellow:focus {
+    background: rgb(252, 255, 179);
+}
+
+.btn-yellow:active {
+    background: rgb(247, 255, 71);
+}
+
 
 /* END: Boostrap input-group-xs */
 
@@ -538,3 +559,21 @@ pre span {
 
 
 /* End: Pretty Json */
+
+
+/* No Gutter Bootstrap Column for no padding */
+
+.no-gutter>[class*='col-'] {
+    padding: 0 0 0 0;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+
+/* End: No gutter */

@@ -1,11 +1,11 @@
-<div class="container">
-    <a class="btn btn-primary btn-xs" [routerLink]="['/layout/settings']"> settings </a>
-    <a class="btn btn-primary btn-xs" [routerLink]="['/layout/overloadcitation']">Overload Citation</a>
-    <a class="btn btn-primary btn-xs" [routerLink]="['/layout/violationnotice']">Violation Notice</a>
-    <button class="btn btn-danger btn-xs" (click)="destroy_citDb()">Distroy CitDB</button>
-    <button class="btn btn-success btn-xs" (click)="refreshCitData()">Refresh CitData</button>
+<div class="no-gutters">
+    <a class="btn btn-outline-primary my-2 my-sm-0  btn-xs" [routerLink]="['/layout/settings']"> settings </a>
+    <a class="btn btn-outline-primary my-2 my-sm-0  btn-xs" [routerLink]="['/layout/overloadcitation']">Overload Citation</a>
+    <a class="btn btn-outline-primary my-2 my-sm-0  btn-xs" [routerLink]="['/layout/violationnotice']">Violation Notice</a>
+    <button class="btn btn-outline-danger my-2 my-sm-0  btn-xs" (click)="destroy_citDb()">Distroy CitDB</button>
+    <button class="btn btn-outline-success my-2 my-sm-0 btn-xs" (click)="refreshCitData()">Refresh CitData</button>
     <i class="material-icons fontwatermarkright">home</i>
-    <div class="row">
+    <div class="row no-gutters">
         <div class="col-6">
             <div class="card">
                 <div class="card-block">
@@ -21,7 +21,7 @@
                             <form-textbox type="text" formControlName="email" label="EMail" [control]="user.controls.email" required></form-textbox>
                         </div>
                         <div class="form-group">
-                            <form-textbox [type]="password" formControlName="password" label="Password" [control]="user.controls.password" required></form-textbox>
+                            <form-textbox type="password" formControlName="password" label="Password" [control]="user.controls.password" required></form-textbox>
                         </div>
                         <div class="form-group">
                             <label>Language</label>
@@ -52,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row no-gutters">
         <div class="col-12">
             <div class="card">
                 <div class="card-block">

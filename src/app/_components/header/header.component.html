@@ -1,4 +1,15 @@
-<nav class="navbar navbar-inverse bg-inverse fixed-top navbar-fixed-top"
-    [ngClass]="isElectronApp === true ? 'navbar-xs tiny-navbar':'navbar-web' ">
-  <a class="navbar-brand" href="#">{{title}}</a>
+<nav class="navbar sticky-top navbar-toggleable-lg navbar-light bg-light flex-nowrap" *ngIf="!isElectronApp">
+    <div class="d-flex">
+        <a class="navbar-brand mr-0 mr-md-2" href="#">eForms</a>
+        <span class="navbar-text small text-truncate mt-1">Powered by UFP</span>
+    </div>
+    <div class="navbar-collapse collapse justify-content-end" style="margin-right:-15px;">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-outline-success">Left</button>
+            <button type="button" class="btn btn-outline-warning">Middle</button>
+            <button type="button" class="btn btn-outline-danger">Right</button>
+        </div>
+    </div>
 </nav>
+<!-- Other Bootstrap 4 based navbar syles are here...
+https://www.codeply.com/go/kTGlK9Axdk/bootstrap-4-navbar-align-center -->

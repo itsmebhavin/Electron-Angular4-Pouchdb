@@ -1,4 +1,4 @@
-<div class="footer mdc-bg-grey-700  mdc-text-grey-200" [ngClass]="{'footer-web':!isElectronApp, 'footer-electron': isElectronApp }">`
+<div class="footer mdc-bg-grey-700  mdc-text-grey-200" [ngClass]="{'footer-web':!isElectronApp, 'footer-electron': isElectronApp }">
 
     <!--  -->
     <div *ngIf="isElectronApp; then electronfooter else webfooter"></div>
@@ -42,7 +42,7 @@
             <div class="col-4 align-self-center pull-3">
                 <p>Copyright <i class="material-icons md-18">copyright</i> {{copyrightyear}} {{copyright}}</p>
             </div>
-            <div class="col align-self-end">
+            <div class="col justify-content-end">
                 <db-sync-indicator [dbName]="'Citation'" [serverUp]="couchDbUpCit" [syncStatus]="syncStatusCit"></db-sync-indicator>
             </div>
         </div>
