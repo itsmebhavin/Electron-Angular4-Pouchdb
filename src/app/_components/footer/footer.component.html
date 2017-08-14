@@ -1,50 +1,49 @@
-<div class="footer mdc-bg-grey-700  mdc-text-grey-200" [ngClass]="{'footer-web':!isElectronApp, 'footer-electron': isElectronApp }">
+<div *ngIf="isElectronApp; then electronfooter else webfooter"></div>
 
-    <!--  -->
-    <div *ngIf="isElectronApp; then electronfooter else webfooter"></div>
-    <ng-template #electronfooter>
-        <div class="row">
-            <div class="col-6">
-                <div class="row justify-content-start">
-                    <div class="col-3">
-                        <npm-badge [badgelabel]="'Version'" [badgevalue]="appVersion" [isElectronApp]="isElectronApp" [badgeclass]="'primary'">
-                        </npm-badge>
-                    </div>
-                    <div class="col-3">
-                        <network-notifier></network-notifier>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="row  justify-content-end text-right">
-                    <div class="col-2">
-                        <clock [format]="'MM/dd/yyyy h:mm:ss'" class="mdc-text-grey-200"></clock>
-                    </div>
-                    <div class="col-4">
-                        <!-- <npm-badge [badgelabel]="'DB'" [badgevalue]="syncText" [badgeclass]="(syncText === 'Offline')?'danger': (syncText === 'Synchronized')? 'success':'warning'">
-                        </npm-badge>
-                     -->
-                        <b><p>{{ syncText }}</p></b>
-                    </div>
-                </div>
-            </div>
+<ng-template #electronfooter>
 
+    <footer class="navbar navbar-fixed-top navbar-toggleable-lg navbar-inverse bg-primary flex-nowrap footer">
+        <div class="navbar-collapse collapse dual-nav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <npm-badge [badgelabel]="'Version'" [badgevalue]="appVersion" [isElectronApp]="isElectronApp" [badgeclass]="'primary'">
+                    </npm-badge>
+                </li>
+                <li class="nav-item">
+                    <network-notifier></network-notifier>
+                </li>
+                <li class="nav-item text-light">
+                    <db-sync-indicator [dbName]="'Citation'" [serverUp]="couchDbUpCit" [syncStatus]="syncStatusCit"></db-sync-indicator>
+                </li>
+            </ul>
         </div>
-    </ng-template>
-
-    <ng-template #webfooter>
-        <div class="row">
-            <div class="col-4 align-self-start">
-                <npm-badge [badgelabel]="'Version'" [badgevalue]="appVersion" [isElectronApp]="isElectronApp" [badgeclass]="'primary'">
-                </npm-badge>
-            </div>
-
-            <div class="col-4 align-self-center pull-3">
-                <p>Copyright <i class="material-icons md-18">copyright</i> {{copyrightyear}} {{copyright}}</p>
-            </div>
-            <div class="col justify-content-end">
-                <db-sync-indicator [dbName]="'Citation'" [serverUp]="couchDbUpCit" [syncStatus]="syncStatusCit"></db-sync-indicator>
-            </div>
+        <div class="navbar-collapse collapse justify-content-end" id="collapsingNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <clock [format]="'MM/dd/yyyy h:mm:ss'" class="mdc-text-grey-200"></clock>
+                </li>
+            </ul>
         </div>
-    </ng-template>
-</div>
+    </footer>
+
+</ng-template>
+
+<ng-template #webfooter>
+    <footer class="navbar navbar-inverse navbar-toggleable-lg bg-light justify-content-between">
+
+        <div class="navbar-collapse collapse dual-nav">
+            <npm-badge [badgelabel]="'Version'" [badgevalue]="appVersion" [isElectronApp]="isElectronApp" [badgeclass]="'primary'">
+            </npm-badge>
+        </div>
+        <a href="http://www.caps.ua.edu/" class="navbar-brand mr-0 text-gray-dark">
+            <p>Copyright <i class="material-icons md-18">copyright</i> {{copyrightyear}} {{copyright}}</p>
+        </a>
+        <div class="navbar-collapse collapse dual-nav">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <db-sync-indicator [dbName]="'Citation'" [serverUp]="couchDbUpCit" [syncStatus]="syncStatusCit"></db-sync-indicator>
+                </li>
+            </ul>
+        </div>
+    </footer>
+</ng-template>
