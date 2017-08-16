@@ -15,6 +15,11 @@
             "lib",
             {
                 "glob": "**/*",
+                "input": "../node_modules/popper.js/dist/umd/",
+                "output": "./lib/popper/"
+            },
+            {
+                "glob": "**/*",
                 "input": "../node_modules/bootstrap/dist",
                 "output": "./lib/bootstrap/"
             },

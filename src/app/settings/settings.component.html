@@ -1,5 +1,58 @@
-<p>
-  settings works!
+<div class="navbar navbar-light bg-faded navbar-xs navbar-sidebar">
+    <tabset [vertical]="true" type="pills">
+        <tab [(active)]="showGeneral" (select)="showGeneral = true" (deselect)="showGeneral = false">
+            <!-- <template tabHeading>
+                <span class="hint--right hint--info" data-hint="General Settings">
+                    <i class="fa fa-2x fa-gear"></i>
+                </span>
+            </template> -->
+        </tab>
+        <tab [(active)]="showShortcuts" (select)="showShortcuts = true" (deselect)="showShortcuts = false">
+            <!-- <template tabHeading>
+                <span class="hint--right hint--info" data-hint="Keyboard Shortcuts">
+                    <i class="fa fa-2x fa-keyboard-o"></i>
+                </span>
+            </template> -->
+        </tab>
+        <tab (select)="showAbout = true" (deselect)="showAbout = false">
+            <!-- <template tabHeading>
+                <span class="hint--right hint--info" data-hint="About">
+                    <i class="fa fa-2x fa-info"></i>
+                </span>
+            </template> -->
+        </tab>
+        <tab (select)="showReleaseNotes = true" (deselect)="showReleaseNotes = false">
+            <!-- <template tabHeading>
+                <span class="hint--right hint--info" data-hint="ReleaseNotes">
+                    <i class="fa fa-2x fa-tasks"></i>
+                </span>
+            </template> -->
+        </tab>
+        <!-- <tab (select)="showHelp = true" (deselect)="showHelp = false">
+            <template tabHeading>
+                <span class="hint--right hint--info" data-hint="Help">
+                    <i class="fa fa-2x fa-question"></i>
+                </span>
+            </template>
+        </tab> -->
+    </tabset>
+</div>
+<div style="padding-left: 40px;">
+    <div *ngIf="showGeneral">
+        General Settings
+    </div>
+    <div *ngIf="showShortcuts">
+        Keyboard Settings
+    </div>
+    <div *ngIf="showAbout">
+        About Settings
+    </div>
+    <div *ngIf="showReleaseNotes">
+        Release Notes
+    </div>
+    <!-- <div *ngIf="showHelp">
+        <help-settings></help-settings>
+    </div> -->
+</div>
 
-</p>
 <i class="material-icons fontwatermarkright">settings</i>

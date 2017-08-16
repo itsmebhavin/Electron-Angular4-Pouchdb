@@ -2,6 +2,7 @@ import { ValidationService } from '../_services/validation/validation.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, Validator } from '@angular/forms';
 import { PouchdbService } from '../_pouchdb/pouchdb-service/pouchdb.service';
+import { CustomValidators } from 'ng2-validation';
 
 export interface User {
 	name: {

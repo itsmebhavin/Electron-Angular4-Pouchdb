@@ -49,4 +49,8 @@ Run `npm run runboth` for both client electron app and webapp.
                      [https://devarchy.com/angular/ng-validators]
 - Best logger [Log4J: https://devarchy.com/angular/angular2-logger] 
 - Angular Documentation Component [https://devarchy.com/angular/compodoc]
-- Pretty Json [https://devarchy.com/angular/angular2-prettyjson]                   
+- Pretty Json [https://devarchy.com/angular/angular2-prettyjson]   - Good icons 
+    - Google Material Design Icons
+    - http://demo.amitjakhu.com/dripicons/
+    - https://useiconic.com/open/
+- Error Logger: [https://devarchy.com/angular/angular2-logger]

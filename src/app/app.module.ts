@@ -28,6 +28,7 @@ import { UfpPouchDBModule } from './_pouchdb/pouchdb.module';
 import { UfpServicesModule } from './_services/services.module';
 import { ViolationNoticeComponent } from './violationnotice/violation-notice.component';
 import { PouchdbService } from './_pouchdb/pouchdb-service/pouchdb.service';
+import { CustomFormsModule } from 'ng2-validation';
 
 // Services
 
@@ -61,7 +62,8 @@ import { PouchdbService } from './_pouchdb/pouchdb-service/pouchdb.service';
 		UfpFormsModule.forRoot(),
 		UfpServicesModule,
 		UfpPouchDBModule,
-		TabsModule.forRoot()
+		TabsModule.forRoot(),
+		CustomFormsModule
 	],
 	providers: [
 		{ provide: APP_BASE_HREF, useValue: '/' },
