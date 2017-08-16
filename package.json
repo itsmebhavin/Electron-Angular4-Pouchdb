@@ -30,6 +30,7 @@
     "core-js": "^2.4.1",
     "jquery-slim": "^3.0.0",
     "lodash": "^4.17.4",
+    "ng2-completer": "^1.6.1",
     "ngx-bootstrap": "^1.8.1",
     "node-gyp": "^3.6.2",
     "pouchdb": "^6.3.4",

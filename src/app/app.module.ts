@@ -28,6 +28,8 @@ import { UfpPouchDBModule } from './_pouchdb/pouchdb.module';
 import { UfpServicesModule } from './_services/services.module';
 import { ViolationNoticeComponent } from './violationnotice/violation-notice.component';
 import { PouchdbService } from './_pouchdb/pouchdb-service/pouchdb.service';
+import { Ng2CompleterModule } from "ng2-completer";
+import { ComboboxComponent } from './_components/forms/combobox/combobox.component';
 
 // Services
 
@@ -48,7 +50,8 @@ import { PouchdbService } from './_pouchdb/pouchdb-service/pouchdb.service';
 		ViolationNoticeComponent,
 		ShortDateTimePipe,
 		LongDatePipe,
-		SortByStringPipe
+		SortByStringPipe,
+		ComboboxComponent /*Had to put this here instead of forms.module for some reason.*/
 	],
 	imports: [
 		BrowserModule,
@@ -61,7 +64,8 @@ import { PouchdbService } from './_pouchdb/pouchdb-service/pouchdb.service';
 		UfpFormsModule.forRoot(),
 		UfpServicesModule,
 		UfpPouchDBModule,
-		TabsModule.forRoot()
+		TabsModule.forRoot(),
+		Ng2CompleterModule
 	],
 	providers: [
 		{ provide: APP_BASE_HREF, useValue: '/' },

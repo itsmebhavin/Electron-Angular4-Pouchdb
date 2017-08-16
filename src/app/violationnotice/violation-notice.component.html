@@ -116,7 +116,7 @@
             </div>
             <div class="container">
                 <div class="form-group row">
-                    <div>
+                    <!--<div>
                         <label>Location</label>
                         <div *ngFor="let locationEntry of summonsLocations">
                             <label>
@@ -124,7 +124,10 @@
                                 {{locationEntry}}
                             </label>
                         </div>
-                    </div>
+                    </div>-->
+
+                    <!--<ng2-completer [formControl]="myform.controls.violation.controls.summonsLocation" [datasource]="summonsLocations" [minSearchLength]="0" [pause]="0" [openOnFocus]="true" required></ng2-completer>-->
+                    <form-combobox [values]="summonsLocations" label="Location" [control]="myform.controls.violation.controls.summonsLocation"></form-combobox>
 
                     <form-textbox type="datetime-local" formControlName="summonsDate" label="Date" [control]="myform.controls.violation.controls.summonsDate"></form-textbox>
                 </div>

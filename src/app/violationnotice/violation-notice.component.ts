@@ -23,8 +23,7 @@ export class ViolationNoticeComponent implements OnInit {
     ];
 
     summonsLocations: string[] = [
-      'AR Department of Finance and Administration',
-      'Other'
+      'AR Department of Finance and Administration'
     ];
 
     log(myform) {
