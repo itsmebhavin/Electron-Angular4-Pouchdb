@@ -1,0 +1,7 @@
+div {
+    display: flex;
+}
+
+div input {
+    flex: 1;
+}
