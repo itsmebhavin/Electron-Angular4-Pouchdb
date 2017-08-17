@@ -21,7 +21,6 @@ import { NpmBadgeComponent } from './_components/npmbadge/npmbadge.component';
 import { OverloadCitationComponent } from './overloadcitation/overload-citation.component';
 import { PrettyJsonModule, SafeJsonPipe } from 'angular2-prettyjson';
 import { RouterModule, Routes } from '@angular/router';
-import { SettingsComponent } from './settings/settings.component';
 import { TabsModule } from 'ngx-bootstrap';
 import { UfpFormsModule } from './_components/forms/forms.module';
 import { UfpPouchDBModule } from './_pouchdb/pouchdb.module';
@@ -31,6 +30,7 @@ import { PouchdbService } from './_pouchdb/pouchdb-service/pouchdb.service';
 import { CustomFormsModule } from 'ng2-validation';
 import { Ng2CompleterModule } from 'ng2-completer';
 import { ComboboxComponent } from './_components/forms/combobox/combobox.component';
+import { UfpSettingsModule } from './settings/settings.module';
 
 // Services
 
@@ -42,7 +42,6 @@ import { ComboboxComponent } from './_components/forms/combobox/combobox.compone
 		HeaderComponent,
 		FooterComponent,
 		HomeComponent,
-		SettingsComponent,
 		LayoutComponent,
 		ClockComponent,
 		NpmBadgeComponent,
@@ -63,6 +62,7 @@ import { ComboboxComponent } from './_components/forms/combobox/combobox.compone
 		BrowserAnimationsModule,
 		PrettyJsonModule,
 		UfpFormsModule.forRoot(),
+		UfpSettingsModule.forRoot(),
 		UfpServicesModule,
 		UfpPouchDBModule,
 		TabsModule.forRoot(),

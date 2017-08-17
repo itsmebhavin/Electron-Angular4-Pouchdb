@@ -1,0 +1,33 @@
+<div class="card" style="width: 40rem;">
+    <div class="card-body">
+        <h4 class="card-title">Choose Theme</h4>
+        <div class="card-text mdc-bg-grey-200">
+            <a *ngFor="let theme of themeNames" class="list-group-item" (click)="setTheme(theme); $event.preventDefault();" href style="cursor: pointer;" [ngClass]="{ 'active': currentTheme == theme }">
+                        {{theme}}
+                    </a>
+        </div>
+    </div>
+</div>
+
+<br/>
+
+
+
+<div class="notice notice-success">
+    <strong>Notice</strong> notice-success
+</div>
+<div class="notice notice-danger">
+    <strong>Notice</strong> notice-danger
+</div>
+<div class="notice notice-info">
+    <strong>Notice</strong> notice-info
+</div>
+<div class="notice notice-warning">
+    <strong>Notice</strong> notice-warning
+</div>
+<div class="notice notice-lg">
+    <strong>Big notice</strong> notice-lg
+</div>
+<div class="notice notice-sm">
+    <strong>Small notice</strong> notice-sm
+</div>
