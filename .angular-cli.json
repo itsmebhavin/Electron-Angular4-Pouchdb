@@ -8,10 +8,13 @@
         "outDir": "dist",
         "assets": [
             "config",
-            "styles",
             "images",
-            "fonts",
-            "lib"
+            "lib",
+            {
+                "glob": "**/*",
+                "input": "../node_modules/bootstrap/dist",
+                "output": "./lib/bootstrap/"
+            }
         ],
         "index": "index.html",
         "main": "main.ts",
@@ -21,7 +24,6 @@
         "testTsconfig": "tsconfig.spec.json",
         "prefix": "app",
         "styles": [
-            "../node_modules/bootstrap/dist/css/bootstrap.css",
             "../node_modules/hint.css/hint.min.css",
             "./lib/mdc-palette/material-design-color-palette.min.css",
             "./fonts/google-md-icon/material-icons.css",

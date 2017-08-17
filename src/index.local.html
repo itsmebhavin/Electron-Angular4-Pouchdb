@@ -9,6 +9,8 @@
     <base href="./">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="lib/bs4-themes/pulse.css" id="theme-css" />
 </head>
 
 <body>
@@ -30,19 +32,6 @@
             </div>
         </div>
     </ufp-app>
-    <script src="./styles.bundle.js"></script>
-    <script src="./inline.bundle.js"></script>
-    <script src="./vendor.bundle.js"></script>
-    <script src="./scripts.bundle.js"></script>
-    <script src="./main.bundle.js"></script>
-    <script>
-        //Make sure jQuery is accessible since it's a requirement for Bootstrap
-        if (!window.$ || !window.jQuery) {
-            try {
-                window.$ = window.jQuery = require("jquery");
-            } catch (e) {}
-        }
-    </script>
 
 </body>
 
