@@ -1,40 +1,40 @@
 <div class="navbar navbar-light navbar-xs navbar-sidebar" style="margin-top:-20px;">
     <tabset [vertical]="true">
         <tab [(active)]="showGeneral" (select)="showGeneral = true" (deselect)="showGeneral = false">
-            <template tabHeading>
+            <ng-template tabHeading>
                 <span class="hint--right hint--info" data-hint="General Settings">
                     <i class="material-icons md-48 mdc-text-green-600">settings</i>
                 </span>
-            </template>
+            </ng-template>
         </tab>
         <tab [(active)]="showShortcuts" (select)="showShortcuts = true" (deselect)="showShortcuts = false">
-            <template tabHeading>
+            <ng-template tabHeading>
                 <span class="hint--right hint--info" data-hint="Keyboard Shortcuts">
                     <i class="material-icons md-48 mdc-text-orange-600">keyboard</i>
                 </span>
-            </template>
+            </ng-template>
         </tab>
         <tab (select)="showReleaseNotes = true" (deselect)="showReleaseNotes = false">
-            <template tabHeading>
+            <ng-template tabHeading>
                 <span class="hint--right hint--info" data-hint="ReleaseNotes">
                     <i class="material-icons md-48 mdc-text-blue-600">list</i>
                 </span>
-            </template>
+            </ng-template>
         </tab>
         <tab (select)="showAbout = true" (deselect)="showAbout = false">
-            <template tabHeading>
+            <ng-template tabHeading>
                 <span class="hint--right hint--info" data-hint="About">
                     <i class="material-icons md-48 mdc-text-red-600">info_outline</i>
                 </span>
-            </template>
+            </ng-template>
         </tab>
 
         <!-- <tab (select)="showHelp = true" (deselect)="showHelp = false">
-            <template tabHeading>
+            <ng-template tabHeading>
                 <span class="hint--right hint--info" data-hint="Help">
                     <i class="fa fa-2x fa-question"></i>
                 </span>
-            </template>
+            </ng-template>
         </tab> -->
     </tabset>
 </div>

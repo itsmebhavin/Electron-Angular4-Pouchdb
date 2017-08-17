@@ -1,4 +1,4 @@
-<div class="card" style="width: 40rem;">
+<!-- <div class="card" style="width: 40rem;">
     <div class="card-body">
         <h4 class="card-title">Choose Theme</h4>
         <div class="card-text mdc-bg-grey-200">
@@ -7,11 +7,29 @@
                     </a>
         </div>
     </div>
-</div>
+</div> -->
 
 <br/>
 
+<div class="card" style="width: 60rem;" class="hint--right hint--info" data-hint="General Settings">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 d-flex bg-success p-5">
+                <h1 class="mx-auto align-self-center"><i class="fa fa-2x fa-tree"></i></h1>
+            </div>
+            <div class="col-md-8 py-3">
+                <h3 class="card-title">Choose Theme</h3>
+                <div class="card-text">
+                    <a *ngFor="let theme of themeNames" class="list-group-item" (click)="setTheme(theme); $event.preventDefault();" href style="cursor: pointer;" [ngClass]="{ 'active': currentTheme == theme }">
+                        {{theme}}
+                    </a>
+                </div>
+            </div>
+        </div>
 
+    </div>
+</div>
+<br/>
 
 <div class="notice notice-success">
     <strong>Notice</strong> notice-success

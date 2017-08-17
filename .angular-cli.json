@@ -1,8 +1,7 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "project": {
-        "name": "electron-angular4-pouchdb",
-        "description": "https://github.com/angular/angular-cli/wiki/stories"
+        "name": "electron-angular4-pouchdb"
     },
     "apps": [{
         "root": "src",
@@ -12,32 +11,7 @@
             "styles",
             "images",
             "fonts",
-            "lib",
-            {
-                "glob": "**/*",
-                "input": "../node_modules/popper.js/dist/umd/",
-                "output": "./lib/popper/"
-            },
-            {
-                "glob": "**/*",
-                "input": "../node_modules/bootstrap/dist",
-                "output": "./lib/bootstrap/"
-            },
-            {
-                "glob": "**/*",
-                "input": "../node_modules/jquery/dist",
-                "output": "./lib/jquery/"
-            },
-            {
-                "glob": "**/*",
-                "input": "../node_modules/tether/dist/js",
-                "output": "./lib/tether/"
-            },
-            {
-                "glob": "**/*",
-                "input": "../node_modules/pouchdb/dist",
-                "output": "./lib/pouchdb/"
-            }
+            "lib"
         ],
         "index": "index.html",
         "main": "main.ts",
@@ -47,10 +21,18 @@
         "testTsconfig": "tsconfig.spec.json",
         "prefix": "app",
         "styles": [
-
+            "../node_modules/bootstrap/dist/css/bootstrap.css",
+            "../node_modules/hint.css/hint.min.css",
+            "./lib/mdc-palette/material-design-color-palette.min.css",
+            "./fonts/google-md-icon/material-icons.css",
+            "./styles/style.css"
         ],
         "scripts": [
-
+            "../node_modules/jquery/dist/jquery.min.js",
+            "../node_modules/tether/dist/js/tether.min.js",
+            "../node_modules/popper.js/dist/umd/popper.min.js",
+            "../node_modules/bootstrap/dist/js/bootstrap.js",
+            "../node_modules/pouchdb/dist/pouchdb.min.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {
