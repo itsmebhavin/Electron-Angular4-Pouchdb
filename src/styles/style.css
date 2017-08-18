@@ -1,3 +1,13 @@
+/* Form styling */
+
+form .form-group {
+    padding: 10px;
+}
+
+.form-group .control-label {
+    padding: 0px 0px 0px 10px;
+}
+
 /* You can add global styles to this file, and also import other style files */
 
 @font-face {
