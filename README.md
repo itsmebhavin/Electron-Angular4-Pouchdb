@@ -54,3 +54,4 @@ Run `npm run runboth` for both client electron app and webapp.
     - http://demo.amitjakhu.com/dripicons/
     - https://useiconic.com/open/
 - Error Logger: [https://devarchy.com/angular/angular2-logger]
+- Promise Loader: [https://github.com/devyumao/angular2-busy]

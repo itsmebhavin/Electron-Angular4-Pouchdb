@@ -64,9 +64,9 @@ import { BusyModule, BusyConfig } from 'angular2-busy';
 		BusyModule.forRoot(
 			new BusyConfig({
 				template: `<div class="cssload-container">
-	<div class="cssload-whirlpool"></div>
-</div>`,
-				delay: 200
+							<div class="cssload-whirlpool"></div>
+						</div>`,
+				backdrop : true
 			})
 		)
 	],
