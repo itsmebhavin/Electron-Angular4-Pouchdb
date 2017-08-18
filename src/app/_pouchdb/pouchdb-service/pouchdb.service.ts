@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 // the pouchdb-adapter file/class in the same folder
 import { PouchDbAdapterCitation, PouchDbAdapterReference } from './pouchdb-adapter';
-import { ConfigService, Configuration } from '../../config.service';
+import { environment } from '../../../environments/environment';
+
 
 @Injectable()
 export class PouchdbService {
@@ -25,17 +26,17 @@ export class PouchdbService {
   static couchdbUpCit: Observable<boolean>;
 
   // initiate adapter class and hook up the observables
-  constructor(private config: ConfigService) {
+  constructor() {
 
   }
 
   initializeConfig(config) {
     console.log(config);
-    PouchdbService.remoteCouchDBAddress = config.RemoteCouchDBUrl.toLowerCase();
-    PouchdbService.remoteCouchCitationDBName = config.RemoteCouchCitationDBName.toLowerCase();
-    PouchdbService.remoteCouchReferenceDBName = config.RemoteCouchReferenceDBName.toLowerCase();
-    PouchdbService.pouchDbDebugMode = config.PouchDBDebugMode;
-    PouchdbService.fakeUserNameForDB = config.FakeUserName.toLowerCase();
+    PouchdbService.remoteCouchDBAddress = environment.RemoteCouchDBUrl.toLowerCase();
+    PouchdbService.remoteCouchCitationDBName = environment.RemoteCouchCitationDBName.toLowerCase();
+    PouchdbService.remoteCouchReferenceDBName = environment.RemoteCouchReferenceDBName.toLowerCase();
+    PouchdbService.pouchDbDebugMode = environment.PouchDBDebugMode;
+    PouchdbService.fakeUserNameForDB = environment.FakeUserName.toLowerCase();
     console.log('FakeUserName = ', PouchdbService.fakeUserNameForDB);
 
     console.log(PouchdbService.remoteCouchDBAddress + PouchdbService.remoteCouchCitationDBName);

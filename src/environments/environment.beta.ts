@@ -1,7 +1,7 @@
 export const environment = {
-  production: true,
-  EnvName: 'prod',
-  configFile: 'config/config.prod.json',
+  production: false,
+  EnvName: 'beta',
+  configFile: 'config/config.beta.json',
   ApplicationHeader: 'eForms',
   SubHeader: 'Powered by UFP',
   Copyright: 'Center for Advanced Public Safety',

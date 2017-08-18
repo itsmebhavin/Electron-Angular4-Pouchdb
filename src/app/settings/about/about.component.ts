@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfigService } from '../../config.service';
 import { UserAgent } from '../../_services/useragent/useragent.model';
 import { UserAgentService } from '../../_services/useragent/useragent.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-about',
@@ -24,12 +24,12 @@ export class AboutComponent implements OnInit {
     environment = '';
     isElectronApp = false;
 
-  constructor(private _config: ConfigService, private _userAgentService: UserAgentService) {
-    this.applicationheader = _config.get('ApplicationHeader');
-    this.subheader = _config.get('SubHeader');
-    this.copyright = _config.get('Copyright');
-    this.copyrightyear = _config.get('CopyrightYear');
-    this.contactus = _config.get('ContactUs');
+  constructor(private _userAgentService: UserAgentService) {
+    this.applicationheader = environment.ApplicationHeader;
+    this.subheader = environment.SubHeader;
+    this.copyright =  environment.Copyright;
+    this.copyrightyear =  environment.CopyrightYear;
+    this.contactus =  environment.ContactUs;
 
     _userAgentService.getCurrentUserAgentInformation().then((res: UserAgent) => {
             this.appVersion = res.appVersion;

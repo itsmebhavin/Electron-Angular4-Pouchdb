@@ -6,12 +6,20 @@
     "scripts": {
         "ng": "ng",
         "build": "gulp default & ng build --base-href . ",
+        "build-alpha": "gulp default & ng build --environment=alpha --base-href . ",
+        "build-beta": "gulp default & ng build --environment=beta --base-href . ",
+        "build-prod": "gulp default & ng build --environment=prod --base-href . ",
         "server": "npm run build && ng serve",
+        "server-alpha": "npm run build-alpha && ng serve  --environment=alpha",
+        "server-beta": "npm run build-beta && ng serve  --environment=beta",
+        "server-prod": "npm run build-prod && ng serve  --environment=prod",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
         "electron": "npm run build && electron .",
-        "runboth": "npm run build  && ng serve && electron ."
+        "electron-alpha": "npm run build-alpha && electron .",
+        "electron-beta": "npm run build-beta && electron .",
+        "electron-prod": "npm run build-prod && electron ."
     },
     "private": true,
     "dependencies": {

@@ -2,7 +2,7 @@ import { Injectable, Inject, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
 import { Subject, ReplaySubject } from 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
-import { ConfigService } from '../../config.service';
+import { environment } from '../../../environments/environment';
 
 const STORAGE_CURRENT_THEME = 'currentTheme';
 
@@ -22,7 +22,7 @@ export class ThemeService {
 
     constructor(
         private http: Http,
-        private config: ConfigService) {
+        ) {
 
         try {
             ThemeService.currentTheme = localStorage.getItem(STORAGE_CURRENT_THEME);
@@ -35,9 +35,9 @@ export class ThemeService {
             ThemeService.currentThemeStream = new ReplaySubject<string>(1);
         }
 
-        ThemeService.themesData = this.config.get('Themes');
-        ThemeService.themes = Object.keys(this.config.get('Themes'));
-        ThemeService.defaultTheme = this.config.get('DefaultTheme');
+        ThemeService.themesData = environment.Themes;
+        ThemeService.themes = Object.keys(environment.Themes);
+        ThemeService.defaultTheme = environment.DefaultTheme;
         if (!ThemeService.currentTheme) {
             ThemeService.currentTheme = ThemeService.defaultTheme;
         }

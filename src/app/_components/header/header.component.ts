@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { UserAgent } from '../../_services/useragent/useragent.model';
 import { UserAgentService } from '../../_services/useragent/useragent.service';
-import { ConfigService } from '../../config.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.css'],
-    providers: [ConfigService, UserAgentService]
+    providers: [UserAgentService]
 })
 export class HeaderComponent implements OnInit {
 
@@ -20,10 +20,10 @@ export class HeaderComponent implements OnInit {
     environment: String = '';
     isElectronApp: Boolean = false;
 
-    constructor(private _config: ConfigService,
+    constructor(
         private _userAgentService: UserAgentService) {
-        document.title = document.title.replace(/Loading(\.\.\.)?/, this._config.get('ApplicationHeader'));
-        this.title = this._config.get('ApplicationHeader');
+        document.title = document.title.replace(/Loading(\.\.\.)?/, environment.ApplicationHeader);
+        this.title = environment.ApplicationHeader;
 
         _userAgentService.getCurrentUserAgentInformation().then((res: UserAgent) => {
             this.appVersion = res.appVersion;
