@@ -2,7 +2,6 @@ declare function require(name: string);
 import PouchDB from 'pouchdb';
 PouchDB.plugin(require('pouchdb-upsert'));
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { ConfigService } from '../../config.service';
 import { PouchdbService } from './pouchdb.service';
 
 export class PouchDbAdapterCitation {

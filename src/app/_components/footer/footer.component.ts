@@ -3,13 +3,13 @@ import { UserAgent } from '../../_services/useragent/useragent.model';
 import { UserAgentService } from '../../_services/useragent/useragent.service';
 import { ClockComponent } from '../clock/clock.component';
 import { PouchdbService } from '../../_pouchdb/pouchdb-service/pouchdb.service';
-import { ConfigService } from '../../config.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-footer',
     templateUrl: './footer.component.html',
     styleUrls: ['./footer.component.css'],
-    providers: [UserAgentService, ConfigService]
+    providers: [UserAgentService]
 })
 export class FooterComponent {
 
@@ -28,7 +28,7 @@ export class FooterComponent {
     copyright: String = '';
     copyrightyear: String = '';
 
-    constructor(private _config: ConfigService, private _userAgentService: UserAgentService, private pouchdbservice: PouchdbService) {
+    constructor(private _userAgentService: UserAgentService, private pouchdbservice: PouchdbService) {
         _userAgentService.getCurrentUserAgentInformation().then((res: UserAgent) => {
             this.appVersion = res.appVersion;
             this.nodeVersion = res.nodeVersion;
@@ -57,7 +57,7 @@ export class FooterComponent {
         this.remoteCouchDBAddress = PouchdbService.remoteCouchDBAddress;
 
         // console.log(this._config.getConfiguration());
-        this.copyright = this._config.get('Copyright');
-        this.copyrightyear = this._config.get('CopyrightYear');
+        this.copyright = environment.Copyright;
+        this.copyrightyear =  environment.CopyrightYear;
     }
 }

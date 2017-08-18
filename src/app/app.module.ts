@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { ConfigService } from './config.service';
 import { environment } from '../environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
@@ -73,21 +72,10 @@ const busyConfig: BusyConfig = {
 	providers: [
 		{ provide: APP_BASE_HREF, useValue: '/' },
 		{ provide: LocationStrategy, useClass: HashLocationStrategy },
-		{ provide: JsonPipe, useClass: SafeJsonPipe },
-		ConfigService,
-		{
-			provide: APP_INITIALIZER,
-			useFactory: ConfigLoader,
-			deps: [ConfigService, PouchdbService],
-			multi: true
-		}
+		{ provide: JsonPipe, useClass: SafeJsonPipe }
+		
 	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
-export function ConfigLoader(configService: ConfigService, pouchsvc: PouchdbService) {
-	const config = configService.load(environment.configFile);
-	return () => config.then(data => {
-		pouchsvc.initializeConfig(data);
-	});
-}
+
