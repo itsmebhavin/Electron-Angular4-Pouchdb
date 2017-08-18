@@ -26,7 +26,17 @@ import { Ng2CompleterModule } from 'ng2-completer';
 import { ComboboxComponent } from './_components/forms/combobox/combobox.component';
 import { UfpSettingsModule } from './settings/settings.module';
 import { UfpComponentsModule } from './_components/components.module';
-import { BusyModule, BusyConfig } from 'angular2-busy';
+import { BusyModule, BusyConfig, BUSY_CONFIG_DEFAULTS } from 'angular2-busy';
+const busyConfig: BusyConfig = { //Variable to configure Angular2-Busy
+	message: BUSY_CONFIG_DEFAULTS.message,
+	delay: BUSY_CONFIG_DEFAULTS.delay,
+	template: `<div class="cssload-container">
+			<div class="cssload-whirlpool"></div>
+		</div>`,
+	minDuration: BUSY_CONFIG_DEFAULTS.minDuration,
+	backdrop: BUSY_CONFIG_DEFAULTS.backdrop,
+	wrapperClass: BUSY_CONFIG_DEFAULTS.wrapperClass
+};
 
 // Services
 
@@ -61,14 +71,7 @@ import { BusyModule, BusyConfig } from 'angular2-busy';
 		CustomFormsModule,
 		Ng2CompleterModule,
 		UfpComponentsModule.forRoot(),
-		BusyModule.forRoot(
-			new BusyConfig({
-				template: `<div class="cssload-container">
-							<div class="cssload-whirlpool"></div>
-						</div>`,
-				backdrop : true
-			})
-		)
+		BusyModule.forRoot(busyConfig)
 	],
 	providers: [
 		{ provide: APP_BASE_HREF, useValue: '/' },
