@@ -15,7 +15,8 @@ export class Configuration {
 		public RemoteCouchCitationDBName: string,
 		public RemoteCouchReferenceDBName: string,
 		public FakeUserName: string,
-		public ContactUs: string
+		public ContactUs: string,
+		public Angular2_Logger: number
 	) { }
 }
 

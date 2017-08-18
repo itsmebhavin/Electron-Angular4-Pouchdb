@@ -26,6 +26,7 @@ import { Ng2CompleterModule } from 'ng2-completer';
 import { ComboboxComponent } from './_components/forms/combobox/combobox.component';
 import { UfpSettingsModule } from './settings/settings.module';
 import { UfpComponentsModule } from './_components/components.module';
+import { BusyModule, BusyConfig } from 'angular2-busy';
 
 // Services
 
@@ -59,7 +60,15 @@ import { UfpComponentsModule } from './_components/components.module';
 		TabsModule.forRoot(),
 		CustomFormsModule,
 		Ng2CompleterModule,
-		UfpComponentsModule.forRoot()
+		UfpComponentsModule.forRoot(),
+		BusyModule.forRoot(
+			new BusyConfig({
+				template: `<div class="cssload-container">
+	<div class="cssload-whirlpool"></div>
+</div>`,
+				delay: 200
+			})
+		)
 	],
 	providers: [
 		{ provide: APP_BASE_HREF, useValue: '/' },

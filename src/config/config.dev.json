@@ -15,5 +15,6 @@
     "RemoteCouchCitationDBName": "ufp_citationdata",
     "RemoteCouchReferenceDBName": "ufp_referencedata",
     "FakeUserName": "bpatel",
-    "ContactUs": "ASP Support Email"
+    "ContactUs": "ASP Support Email",
+    "Angular2_Logger": 5
 }

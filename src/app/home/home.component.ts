@@ -30,7 +30,8 @@ export class HomeComponent implements OnInit {
 	couchDbUp: boolean;
 	citationData: any;
 	referenceData: any;
-
+	busyRefData: Promise<any>;
+	busyCitData: Promise<any>;
 	langs: string[] = [
 		'English',
 		'French',
@@ -66,13 +67,13 @@ export class HomeComponent implements OnInit {
 		});
 	}
 	refreshRefData() {
-		this.pouchdbservice.getReferenceDocs(5).then((response) => {
+		this.busyRefData = this.pouchdbservice.getReferenceDocs(5).then((response) => {
 			console.log('Reference data refreshed!');
 			this.referenceData = response;
 		});
 	}
 	refreshCitData() {
-		this.pouchdbservice.getCitationDocs(100).then((response) => {
+		this.busyCitData = this.pouchdbservice.getCitationDocs(100).then((response) => {
 			console.log('Citation data refreshed!');
 			this.citationData = (response);
 		});
