@@ -53,11 +53,11 @@ gulp.task('inject-versions', ['clean'], function(done) {
     ]);
 });
 
-gulp.task('bundle-css', function() {
-    return gulp.src('src/styles/app.*.css')
-        .pipe(plumber())
-        .pipe(concatCss("./bundle.css"))
-        .pipe(gulp.dest('src/styles/'));
-});
+// gulp.task('bundle-css', function() {
+//     return gulp.src('src/styles/app.*.css')
+//         .pipe(plumber())
+//         .pipe(concatCss("./bundle.css"))
+//         .pipe(gulp.dest('src/styles/'));
+// });
 
-gulp.task('default', ['inject-versions', 'bundle-css'], function() {});
+gulp.task('default', ['inject-versions'], function() {});
