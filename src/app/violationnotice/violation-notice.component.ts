@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 })
 
 export class ViolationNoticeComponent implements OnInit {
-    myform: FormGroup;
+    violationNoticeForm: FormGroup;
 
     violations: string[] = [
       'Overweight on License',
@@ -26,14 +26,14 @@ export class ViolationNoticeComponent implements OnInit {
       'AR Department of Finance and Administration'
     ];
 
-    log(myform) {
-        console.log(myform);
+    log(form) {
+        console.log(form);
     }
 
     constructor(private _fb: FormBuilder) {}
 
     ngOnInit() {    
-        this.myform = this._fb.group({
+        this.violationNoticeForm = this._fb.group({
             driver: this._fb.group({
                 firstName: ['', Validators.required],
                 lastName: ['', Validators.required],
@@ -74,10 +74,10 @@ export class ViolationNoticeComponent implements OnInit {
                 summonsDate: ['', Validators.required]
             })
         })
-        console.log(this.myform);
-        this.myform.value.driver.firstName = "Shane";
-        this.myform.value.driver.lastName = "Parcus";
-        console.log(this.myform);
+        console.log(this.violationNoticeForm);
+        this.violationNoticeForm.value.driver.firstName = "Shane";
+        this.violationNoticeForm.value.driver.lastName = "Parcus";
+        console.log(this.violationNoticeForm);
     }
 
     

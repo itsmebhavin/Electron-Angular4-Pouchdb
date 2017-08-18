@@ -1,6 +1,6 @@
-<div class="form-group input-group-xs">
-  <label>{{label}}</label>
-  <input [type]="type" [value]="jsonString"
+<div class="form-group">
+  <label class="control-label">{{label}}</label>
+  <input [type]="type" [value]="jsonString" class="form-control"
           (change)="onChange($event)"
           (keyup)="onChange($event)">
 </div>

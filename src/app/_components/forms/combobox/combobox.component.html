@@ -1,6 +1,6 @@
 <div class="form-group input-group-xs">
-    <label>{{label}}</label>
-    <ng2-completer [formControl]="control" [datasource]="dataService" [minSearchLength]="0" [pause]="0" [openOnFocus]="true"></ng2-completer>
+    <label class="control-label">{{label}}</label>
+    <ng2-completer inputClass="form-control" [formControl]="control" [datasource]="dataService" [minSearchLength]="0" [pause]="0" [openOnFocus]="true"></ng2-completer>
 </div>
 
 <div class="has-danger" *ngIf = "!control.valid"> <pre [innerHtml]="control.errors | prettyjson:3"></pre></div>

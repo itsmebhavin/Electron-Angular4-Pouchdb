@@ -28,8 +28,6 @@ import { UfpSettingsModule } from './settings/settings.module';
 import { UfpComponentsModule } from './_components/components.module';
 import { BusyModule, BusyConfig, BUSY_CONFIG_DEFAULTS } from 'angular2-busy';
 
-// Services
-
 // App Components
 const busyConfig: BusyConfig = {
 	message: BUSY_CONFIG_DEFAULTS.message,
