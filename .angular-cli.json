@@ -24,6 +24,7 @@
         "testTsconfig": "tsconfig.spec.json",
         "prefix": "app",
         "styles": [
+            "../node_modules/font-awesome/css/font-awesome.css",
             "../node_modules/hint.css/hint.min.css",
             "./lib/mdc-palette/material-design-color-palette.min.css",
             "./fonts/google-md-icon/material-icons.css",

@@ -11,7 +11,7 @@ export class PouchDbAdapterCitation {
     private _couchDBCit: any;
     private _remoteCouchDBAddress: string;
     private _pouchDbNameCit: string;
-    FAKE_USERNAME = 'bpatel';
+    // FAKE_USERNAME = 'bpatel';
     // rxjs behaviour subjects to expose stats flags
     syncStatusCit = new BehaviorSubject<boolean>(false);
     couchDbUpCit = new BehaviorSubject<boolean>(false);

@@ -1,60 +1,36 @@
-<div class="navbar navbar-light navbar-xs navbar-sidebar" style="margin-top:-20px;">
-    <tabset [vertical]="true">
-        <tab [(active)]="showGeneral" (select)="showGeneral = true" (deselect)="showGeneral = false">
+<div>
+    <tabset>
+        <tab>
             <ng-template tabHeading>
-                <span class="hint--right hint--info" data-hint="General Settings">
+                <span class="hint--bottom hint--success" data-hint="General Settings">
                     <i class="material-icons md-48 mdc-text-green-600">settings</i>
                 </span>
             </ng-template>
+            <app-general></app-general>
         </tab>
-        <tab [(active)]="showShortcuts" (select)="showShortcuts = true" (deselect)="showShortcuts = false">
+        <tab>
             <ng-template tabHeading>
-                <span class="hint--right hint--info" data-hint="Keyboard Shortcuts">
+                <span class="hint--bottom hint--warning" data-hint="Keyboard Shortcuts">
                     <i class="material-icons md-48 mdc-text-orange-600">keyboard</i>
                 </span>
             </ng-template>
+            <app-shortcuts></app-shortcuts>
         </tab>
-        <tab (select)="showReleaseNotes = true" (deselect)="showReleaseNotes = false">
+        <tab>
             <ng-template tabHeading>
-                <span class="hint--right hint--info" data-hint="ReleaseNotes">
+                <span class="hint--bottom hint--info" data-hint="ReleaseNotes">
                     <i class="material-icons md-48 mdc-text-blue-600">list</i>
                 </span>
             </ng-template>
+            <app-releasenotes></app-releasenotes>
         </tab>
-        <tab (select)="showAbout = true" (deselect)="showAbout = false">
+        <tab>
             <ng-template tabHeading>
-                <span class="hint--right hint--info" data-hint="About">
+                <span class="hint--bottom hint--error" data-hint="About">
                     <i class="material-icons md-48 mdc-text-red-600">info_outline</i>
                 </span>
             </ng-template>
+            <app-about></app-about>
         </tab>
-
-        <!-- <tab (select)="showHelp = true" (deselect)="showHelp = false">
-            <ng-template tabHeading>
-                <span class="hint--right hint--info" data-hint="Help">
-                    <i class="fa fa-2x fa-question"></i>
-                </span>
-            </ng-template>
-        </tab> -->
     </tabset>
 </div>
-<div style="padding-left: 70px;">
-    <div *ngIf="showGeneral">
-        <app-general></app-general>
-    </div>
-    <div *ngIf="showShortcuts">
-        <app-shortcuts></app-shortcuts>
-    </div>
-    <div *ngIf="showReleaseNotes">
-        <app-releasenotes></app-releasenotes>
-    </div>
-    <div *ngIf="showAbout">
-        <app-about></app-about>
-    </div>
-
-    <!-- <div *ngIf="showHelp">
-        <help-settings></help-settings>
-    </div> -->
-</div>
-
-<i class="material-icons fontwatermarkright">settings</i>

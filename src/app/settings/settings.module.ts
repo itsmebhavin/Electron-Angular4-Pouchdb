@@ -7,12 +7,14 @@ import { GeneralComponent } from './general/general.component';
 import { ShortcutsComponent } from './shortcuts/shortcuts.component';
 import { ReleasenotesComponent } from './releasenotes/releasenotes.component';
 import { TabsModule } from 'ngx-bootstrap';
+import { UfpComponentsModule } from '../_components/components.module';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        TabsModule.forRoot()
+        TabsModule.forRoot(),
+        UfpComponentsModule.forRoot()
     ],
     exports: [
         SettingsComponent,

@@ -15,6 +15,7 @@ export class Configuration {
 		public RemoteCouchCitationDBName: string,
 		public RemoteCouchReferenceDBName: string,
 		public FakeUserName: string,
+		public ContactUs: string
 	) { }
 }
 

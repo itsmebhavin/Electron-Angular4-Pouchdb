@@ -14,5 +14,6 @@
     "RemoteCouchDBUrl": "http://admin:password@localhost:5984/",
     "RemoteCouchCitationDBName": "ufp_citationdata",
     "RemoteCouchReferenceDBName": "ufp_referencedata",
-    "FakeUserName": "bpatel"
+    "FakeUserName": "bpatel",
+    "ContactUs": "ASP Support Email"
 }

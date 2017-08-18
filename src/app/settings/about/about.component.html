@@ -1,3 +1,35 @@
-<p>
-  about works!
-</p>
+<br/>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1" style="z-index: 1;">
+            <div class="jumbotron">
+                <h1 class="display-3">
+                    {{applicationheader}}
+                </h1>
+                <p class="lead">
+                    <npm-badge [badgelabel]="'Version'" [badgevalue]="appVersion" [badgeclass]="'primary'">
+                    </npm-badge>
+                </p>
+                <hr class="m-y-2">
+                <p>Copyright <span class="fa fa-copyright"></span> {{copyrightyear}} {{copyright}}</p>
+
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    Environment
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item clearfix">Node.js - <span class="pull-xs-right mdc-text-green-800"><strong>{{nodeVersion}}</strong></span></li>
+                        <li class="list-group-item clearfix">Chrome V8 - <span class="pull-xs-right mdc-text-green-800"><strong>{{nodeV8}}</strong></span></li>
+                        <li class="list-group-item clearfix">App engine - <span class="pull-xs-right mdc-text-green-800"><strong>{{environment}}</strong></span></li>
+                        <li class="list-group-item clearfix" *ngIf="isElectronApp ">Electron - <span class="pull-xs-right mdc-text-green-800"><strong>{{electron}}</strong></span></li>
+                        <li class="list-group-item clearfix"><strong class=" mdc-text-green-800">{{userAgent}}</strong></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<i class="material-icons fontwatermarkright">info_outline</i>

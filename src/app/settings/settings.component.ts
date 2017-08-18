@@ -7,12 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
 
-  showGeneral = true;
-  showShortcuts = false;
-  showAbout = false;
-  showHelp = false;
-  showReleaseNotes = false;
-
   constructor() { }
 
   ngOnInit() {
