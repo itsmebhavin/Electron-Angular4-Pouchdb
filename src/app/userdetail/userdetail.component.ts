@@ -30,8 +30,6 @@ export class UserdetailComponent implements OnInit {
   syncStatus: boolean;
   couchDbUp: boolean;
   citationData: any;
-  referenceData: any;
-  busyRefData: Promise<any>;
   busyCitData: Promise<any>;
   langs: string[] = [
     'English',
@@ -50,7 +48,6 @@ export class UserdetailComponent implements OnInit {
     });
     this.remoteCouchDBAddress = PouchdbService.remoteCouchDBAddress;
     this.refreshCitData();
-    this.refreshRefData();
   }
 
   onSubmit({ value, valid }: { value: User, valid: boolean }) {
@@ -68,12 +65,7 @@ export class UserdetailComponent implements OnInit {
       console.log('Database distroyed? ', result);
     });
   }
-  refreshRefData() {
-    this.busyRefData = this.pouchdbservice.getReferenceDocs(5).then((response) => {
-      console.log('Reference data refreshed!');
-      this.referenceData = response;
-    });
-  }
+
   refreshCitData() {
     this.busyCitData = this.pouchdbservice.getCitationDocs(100).then((response) => {
       console.log('Citation data refreshed!');

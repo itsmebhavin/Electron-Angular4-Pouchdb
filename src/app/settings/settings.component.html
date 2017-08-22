@@ -1,6 +1,14 @@
+<hr class="hr-success" />
+<div class="row p-3  mb-2 ">
+    <div class="col-1">
+        <button type="button" class="btn btn-outline-success btn-circle btn-md" style="cursor: pointer" [routerLink]="['/layout/home']">
+    <i class="material-icons md-16">arrow_back</i>
+  </button>
+    </div>
+    <h3 class="mdc-text-green-500">Settings</h3>
+</div>
 <div>
-    <a *ngIf="isElectronApp" [routerLink]="['/layout']" class="btn btn-outline-success btn-xs"><i class="fa fa-arrow-left"></i> Main dashboard 
-    </a>
+
     <tabset>
         <tab>
             <ng-template tabHeading>
