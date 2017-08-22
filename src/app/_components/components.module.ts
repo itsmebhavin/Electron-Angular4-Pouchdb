@@ -8,7 +8,7 @@ import { NetworknotifierComponent } from './networknotifier/networknotifier.comp
 import { NetworkNotifierService } from './networknotifier/networknotifier.service';
 import { NpmBadgeComponent } from './npmbadge/npmbadge.component';
 import { UfpPouchDBModule } from '../_pouchdb/pouchdb.module';
-
+import { ChildPageNavBarComponent } from './childpagenavbar/childpagenavbar.component';
 
 @NgModule({
     imports: [
@@ -21,23 +21,25 @@ import { UfpPouchDBModule } from '../_pouchdb/pouchdb.module';
         FooterComponent,
         HeaderComponent,
         NetworknotifierComponent,
-        NpmBadgeComponent
+        NpmBadgeComponent,
+        ChildPageNavBarComponent
     ],
     declarations: [
         ClockComponent,
         FooterComponent,
         HeaderComponent,
         NetworknotifierComponent,
-        NpmBadgeComponent
+        NpmBadgeComponent,
+        ChildPageNavBarComponent
     ],
     providers: [NetworkNotifierService],
 })
 export class UfpComponentsModule {
-     static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: UfpComponentsModule,
-      providers: [NetworkNotifierService]
-    };
-  }
- }
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: UfpComponentsModule,
+            providers: [NetworkNotifierService]
+        };
+    }
+}
 

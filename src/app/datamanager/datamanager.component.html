@@ -1,12 +1,5 @@
-<hr class="hr-primary" />
-<div class="row p-3  mb-2 ">
-    <div class="col-1">
-        <button type="button" class="btn btn-circle btn-outline-primary btn-md" style="cursor: pointer" [routerLink]="['/layout/home']">
-    <i class="material-icons md-16">arrow_back</i>
-  </button>
-    </div>
-    <h3 class="text-primary">Reference Data Manager</h3>
-</div>
+<child-navbar [hrclass]="'hr-primary'" [textheader]="'Reference Data Manager'" [btnclass]="'btn-outline-info'" [textclass]="'text-info'" [routerLink]="['/layout/home']">
+</child-navbar>
 {{couchDbUp}} - {{syncStatus}}
 <div class="col-12">
     <div class="card" [ngBusy]="busyCitData">

@@ -1,12 +1,5 @@
-<hr class="hr-danger" />
-<div class="row p-3  mb-2 ">
-    <div class="col-1">
-        <button type="button" class="btn btn-circle btn-outline-danger btn-md" [routerLink]="['/layout/home']">
-    <i class="material-icons md-16">arrow_back</i>
-  </button>
-    </div>
-    <h3 class="text-danger">System Diagnostics </h3>
-</div>
+<child-navbar [hrclass]="'hr-danger'" [textheader]="'System Diagnostics'" [btnclass]="'btn-outline-danger'" [textclass]="'text-danger'" [routerLink]="['/layout/home']">
+</child-navbar>
 <p>
     Diagnostics works!
 </p>
