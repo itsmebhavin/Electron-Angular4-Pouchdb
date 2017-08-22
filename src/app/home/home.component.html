@@ -1,64 +1,97 @@
-<div class="no-gutters">
-    <a class="btn btn-outline-primary my-2 my-sm-0  btn-xs" [routerLink]="['/layout/settings']"> settings </a>
-    <a class="btn btn-outline-primary my-2 my-sm-0  btn-xs" [routerLink]="['/layout/overloadcitation']">Overload Citation</a>
-    <a class="btn btn-outline-primary my-2 my-sm-0  btn-xs" [routerLink]="['/layout/violationnotice']">Violation Notice</a>
-    <button class="btn btn-outline-danger my-2 my-sm-0  btn-xs" (click)="destroy_citDb()">Distroy CitDB</button>
-    <button class="btn btn-outline-success my-2 my-sm-0 btn-xs" (click)="refreshCitData()">Refresh CitData</button>
-    <i class="material-icons fontwatermarkright">home</i>
-    <div class="row no-gutters">
-        <div class="col-6">
-            <div class="card">
-                <div class="card-block">
-                    <form [formGroup]="user" novalidate (ngSubmit)="onSubmit(user)">
-                        <div class="form-group">
-                            <form-textbox [type]="text" formControlName="userName" label="UserName" [control]="user.controls.userName" required></form-textbox>
-                        </div>
-                        <fieldset formGroupName="name">
-                            <form-textbox type="text" formControlName="firstName" label="FirstName" [control]="user.controls.name.controls.firstName" required></form-textbox>
-                            <form-textbox type="text" formControlName="lastName" label="LastName" [control]="user.controls.name.controls.lastName" required></form-textbox>
-                        </fieldset>
-                        <div class="form-group">
-                            <form-textbox type="text" formControlName="email" label="EMail" [control]="user.controls.email" required></form-textbox>
-                        </div>
-                        <div class="form-group">
-                            <form-textbox type="password" formControlName="password" label="Password" [control]="user.controls.password" required></form-textbox>
-                        </div>
-                        <div class="form-group">
-                            <label>Language</label>
-                            <select class="form-control" formControlName="language">
-                                <option value="">Please select a language</option>
-                                <option *ngFor="let lang of langs"
-                                        [value]="lang"> 
-                                        {{lang}} 
-                                </option>
-                            </select>
-                        </div>
-
-                        <button type="submit" [disabled]="user.invalid" class="btn btn-primary btn-xs">Sign up</button>
-                        <pre [innerHtml]="user.value | prettyjson:3"></pre>
-                    </form>
-                    <ul>
-                        <li>Dynamic validation not working from textbox </li>
-                        <li>Type of textbox is not working e.g. type=password or type=text</li>
-                    </ul>
-                </div>
-            </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h2 class=" mdc-text-blue-500"><i class="material-icons md-32">dashboard</i> Welcome</h2>
         </div>
-        <div class="col-6">
-            <div class="card" [ngBusy]="busyCitData">
-                <div class="card-block">
-                    <pre [innerHtml]="citationData | prettyjson:3"></pre>
-                </div>
-            </div>
-        </div>
+        <div class="col">Analytics data will be here</div>
     </div>
-    <div class="row no-gutters">
-        <div class="col-12">
-            <div class="card" [ngBusy]="busyCitData">
-                <div class="card-block">
-                    <pre [innerHtml]="referenceData | prettyjson:3"></pre>
+    <div class="row">
+        <div class="col col-md-6 col-lg-4">
+            <div class="card text-white bg-info mb-3" style="cursor:pointer" (click)="goto('userdetail')">
+                <div class="card-body">
+                    <h5 class="card-title">User Detail Form</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
+            </div>
+            <div class="card text-white bg-primary mb-3" style="cursor:pointer" (click)="goto('overloadcitation')">
+                <div class="card-body">
+                    <h5 class="card-title">Overload Citation</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+            <div class="card text-white bg-success mb-3" style="cursor:pointer" (click)="goto('violationnotice')">
+                <div class="card-body">
+                    <h5 class="card-title">Violation Notice</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col col-md-6 col-lg-4">
+            <div class="card mb-2 ">
+                <div class="card-body row text-left ">
+                    <div class="p-3  w-25">
+                        <h1 class="text-warning "><i class="fa fa-2x fa-folder-open-o "></i></h1>
+                    </div>
+                    <div class="p-3  w-50 h-100">
+                        <h5>Open local &amp; server documents</h5>
+                        <p> Open local documents &amp; transferred documents.</p>
+                    </div>
+                    <div class="p-3 w-25">
+                        <button type="button" class="btn btn-outline-warning">Open </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-2 ">
+                <div class="card-body row text-left ">
+                    <div class="p-3  w-25">
+                        <h1 class="text-primary "><i class="fa fa-2x fa-database "></i></h1>
+                    </div>
+                    <div class="p-3  w-50 h-100">
+                        <h5>Reference data manager</h5>
+                        <p> View reference or list data used for the system.</p>
+                    </div>
+                    <div class="p-3 w-25">
+                        <button type="button" (click)="goto('datamanager')" class="btn btn-outline-primary">Open </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-2 ">
+                <div class="card-body text-left row ">
+                    <div class="p-3 w-25">
+                        <h1 class="text-success "><i class="fa fa-2x fa-cogs "></i></h1>
+                    </div>
+                    <div class="p-3 w-50">
+                        <h5>Settings &amp; configurations</h5>
+                        <p> General system settings including themes, release notes, shortcuts etc. </p>
+                    </div>
+                    <div class="p-3 w-25">
+                        <button (click)="goto('settings')" class="btn btn-outline-success">Open </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-2 ">
+                <div class="card-body row text-left ">
+                    <div class="p-3 w-25">
+                        <h1 class="text-info "><i class="fa fa-2x fa-heartbeat "></i></h1>
+                    </div>
+                    <div class="p-3 w-50">
+                        <h5>System diagnotics</h5>
+                        <p> Diagnotics tools and analysis for system debug and supports. </p>
+                    </div>
+                    <div class="p-3 w-25">
+                        <button type="button" (click)="goto('diagnotics')" class="btn btn-outline-info">Open </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col col-lg-4 hidden-lg-down">
+            <div style="display: block w-12 h-12">
+                <canvas baseChart [data]="doughnutChartData " [labels]="doughnutChartLabels " [chartType]="doughnutChartType " (chartHover)="chartHovered($event) " (chartClick)="chartClicked($event) "></canvas>
             </div>
         </div>
     </div>
 </div>
+
+<i class="material-icons fontwatermarkright">dashboard</i>

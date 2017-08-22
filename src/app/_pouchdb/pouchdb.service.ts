@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 // the pouchdb-adapter file/class in the same folder
 import { PouchDbAdapterCitation, PouchDbAdapterReference } from './pouchdb-adapter';
-import { environment } from '../../../environments/environment';
-
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class PouchdbService {
@@ -27,11 +26,10 @@ export class PouchdbService {
 
   // initiate adapter class and hook up the observables
   constructor() {
-
+    this.initializeConfig();
   }
 
-  initializeConfig(config) {
-    console.log(config);
+  initializeConfig() {
     PouchdbService.remoteCouchDBAddress = environment.RemoteCouchDBUrl.toLowerCase();
     PouchdbService.remoteCouchCitationDBName = environment.RemoteCouchCitationDBName.toLowerCase();
     PouchdbService.remoteCouchReferenceDBName = environment.RemoteCouchReferenceDBName.toLowerCase();
@@ -49,7 +47,7 @@ export class PouchdbService {
     // Citation Data Setup
     PouchdbService._pouchDbAdapterCit = new PouchDbAdapterCitation
       (PouchdbService.remoteCouchDBAddress +
-      PouchdbService.remoteCouchCitationDBName , PouchdbService.pouchDbDebugMode);
+      PouchdbService.remoteCouchCitationDBName, PouchdbService.pouchDbDebugMode);
     PouchdbService.syncStatusCit = PouchdbService._pouchDbAdapterCit.syncStatusCit.asObservable();
     PouchdbService.couchdbUpCit = PouchdbService._pouchDbAdapterCit.couchDbUpCit.asObservable();
   }

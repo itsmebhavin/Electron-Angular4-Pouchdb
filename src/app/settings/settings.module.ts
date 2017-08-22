@@ -8,11 +8,13 @@ import { ShortcutsComponent } from './shortcuts/shortcuts.component';
 import { ReleasenotesComponent } from './releasenotes/releasenotes.component';
 import { TabsModule } from 'ngx-bootstrap';
 import { UfpComponentsModule } from '../_components/components.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
+        RouterModule,
         TabsModule.forRoot(),
         UfpComponentsModule.forRoot()
     ],
@@ -33,11 +35,11 @@ import { UfpComponentsModule } from '../_components/components.module';
     providers: [],
 })
 export class UfpSettingsModule {
-     static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: UfpSettingsModule,
-      providers: []
-    };
-  }
- }
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: UfpSettingsModule,
+            providers: []
+        };
+    }
+}
 

@@ -1,4 +1,4 @@
-.container-electron {
+/* .container-electron {
     padding-top: 0px;
     padding-bottom: 25px;
 }
@@ -6,4 +6,17 @@
 .container-web {
     padding-top: 0px;
     padding-bottom: 55px;
+} */
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    height: 100vh
+}
+
+.content {
+    width: 100%;
+    padding-top: 45px;
+    padding-left: 10px;
+    padding-right: 10px;
 }

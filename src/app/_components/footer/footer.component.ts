@@ -2,7 +2,7 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { UserAgent } from '../../_services/useragent/useragent.model';
 import { UserAgentService } from '../../_services/useragent/useragent.service';
 import { ClockComponent } from '../clock/clock.component';
-import { PouchdbService } from '../../_pouchdb/pouchdb-service/pouchdb.service';
+import { PouchdbService } from '../../_pouchdb/pouchdb.service';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -43,12 +43,13 @@ export class FooterComponent {
             }
         });
 
+        console.log(PouchdbService);
         PouchdbService.syncStatusCit.subscribe(result => {
-            // console.log('footer-sync');
-            // console.log(result);
+            console.log('footer-sync');
+            console.log(result);
             this.syncStatusCit = result;
-		});
-		
+        });
+
         PouchdbService.couchdbUpCit.subscribe(result => {
             // console.log('footer-couchup');
             // console.log(result);
@@ -58,6 +59,6 @@ export class FooterComponent {
 
         // console.log(this._config.getConfiguration());
         this.copyright = environment.Copyright;
-        this.copyrightyear =  environment.CopyrightYear;
+        this.copyrightyear = environment.CopyrightYear;
     }
 }

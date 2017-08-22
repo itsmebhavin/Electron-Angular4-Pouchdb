@@ -19,13 +19,16 @@ import { UfpFormsModule } from './_components/forms/forms.module';
 import { UfpPouchDBModule } from './_pouchdb/pouchdb.module';
 import { UfpServicesModule } from './_services/services.module';
 import { ViolationNoticeComponent } from './violationnotice/violation-notice.component';
-import { PouchdbService } from './_pouchdb/pouchdb-service/pouchdb.service';
 import { CustomFormsModule } from 'ng2-validation';
 import { Ng2CompleterModule } from 'ng2-completer';
 import { ComboboxComponent } from './_components/forms/combobox/combobox.component';
 import { UfpSettingsModule } from './settings/settings.module';
 import { UfpComponentsModule } from './_components/components.module';
 import { BusyModule, BusyConfig, BUSY_CONFIG_DEFAULTS } from 'angular2-busy';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { UserdetailComponent } from './userdetail/userdetail.component';
+import { DatamanagerComponent } from './datamanager/datamanager.component';
+import { DiagnoticsComponent } from './diagnotics/diagnotics.component';
 
 // App Components
 const busyConfig: BusyConfig = {
@@ -48,7 +51,10 @@ const busyConfig: BusyConfig = {
 		ShortDateTimePipe,
 		LongDatePipe,
 		SortByStringPipe,
-		ComboboxComponent /*Had to put this here instead of forms.module for some reason.*/
+		ComboboxComponent,
+		UserdetailComponent,
+		DatamanagerComponent,
+		DiagnoticsComponent /*Had to put this here instead of forms.module for some reason.*/
 
 	],
 	imports: [
@@ -67,13 +73,17 @@ const busyConfig: BusyConfig = {
 		CustomFormsModule,
 		Ng2CompleterModule,
 		UfpComponentsModule.forRoot(),
-		BusyModule.forRoot(busyConfig)
+		BusyModule.forRoot(busyConfig),
+		ChartsModule
+	],
+	exports: [
+		ChartsModule
 	],
 	providers: [
 		{ provide: APP_BASE_HREF, useValue: '/' },
 		{ provide: LocationStrategy, useClass: HashLocationStrategy },
 		{ provide: JsonPipe, useClass: SafeJsonPipe }
-		
+
 	],
 	bootstrap: [AppComponent]
 })

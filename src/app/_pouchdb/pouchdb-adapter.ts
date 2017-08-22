@@ -31,7 +31,7 @@ export class PouchDbAdapterCitation {
         // sync the PouchDB and CouchDB
 
         this._pouchDBCit.replicate.from(this._couchDBCit, {
-             live: true,
+            live: true,
             retry: true,
             continuous: true,
             filter: 'app/by_username',
@@ -50,11 +50,11 @@ export class PouchDbAdapterCitation {
             .on('error', err => {
                 // TODO: Write error handling and display message to user
                 console.error('C2P Error: ', err);
-            })
-            .on('active', info => {
-                // TODO: Write code when sync is resume after pause/error
-                console.log('C2P Active/Resume: ', info);
             });
+        // .on('active', info => {
+        //     // TODO: Write code when sync is resume after pause/error
+        //     console.log('C2P Active/Resume: ', info);
+        // });
 
 
 

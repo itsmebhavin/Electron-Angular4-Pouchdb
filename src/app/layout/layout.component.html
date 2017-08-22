@@ -1,6 +1,9 @@
 <app-header></app-header>
-<br>
-<div class="container-fluid no-gutters" [ngClass]="isElectronApp === true ? 'container-electron':'container-web' ">
-    <router-outlet></router-outlet>
+<div class="wrapper">
+    <div class="content">
+        <div class="no-gutters" [ngClass]="isElectronApp === true ? 'container-electron':'container-web' ">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 </div>
 <app-footer></app-footer>

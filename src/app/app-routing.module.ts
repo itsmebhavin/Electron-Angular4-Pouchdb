@@ -5,6 +5,9 @@ import { SettingsComponent } from './settings/settings.component';
 import { LayoutComponent } from './layout/layout.component';
 import { OverloadCitationComponent } from './overloadcitation/overload-citation.component';
 import { ViolationNoticeComponent } from './violationnotice/violation-notice.component';
+import { UserdetailComponent } from './userdetail/userdetail.component';
+import { DatamanagerComponent } from './datamanager/datamanager.component';
+import { DiagnoticsComponent } from './diagnotics/diagnotics.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/layout/home', pathMatch: 'full' },
@@ -16,7 +19,10 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'overloadcitation', component: OverloadCitationComponent },
-      { path: 'violationnotice', component: ViolationNoticeComponent }
+      { path: 'userdetail', component: UserdetailComponent },
+      { path: 'violationnotice', component: ViolationNoticeComponent },
+      { path: 'datamanager', component: DatamanagerComponent },
+      { path: 'diagnotics', component: DiagnoticsComponent }
     ]
   }
 ];
