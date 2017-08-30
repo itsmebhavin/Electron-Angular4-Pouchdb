@@ -9,4 +9,7 @@ releases
 errorlog/
 out
 .vscode/chrome
-./src/environments
+./src/environments\environment.alpha.ts
+./src/environments\environment.beta.ts
+./src/environments\environment.prod.ts
+
