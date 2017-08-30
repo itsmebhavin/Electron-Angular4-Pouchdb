@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ThemeService } from './_services/theme/theme.service';
-
 @Component({
   selector: 'ufp-app',
   templateUrl: './app.component.html'

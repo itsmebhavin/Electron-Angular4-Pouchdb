@@ -1,57 +1,49 @@
 <div class="no-gutters">
-    <a class="btn btn-outline-primary my-2 my-sm-0  btn-xs" [routerLink]="['/layout/settings']"> settings </a>
-    <a class="btn btn-outline-primary my-2 my-sm-0  btn-xs" [routerLink]="['/layout/overloadcitation']">Overload Citation</a>
-    <a class="btn btn-outline-primary my-2 my-sm-0  btn-xs" [routerLink]="['/layout/violationnotice']">Violation Notice</a>
-    <button class="btn btn-outline-danger my-2 my-sm-0  btn-xs" (click)="destroy_citDb()">Distroy CitDB</button>
-    <button class="btn btn-outline-success my-2 my-sm-0 btn-xs" (click)="refreshCitData()">Refresh CitData</button>
-    <i class="material-icons fontwatermarkright">home</i>
-
-    <div class="row no-gutters">
+    <br/>
+    <div class="row">
         <div class="col-6">
-            <div class="card">
-                <div class="card-block">
+            <div class="box" [ngClass]="{'box-danger':user.status === 'INVALID', 'box-success': user.status === 'VALID'}">
+                <div class="box-body">
                     <form [formGroup]="user" novalidate (ngSubmit)="onSubmit(user)">
-                        <div class="form-group">
-                            <form-textbox [type]="text" formControlName="userName" label="UserName" [control]="user.controls.userName" required></form-textbox>
-                        </div>
+                        <form-textbox [type]="text" formControlName="userName" [label]="'UserName'" [control]="user.controls.userName" required></form-textbox>
                         <fieldset formGroupName="name">
-                            <form-textbox type="text" formControlName="firstName" label="FirstName" [control]="user.controls.name.controls.firstName" required></form-textbox>
+                            <form-textbox type="text" formControlName="firstName" label="FirstName" [control]="user.controls.name.controls.firstName" [validation]="false"></form-textbox>
                             <form-textbox type="text" formControlName="lastName" label="LastName" [control]="user.controls.name.controls.lastName" required></form-textbox>
                         </fieldset>
-                        <div class="form-group">
-                            <form-textbox type="text" formControlName="email" label="EMail" [control]="user.controls.email" required></form-textbox>
-                        </div>
-                        <div class="form-group">
-                            <form-textbox type="password" formControlName="password" label="Password" [control]="user.controls.password" required></form-textbox>
-                        </div>
+                        <form-textbox type="text" formControlName="email" label="EMail" [control]="user.controls.email" required></form-textbox>
+                        <form-textbox type="password" formControlName="password" label="Password" [control]="user.controls.password" required></form-textbox>
                         <div class="form-group">
                             <label>Language</label>
                             <select class="form-control" formControlName="language">
-                                <option value="">Please select a language</option>
-                                <option *ngFor="let lang of langs"
-                                        [value]="lang"> 
-                                        {{lang}} 
-                                </option>
-                            </select>
+                                        <option value="">Please select a language</option>
+                                        <option *ngFor="let lang of langs"
+                                                [value]="lang"> 
+                                                {{lang}} 
+                                        </option>
+                                    </select>
                         </div>
 
                         <button type="submit" [disabled]="user.invalid" class="btn btn-primary btn-xs">Sign up</button>
-                        <pre [innerHtml]="user.value | prettyjson:3"></pre>
+                        <button type="button" class="btn btn-warning btn-xs" (click)="getFormValidationErrors()">Validate</button>
                     </form>
-                    <ul>
-                        <li>Dynamic validation not working from textbox </li>
-                        <li>Type of textbox is not working e.g. type=password or type=text</li>
-                    </ul>
+
+                    <!-- <pre [innerHtml]="user.value | prettyjson:3"></pre> -->
+
+
                 </div>
             </div>
         </div>
         <div class="col-6">
+            <pre class="mdc-text-grey-500">{{formErrors | json }}</pre>
+        </div>
+        <!-- <div class="col-6">
             <div class="card" [ngBusy]="busyCitData">
                 <div class="card-block">
                     <pre [innerHtml]="citationData | prettyjson:3"></pre>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
 </div>
+<i class="material-icons fontwatermarkright">person_outline</i>

@@ -22,11 +22,12 @@ export class TextboxComponent implements ControlValueAccessor, Validator {
   @Input() label: string;
   @Input() type: string;
   @Input() control: FormControl;
+  @Input() validation = true;
   private errorMessage: any;
   // the method set in registerOnChange, it is just 
   // a placeholder for a method that takes one parameter, 
   // we use it to emit changes back to the form
-  private propagateChange = (_: any) => {};
+  private propagateChange = (_: any) => { };
 
   // returns null when valid else the validation object 
   // in this case we're checking if the json parsing has 
@@ -66,13 +67,15 @@ export class TextboxComponent implements ControlValueAccessor, Validator {
   private onChange(event) {
     // update the form
     // get value from text area
+    // console.log('Form control is here ... ');
+    // console.log(this.control);
     const newValue = event.target.value;
-    console.log(event.target.formControlName);
+    // console.log(event.target.formControlName);
     try {
       // parse it to json
       this.data = newValue;
     } catch (ex) {
-      console.log('Error from form-textbox:' , ex);
+      console.log('Error from form-textbox:', ex);
     }
     this.propagateChange(this.data);
   }

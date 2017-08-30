@@ -9,3 +9,4 @@ releases
 errorlog/
 out
 .vscode/chrome
+./src/environments

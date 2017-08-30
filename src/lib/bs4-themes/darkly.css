@@ -2707,16 +2707,14 @@ select.form-control:focus::-ms-value {
 }
 
 input {
-    background-color: dimgrey;
-    border-style: none;
+    background-color: #424242;
     color: white;
     padding-left: 3px;
     padding-right: 3px;
 }
 
 .form-control {
-    background-color: dimgrey;
-    border-style: none;
+    background-color: #424242;
     color: white;
 }
 

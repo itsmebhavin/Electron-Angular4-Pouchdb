@@ -1,9 +1,14 @@
 
 import { ValidationService } from '../_services/validation/validation.service';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators, Validator } from '@angular/forms';
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl, Validators, Validator, ValidationErrors } from '@angular/forms';
 import { PouchdbService } from '../_pouchdb/pouchdb.service';
 import { CustomValidators } from 'ng2-validation';
+
+export class CustomValidationErrors {
+  constructor(public key: string, public keyError: string, public value: string) {
+  }
+}
 
 export interface User {
   name: {
@@ -36,7 +41,7 @@ export class UserdetailComponent implements OnInit {
     'French',
     'German',
   ];
-
+  formErrors: CustomValidationErrors[] = [];
 
   constructor(private _fb: FormBuilder, private pouchdbservice: PouchdbService) {
 
@@ -72,12 +77,25 @@ export class UserdetailComponent implements OnInit {
       this.citationData = (response);
     });
   }
+  getFormValidationErrors() {
+    this.formErrors = []; // empty array everytime.
+    Object.keys(this.user.controls).forEach(key => {
+      const controlErrors: ValidationErrors = this.user.get(key).errors;
+      if (controlErrors != null) {
+        Object.keys(controlErrors).forEach(keyError => {
+          console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
+          const validateObj = { key: key, keyError: keyError, value: controlErrors[keyError] };
+          this.formErrors.push(validateObj);
+        });
+      }
+    });
+  }
   ngOnInit() {
 
     this.user = this._fb.group({
       userName: ['', Validators.required],
       name: this._fb.group({
-        firstName: ['', Validators.required],
+        firstName: [''],
         lastName: ['', Validators.required],
       }),
       email: ['', [
@@ -92,6 +110,12 @@ export class UserdetailComponent implements OnInit {
     });
 
     this.user.get('name.lastName').setValue('Doe');
+    console.log('>> Form is setting now.');
+    this.user.valueChanges.subscribe(val => {
+      console.log('--------');
+      this.getFormValidationErrors();
+      console.log('--------');
+    });
   }
 }
 
