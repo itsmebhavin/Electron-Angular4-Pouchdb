@@ -1,5 +1,5 @@
 <div class="form-group form-inline row" [ngClass]="{'has-success': (validation && control.status=='VALID'), 'has-danger': (validation && control.status=='INVALID')}">
-    <label class="mr-sm-2 col-sm-2 form-control-label">{{label}}</label>
+    <label class="mr-sm-2 col-sm-2 float-right form-control-label">{{label}}</label>
     <input [type]="type" [value]="jsonString" class="col-sm-9 form-control" [ngClass]="{'form-control-success': (validation && control.status=='VALID'), 'form-control-danger': (validation && control.status=='INVALID')}" (change)="onChange($event)" (keyup)="onChange($event)">
     <div class="row">
         <!-- <div class="col-sm-2 mr-sm-2"></div> -->

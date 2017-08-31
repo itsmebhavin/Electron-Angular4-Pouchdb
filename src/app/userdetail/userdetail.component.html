@@ -1,10 +1,13 @@
+<child-navbar [hrclass]="'hr-primary'" [textheader]="'User Detail'" [btnclass]="'btn-outline-info'" [textclass]="'mdc-text-blue-500'" [routerLink]="['/layout/home']">
+</child-navbar>
+
 <div class="no-gutters">
     <br/>
     <div class="row">
         <div class="col-6">
             <div class="box" [ngClass]="{'box-danger':user.status === 'INVALID', 'box-success': user.status === 'VALID'}">
                 <div class="box-body">
-                    <form [formGroup]="user" novalidate (ngSubmit)="onSubmit(user)">
+                    <form [formGroup]="user" class="form-horizontal" novalidate (ngSubmit)="onSubmit(user)">
                         <form-textbox [type]="text" formControlName="userName" [label]="'UserName'" [control]="user.controls.userName" required></form-textbox>
                         <fieldset formGroupName="name">
                             <form-textbox type="text" formControlName="firstName" label="FirstName" [control]="user.controls.name.controls.firstName" [validation]="false"></form-textbox>
@@ -24,19 +27,16 @@
                         </div>
 
                         <button type="submit" [disabled]="user.invalid" class="btn btn-primary btn-xs">Sign up</button>
-                        <button type="button" class="btn btn-warning btn-xs" (click)="getFormValidationErrors()">Validate</button>
+                        <button type="button" class="btn btn-warning btn-xs" data-toggle="collapse" data-target="#collapseValidation" aria-expanded="false" aria-controls="collapseValidation" (click)="getFormValidationErrors()">Validate</button>
                     </form>
-
-                    <!-- <pre [innerHtml]="user.value | prettyjson:3"></pre> -->
-
-
                 </div>
             </div>
         </div>
-        <div class="col-6">
-            <pre class="mdc-text-grey-500">{{formErrors | json }}</pre>
+        <div class="col-6 collapse box" [ngClass]="{'box-danger':formErrors.length > 0, 'box-success': formErrors.length <= 0}" id="collapseValidation">
+            <pre class="mdc-text-grey-500" *ngIf="formErrors.length > 0">{{formErrors | json }}</pre>
+            <pre class="mdc-text-green-500" *ngIf="formErrors.length <= 0">You're good to go! NO ERRORS.</pre>
         </div>
-        <!-- <div class="col-6">
+        <!-- <div class="col-12">
             <div class="card" [ngBusy]="busyCitData">
                 <div class="card-block">
                     <pre [innerHtml]="citationData | prettyjson:3"></pre>

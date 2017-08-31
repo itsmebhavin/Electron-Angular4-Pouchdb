@@ -110,11 +110,9 @@ export class UserdetailComponent implements OnInit {
     });
 
     this.user.get('name.lastName').setValue('Doe');
-    console.log('>> Form is setting now.');
+    // Form Error list subscriber. If any changes happen to form or it's controls, we are changing global validation list.
     this.user.valueChanges.subscribe(val => {
-      console.log('--------');
       this.getFormValidationErrors();
-      console.log('--------');
     });
   }
 }
