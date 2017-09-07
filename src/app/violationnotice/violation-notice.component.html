@@ -3,7 +3,7 @@
 
 <div class="no-gutters">
     <div class="row">
-        <div class="col-8">
+        <div class="col-6">
             <div class="box" [ngClass]="{'box-danger':violationNoticeForm.status === 'INVALID', 'box-success': violationNoticeForm.status === 'VALID'}">
                 <div class="box-body">
                     <form [formGroup]="violationNoticeForm">
@@ -12,46 +12,46 @@
                             <tab heading='Driver'>
                                 <fieldset formGroupName="driver">
                                     <div class="row">
-                                        <form-textbox type="text" formControlName="lastName" label="Last Name" [control]="violationNoticeForm.controls.driver.controls.lastName"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="lastName" label="Last Name" [control]="violationNoticeForm.controls.driver.controls.lastName"></form-textbox>
 
-                                        <form-textbox type="text" formControlName="firstName" label="First Name" [control]="violationNoticeForm.controls.driver.controls.firstName"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="firstName" label="First Name" [control]="violationNoticeForm.controls.driver.controls.firstName"></form-textbox>
 
-                                        <form-textbox type="text" formControlName="initial" label="Middle Initial" [control]="violationNoticeForm.controls.driver.controls.initial"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="initial" label="Middle Initial" [control]="violationNoticeForm.controls.driver.controls.initial"></form-textbox>
                                     </div>
                                     <div class="row">
-                                        <form-textbox type="text" formControlName="street" label="Street" [control]="violationNoticeForm.controls.driver.controls.street"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="street" label="Street" [control]="violationNoticeForm.controls.driver.controls.street"></form-textbox>
 
-                                        <form-textbox type="text" formControlName="city" label="City" [control]="violationNoticeForm.controls.driver.controls.city"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="city" label="City" [control]="violationNoticeForm.controls.driver.controls.city"></form-textbox>
 
-                                        <form-textbox type="text" formControlName="state" label="State" [control]="violationNoticeForm.controls.driver.controls.state"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="state" label="State" [control]="violationNoticeForm.controls.driver.controls.state"></form-textbox>
                                     </div>
                                     <div class="row">
-                                        <form-textbox type="text" formControlName="age" label="Age" [control]="violationNoticeForm.controls.driver.controls.age"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="age" label="Age" [control]="violationNoticeForm.controls.driver.controls.age"></form-textbox>
 
-                                        <form-textbox type="date" formControlName="birthDate" label="Birthdate" [control]="violationNoticeForm.controls.driver.controls.birthDate"></form-textbox>
+                                        <form-textbox class="col-4" type="date" formControlName="birthDate" label="Birthdate" [control]="violationNoticeForm.controls.driver.controls.birthDate"></form-textbox>
 
-                                        <form-textbox type="text" formControlName="race" label="Race" [control]="violationNoticeForm.controls.driver.controls.race"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="race" label="Race" [control]="violationNoticeForm.controls.driver.controls.race"></form-textbox>
                                     </div>
                                     <div class="row">
-                                        <form-textbox type="text" formControlName="sex" label="Sex" [control]="violationNoticeForm.controls.driver.controls.sex"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="sex" label="Sex" [control]="violationNoticeForm.controls.driver.controls.sex"></form-textbox>
 
-                                        <form-textbox type="text" formControlName="height" label="Height" [control]="violationNoticeForm.controls.driver.controls.height"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="height" label="Height" [control]="violationNoticeForm.controls.driver.controls.height"></form-textbox>
 
-                                        <form-textbox type="text" formControlName="weight" label="Weight" [control]="violationNoticeForm.controls.driver.controls.weight"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="weight" label="Weight" [control]="violationNoticeForm.controls.driver.controls.weight"></form-textbox>
                                     </div>
                                     <div class="row">
-                                        <form-textbox type="text" formControlName="licenseNum" label="License Number" [control]="violationNoticeForm.controls.driver.controls.licenseNum"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="licenseNum" label="License Number" [control]="violationNoticeForm.controls.driver.controls.licenseNum"></form-textbox>
 
-                                        <form-textbox type="text" formControlName="licenseClass" label="License Class" [control]="violationNoticeForm.controls.driver.controls.licenseClass"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="licenseClass" label="License Class" [control]="violationNoticeForm.controls.driver.controls.licenseClass"></form-textbox>
 
-                                        <form-textbox type="text" formControlName="licenseState" label="License State" [control]="violationNoticeForm.controls.driver.controls.licenseState"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="licenseState" label="License State" [control]="violationNoticeForm.controls.driver.controls.licenseState"></form-textbox>
                                     </div>
                                     <div class="row">
-                                        <form-textbox type="text" formControlName="origin" label="Origin" [control]="violationNoticeForm.controls.driver.controls.origin"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="origin" label="Origin" [control]="violationNoticeForm.controls.driver.controls.origin"></form-textbox>
 
-                                        <form-textbox type="text" formControlName="address" label="Address" [control]="violationNoticeForm.controls.driver.controls.address"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="address" label="Address" [control]="violationNoticeForm.controls.driver.controls.address"></form-textbox>
 
-                                        <form-textbox type="text" formControlName="destination" label="Destination" [control]="violationNoticeForm.controls.driver.controls.destination"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="destination" label="Destination" [control]="violationNoticeForm.controls.driver.controls.destination"></form-textbox>
                                     </div>
                                 </fieldset>
                             </tab>
@@ -60,16 +60,16 @@
                             <tab heading='Vehicle'>
                                 <fieldset formGroupName="vehicle">
                                     <div class="row">
-                                        <form-textbox type="text" formControlName="owner" label="Owner" [control]="violationNoticeForm.controls.vehicle.controls.owner"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="owner" label="Owner" [control]="violationNoticeForm.controls.vehicle.controls.owner"></form-textbox>
 
-                                        <form-textbox type="text" formControlName="vehicleLicenseNum" label="License Number" [control]="violationNoticeForm.controls.vehicle.controls.vehicleLicenseNum"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="vehicleLicenseNum" label="License Number" [control]="violationNoticeForm.controls.vehicle.controls.vehicleLicenseNum"></form-textbox>
 
-                                        <form-textbox type="text" formControlName="vehicleLicenseState" label="License State" [control]="violationNoticeForm.controls.vehicle.controls.vehicleLicenseState"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="vehicleLicenseState" label="License State" [control]="violationNoticeForm.controls.vehicle.controls.vehicleLicenseState"></form-textbox>
                                     </div>
                                     <div class="row">
-                                        <form-textbox type="text" formControlName="vehicleLicenseYear" label="License Year" [control]="violationNoticeForm.controls.vehicle.controls.vehicleLicenseYear"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="vehicleLicenseYear" label="License Year" [control]="violationNoticeForm.controls.vehicle.controls.vehicleLicenseYear"></form-textbox>
 
-                                        <form-textbox type="text" formControlName="vehicleMake" label="Make" [control]="violationNoticeForm.controls.vehicle.controls.vehicleMake"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="vehicleMake" label="Make" [control]="violationNoticeForm.controls.vehicle.controls.vehicleMake"></form-textbox>
                                     </div>
                                 </fieldset>
                             </tab>
@@ -78,14 +78,14 @@
                             <tab heading='Violation'>
                                 <fieldset formGroupName="violation">
                                     <div class="row">
-                                        <form-textbox type="datetime-local" formControlName="dateTime" label="Date/Time" [control]="violationNoticeForm.controls.violation.controls.dateTime"></form-textbox>
+                                        <form-textbox class="col-4" type="datetime-local" formControlName="dateTime" label="Date/Time" [control]="violationNoticeForm.controls.violation.controls.dateTime"></form-textbox>
                                         
-                                        <form-textbox type="text" formControlName="location" label="Location" [control]="violationNoticeForm.controls.violation.controls.location"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="location" label="Location" [control]="violationNoticeForm.controls.violation.controls.location"></form-textbox>
                                     </div>
                                     <div class="row">
-                                        <form-textbox type="text" formControlName="stateStatute" label="State Statute" [control]="violationNoticeForm.controls.violation.controls.stateStatute"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="stateStatute" label="State Statute" [control]="violationNoticeForm.controls.violation.controls.stateStatute"></form-textbox>
 
-                                        <div>
+                                        <div class="col-4" >
                                             <label>Violation</label>
                                             <select multiple name="stateStatuteViolation" formControlName="stateStatuteViolation">
                                             <option *ngFor="let violation of violations" [value]="violation">  
@@ -95,19 +95,19 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <form-textbox type="text" formControlName="codeNum" label="Code Number" [control]="violationNoticeForm.controls.violation.controls.codeNum"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="codeNum" label="Code Number" [control]="violationNoticeForm.controls.violation.controls.codeNum"></form-textbox>
 
-                                        <form-textbox type="text" formControlName="violation" label="Violation" [control]="violationNoticeForm.controls.violation.controls.violation"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="violation" label="Violation" [control]="violationNoticeForm.controls.violation.controls.violation"></form-textbox>
                                     </div>
                                     <div class="row">
-                                        <form-textbox type="text" formControlName="officer" label="Officer" [control]="violationNoticeForm.controls.violation.controls.officer"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="officer" label="Officer" [control]="violationNoticeForm.controls.violation.controls.officer"></form-textbox>
 
-                                        <form-textbox type="text" formControlName="officerUnit" label="Officer Unit/Station" [control]="violationNoticeForm.controls.violation.controls.officerUnit"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="officerUnit" label="Officer Unit/Station" [control]="violationNoticeForm.controls.violation.controls.officerUnit"></form-textbox>
                                     </div>
                                     <div class="row">
-                                        <form-combobox [values]="summonsLocations" label="Location" [control]="violationNoticeForm.controls.violation.controls.summonsLocation"></form-combobox>
+                                        <form-combobox class="col-4" [values]="summonsLocations" label="Location" [control]="violationNoticeForm.controls.violation.controls.summonsLocation"></form-combobox>
 
-                                        <form-textbox type="datetime-local" formControlName="summonsDate" label="Date" [control]="violationNoticeForm.controls.violation.controls.summonsDate"></form-textbox>
+                                        <form-textbox class="col-4" type="datetime-local" formControlName="summonsDate" label="Date" [control]="violationNoticeForm.controls.violation.controls.summonsDate"></form-textbox>
                                     </div>
                                 </fieldset>
                             </tab>
