@@ -1,159 +1,167 @@
-<div>
-    <h1>Overload Citation</h1>
-    <form [formGroup]="overLoadForm">
-        <tabset>
-            <!-- Driver section -->
-            <tab heading='Driver'>
-                <fieldset formGroupName="driver">
-                    <div class="row">
-                        <form-textbox type="text" formControlName="lastName" label="Last Name" [control]="overLoadForm.controls.driver.controls.lastName" required></form-textbox>
+<child-navbar [hrclass]="'hr-primary'" [textheader]="'Overload Citation'" [btnclass]="'btn-outline-info'" [textclass]="'mdc-text-blue-500'" [routerLink]="['/layout/home']">
+</child-navbar>
 
-                        <form-textbox type="text" formControlName="firstName" label="First Name" [control]="overLoadForm.controls.driver.controls.firstName" required></form-textbox>
+<div class="row">
+    <div class="col-6">
+        <div class="box" [ngClass]="{'box-danger':overLoadForm.status === 'INVALID', 'box-success': overLoadForm.status === 'VALID'}">
+            <div class="box-body">
+                <form [formGroup]="overLoadForm">
+                    <tabset>
+                        <!-- Driver section -->
+                        <tab heading='Driver'>
+                            <fieldset formGroupName="driver">
+                                <div class="row">
+                                    <form-textbox type="text" formControlName="lastName" label="Last Name" [control]="overLoadForm.controls.driver.controls.lastName" required></form-textbox>
 
-                        <form-textbox type="text" formControlName="initial" label="Initial" [control]="overLoadForm.controls.driver.controls.initial" required></form-textbox>
-                    </div>
+                                    <form-textbox type="text" formControlName="firstName" label="First Name" [control]="overLoadForm.controls.driver.controls.firstName" required></form-textbox>
 
-                    <div class="row">
-                        <form-textbox type="text" formControlName="street" label="Street" [control]="overLoadForm.controls.driver.controls.street" required></form-textbox>
-                    </div>
+                                    <form-textbox type="text" formControlName="initial" label="Initial" [control]="overLoadForm.controls.driver.controls.initial" required></form-textbox>
+                                </div>
 
-                    <div class="row">
-                        <form-textbox type="text" formControlName="city" label="City" [control]="overLoadForm.controls.driver.controls.city" required></form-textbox>
+                                <div class="row">
+                                    <form-textbox type="text" formControlName="street" label="Street" [control]="overLoadForm.controls.driver.controls.street" required></form-textbox>
+                                </div>
 
-                        <form-textbox type="text" formControlName="state" label="State" [control]="overLoadForm.controls.driver.controls.state" required></form-textbox>
+                                <div class="row">
+                                    <form-textbox type="text" formControlName="city" label="City" [control]="overLoadForm.controls.driver.controls.city" required></form-textbox>
 
-                        <form-textbox type="number" formControlName="zip" label="Zip" [control]="overLoadForm.controls.driver.controls.zip" required></form-textbox>
-                    </div>
+                                    <form-textbox type="text" formControlName="state" label="State" [control]="overLoadForm.controls.driver.controls.state" required></form-textbox>
 
-                    <div class="row">
-                        <form-textbox type="text" formControlName="age" label="Age" [control]="overLoadForm.controls.driver.controls.age" required></form-textbox>
+                                    <form-textbox type="number" formControlName="zip" label="Zip" [control]="overLoadForm.controls.driver.controls.zip" required></form-textbox>
+                                </div>
 
-                        <form-textbox type="date" formControlName="birthDate" label="Birthdate" [control]="overLoadForm.controls.driver.controls.birthDate" required></form-textbox>
+                                <div class="row">
+                                    <form-textbox type="text" formControlName="age" label="Age" [control]="overLoadForm.controls.driver.controls.age" required></form-textbox>
 
-                        <form-textbox type="text" formControlName="race" label="Race" [control]="overLoadForm.controls.driver.controls.race" required></form-textbox>
+                                    <form-textbox type="date" formControlName="birthDate" label="Birthdate" [control]="overLoadForm.controls.driver.controls.birthDate" required></form-textbox>
 
-                        <form-textbox type="text" formControlName="sex" label="Sex" [control]="overLoadForm.controls.driver.controls.sex" required></form-textbox>
-                    </div>
+                                    <form-textbox type="text" formControlName="race" label="Race" [control]="overLoadForm.controls.driver.controls.race" required></form-textbox>
 
-                    <div class="row">
-                        <form-textbox type="text" formControlName="eyes" label="Eyes" [control]="overLoadForm.controls.driver.controls.eyes" required></form-textbox>
+                                    <form-textbox type="text" formControlName="sex" label="Sex" [control]="overLoadForm.controls.driver.controls.sex" required></form-textbox>
+                                </div>
 
-                        <form-textbox type="text" formControlName="height" label="Height" [control]="overLoadForm.controls.driver.controls.height" required></form-textbox>
+                                <div class="row">
+                                    <form-textbox type="text" formControlName="eyes" label="Eyes" [control]="overLoadForm.controls.driver.controls.eyes" required></form-textbox>
 
-                        <form-textbox type="text" formControlName="weight" label="Weight" [control]="overLoadForm.controls.driver.controls.weight" required></form-textbox>
-                    </div>
+                                    <form-textbox type="text" formControlName="height" label="Height" [control]="overLoadForm.controls.driver.controls.height" required></form-textbox>
 
-                    <div class="row">
-                        <form-textbox type="text" formControlName="licenseNum" label="Driver's License Number" [control]="overLoadForm.controls.driver.controls.licenseNum" required></form-textbox>
+                                    <form-textbox type="text" formControlName="weight" label="Weight" [control]="overLoadForm.controls.driver.controls.weight" required></form-textbox>
+                                </div>
 
-                        <form-textbox type="text" formControlName="origin" label="Origin" [control]="overLoadForm.controls.driver.controls.origin" required></form-textbox>
+                                <div class="row">
+                                    <form-textbox type="text" formControlName="licenseNum" label="Driver's License Number" [control]="overLoadForm.controls.driver.controls.licenseNum" required></form-textbox>
 
-                        <form-textbox type="text" formControlName="address" label="Address" [control]="overLoadForm.controls.driver.controls.address" required></form-textbox>
+                                    <form-textbox type="text" formControlName="origin" label="Origin" [control]="overLoadForm.controls.driver.controls.origin" required></form-textbox>
 
-                        <form-textbox type="text" formControlName="destination" label="Destination" [control]="overLoadForm.controls.driver.controls.destination" required></form-textbox>
-                    </div>
-                </fieldset>
-            </tab>
+                                    <form-textbox type="text" formControlName="address" label="Address" [control]="overLoadForm.controls.driver.controls.address" required></form-textbox>
 
-            <!-- Vehicle section -->
-            <tab heading='Vehicle'>
-                <fieldset formGroupName="vehicle">
-                    <div class="row">
-                        <form-textbox type="text" formControlName="owner" label="Owner" [control]="overLoadForm.controls.vehicle.controls.owner" required></form-textbox>
-                    </div>
+                                    <form-textbox type="text" formControlName="destination" label="Destination" [control]="overLoadForm.controls.driver.controls.destination" required></form-textbox>
+                                </div>
+                            </fieldset>
+                        </tab>
 
-                    <div class="row">
-                        <form-textbox type="text" formControlName="vehicleLicenseNum" label="Vehicle License Number" [control]="overLoadForm.controls.vehicle.controls.vehicleLicenseNum" required></form-textbox>
+                        <!-- Vehicle section -->
+                        <tab heading='Vehicle'>
+                            <fieldset formGroupName="vehicle">
+                                <div class="row">
+                                    <form-textbox type="text" formControlName="owner" label="Owner" [control]="overLoadForm.controls.vehicle.controls.owner" required></form-textbox>
+                                </div>
 
-                        <form-textbox type="text" formControlName="vehicleLicenseState" label="License State" [control]="overLoadForm.controls.vehicle.controls.vehicleLicenseState" required></form-textbox>
-                    </div>
+                                <div class="row">
+                                    <form-textbox type="text" formControlName="vehicleLicenseNum" label="Vehicle License Number" [control]="overLoadForm.controls.vehicle.controls.vehicleLicenseNum" required></form-textbox>
 
-                    <div class="row">
-                        <form-textbox type="text" formControlName="vehicleLicenseYear" label="License Year" [control]="overLoadForm.controls.vehicle.controls.vehicleLicenseYear" required></form-textbox>
+                                    <form-textbox type="text" formControlName="vehicleLicenseState" label="License State" [control]="overLoadForm.controls.vehicle.controls.vehicleLicenseState" required></form-textbox>
+                                </div>
 
-                        <form-textbox type="text" formControlName="vehicleMake" label="Make" [control]="overLoadForm.controls.vehicle.controls.vehicleMake" required></form-textbox>
-                    </div>
-                </fieldset>
-            </tab>
+                                <div class="row">
+                                    <form-textbox type="text" formControlName="vehicleLicenseYear" label="License Year" [control]="overLoadForm.controls.vehicle.controls.vehicleLicenseYear" required></form-textbox>
 
-            <!-- Citation section -->
-            <tab heading='Citation'>
-                <fieldset formGroupName="citation">
-                    <div class="row">
-                        <form-textbox type="datetime-local" formControlName="dateTime" label="Date of Citation" [control]="overLoadForm.controls.citation.controls.dateTime" required></form-textbox>
+                                    <form-textbox type="text" formControlName="vehicleMake" label="Make" [control]="overLoadForm.controls.vehicle.controls.vehicleMake" required></form-textbox>
+                                </div>
+                            </fieldset>
+                        </tab>
 
-                        <form-textbox type="text" formControlName="location" label="Location" [control]="overLoadForm.controls.citation.controls.location" required></form-textbox>
-                    </div>
+                        <!-- Citation section -->
+                        <tab heading='Citation'>
+                            <fieldset formGroupName="citation">
+                                <div class="row">
+                                    <form-textbox type="datetime-local" formControlName="dateTime" label="Date of Citation" [control]="overLoadForm.controls.citation.controls.dateTime" required></form-textbox>
 
-                    <div class="row">
-                        <form-textbox type="text" formControlName="stateStatute" label="State Statute" [control]="overLoadForm.controls.citation.controls.stateStatute" required></form-textbox>
+                                    <form-textbox type="text" formControlName="location" label="Location" [control]="overLoadForm.controls.citation.controls.location" required></form-textbox>
+                                </div>
 
-                        <form-textbox type="text" formControlName="totalGross" label="Total Gross" [control]="overLoadForm.controls.citation.controls.totalGross" required></form-textbox>
-                    </div>
+                                <div class="row">
+                                    <form-textbox type="text" formControlName="stateStatute" label="State Statute" [control]="overLoadForm.controls.citation.controls.stateStatute" required></form-textbox>
 
-                    <div class="row">
-                        <form-textbox type="text" formControlName="bridgeFormula" label="Bridge Formula" [control]="overLoadForm.controls.citation.controls.bridgeFormula" required></form-textbox>
+                                    <form-textbox type="text" formControlName="totalGross" label="Total Gross" [control]="overLoadForm.controls.citation.controls.totalGross" required></form-textbox>
+                                </div>
 
-                        <form-textbox type="text" formControlName="otherViolations" label="Other Violations" [control]="overLoadForm.controls.citation.controls.otherViolations" required></form-textbox>
-                    </div>
+                                <div class="row">
+                                    <form-textbox type="text" formControlName="bridgeFormula" label="Bridge Formula" [control]="overLoadForm.controls.citation.controls.bridgeFormula" required></form-textbox>
 
-                    <div class="row">
-                        <form-textbox type="text" formControlName="legal" label="Legal" [control]="overLoadForm.controls.citation.controls.legal" required></form-textbox>
+                                    <form-textbox type="text" formControlName="otherViolations" label="Other Violations" [control]="overLoadForm.controls.citation.controls.otherViolations" required></form-textbox>
+                                </div>
 
-                        <form-textbox type="text" formControlName="totalWeightViolation" label="Total Weight Violation" [control]="overLoadForm.controls.citation.controls.totalWeightViolation" required></form-textbox>
+                                <div class="row">
+                                    <form-textbox type="text" formControlName="legal" label="Legal" [control]="overLoadForm.controls.citation.controls.legal" required></form-textbox>
 
-                        <form-textbox type="text" formControlName="commodity" label="Commodity" [control]="overLoadForm.controls.citation.controls.commodity" required></form-textbox>
-                    </div>
-                </fieldset>
-            </tab>
+                                    <form-textbox type="text" formControlName="totalWeightViolation" label="Total Weight Violation" [control]="overLoadForm.controls.citation.controls.totalWeightViolation" required></form-textbox>
 
-            <!-- Court section -->
-            <tab heading='Court'>
-                <fieldset formGroupName="court">
-                    <div class="row">
-                        <form-textbox type="text" formControlName="officerOne" label="Officer One" [control]="overLoadForm.controls.court.controls.officerOne" required></form-textbox>
+                                    <form-textbox type="text" formControlName="commodity" label="Commodity" [control]="overLoadForm.controls.citation.controls.commodity" required></form-textbox>
+                                </div>
+                            </fieldset>
+                        </tab>
 
-                        <form-textbox type="text" formControlName="officerTwo" label="Officer Two" [control]="overLoadForm.controls.court.controls.officerTwo" required></form-textbox>
+                        <!-- Court section -->
+                        <tab heading='Court'>
+                            <fieldset formGroupName="court">
+                                <div class="row">
+                                    <form-textbox type="text" formControlName="officerOne" label="Officer One" [control]="overLoadForm.controls.court.controls.officerOne" required></form-textbox>
 
-                        <form-textbox type="text" formControlName="unitOrStation" label="Unit/Station" [control]="overLoadForm.controls.court.controls.unitOrStation" required></form-textbox>
-                    </div>
+                                    <form-textbox type="text" formControlName="officerTwo" label="Officer Two" [control]="overLoadForm.controls.court.controls.officerTwo" required></form-textbox>
 
-                    <div class="row">
-                        <form-textbox type="text" formControlName="court" label="Court" [control]="overLoadForm.controls.court.controls.court" required></form-textbox>
+                                    <form-textbox type="text" formControlName="unitOrStation" label="Unit/Station" [control]="overLoadForm.controls.court.controls.unitOrStation" required></form-textbox>
+                                </div>
 
-                        <form-textbox type="text" formControlName="courtCity" label="Court City" [control]="overLoadForm.controls.court.controls.courtCity" required></form-textbox>
+                                <div class="row">
+                                    <form-textbox type="text" formControlName="court" label="Court" [control]="overLoadForm.controls.court.controls.court" required></form-textbox>
 
-                        <form-textbox type="text" formControlName="courtDateTime" label="Court Date and Time" [control]="overLoadForm.controls.court.controls.courtDateTime" required></form-textbox>
-                    </div>
-                </fieldset>
-            </tab>
+                                    <form-textbox type="text" formControlName="courtCity" label="Court City" [control]="overLoadForm.controls.court.controls.courtCity" required></form-textbox>
 
-            <!-- Disposition section -->
-            <tab heading='Disposition'>
-                <fieldset formGroupName="disposition">
-                    <div class="row">
-                        <form-textbox type="text" formControlName="bondReceivedBy" label="Bond Received By" [control]="overLoadForm.controls.disposition.controls.bondReceivedBy" required></form-textbox>
+                                    <form-textbox type="text" formControlName="courtDateTime" label="Court Date and Time" [control]="overLoadForm.controls.court.controls.courtDateTime" required></form-textbox>
+                                </div>
+                            </fieldset>
+                        </tab>
 
-                        <form-textbox type="text" formControlName="amount" label="Amount" [control]="overLoadForm.controls.disposition.controls.amount" required></form-textbox>
+                        <!-- Disposition section -->
+                        <tab heading='Disposition'>
+                            <fieldset formGroupName="disposition">
+                                <div class="row">
+                                    <form-textbox type="text" formControlName="bondReceivedBy" label="Bond Received By" [control]="overLoadForm.controls.disposition.controls.bondReceivedBy" required></form-textbox>
 
-                        <form-textbox type="text" formControlName="penalty" label="Penalty" [control]="overLoadForm.controls.disposition.controls.penalty" required></form-textbox>
-                    </div>
+                                    <form-textbox type="text" formControlName="amount" label="Amount" [control]="overLoadForm.controls.disposition.controls.amount" required></form-textbox>
 
-                    <div class="row">
-                        <form-textbox type="text" formControlName="fine" label="Fine" [control]="overLoadForm.controls.disposition.controls.fine" required></form-textbox>
+                                    <form-textbox type="text" formControlName="penalty" label="Penalty" [control]="overLoadForm.controls.disposition.controls.penalty" required></form-textbox>
+                                </div>
 
-                        <form-textbox type="text" formControlName="cost" label="Cost" [control]="overLoadForm.controls.disposition.controls.cost" required></form-textbox>
-                    </div>
+                                <div class="row">
+                                    <form-textbox type="text" formControlName="fine" label="Fine" [control]="overLoadForm.controls.disposition.controls.fine" required></form-textbox>
 
-                    <div class="row">
-                        <form-textbox type="text" formControlName="billPenaltyTo" label="Bill Penalty To" [control]="overLoadForm.controls.disposition.controls.billPenaltyTo" required></form-textbox>
+                                    <form-textbox type="text" formControlName="cost" label="Cost" [control]="overLoadForm.controls.disposition.controls.cost" required></form-textbox>
+                                </div>
 
-                        <form-textbox type="text" formControlName="billAddress" label="Bill Address" [control]="overLoadForm.controls.disposition.controls.billAddress" required></form-textbox>
-                    </div>
-                </fieldset>
-            </tab>
+                                <div class="row">
+                                    <form-textbox type="text" formControlName="billPenaltyTo" label="Bill Penalty To" [control]="overLoadForm.controls.disposition.controls.billPenaltyTo" required></form-textbox>
 
-            <pre>{{overLoadForm.value | json}}</pre>
-        </tabset>
-    </form>
+                                    <form-textbox type="text" formControlName="billAddress" label="Bill Address" [control]="overLoadForm.controls.disposition.controls.billAddress" required></form-textbox>
+                                </div>
+                            </fieldset>
+                        </tab>
+
+                        <pre>{{overLoadForm.value | json}}</pre>
+                    </tabset>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
