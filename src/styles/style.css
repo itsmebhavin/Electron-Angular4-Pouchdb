@@ -1892,3 +1892,8 @@ hr {
     font-size: small;
     text-transform: uppercase;
 }
+
+/* Tab coloring for forms */
+
+.nav-item.OverloadCitation { background-color: violet; }
+.nav-item.ViolationNotice { background-color: lightgreen; }

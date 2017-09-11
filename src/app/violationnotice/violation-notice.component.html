@@ -1,13 +1,11 @@
-<child-navbar [hrclass]="'hr-primary'" [textheader]="'Violation Notice'" [btnclass]="'btn-outline-info'" [textclass]="'mdc-text-blue-500'" [routerLink]="['/layout/home']">
-</child-navbar>
-
+<br>
 <div class="no-gutters">
     <div class="row">
         <div class="col-6">
             <div class="box" [ngClass]="{'box-danger':violationNoticeForm.status === 'INVALID', 'box-success': violationNoticeForm.status === 'VALID'}">
                 <div class="box-body">
                     <form [formGroup]="violationNoticeForm">
-                        <tabset [vertical]="true">
+                        <tabset>
                             <!-- Driver section -->
                             <tab heading='Driver'>
                                 <fieldset formGroupName="driver">
