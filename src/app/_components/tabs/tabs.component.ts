@@ -66,7 +66,6 @@ export class TabsComponent implements AfterContentInit {
             this.dynamicTabs.splice(i, this.dynamicTabs.length);
 
             // destroy our dynamically created component again
-            // const viewContainerRef = this.dynamicTabPlaceholder.viewContainer;
             const viewContainerRef = this.dynamicTabPlaceholder;
             viewContainerRef.remove(i);
 

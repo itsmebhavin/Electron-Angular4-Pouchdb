@@ -2,7 +2,7 @@
     <ul class="nav" [ngClass]="{'nav-tabs':dynamicTabs.length !=0 }">
         <ng-container *ngIf="dynamicTabs.length != 0">
             <li *ngFor="let tab of tabs" id="1" (click)="selectTab(tab)" [class.active]="tab.active">
-                <a href="#"><i class="material-icons md-18">{{tab.icon}}</i> {{tab.title}}</a>
+                <a href="#">START</a>
             </li>
         </ng-container>
         <!-- dynamic tabs -->
