@@ -1,0 +1,25 @@
+<div>
+    <ul class="nav" [ngClass]="{'nav-tabs':dynamicTabs.length !=0 }">
+        <ng-container *ngIf="dynamicTabs.length != 0">
+            <li *ngFor="let tab of tabs" id="1" (click)="selectTab(tab)" [class.active]="tab.active">
+                <a href="#"><i class="material-icons md-18">{{tab.icon}}</i> {{tab.title}}</a>
+            </li>
+        </ng-container>
+        <!-- dynamic tabs -->
+        <li *ngFor="let tab of dynamicTabs" id="tab.id" (click)="selectTab(tab)" [class.active]="tab.active">
+            <a href="#">
+                <i class="material-icons">{{tab.icon}}</i> {{tab.title}}
+                <span class="tab-close" *ngIf="tab.isCloseable" (click)="closeTab(tab)">x</span>
+            </a>
+        </li>
+        <ng-container *ngIf="dynamicTabs.length != 0">
+            <li class="pull-xs-right hint--info hint--top-left" data-hint="Close All Tabs">
+                <a class="nav-link" (click)="closeAllTabs()">
+                    <i class="fa fa-close"></i>
+                </a>
+            </li>
+        </ng-container>
+    </ul>
+    <ng-content></ng-content>
+    <ng-template dynamic-tabs #container></ng-template>
+</div>

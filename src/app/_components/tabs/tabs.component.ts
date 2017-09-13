@@ -17,25 +17,7 @@ import { TabComponent, Tab } from './tab.component';
 import { DynamicTabsDirective } from './dynamic-tabs.directive';
 @Component({
     selector: 'my-tabs',
-    template: `
-    <ul class="nav" [ngClass]="{'nav-tabs':dynamicTabs.length !=0 }">
-     <ng-container  *ngIf="dynamicTabs.length != 0">
-         <li *ngFor="let tab of tabs" id="1"  (click)="selectTab(tab)" [class.active]="tab.active">
-         <a href="#"><i class="material-icons md-18">{{tab.icon}}</i> {{tab.title}}</a>
-       </li>
-     </ng-container>
-      <!-- dynamic tabs -->
-      <li *ngFor="let tab of dynamicTabs" id="tab.id" (click)="selectTab(tab)" [class.active]="tab.active">
-        <a href="#">
-            <i class="material-icons">{{tab.icon}}</i>
-            {{tab.title}}
-            <span class="tab-close" *ngIf="tab.isCloseable" (click)="closeTab(tab)">x</span>
-        </a>
-      </li>
-    </ul>
-    <ng-content></ng-content>
-    <ng-template dynamic-tabs #container></ng-template>
-  `,
+    templateUrl: './tabs.component.html',
     styles: [
         `
     .tab-close {
@@ -74,6 +56,23 @@ export class TabsComponent implements AfterContentInit {
         // if there is no active tab set, activate the first
         if (activeTabs.length === 0) {
             this.selectTab(this.tabs.first);
+        }
+    }
+
+    closeAllTabs() {
+        // this.dynamicTabs = [];
+        for (let i = 0; i < this.dynamicTabs.length; i++) {
+            // remove the tab from our array
+            this.dynamicTabs.splice(i, this.dynamicTabs.length);
+
+            // destroy our dynamically created component again
+            // const viewContainerRef = this.dynamicTabPlaceholder.viewContainer;
+            const viewContainerRef = this.dynamicTabPlaceholder;
+            viewContainerRef.remove(i);
+
+            // set tab index to 1st one
+            this.selectTab(this.tabs.first);
+            break;
         }
     }
 

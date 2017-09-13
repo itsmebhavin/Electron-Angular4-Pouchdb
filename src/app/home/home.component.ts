@@ -23,14 +23,17 @@ export class HomeComponent implements OnInit {
 	}
 
 	onAddOverloadCitation() {
+		console.log('inside onAddOverloadCitation.');
 		this.createNewTab(this.overloadCitationTemplate);
 	}
 
 	onAddViolationNotice() {
+		console.log('inside onAddViolationNotice.');
 		this.createNewTab(this.violationNoticeTemplate);
 	}
 
 	onAddUserDetail() {
+		console.log('inside onAddUserDetail.');
 		this.createNewTab(this.userDetailTemplate);
 	}
 

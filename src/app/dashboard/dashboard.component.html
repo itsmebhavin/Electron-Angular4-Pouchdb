@@ -2,7 +2,14 @@
     <br/>
     <div class="row">
         <div class="col">
-            <h2 class=" mdc-text-blue-700"><i class="material-icons">dashboard</i> Welcome</h2>
+            <div *ngIf="isElectronApp; then electronApp else webApp"></div>
+            <ng-template #electronApp>
+                <h2 class=" mdc-text-blue-700"><i class="material-icons">dashboard</i> {{applicationheader}} <span style="font-size:10px;" class="navbar-text small text-truncate mt-1 text-secondary font-italic">{{subheader}}</span></h2>
+
+            </ng-template>
+            <ng-template #webApp>
+                <h2 class=" mdc-text-blue-700"><i class="material-icons">dashboard</i> Welcome</h2>
+            </ng-template>
         </div>
         <div class="col">Analytics data will be here</div>
     </div>
