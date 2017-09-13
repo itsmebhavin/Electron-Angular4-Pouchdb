@@ -14,7 +14,7 @@ export const environment = {
   },
   DefaultTheme: 'pulse',
   PouchDBDebugMode: false,
-  RemoteCouchDBUrl:  'https://ufpdbuser:20x2nc2lp90l@arformsplatform.caps.ua.edu/couchdb/',
+  RemoteCouchDBUrl:  '',
   RemoteCouchCitationDBName: 'ufp_citationdata',
   RemoteCouchReferenceDBName: 'ufp_referencedata',
   FakeUserName: 'jdoe',
