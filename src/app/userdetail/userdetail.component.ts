@@ -22,7 +22,7 @@ export interface User {
 }
 
 @Component({
-  selector: 'app-userdetail',
+  selector: 'user-detail',
   templateUrl: './userdetail.component.html',
   styleUrls: ['./userdetail.component.css'],
   providers: [PouchdbService]

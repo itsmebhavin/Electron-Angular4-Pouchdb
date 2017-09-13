@@ -1,7 +1,7 @@
 <br>
 <div class="no-gutters">
     <div class="row">
-        <div class="col-6">
+        <div class="col-12">
             <div class="box" [ngClass]="{'box-danger':violationNoticeForm.status === 'INVALID', 'box-success': violationNoticeForm.status === 'VALID'}">
                 <div class="box-body">
                     <form [formGroup]="violationNoticeForm">
@@ -77,13 +77,13 @@
                                 <fieldset formGroupName="violation">
                                     <div class="row">
                                         <form-textbox class="col-4" type="datetime-local" formControlName="dateTime" label="Date/Time" [control]="violationNoticeForm.controls.violation.controls.dateTime"></form-textbox>
-                                        
+
                                         <form-textbox class="col-4" type="text" formControlName="location" label="Location" [control]="violationNoticeForm.controls.violation.controls.location"></form-textbox>
                                     </div>
                                     <div class="row">
                                         <form-textbox class="col-4" type="text" formControlName="stateStatute" label="State Statute" [control]="violationNoticeForm.controls.violation.controls.stateStatute"></form-textbox>
 
-                                        <div class="col-4" >
+                                        <div class="col-4">
                                             <label>Violation</label>
                                             <select multiple name="stateStatuteViolation" formControlName="stateStatuteViolation">
                                             <option *ngFor="let violation of violations" [value]="violation">  

@@ -29,6 +29,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { UserdetailComponent } from './userdetail/userdetail.component';
 import { DatamanagerComponent } from './datamanager/datamanager.component';
 import { DiagnoticsComponent } from './diagnotics/diagnotics.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 // App Components
 const busyConfig: BusyConfig = {
@@ -54,7 +55,8 @@ const busyConfig: BusyConfig = {
 		ComboboxComponent,
 		UserdetailComponent,
 		DatamanagerComponent,
-		DiagnoticsComponent /*Had to put this here instead of forms.module for some reason.*/
+		DiagnoticsComponent,
+		DashboardComponent /*Had to put this here instead of forms.module for some reason.*/
 
 	],
 	imports: [

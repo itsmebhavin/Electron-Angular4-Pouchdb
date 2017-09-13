@@ -9,6 +9,8 @@ import { NetworkNotifierService } from './networknotifier/networknotifier.servic
 import { NpmBadgeComponent } from './npmbadge/npmbadge.component';
 import { UfpPouchDBModule } from '../_pouchdb/pouchdb.module';
 import { ChildPageNavBarComponent } from './childpagenavbar/childpagenavbar.component';
+import { TabsComponent } from './tabs/tabs.component';
+import { TabComponent } from './tabs/tab.component';
 
 @NgModule({
     imports: [
@@ -16,13 +18,17 @@ import { ChildPageNavBarComponent } from './childpagenavbar/childpagenavbar.comp
         FormsModule,
         UfpPouchDBModule
     ],
+    entryComponents: [TabsComponent,
+        TabComponent],
     exports: [
         ClockComponent,
         FooterComponent,
         HeaderComponent,
         NetworknotifierComponent,
         NpmBadgeComponent,
-        ChildPageNavBarComponent
+        ChildPageNavBarComponent,
+        TabsComponent,
+        TabComponent
     ],
     declarations: [
         ClockComponent,
@@ -30,7 +36,9 @@ import { ChildPageNavBarComponent } from './childpagenavbar/childpagenavbar.comp
         HeaderComponent,
         NetworknotifierComponent,
         NpmBadgeComponent,
-        ChildPageNavBarComponent
+        ChildPageNavBarComponent,
+        TabsComponent,
+        TabComponent
     ],
     providers: [NetworkNotifierService],
 })

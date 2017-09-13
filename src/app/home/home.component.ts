@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
+import { TabsComponent } from '../_components/tabs/tabs.component';
 
 @Component({
 	selector: 'app-home',
@@ -9,42 +10,38 @@ import * as moment from 'moment';
 })
 
 export class HomeComponent implements OnInit {
-
-	// Doughnut
-	public doughnutChartLabels = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
-	public doughnutChartData = [350, 450, 100];
-	public doughnutChartType = 'doughnut';
-	public tabs = [];
-
-	// events
-	public chartClicked(e: any): void {
-		console.log(e);
-	}
-
-	public chartHovered(e: any): void {
-		console.log(e);
-	}
-
-	constructor(private _router: Router) {
+	@ViewChild(TabsComponent) tabsComponent;
+	@ViewChild('overloadCitation') overloadCitationTemplate;
+	@ViewChild('violationNotice') violationNoticeTemplate;
+	@ViewChild('userDetail') userDetailTemplate;
+	constructor() {
 
 	}
-
 
 	ngOnInit() {
 
 	}
 
-	goto(routerPath) {
-		console.log(routerPath);
-		this._router.navigate(['/layout/' + routerPath]);
+	onAddOverloadCitation() {
+		this.createNewTab(this.overloadCitationTemplate);
 	}
 
-	newForm(newForm) {
-		var ticketNum = moment().format('YYYYMMDDHHmmssSSS'); //Generate ticket number representing this thousandth of a second.
-		this.tabs.push({ form: newForm, ticketNumber: ticketNum });
+	onAddViolationNotice() {
+		this.createNewTab(this.violationNoticeTemplate);
 	}
 
-	closeForm(index) {
-		this.tabs.splice(index, 1);
+	onAddUserDetail() {
+		this.createNewTab(this.userDetailTemplate);
+	}
+
+	createNewTab(template: any) {
+		const ticketNum = moment().format('YYYYMMDDHHmmssSS');
+		this.tabsComponent.openTab(
+			ticketNum,
+			ticketNum,
+			template,
+			{},
+			true
+		);
 	}
 }

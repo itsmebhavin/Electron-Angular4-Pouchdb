@@ -1,129 +1,16 @@
-<tabset>
-    <tab heading='Start'>
-        <div class="container-fluid">
-            <br/>
-            <div class="row">
-                <div class="col">
-                    <h2 class=" mdc-text-blue-700"><i class="material-icons">dashboard</i> Welcome</h2>
-                </div>
-                <div class="col">Analytics data will be here</div>
-            </div>
-            <br/>
-            <div class="row">
-                <div class="col col-md-6 col-lg-4">
-                    <div class="small-box mdc-bg-cyan-500">
-                        <div class="inner">
-                            <h3>
-                                150
-                            </h3>
-                            <p>
-                                New Orders
-                            </p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-cogs"></i>
-                        </div>
-                    </div>
-                    <div class="card text-white bg-info mb-3" style="cursor:pointer" (click)="goto('userdetail')">
-                        <div class="card-body">
-                            <h5 class="card-title">User Detail Form</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                    <div class="card text-white bg-primary mb-3" style="cursor:pointer" (click)="newForm('OverloadCitation')">
-                        <div class="card-body">
-                            <h5 class="card-title">Overload Citation</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                    <div class="card text-white bg-success mb-3" style="cursor:pointer" (click)="newForm('ViolationNotice')">
-                        <div class="card-body">
-                            <h5 class="card-title">Violation Notice</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
+<my-tabs>
+    <my-tab [tabTitle]="" [icon]="'dashboard'">
+        <dashboard (addUserdetail)="onAddUserDetail()" (addOverloadCitation)="onAddOverloadCitation()" (addViolationNotice)="onAddViolationNotice()"></dashboard>
+    </my-tab>
+</my-tabs>
+<ng-template #overloadCitation>
+    <overload-citation></overload-citation>
+</ng-template>
 
-                </div>
+<ng-template #violationNotice>
+    <violation-notice></violation-notice>
+</ng-template>
 
-                <div class="col col-md-6 col-lg-4">
-                    <div class="card mb-2 box box-warning">
-                        <div class="card-body row text-left ">
-                            <div class="p-3  w-25">
-                                <h1 class="text-warning "><i class="fa fa-2x fa-folder-open-o "></i></h1>
-                            </div>
-                            <div class="p-3  w-50 h-100">
-                                <h5>Open local &amp; server documents</h5>
-                                <p> Open local documents &amp; transferred documents.</p>
-                            </div>
-                            <div class="p-3 w-25">
-                                <button type="button" class="btn btn-outline-warning">Open </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mb-2  box box-info">
-                        <div class="card-body row text-left ">
-                            <div class="p-3  w-25">
-                                <h1 class="text-info "><i class="fa fa-2x fa-database "></i></h1>
-                            </div>
-                            <div class="p-3  w-50 h-100">
-                                <h5>Reference data manager</h5>
-                                <p> View reference or list data used for the system.</p>
-                            </div>
-                            <div class="p-3 w-25">
-                                <button type="button" (click)="goto('datamanager')" class="btn btn-outline-info">Open </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mb-2  box box-success">
-                        <div class="card-body text-left row ">
-                            <div class="p-3 w-25">
-                                <h1 class="text-success "><i class="fa fa-2x fa-cogs "></i></h1>
-                            </div>
-                            <div class="p-3 w-50">
-                                <h5>Settings &amp; configurations</h5>
-                                <p> General system settings including themes, release notes, shortcuts etc. </p>
-                            </div>
-                            <div class="p-3 w-25">
-                                <button (click)="goto('settings')" class="btn btn-outline-success">Open </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mb-2  box box-danger">
-                        <div class="card-body row text-left ">
-                            <div class="p-3 w-25">
-                                <h1 class="text-danger "><i class="fa fa-2x fa-heartbeat "></i></h1>
-                            </div>
-                            <div class="p-3 w-50">
-                                <h5>System Diagnostics </h5>
-                                <p> Diagnostics tools and analysis for system debug and supports. </p>
-                            </div>
-                            <div class="p-3 w-25">
-                                <button type="button" (click)="goto('diagnotics')" class="btn btn-outline-danger">Open </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col col-lg-4 hidden-lg-down">
-                    <div style="display: block w-12 h-12">
-                        <canvas baseChart [data]="doughnutChartData " [labels]="doughnutChartLabels " [chartType]="doughnutChartType " (chartHover)="chartHovered($event) " (chartClick)="chartClicked($event) "></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <i class="material-icons fontwatermarkright">dashboard</i>
-    </tab>
-
-    <tab *ngFor="let tab of tabs; let i = index" [customClass]="tab.form">
-        <ng-template tabHeading>
-            {{tab.ticketNumber}}
-            <i class="material-icons md-18" (click)="closeForm(i)">highlight_off</i>
-        </ng-template>
-        <div *ngIf="tab.form == 'ViolationNotice'">
-            <violation-notice></violation-notice>
-        </div>
-        <div *ngIf="tab.form == 'OverloadCitation'">
-            <overload-citation></overload-citation>
-        </div>
-    </tab>
-</tabset>
+<ng-template #userDetail>
+    <user-detail></user-detail>
+</ng-template>

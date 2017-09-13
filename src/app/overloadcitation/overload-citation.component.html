@@ -1,6 +1,6 @@
 <br>
 <div class="row">
-    <div class="col-6">
+    <div class="col-12">
         <div class="box" [ngClass]="{'box-danger':overLoadForm.status === 'INVALID', 'box-success': overLoadForm.status === 'VALID'}">
             <div class="box-body">
                 <form [formGroup]="overLoadForm">
@@ -156,10 +156,13 @@
                             </fieldset>
                         </tab>
 
-                        <pre>{{overLoadForm.value | json}}</pre>
+
                     </tabset>
                 </form>
             </div>
         </div>
+    </div>
+    <div class="col-12">
+        <pre [innerHtml]="overLoadForm.value | prettyjson:3"></pre>
     </div>
 </div>
