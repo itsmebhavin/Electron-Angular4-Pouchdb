@@ -3,15 +3,15 @@
         <dashboard (addUserDetail)="onAddUserDetail()" (addOverloadCitation)="onAddOverloadCitation()" (addViolationNotice)="onAddViolationNotice()">
         </dashboard>
     </my-tab>
+    <ng-template #overloadCitation>
+        <overload-citation></overload-citation>
+    </ng-template>
+
+    <ng-template #violationNotice>
+        <violation-notice></violation-notice>
+    </ng-template>
+
+    <ng-template #userDetail>
+        <user-detail></user-detail>
+    </ng-template>
 </my-tabs>
-<ng-template #overloadCitation>
-    <overload-citation></overload-citation>
-</ng-template>
-
-<ng-template #violationNotice>
-    <violation-notice></violation-notice>
-</ng-template>
-
-<ng-template #userDetail>
-    <user-detail></user-detail>
-</ng-template>

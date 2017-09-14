@@ -2,21 +2,30 @@
     <ul class="nav" [ngClass]="{'nav-tabs':dynamicTabs.length !=0 }">
         <ng-container *ngIf="dynamicTabs.length != 0">
             <li *ngFor="let tab of tabs" id="1" (click)="selectTab(tab)" [class.active]="tab.active">
-                <a href="#">START</a>
+                <a href="#"><i class="fa fa-th fa-lg"></i></a>
             </li>
         </ng-container>
         <!-- dynamic tabs -->
         <li *ngFor="let tab of dynamicTabs" id="tab.id" (click)="selectTab(tab)" [class.active]="tab.active">
             <a href="#">
                 <i class="material-icons">{{tab.icon}}</i> {{tab.title}}
-                <span class="tab-close" *ngIf="tab.isCloseable" (click)="closeTab(tab)">x</span>
+                <span class="tab-close" *ngIf="tab.isCloseable" (click)="closeTab(tab)"><i class="fa fa-times-circle-o fa-lg"></i></span>
             </a>
         </li>
         <ng-container *ngIf="dynamicTabs.length != 0">
-            <li class="pull-xs-right hint--info hint--top-left" data-hint="Close All Tabs">
+            <!-- <li class="pull-xs-right hint--info hint--top-left" data-hint="Close All Tabs">
                 <a class="nav-link" (click)="closeAllTabs()">
-                    <i class="fa fa-close"></i>
+                    <i class="fa fa-ellipsis-h mdc-text-red-500 fa-lg"></i>
                 </a>
+            </li> -->
+            <li class="nav-item pull-xs-right dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-h mdc-text-red-500 fa-lg"></i></a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" (click)="closeActiveTab()">Close Current Tab</a>
+                    <a class="dropdown-item" (click)="closeAllButCurrentTab()">Close All but Current Tab</a>
+                    <a class="dropdown-item" (click)="closeAllTabs()">Close All Tabs</a>
+                </div>
             </li>
         </ng-container>
     </ul>

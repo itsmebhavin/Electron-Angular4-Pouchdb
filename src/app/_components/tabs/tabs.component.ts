@@ -60,19 +60,16 @@ export class TabsComponent implements AfterContentInit {
     }
 
     closeAllTabs() {
-        // this.dynamicTabs = [];
-        for (let i = 0; i < this.dynamicTabs.length; i++) {
+        for (let i = this.dynamicTabs.length; i >= 0; i--) {
             // remove the tab from our array
-            this.dynamicTabs.splice(i, this.dynamicTabs.length);
+            this.dynamicTabs.splice((i - 1), 1);
 
             // destroy our dynamically created component again
             const viewContainerRef = this.dynamicTabPlaceholder;
-            viewContainerRef.remove(i);
-
-            // set tab index to 1st one
-            this.selectTab(this.tabs.first);
-            break;
+            viewContainerRef.remove((i - 1));
         }
+        // set tab index to 1st one
+        this.selectTab(this.tabs.first);
     }
 
     openTab(id: string, title: string, template, data, isCloseable = false) {
@@ -138,5 +135,21 @@ export class TabsComponent implements AfterContentInit {
             this.closeTab(activeTabs[0]);
         }
     }
+    closeAllButCurrentTab() {
+        const activeTabs = this.dynamicTabs.filter((tab) => tab.active);
+        const activeTab = this.dynamicTabs.findIndex(tab => tab.id === activeTabs[0].id);
+        for (let i = this.dynamicTabs.length; i > 0; i--) {
+            if (i === 0) break;
+            if (this.dynamicTabs[i - 1].id === activeTabs[0].id) {
+                continue;
+            }
 
+            // remove the tab from our array
+            this.dynamicTabs.splice((i - 1), 1);
+
+            // destroy our dynamically created component again
+            const viewContainerRef = this.dynamicTabPlaceholder;
+            viewContainerRef.remove((i - 1));
+        }
+    }
 }
