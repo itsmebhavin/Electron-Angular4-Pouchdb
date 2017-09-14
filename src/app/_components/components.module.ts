@@ -12,6 +12,7 @@ import { ChildPageNavBarComponent } from './childpagenavbar/childpagenavbar.comp
 import { TabsComponent } from './tabs/tabs.component';
 import { TabComponent } from './tabs/tab.component';
 
+
 @NgModule({
     imports: [
         CommonModule,

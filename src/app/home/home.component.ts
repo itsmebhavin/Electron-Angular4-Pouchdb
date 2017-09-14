@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit {
 	@ViewChild('overloadCitation') overloadCitationTemplate;
 	@ViewChild('violationNotice') violationNoticeTemplate;
 	@ViewChild('userDetail') userDetailTemplate;
+
+	isDynamicTabExists = false;
 	constructor(private _productService: ProductFormsService) {
 		this._productService.addUserDetail$.subscribe((result) => {
 			console.log('inside onAddUserDetail.');
@@ -35,6 +37,9 @@ export class HomeComponent implements OnInit {
 
 	}
 
+	onAddedTab(NumOfTabs) {
+		this.isDynamicTabExists = (NumOfTabs > 0);
+	}
 	createNewTab(template: any) {
 		const ticketNum = moment().format('YYYYMMDDHHmmssSS');
 		this.tabsComponent.openTab(

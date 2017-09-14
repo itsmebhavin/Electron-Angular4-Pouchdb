@@ -1,4 +1,4 @@
-<div class=" no-gutters">
+<div class=" no-gutters" *ngIf="isDynamicTabExists">
     <div class="row">
         <div class="col-xs-offset 1 col-xs-11 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
             <div class="btn-toolbar" role="toolbar">
@@ -26,7 +26,7 @@
         </div>
     </div>
 </div>
-<my-tabs>
+<my-tabs (addedTab)="onAddedTab($event)">
     <my-tab [tabTitle]="" [icon]="'dashboard'">
         <dashboard (addUserDetail)="onAddUserDetail()" (addOverloadCitation)="onAddOverloadCitation()" (addViolationNotice)="onAddViolationNotice()">
         </dashboard>

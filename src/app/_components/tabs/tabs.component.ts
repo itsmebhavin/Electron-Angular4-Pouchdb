@@ -10,11 +10,13 @@ import {
     AfterContentInit,
     ViewChild,
     ComponentFactoryResolver,
-    ViewContainerRef
+    ViewContainerRef,
+    EventEmitter
 } from '@angular/core';
 
 import { TabComponent, Tab } from './tab.component';
 import { DynamicTabsDirective } from './dynamic-tabs.directive';
+import { Output } from '@angular/core';
 @Component({
     selector: 'my-tabs',
     templateUrl: './tabs.component.html',
@@ -29,6 +31,10 @@ import { DynamicTabsDirective } from './dynamic-tabs.directive';
     ]
 })
 export class TabsComponent implements AfterContentInit {
+
+    @Output()
+    @Output() addedTab = new EventEmitter<any>();
+
     dynamicTabs: TabComponent[] = [];
 
     @ContentChildren(TabComponent)
@@ -70,6 +76,7 @@ export class TabsComponent implements AfterContentInit {
         }
         // set tab index to 1st one
         this.selectTab(this.tabs.first);
+        this.addedTab.emit(this.dynamicTabs.length);
     }
 
     openTab(id: string, title: string, template, data, isCloseable = false) {
@@ -99,6 +106,7 @@ export class TabsComponent implements AfterContentInit {
 
         // set it active
         this.selectTab(this.dynamicTabs[this.dynamicTabs.length - 1]);
+        this.addedTab.emit(this.dynamicTabs.length);
     }
 
     selectTab(tab: TabComponent) {
@@ -126,6 +134,7 @@ export class TabsComponent implements AfterContentInit {
                 break;
             }
         }
+        this.addedTab.emit(this.dynamicTabs.length);
     }
 
     closeActiveTab() {
@@ -134,6 +143,7 @@ export class TabsComponent implements AfterContentInit {
             // close the 1st active tab (should only be one at a time)
             this.closeTab(activeTabs[0]);
         }
+        this.addedTab.emit(this.dynamicTabs.length);
     }
     closeAllButCurrentTab() {
         const activeTabs = this.dynamicTabs.filter((tab) => tab.active);
@@ -151,5 +161,7 @@ export class TabsComponent implements AfterContentInit {
             const viewContainerRef = this.dynamicTabPlaceholder;
             viewContainerRef.remove((i - 1));
         }
+
+        this.addedTab.emit(this.dynamicTabs.length);
     }
 }
