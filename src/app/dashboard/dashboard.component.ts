@@ -12,9 +12,6 @@ import { UserAgentService } from '../_services/useragent/useragent.service';
 })
 export class DashboardComponent implements OnInit {
 
-  @Output() addViolationNotice = new EventEmitter<any>();
-  @Output() addOverloadCitation = new EventEmitter<any>();
-  @Output() addUserDetail = new EventEmitter<any>();
 
   // Doughnut
   public doughnutChartLabels = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];

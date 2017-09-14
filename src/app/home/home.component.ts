@@ -2,11 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { TabsComponent } from '../_components/tabs/tabs.component';
+import { ProductFormsService } from '../product-forms/product-forms.service';
 
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
-	styleUrls: ['./home.component.css']
+	styleUrls: ['./home.component.css'],
+	providers: [ProductFormsService]
 })
 
 export class HomeComponent implements OnInit {
@@ -14,27 +16,23 @@ export class HomeComponent implements OnInit {
 	@ViewChild('overloadCitation') overloadCitationTemplate;
 	@ViewChild('violationNotice') violationNoticeTemplate;
 	@ViewChild('userDetail') userDetailTemplate;
-	constructor() {
-
+	constructor(private _productService: ProductFormsService) {
+		this._productService.addUserDetail$.subscribe((result) => {
+			console.log('inside onAddUserDetail.');
+			this.createNewTab(this.userDetailTemplate);
+		});
+		this._productService.addOverloadCitation$.subscribe((result) => {
+			console.log('inside onAddOverloadCitation.');
+			this.createNewTab(this.overloadCitationTemplate);
+		});
+		this._productService.addViolationNotice$.subscribe((result) => {
+			console.log('inside onAddViolationNotice.');
+			this.createNewTab(this.violationNoticeTemplate);
+		});
 	}
 
 	ngOnInit() {
 
-	}
-
-	onAddOverloadCitation() {
-		console.log('inside onAddOverloadCitation.');
-		this.createNewTab(this.overloadCitationTemplate);
-	}
-
-	onAddViolationNotice() {
-		console.log('inside onAddViolationNotice.');
-		this.createNewTab(this.violationNoticeTemplate);
-	}
-
-	onAddUserDetail() {
-		console.log('inside onAddUserDetail.');
-		this.createNewTab(this.userDetailTemplate);
 	}
 
 	createNewTab(template: any) {

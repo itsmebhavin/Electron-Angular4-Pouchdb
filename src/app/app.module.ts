@@ -30,6 +30,7 @@ import { UserdetailComponent } from './userdetail/userdetail.component';
 import { DatamanagerComponent } from './datamanager/datamanager.component';
 import { DiagnoticsComponent } from './diagnotics/diagnotics.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProductFormsComponent } from './product-forms/product-forms.component';
 
 // App Components
 const busyConfig: BusyConfig = {
@@ -56,7 +57,8 @@ const busyConfig: BusyConfig = {
 		UserdetailComponent,
 		DatamanagerComponent,
 		DiagnoticsComponent,
-		DashboardComponent /*Had to put this here instead of forms.module for some reason.*/
+		DashboardComponent,
+		ProductFormsComponent /*Had to put this here instead of forms.module for some reason.*/
 
 	],
 	imports: [

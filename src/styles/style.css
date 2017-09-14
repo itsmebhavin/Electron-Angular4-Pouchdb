@@ -1722,9 +1722,9 @@ hr {
     -moz-border-radius: 0;
     border-radius: 0;
     text-align: center;
-    color: #666;
+    /* color: #666; */
     border: 1px solid #ddd;
-    background-color: #fafafa;
+    /* background-color: #fafafa; */
     font-size: 12px;
 }
 
@@ -1736,9 +1736,9 @@ hr {
 }
 
 .btn.btn-app:hover {
-    background: #f4f4f4;
+    /* background: #f4f4f4;
     color: #444;
-    border-color: #aaa;
+    border-color: #aaa; */
 }
 
 .btn.btn-app:active,
@@ -1750,8 +1750,8 @@ hr {
 
 .btn.btn-app>.badge {
     position: absolute;
-    top: -3px;
-    right: -10px;
+    top: 0px;
+    right: 0px;
     font-size: 10px;
     font-weight: 400;
 }
@@ -2057,3 +2057,87 @@ hr {
     background: #fff;
     padding: 10px;
 }
+
+
+/* START: Large Dropdown Menu : Bootsnip.com 
+   https://bootsnipp.com/snippets/featured/large-dropdown-menu
+*/
+
+.dropdown-menu {
+    min-width: 20rem;
+}
+
+.dropdown-large {
+    position: static !important;
+}
+
+.dropdown-menu-large {
+    margin-left: 16px;
+    margin-right: 16px;
+    padding: 20px 0px;
+}
+
+.dropdown-menu-large>li>ul {
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu-large>li>ul>li {
+    list-style: none;
+}
+
+.dropdown-menu-large>li>ul>li>a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.428571429;
+    color: #333333;
+    white-space: normal;
+}
+
+.dropdown-menu-large>li ul>li>a:hover,
+.dropdown-menu-large>li ul>li>a:focus {
+    text-decoration: none;
+    color: #262626;
+    background-color: #f5f5f5;
+}
+
+.dropdown-menu-large .disabled>a,
+.dropdown-menu-large .disabled>a:hover,
+.dropdown-menu-large .disabled>a:focus {
+    color: #999999;
+}
+
+.dropdown-menu-large .disabled>a:hover,
+.dropdown-menu-large .disabled>a:focus {
+    text-decoration: none;
+    background-color: transparent;
+    background-image: none;
+    filter: progid: DXImageTransform.Microsoft.gradient(enabled=false);
+    cursor: not-allowed;
+}
+
+.dropdown-menu-large .dropdown-header {
+    color: #428bca;
+    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+    .dropdown-menu-large {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .dropdown-menu-large>li {
+        margin-bottom: 30px;
+    }
+    .dropdown-menu-large>li:last-child {
+        margin-bottom: 0;
+    }
+    .dropdown-menu-large .dropdown-header {
+        padding: 3px 15px !important;
+    }
+}
+
+
+/* End of large dropdown menu from Bootsnip.com */

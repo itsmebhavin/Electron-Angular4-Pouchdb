@@ -1,8 +1,7 @@
 <app-header></app-header>
 <div class="wrapper">
     <div class="content">
-        <div class="no-gutters" [ngClass]="isElectronApp === true ? 'container-electron':'container-web' ">
-            <br/>
+        <div class="no-gutters" style="padding-top:10px;" [ngClass]="isElectronApp === true ? 'container-electron':'container-web' ">
             <router-outlet></router-outlet>
         </div>
     </div>
