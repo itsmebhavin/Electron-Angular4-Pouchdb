@@ -31,6 +31,7 @@ import { DatamanagerComponent } from './datamanager/datamanager.component';
 import { DiagnoticsComponent } from './diagnotics/diagnotics.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductFormsComponent } from './product-forms/product-forms.component';
+import { CollapseModule } from 'ngx-bootstrap';
 
 // App Components
 const busyConfig: BusyConfig = {
@@ -78,7 +79,8 @@ const busyConfig: BusyConfig = {
 		Ng2CompleterModule,
 		UfpComponentsModule.forRoot(),
 		BusyModule.forRoot(busyConfig),
-		ChartsModule
+		ChartsModule,
+		CollapseModule.forRoot()
 	],
 	exports: [
 		ChartsModule

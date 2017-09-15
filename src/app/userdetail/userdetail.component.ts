@@ -42,7 +42,15 @@ export class UserdetailComponent implements OnInit {
     'German',
   ];
   formErrors: CustomValidationErrors[] = [];
+  isCollapsed = false;
 
+  public collapsed(event: any): void {
+    console.log(event);
+  }
+
+  public expanded(event: any): void {
+    console.log(event);
+  }
   constructor(private _fb: FormBuilder, private pouchdbservice: PouchdbService) {
 
     PouchdbService.syncStatusCit.subscribe(result => {

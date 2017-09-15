@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
 	@ViewChild('userDetail') userDetailTemplate;
 
 	isDynamicTabExists = false;
+
 	constructor(private _productService: ProductFormsService) {
 		this._productService.addUserDetail$.subscribe((result) => {
 			console.log('inside onAddUserDetail.');
