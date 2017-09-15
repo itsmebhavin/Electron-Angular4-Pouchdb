@@ -4,13 +4,13 @@
         <div class="col-12">
             <div class="box" [ngClass]="{'box-danger':violationNoticeForm.status === 'INVALID', 'box-success': violationNoticeForm.status === 'VALID'}">
                 <div class="box-body">
-                    <form [formGroup]="violationNoticeForm">
+                    <form [formGroup]="violationNoticeForm" class="form-horizontal" novalidate>
                         <tabset>
                             <!-- Driver section -->
                             <tab heading='Driver'>
                                 <fieldset formGroupName="driver">
                                     <div class="row">
-                                        <form-textbox class="col-4" type="text" formControlName="lastName" label="Last Name" [control]="violationNoticeForm.controls.driver.controls.lastName"></form-textbox>
+                                        <form-textbox class="col-4" type="text" formControlName="lastName" label="Last Name" [control]="violationNoticeForm.controls.driver.controls.lastName" required></form-textbox>
 
                                         <form-textbox class="col-4" type="text" formControlName="firstName" label="First Name" [control]="violationNoticeForm.controls.driver.controls.firstName"></form-textbox>
 
@@ -115,6 +115,12 @@
             </div>
         </div>
     </div>
-
-    <pre>{{violationNoticeForm.value | json}}</pre>
+    <button type="button" class="btn btn-warning btn-xs" (click)="isCollapsed = !isCollapsed">Validate</button>
+    <div class="row">
+        <pre class=" col-6" [innerHtml]="violationNoticeForm.value | prettyjson:3"></pre>
+        <div class="col-6 collapse box" (collapsed)="collapsed($event)" (expanded)="expanded($event)" [collapse]="isCollapsed" [ngClass]="{'box-danger':formErrors.length > 0, 'box-success': formErrors.length <= 0}">
+            <pre class="mdc-text-grey-500" *ngIf="formErrors.length > 0">{{formErrors | json }}</pre>
+            <pre class="mdc-text-green-500" *ngIf="formErrors.length < 0">You're good! NO ERRORS.</pre>
+        </div>
+    </div>
 </div>

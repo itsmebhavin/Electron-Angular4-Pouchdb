@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators, ValidationErrors } from '@angular/forms';
+import { CustomValidationErrors } from '../_services/validation/validation.service';
 
 @Component({
     selector: 'overload-citation',
@@ -9,9 +10,17 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 
 export class OverloadCitationComponent implements OnInit {
     overLoadForm: FormGroup;
+    isCollapsed = false;
 
-    constructor(private _fb: FormBuilder) {}
+    formErrors: CustomValidationErrors[] = [];
+    constructor(private _fb: FormBuilder) { }
+    public collapsed(event: any): void {
+        // console.log(event);
+    }
 
+    public expanded(event: any): void {
+        // console.log(event);
+    }
     ngOnInit() {
         this.overLoadForm = this._fb.group({
             driver: this._fb.group({
@@ -69,6 +78,37 @@ export class OverloadCitationComponent implements OnInit {
                 billPenaltyTo: ['', Validators.required],
                 billAddress: ['', Validators.required]
             })
-        })
-    }    
+        });
+
+        this.overLoadForm.valueChanges.subscribe(val => {
+            this.getFormValidationErrors(this.overLoadForm);
+            // this.validateAllFormFields(this.violationNoticeForm);
+        });
+    }
+
+
+    validateAllFormFields(group: string, formGroup: FormGroup, formErrors: CustomValidationErrors[]) {         // {1}
+        Object.keys(formGroup.controls).forEach(key => {
+            const control = formGroup.get(key);
+            if (control instanceof FormControl) {             // {4}
+                const controlErrors: ValidationErrors = control.errors;
+                if (controlErrors != null) {
+                    Object.keys(controlErrors).forEach(keyError => {
+                        // console.log(control);
+                        // console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
+                        const validateObj = { key: key, keyError: keyError, value: controlErrors[keyError], group: group };
+                        this.formErrors.push(validateObj);
+                    });
+                }
+            } else if (control instanceof FormGroup) {        // {5}
+                this.validateAllFormFields(key, control, formErrors);            // {6}
+            }
+
+        });
+    }
+
+    getFormValidationErrors(formGroup: FormGroup) {
+        this.formErrors = []; // empty array everytime.
+        this.validateAllFormFields('overload-citation', formGroup, this.formErrors);
+    }
 }

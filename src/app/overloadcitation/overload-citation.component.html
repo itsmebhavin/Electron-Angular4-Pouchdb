@@ -162,7 +162,14 @@
             </div>
         </div>
     </div>
-    <div class="col-12">
-        <pre [innerHtml]="overLoadForm.value | prettyjson:3"></pre>
+
+
+</div>
+<button type="button" class="btn btn-warning btn-xs" (click)="isCollapsed = !isCollapsed">Validate</button>
+<div class="row">
+    <pre class="col-6" [innerHtml]="overLoadForm.value | prettyjson:3"></pre>
+    <div class="col-6 collapse box" (collapsed)="collapsed($event)" (expanded)="expanded($event)" [collapse]="isCollapsed" [ngClass]="{'box-danger':formErrors.length > 0, 'box-success': formErrors.length <= 0}">
+        <pre class="mdc-text-grey-500" *ngIf="formErrors.length > 0">{{formErrors | json }}</pre>
+        <pre class="mdc-text-green-500" *ngIf="formErrors.length < 0">You're good! NO ERRORS.</pre>
     </div>
 </div>

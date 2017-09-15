@@ -1,3 +1,8 @@
+export class CustomValidationErrors {
+    constructor(public key: string, public keyError: string, public value: string, public group: string) {
+    }
+}
+
 export class ValidationService {
     static getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
         const config = {
@@ -28,5 +33,7 @@ export class ValidationService {
             return { 'invalidPassword': true };
         }
     }
+
+
 }
 

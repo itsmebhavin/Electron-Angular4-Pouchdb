@@ -1,14 +1,10 @@
 
-import { ValidationService } from '../_services/validation/validation.service';
+import { ValidationService, CustomValidationErrors } from '../_services/validation/validation.service';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, Validator, ValidationErrors } from '@angular/forms';
 import { PouchdbService } from '../_pouchdb/pouchdb.service';
 import { CustomValidators } from 'ng2-validation';
 
-export class CustomValidationErrors {
-  constructor(public key: string, public keyError: string, public value: string) {
-  }
-}
 
 export interface User {
   name: {
@@ -85,18 +81,29 @@ export class UserdetailComponent implements OnInit {
       this.citationData = (response);
     });
   }
-  getFormValidationErrors() {
-    this.formErrors = []; // empty array everytime.
-    Object.keys(this.user.controls).forEach(key => {
-      const controlErrors: ValidationErrors = this.user.get(key).errors;
-      if (controlErrors != null) {
-        Object.keys(controlErrors).forEach(keyError => {
-          console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
-          const validateObj = { key: key, keyError: keyError, value: controlErrors[keyError] };
-          this.formErrors.push(validateObj);
-        });
+  validateAllFormFields(group: string, formGroup: FormGroup, formErrors: CustomValidationErrors[]) {         // {1}
+    Object.keys(formGroup.controls).forEach(key => {
+      const control = formGroup.get(key);
+      if (control instanceof FormControl) {             // {4}
+        const controlErrors: ValidationErrors = control.errors;
+        if (controlErrors != null) {
+          Object.keys(controlErrors).forEach(keyError => {
+            // console.log(control);
+            // console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
+            const validateObj = { key: key, keyError: keyError, value: controlErrors[keyError], group: group };
+            this.formErrors.push(validateObj);
+          });
+        }
+      } else if (control instanceof FormGroup) {        // {5}
+        this.validateAllFormFields(key, control, formErrors);            // {6}
       }
+
     });
+  }
+
+  getFormValidationErrors(formGroup: FormGroup) {
+    this.formErrors = []; // empty array everytime.
+    this.validateAllFormFields('user-detail', formGroup, this.formErrors);
   }
   ngOnInit() {
 
@@ -120,7 +127,7 @@ export class UserdetailComponent implements OnInit {
     this.user.get('name.lastName').setValue('Doe');
     // Form Error list subscriber. If any changes happen to form or it's controls, we are changing global validation list.
     this.user.valueChanges.subscribe(val => {
-      this.getFormValidationErrors();
+      this.getFormValidationErrors(this.user);
     });
   }
 }
