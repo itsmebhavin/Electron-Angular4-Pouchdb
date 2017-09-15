@@ -33,7 +33,35 @@ export class DatamanagerComponent implements OnInit {
   refreshRefData() {
     this.busyRefData = this.pouchdbservice.getReferenceDocs(50).then((response) => {
       console.log('Reference data refreshed!');
-      this.referenceData = response;
+      console.log(response.rows[0].doc);
+
+      let tables = [];
+
+      //Parse response object into array of tables.
+      for (let key in response.rows[0].doc) {
+        if(key == "_id" || key == "_rev")
+          continue;
+        
+        if(response.rows[0].doc.hasOwnProperty(key)) {
+          let table = { rows: null, columns: [], name: key};
+
+          //Assign rows.
+          table.rows = response.rows[0].doc[key];
+
+          //Fetch column names from first entry.
+          if(table.rows.length > 0) {
+            for (let key in table.rows[0]) {
+                table.columns.push({ name: key });
+            }
+          }
+
+          //Add to tables array.
+          tables.push(table);
+        }
+      }
+
+      console.log(tables);
+      this.referenceData = tables;
     });
   }
 }
