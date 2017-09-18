@@ -39,11 +39,12 @@ export class DatamanagerComponent implements OnInit {
 
       //Parse response object into array of tables.
       for (let key in response.rows[0].doc) {
+        //Filter out id and rev entries, they cause errors.
         if(key == "_id" || key == "_rev")
           continue;
         
         if(response.rows[0].doc.hasOwnProperty(key)) {
-          let table = { rows: null, columns: [], name: key};
+          let table = { rows: null, columns: [], name: key.toUpperCase() };
 
           //Assign rows.
           table.rows = response.rows[0].doc[key];
@@ -51,7 +52,7 @@ export class DatamanagerComponent implements OnInit {
           //Fetch column names from first entry.
           if(table.rows.length > 0) {
             for (let key in table.rows[0]) {
-                table.columns.push({ name: key });
+                table.columns.push({ name: key.toUpperCase() });
             }
           }
 
@@ -60,7 +61,6 @@ export class DatamanagerComponent implements OnInit {
         }
       }
 
-      console.log(tables);
       this.referenceData = tables;
     });
   }

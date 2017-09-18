@@ -33,6 +33,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductFormsComponent } from './product-forms/product-forms.component';
 import { CollapseModule } from 'ngx-bootstrap';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 
 // App Components
 const busyConfig: BusyConfig = {
@@ -82,7 +83,8 @@ const busyConfig: BusyConfig = {
 		BusyModule.forRoot(busyConfig),
 		ChartsModule,
 		CollapseModule.forRoot(),
-		NgxDatatableModule
+		NgxDatatableModule,
+		AccordionModule.forRoot()
 	],
 	exports: [
 		ChartsModule

@@ -1,12 +1,10 @@
 <child-navbar [hrclass]="'hr-primary'" [textheader]="'Reference Data Manager'" [btnclass]="'btn-outline-info'" [textclass]="'text-info'" [routerLink]="['/layout/home']">
 </child-navbar>
 {{couchDbUp}} - {{syncStatus}}
-<div class="col-12" [ngBusy]="busyRefData">
-    <div class="card" *ngFor="let table of referenceData">
-        <h2>{{table.name}}</h2>
-        <div class="card-block">
-            <ngx-datatable [rows]="table.rows" [columns]="table.columns"></ngx-datatable>
-        </div>
-        <!--<pre [innerHtml]="referenceData | prettyjson:3"></pre>-->
-    </div>
+<div style="padding-bottom: 50px" id="refData">
+    <accordion class="col-12 card" [ngBusy]="busyRefData">
+        <accordion-group class="card-block" *ngFor="let table of referenceData" [heading]="table.name">
+            <ngx-datatable class='material' [rows]="table.rows" [columns]="table.columns" [scrollbarV]="true" [footerHeight]="30"></ngx-datatable>
+        </accordion-group>
+    </accordion>
 </div>
