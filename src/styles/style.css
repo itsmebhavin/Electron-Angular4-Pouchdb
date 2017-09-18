@@ -2141,3 +2141,10 @@ hr {
 
 
 /* End of large dropdown menu from Bootsnip.com */
+
+/* Swimlane/ngx-datatables CSS files. */
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+#refData ngx-datatable { max-height: 500px; } /* Needed to enable vertical scrolling option. */
+/* End of Swimlane/ngx-datatables CSS files. */
