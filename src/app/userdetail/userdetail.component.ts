@@ -5,7 +5,6 @@ import { FormGroup, FormBuilder, FormControl, Validators, Validator, ValidationE
 import { PouchdbService } from '../_pouchdb/pouchdb.service';
 import { CustomValidators } from 'ng2-validation';
 import { FocusDirective } from '../_directives/focus.directive';
-import { ScrollSpyModule, ScrollSpyService } from 'ngx-scrollspy';
 
 export interface User {
   name: {
@@ -25,7 +24,7 @@ export interface User {
   providers: [PouchdbService]
 })
 
-export class UserdetailComponent implements OnInit, AfterViewInit {
+export class UserdetailComponent implements OnInit {
   public myFocusTriggeringEventEmitter = new EventEmitter<any>();
 
   user: FormGroup;
@@ -55,7 +54,7 @@ export class UserdetailComponent implements OnInit, AfterViewInit {
   public expanded(event: any): void {
     console.log(event);
   }
-  constructor(private _fb: FormBuilder, private pouchdbservice: PouchdbService, private scrollSpyService: ScrollSpyService) {
+  constructor(private _fb: FormBuilder, private pouchdbservice: PouchdbService) {
 
     PouchdbService.syncStatusCit.subscribe(result => {
       this.syncStatus = result;
@@ -66,11 +65,7 @@ export class UserdetailComponent implements OnInit, AfterViewInit {
     this.remoteCouchDBAddress = PouchdbService.remoteCouchDBAddress;
     this.refreshCitData();
   }
-  ngAfterViewInit() {
-    this.scrollSpyService.getObservable('test').subscribe((e: any) => {
-      console.log('ScrollSpy::test: ', e);
-    });
-  }
+
   onSubmit({ value, valid }: { value: User, valid: boolean }) {
     if (valid) {
       console.log(value, valid);

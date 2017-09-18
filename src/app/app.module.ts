@@ -34,6 +34,7 @@ import { ProductFormsComponent } from './product-forms/product-forms.component';
 import { CollapseModule } from 'ngx-bootstrap';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { FocusDirective } from './_directives/focus.directive';
 
 // App Components
 const busyConfig: BusyConfig = {
@@ -61,8 +62,8 @@ const busyConfig: BusyConfig = {
 		DatamanagerComponent,
 		DiagnoticsComponent,
 		DashboardComponent,
-		ProductFormsComponent /*Had to put this here instead of forms.module for some reason.*/
-
+		ProductFormsComponent, /*Had to put this here instead of forms.module for some reason.*/
+		FocusDirective
 	],
 	imports: [
 		BrowserModule,
