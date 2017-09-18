@@ -60,6 +60,8 @@
             true,
             "ignore-params"
         ],
+        "no-input-rename": false,
+        "no-output-rename": true,
         "no-misused-new": true,
         "no-non-null-assertion": true,
         "no-shadowed-variable": true,

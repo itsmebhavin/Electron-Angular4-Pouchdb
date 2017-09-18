@@ -1,10 +1,11 @@
 
 import { ValidationService, CustomValidationErrors } from '../_services/validation/validation.service';
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, EventEmitter, Directive, AfterViewInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, Validator, ValidationErrors } from '@angular/forms';
 import { PouchdbService } from '../_pouchdb/pouchdb.service';
 import { CustomValidators } from 'ng2-validation';
-
+import { FocusDirective } from '../_directives/focus.directive';
+import { ScrollSpyModule, ScrollSpyService } from 'ngx-scrollspy';
 
 export interface User {
   name: {
@@ -24,7 +25,9 @@ export interface User {
   providers: [PouchdbService]
 })
 
-export class UserdetailComponent implements OnInit {
+export class UserdetailComponent implements OnInit, AfterViewInit {
+  public myFocusTriggeringEventEmitter = new EventEmitter<any>();
+
   user: FormGroup;
   remoteCouchDBAddress: string;
   dataString: string;
@@ -40,6 +43,11 @@ export class UserdetailComponent implements OnInit {
   formErrors: CustomValidationErrors[] = [];
   isCollapsed = false;
 
+  someMethod(id) {
+    // this will trigger the focus
+    this.myFocusTriggeringEventEmitter.emit({ id: id, focus: true });
+  }
+
   public collapsed(event: any): void {
     console.log(event);
   }
@@ -47,7 +55,7 @@ export class UserdetailComponent implements OnInit {
   public expanded(event: any): void {
     console.log(event);
   }
-  constructor(private _fb: FormBuilder, private pouchdbservice: PouchdbService) {
+  constructor(private _fb: FormBuilder, private pouchdbservice: PouchdbService, private scrollSpyService: ScrollSpyService) {
 
     PouchdbService.syncStatusCit.subscribe(result => {
       this.syncStatus = result;
@@ -58,7 +66,11 @@ export class UserdetailComponent implements OnInit {
     this.remoteCouchDBAddress = PouchdbService.remoteCouchDBAddress;
     this.refreshCitData();
   }
-
+  ngAfterViewInit() {
+    this.scrollSpyService.getObservable('test').subscribe((e: any) => {
+      console.log('ScrollSpy::test: ', e);
+    });
+  }
   onSubmit({ value, valid }: { value: User, valid: boolean }) {
     if (valid) {
       console.log(value, valid);
@@ -129,6 +141,8 @@ export class UserdetailComponent implements OnInit {
     this.user.valueChanges.subscribe(val => {
       this.getFormValidationErrors(this.user);
     });
+
+
   }
 }
 

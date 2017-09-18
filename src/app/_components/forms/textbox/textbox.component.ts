@@ -19,6 +19,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Va
 export class TextboxComponent implements ControlValueAccessor, Validator {
   private jsonString = '';
   private data: any;
+  @Input() textBoxId: string;
   @Input() label: string;
   @Input() type: string;
   @Input() control: FormControl;

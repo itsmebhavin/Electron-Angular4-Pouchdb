@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms';
 import { CustomValidationErrors } from '../_services/validation/validation.service';
 
@@ -24,14 +24,19 @@ export class ViolationNoticeComponent implements OnInit {
     ];
     isCollapsed = false;
 
-
     summonsLocations: string[] = [
         'AR Department of Finance and Administration'
     ];
+    public myFocusTriggeringEventEmitter = new EventEmitter<any>();
+    someMethod(id) {
+        // this will trigger the focus
+        this.myFocusTriggeringEventEmitter.emit({ id: id, focus: true });
+    }
 
     log(form) {
         console.log(form);
     }
+
 
     constructor(private _fb: FormBuilder) { }
 

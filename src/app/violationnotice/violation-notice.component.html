@@ -10,7 +10,7 @@
                             <tab heading='Driver'>
                                 <fieldset formGroupName="driver">
                                     <div class="row">
-                                        <form-textbox class="col-4" type="text" formControlName="lastName" label="Last Name" [control]="violationNoticeForm.controls.driver.controls.lastName" required></form-textbox>
+                                        <form-textbox [textBoxId]="'txtLastName'" [focus]="myFocusTriggeringEventEmitter" class="col-4" type="text" formControlName="lastName" label="Last Name" [control]="violationNoticeForm.controls.driver.controls.lastName" required></form-textbox>
 
                                         <form-textbox class="col-4" type="text" formControlName="firstName" label="First Name" [control]="violationNoticeForm.controls.driver.controls.firstName"></form-textbox>
 
@@ -58,7 +58,7 @@
                             <tab heading='Vehicle'>
                                 <fieldset formGroupName="vehicle">
                                     <div class="row">
-                                        <form-textbox class="col-4" type="text" formControlName="owner" label="Owner" [control]="violationNoticeForm.controls.vehicle.controls.owner"></form-textbox>
+                                        <form-textbox [textBoxId]="'txtOwner'" [focus]="myFocusTriggeringEventEmitter" class="col-4" type="text" formControlName="owner" label="Owner" [control]="violationNoticeForm.controls.vehicle.controls.owner"></form-textbox>
 
                                         <form-textbox class="col-4" type="text" formControlName="vehicleLicenseNum" label="License Number" [control]="violationNoticeForm.controls.vehicle.controls.vehicleLicenseNum"></form-textbox>
 
@@ -115,6 +115,8 @@
             </div>
         </div>
     </div>
+    <button type="button" class="btn btn-inverse btn-xs" (click)="someMethod('txtLastName')">Set lastname</button>
+    <button type="button" class="btn btn-inverse btn-xs" (click)="someMethod('txtOwner')">Set owner</button>
     <button type="button" class="btn btn-warning btn-xs" (click)="isCollapsed = !isCollapsed">Validate</button>
     <div class="row">
         <pre class=" col-6" [innerHtml]="violationNoticeForm.value | prettyjson:3"></pre>
