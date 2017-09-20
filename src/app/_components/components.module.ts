@@ -11,6 +11,7 @@ import { UfpPouchDBModule } from '../_pouchdb/pouchdb.module';
 import { ChildPageNavBarComponent } from './childpagenavbar/childpagenavbar.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { TabComponent } from './tabs/tab.component';
+import { TabsService } from './tabs/tabs.service';
 
 
 @NgModule({
@@ -41,13 +42,13 @@ import { TabComponent } from './tabs/tab.component';
         TabsComponent,
         TabComponent
     ],
-    providers: [NetworkNotifierService],
+    providers: [NetworkNotifierService, TabsService],
 })
 export class UfpComponentsModule {
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: UfpComponentsModule,
-            providers: [NetworkNotifierService]
+            providers: [NetworkNotifierService, TabsService]
         };
     }
 }

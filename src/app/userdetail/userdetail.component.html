@@ -1,52 +1,53 @@
-<!-- <child-navbar [hrclass]="'hr-primary'" [textheader]="'User Detail'" [btnclass]="'btn-outline-info'" [textclass]="'mdc-text-blue-500'" [routerLink]="['/layout/home']">
-</child-navbar> -->
-<div class="no-gutters">
-    <br/>
-    <div class="row">
-        <div class="col-6">
-            <div class="box" [ngClass]="{'box-danger':user.status === 'INVALID', 'box-success': user.status === 'VALID'}">
-                <div class="box-body">
-                    <form [formGroup]="user" class="form-horizontal" novalidate (ngSubmit)="onSubmit(user)">
+<div class="row">
+    {{ticketNum}}
+    <div [ngClass]="bg-danger">[Dirty: {{user.dirty}}] [Pristine: {{user.pristine}}]</div>
+    <div class="col-12">
+        <div class="box" [ngClass]="{'box-danger':user.status === 'INVALID', 'box-success': user.status === 'VALID'}">
+            <div class="box-body">
+                <form [formGroup]="user" class="form-horizontal" novalidate (ngSubmit)="onSubmit(user)">
 
-                        <form-textbox [textBoxId]="'txtUserName'" [focus]="myFocusTriggeringEventEmitter" [type]="'text'" formControlName="userName" [label]="'UserName'" [control]="user.controls.userName" required></form-textbox>
-                        <fieldset formGroupName="name">
-                            <form-textbox type="text" [textBoxId]="'txtFirstName'" [focus]="myFocusTriggeringEventEmitter" formControlName="firstName" label="FirstName" [control]="user.controls.name.controls.firstName" [validation]="false"></form-textbox>
-                            <form-textbox type="text" [textBoxId]="'txtLastName'" [focus]="myFocusTriggeringEventEmitter" formControlName="lastName" label="LastName" [control]="user.controls.name.controls.lastName" required></form-textbox>
-                        </fieldset>
-                        <form-textbox type="text" [textBoxId]="'txtEmail'" [focus]="myFocusTriggeringEventEmitter" formControlName="email" label="EMail" [control]="user.controls.email" required></form-textbox>
-                        <form-textbox type="password" [textBoxId]="'txtPassword'" [focus]="myFocusTriggeringEventEmitter" formControlName="password" label="Password" [control]="user.controls.password" required></form-textbox>
-                        <div class="form-group">
-                            <label>Language</label>
-                            <select class="form-control" formControlName="language">
-                                        <option value="">Please select a language</option>
-                                        <option *ngFor="let lang of langs"
-                                                [value]="lang"> 
-                                                {{lang}} 
-                                        </option>
-                                    </select>
-                        </div>
+                    <form-textbox [textBoxId]="'txtUserName'" [focus]="myFocusTriggeringEventEmitter" [type]="'text'" formControlName="userName" [label]="'UserName'" [control]="user.controls.userName" required></form-textbox>
+                    <fieldset formGroupName="name">
+                        <form-textbox type="text" [textBoxId]="'txtFirstName'" [focus]="myFocusTriggeringEventEmitter" formControlName="firstName" label="FirstName" [control]="user.controls.name.controls.firstName" [validation]="false"></form-textbox>
+                        <form-textbox type="text" [textBoxId]="'txtLastName'" [focus]="myFocusTriggeringEventEmitter" formControlName="lastName" label="LastName" [control]="user.controls.name.controls.lastName" required></form-textbox>
+                    </fieldset>
+                    <form-textbox type="text" [textBoxId]="'txtEmail'" [focus]="myFocusTriggeringEventEmitter" formControlName="email" label="EMail" [control]="user.controls.email" required></form-textbox>
+                    <form-textbox type="password" [textBoxId]="'txtPassword'" [focus]="myFocusTriggeringEventEmitter" formControlName="password" label="Password" [control]="user.controls.password" required></form-textbox>
+                    <div class="form-group">
+                        <label>Language</label>
+                        <select class="form-control" formControlName="language">
+                                    <option value="">Please select a language</option>
+                                    <option *ngFor="let lang of langs"
+                                            [value]="lang"> 
+                                            {{lang}} 
+                                    </option>
+                                </select>
+                    </div>
 
-                        <button type="submit" [disabled]="user.invalid" class="btn btn-primary btn-xs">Sign up</button>
-                        <button type="button" class="btn btn-warning btn-xs" (click)="isCollapsed = !isCollapsed">Validate</button>
-                        <button type="button" class="btn btn-success btn-xs" (click)="someMethod('txtUserName')">Set username</button>
-                        <button type="button" class="btn btn-inverse btn-xs" (click)="someMethod('txtLastName')">Set lastname</button>
-                    </form>
-                </div>
+                    <button type="submit" [disabled]="user.invalid" class="btn btn-primary btn-xs">Sign up</button>
+                    <button type="button" class="btn btn-warning btn-xs" (click)="isCollapsed = !isCollapsed">Validate</button>
+                    <button type="button" class="btn btn-success btn-xs" (click)="someMethod('txtUserName')">Set username</button>
+                    <button type="button" class="btn btn-inverse btn-xs" (click)="someMethod('txtLastName')">Set lastname</button>
+                </form>
             </div>
         </div>
-
-        <div class="col-6 collapse box" (collapsed)="collapsed($event)" (expanded)="expanded($event)" [collapse]="isCollapsed" [ngClass]="{'box-danger':formErrors.length > 0, 'box-success': formErrors.length <= 0}">
+    </div>
+</div>
+<!-- <div class="row">
+    <div class="col-12">
+        <div class="collapse box" (collapsed)="collapsed($event)" (expanded)="expanded($event)" [collapse]="isCollapsed" [ngClass]="{'box-danger':formErrors.length > 0, 'box-success': formErrors.length <= 0}">
             <pre class="mdc-text-grey-500" *ngIf="formErrors.length > 0">{{formErrors | json }}</pre>
             <pre class="mdc-text-green-500" *ngIf="formErrors.length < 0">You're good! NO ERRORS.</pre>
         </div>
-        <!-- <div class="col-12">
-            <div class="card" [ngBusy]="busyCitData">
-                <div class="card-block">
-                    <pre [innerHtml]="citationData | prettyjson:3"></pre>
-                </div>
-            </div>
-        </div> -->
     </div>
-    <pre>{{user.value | json}}</pre>
+</div> -->
+<div class="row">
+    <div class="col-12">
+        <div class="card" [ngBusy]="busyCitData">
+            <div class="card-block">
+                <pre [innerHtml]="citationData | prettyjson:3"></pre>
+            </div>
+        </div>
+
+    </div>
 </div>
-<i class="material-icons fontwatermarkright">person_outline</i>

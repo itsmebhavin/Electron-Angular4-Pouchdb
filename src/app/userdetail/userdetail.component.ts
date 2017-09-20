@@ -1,11 +1,14 @@
 
 import { ValidationService, CustomValidationErrors } from '../_services/validation/validation.service';
-import { Component, OnInit, OnChanges, EventEmitter, Directive, AfterViewInit } from '@angular/core';
+import { Component, Input, ViewChild, OnInit, OnChanges, EventEmitter, Directive, AfterViewInit, OnDestroy, AfterViewChecked, Inject, forwardRef, Host } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, Validator, ValidationErrors } from '@angular/forms';
 import { PouchdbService } from '../_pouchdb/pouchdb.service';
 import { CustomValidators } from 'ng2-validation';
 import { FocusDirective } from '../_directives/focus.directive';
-
+import * as moment from 'moment';
+import { TabsComponent } from '../_components/tabs/tabs.component';
+import { TabsService } from '../_components/tabs/tabs.service';
+import { environment } from '../../environments/environment';
 export interface User {
   name: {
     firstName: string;
@@ -26,7 +29,6 @@ export interface User {
 
 export class UserdetailComponent implements OnInit {
   public myFocusTriggeringEventEmitter = new EventEmitter<any>();
-
   user: FormGroup;
   remoteCouchDBAddress: string;
   dataString: string;
@@ -41,7 +43,7 @@ export class UserdetailComponent implements OnInit {
   ];
   formErrors: CustomValidationErrors[] = [];
   isCollapsed = false;
-
+  ticketNum: string;
   someMethod(id) {
     // this will trigger the focus
     this.myFocusTriggeringEventEmitter.emit({ id: id, focus: true });
@@ -54,7 +56,15 @@ export class UserdetailComponent implements OnInit {
   public expanded(event: any): void {
     console.log(event);
   }
-  constructor(private _fb: FormBuilder, private pouchdbservice: PouchdbService) {
+  constructor(
+    // @Host() parent: TabsComponent,
+    private tabService: TabsService,
+    private _fb: FormBuilder,
+    private pouchdbservice: PouchdbService) {
+
+    this.ticketNum = (this.tabService.getTicketNum());
+
+    // this.ticketNum = (parent.dynamicTabs.filter(tab => tab.active === true)[0].title);
 
     PouchdbService.syncStatusCit.subscribe(result => {
       this.syncStatus = result;
@@ -112,9 +122,25 @@ export class UserdetailComponent implements OnInit {
     this.formErrors = []; // empty array everytime.
     this.validateAllFormFields('user-detail', formGroup, this.formErrors);
   }
+
   ngOnInit() {
 
     this.user = this._fb.group({
+      ticketNum: this.ticketNum,
+      dateCreated: moment().toISOString(),
+      dateIssued: '',
+      dateModified: '',
+      modifierUserId: '',
+      docStatus: 10,  // 10= Opened, 20=finalized, 30=issued/printed, 99=voided
+      lastStatus: '',
+      creatorUserId: '',
+      creatorLEA: '',
+      creatorFirstName: '',
+      creatorLastName: '',
+      creatorBadgeNum: '',
+      voidReason: '',
+      mode: environment.EnvName,
+      applicationVersion: '',
       userName: ['', Validators.required],
       name: this._fb.group({
         firstName: [''],
@@ -134,6 +160,7 @@ export class UserdetailComponent implements OnInit {
     this.user.get('name.lastName').setValue('Doe');
     // Form Error list subscriber. If any changes happen to form or it's controls, we are changing global validation list.
     this.user.valueChanges.subscribe(val => {
+      // console.log(this.user);
       this.getFormValidationErrors(this.user);
     });
 

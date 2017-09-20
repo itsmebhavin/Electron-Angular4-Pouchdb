@@ -17,6 +17,8 @@ import {
 import { TabComponent, Tab } from './tab.component';
 import { DynamicTabsDirective } from './dynamic-tabs.directive';
 import { Output } from '@angular/core';
+import { TabsService } from './tabs.service';
+
 @Component({
     selector: 'my-tabs',
     templateUrl: './tabs.component.html',
@@ -50,8 +52,8 @@ export class TabsComponent implements AfterContentInit {
     */
     @ViewChild('container', { read: ViewContainerRef }) dynamicTabPlaceholder;
 
-    constructor(private _componentFactoryResolver: ComponentFactoryResolver) {
-        // console.log(this.dynamicTabs.length);
+    constructor(private tabService: TabsService, private _componentFactoryResolver: ComponentFactoryResolver) {
+
     }
 
     // contentChildren are set
@@ -63,6 +65,11 @@ export class TabsComponent implements AfterContentInit {
         if (activeTabs.length === 0) {
             this.selectTab(this.tabs.first);
         }
+    }
+
+    getActiveTab(): TabComponent[] {
+        const activeTabs = this.dynamicTabs.filter(tab => tab.active = true);
+        return activeTabs;
     }
 
     closeAllTabs() {
@@ -91,7 +98,6 @@ export class TabsComponent implements AfterContentInit {
 
         // create a component instance
         const componentRef = viewContainerRef.createComponent(componentFactory);
-
         // set the according properties on our component instance
         const instance: Tab = componentRef.instance as Tab;
         instance.id = id;
@@ -106,6 +112,9 @@ export class TabsComponent implements AfterContentInit {
 
         // set it active
         this.selectTab(this.dynamicTabs[this.dynamicTabs.length - 1]);
+
+        // Set Ticketnum via tab service
+        this.tabService.setTicketNum(title);
         this.addedTab.emit(this.dynamicTabs.length);
     }
 

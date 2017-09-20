@@ -1,8 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ComponentFactoryResolver, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { TabsComponent } from '../_components/tabs/tabs.component';
 import { ProductFormsService } from '../product-forms/product-forms.service';
+import { TabComponent } from '../_components/tabs/tab.component';
+import { UserdetailComponent } from '../userdetail/userdetail.component';
 
 @Component({
 	selector: 'app-home',
@@ -15,10 +17,9 @@ export class HomeComponent implements OnInit {
 	@ViewChild(TabsComponent) tabsComponent;
 	@ViewChild('overloadCitation') overloadCitationTemplate;
 	@ViewChild('violationNotice') violationNoticeTemplate;
-	@ViewChild('userDetail') userDetailTemplate;
+	@ViewChild('userDetail') userDetailTemplate: UserdetailComponent;
 
 	isDynamicTabExists = false;
-
 	constructor(private _productService: ProductFormsService) {
 		this._productService.addUserDetail$.subscribe((result) => {
 			console.log('inside onAddUserDetail.');
@@ -41,14 +42,25 @@ export class HomeComponent implements OnInit {
 	onAddedTab(NumOfTabs) {
 		this.isDynamicTabExists = (NumOfTabs > 0);
 	}
+
+	// getNewTicketNum(): string {
+	// 	this.TicketNum = moment().format('YYYYMMDDHHmmssSS').toString();
+	// 	return this.TicketNum;
+	// }
 	createNewTab(template: any) {
 		const ticketNum = moment().format('YYYYMMDDHHmmssSS');
 		this.tabsComponent.openTab(
 			ticketNum,
 			ticketNum,
 			template,
-			{},
+			{ TicketNum: ticketNum },
 			true
 		);
+	}
+
+	saveActiveTab() {
+		const activeTab = this.tabsComponent.getActiveTab();
+		console.log('===>> Active Tab =====');
+		console.log(activeTab);
 	}
 }
